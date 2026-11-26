@@ -92,7 +92,7 @@ function last(id){for(var i=DB.h.length-1;i>=0;i--)if(DB.h[i][0]===id)return DB.
 function record(id,ok,ch,secs,md){DB.h.push([id,ok?1:0,ch,Math.round(secs),Date.now(),md]); if(DB.h.length>5000)DB.h=DB.h.slice(-5000); save(DB);}
 /* ---------- painel ---------- */
 function painel(){
- var h=DB.h, tot=h.length, ac=0, dist={}, secs=0, dias={}, pm={};
+ var h=DB.h.filter(function(r){return MATALL[r[0]];}), tot=h.length, ac=0, dist={}, secs=0, dias={}, pm={};
  MATS.forEach(function(m){pm[m]={n:0,a:0,q:{}};});
  h.forEach(function(r){ac+=r[1];secs+=r[3];dist[r[0]]=1;dias[new Date(r[4]).toDateString()]=1;var m=MATALL[r[0]];if(m){pm[m].n++;pm[m].a+=r[1];pm[m].q[r[0]]=1;}});
  // sequência de dias

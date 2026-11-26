@@ -44,6 +44,13 @@ PAGES = [
          card="70 questões inéditas no estilo Cesgranrio, com resolução comentada, cronômetro e desempenho por matéria.", tag="Concursos", date="2026-11-26"),
 ]
 
+MATS = json.load(open(f"{SRC}/posts/materias.json", encoding="utf-8"))
+for m in MATS:
+    PAGES.append(dict(slug=f"simulados/{m['slug']}", kind="mat", src=f"site_src/posts/materia-{m['slug']}.html", img=f"{m['slug']}.jpg",
+        title=f"Questões de {m['mat']} para Concurso Petrobras e Transpetro ({m['n']} Questões Comentadas)", short=f"Questões de {m['mat']}",
+        desc=f"{m['n']} questões inéditas de {m['mat']} no estilo Cesgranrio, com resumo do que mais cai, fórmulas, pegadinhas e resolução comentada.",
+        card=f"{m['n']} questões inéditas, resumo de fórmulas e pegadinhas da banca.", tag="Concursos", date="2026-11-26"))
+
 CSS = r"""
 :root{--az:#0f2742;--az2:#163d6b;--azl:#1f6feb;--la:#f28c28;--la2:#f9a24b;--tx:#1c2430;--su:#5a6575;--bo:#dde3ec;--bg:#f6f8fb}
 *{box-sizing:border-box}
@@ -75,13 +82,13 @@ article h3{color:var(--az2)}
 .btn.sec{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
 .sec-t{margin:34px 0 12px;font-size:1.35rem;color:var(--az)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{border:1px solid var(--bo);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--tx);background:#fff;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,39,66,.12)}
-.card img{aspect-ratio:1200/630;object-fit:cover;width:100%;display:block}
-.card div{padding:12px 14px 16px}
-.card small{color:var(--la);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
-.card b{display:block;font-size:1.02rem;line-height:1.3;margin:3px 0 6px;color:var(--az)}
-.card p{margin:0;font-size:.88rem;color:var(--su);line-height:1.45}
+a.card{border:1px solid var(--bo);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--tx);background:#fff;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+a.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,39,66,.12)}
+a.card img{aspect-ratio:1200/630;object-fit:cover;width:100%;display:block}
+a.card div{padding:12px 14px 16px}
+a.card small{color:var(--la);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
+a.card b{display:block;font-size:1.02rem;line-height:1.3;margin:3px 0 6px;color:var(--az)}
+a.card p{margin:0;font-size:.88rem;color:var(--su);line-height:1.45}
 .note{background:var(--bg);border-left:4px solid var(--la);border-radius:8px;padding:12px 16px;font-size:.92rem}
 .rel{margin:40px 0 10px}
 footer{background:var(--az);color:#c9d6e6;margin-top:50px;padding:28px 0;font-size:.88rem}
@@ -167,17 +174,27 @@ def build():
     urls = []
     calcs = [p for p in PAGES if p["kind"] == "calc"]
     sims = [p for p in PAGES if p["kind"] == "sim"]
+    mats_all = [p for p in PAGES if p["kind"] == "mat"]
 
     # Páginas de conteúdo
     for p in PAGES:
         path = f'/{p["slug"]}/'
         sec = ("/calculadoras/", "Calculadoras") if p["kind"] == "calc" else ("/simulados/", "Simulados")
+        mats = [x for x in PAGES if x["kind"] == "mat"]
         body_post = clean_post(open(f'{ROOT}/{p["src"]}', encoding="utf-8").read())
-        rel = [x for x in PAGES if x is not p][:3]
+        if p["kind"] == "mat":
+            i = mats.index(p); rel = [x for x in PAGES if x["kind"] == "sim"] + [mats[(i+1) % len(mats)], mats[(i+2) % len(mats)]]
+        elif p["kind"] == "sim":
+            rel = mats[:3]
+        else:
+            rel = [x for x in PAGES if x is not p and x["kind"] != "mat"][:3]
+        extra = ""
+        if p["kind"] == "sim":
+            extra = '<section class="rel"><h2 class="sec-t">Estude por matéria</h2><p>' + " · ".join(f'<a href="/{x["slug"]}/">{x["short"].replace("Questões de ","")}</a>' for x in mats) + '</p></section>'
         body = (f'<div class="wrap"><nav class="crumb" aria-label="Você está em"><a href="/">Início</a> › <a href="{sec[0]}">{sec[1]}</a></nav>'
                 f'<article><h1>{p["title"]}</h1><div class="meta">Publicado em {fmt_date(p["date"])} · {p["tag"]}</div>'
                 f'<img class="cover" src="/img/{p["img"]}" alt="{html.escape(p["title"])}" width="1200" height="630" fetchpriority="high">'
-                f'{body_post}</article>'
+                f'{body_post}</article>{extra}'
                 f'<section class="rel"><h2 class="sec-t">Veja também</h2><div class="grid">{"".join(card(x) for x in rel)}</div></section></div>')
         ld = [
             {"@context": "https://schema.org", "@type": "Article", "headline": p["title"], "description": p["desc"],
@@ -200,7 +217,7 @@ def build():
     # Listagens
     for path, h, intro, items in [
         ("/calculadoras/", "Calculadoras de engenharia", "Ferramentas gratuitas que funcionam direto no navegador, no computador ou no celular, sem cadastro. Cada uma traz a fórmula, a norma aplicável e um exemplo resolvido.", calcs),
-        ("/simulados/", "Simulados para concursos de engenharia", "Questões inéditas no estilo das bancas, com resolução comentada, cronômetro e painel de desempenho por matéria. Seu progresso fica salvo no navegador, sem cadastro.", sims)]:
+        ("/simulados/", "Simulados para concursos de engenharia", "Questões inéditas no estilo das bancas, com resolução comentada, cronômetro e painel de desempenho por matéria. Seu progresso fica salvo no navegador, sem cadastro.", sims + mats_all)]:
         body = f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1><p>{intro}</p><div class="grid">{"".join(card(x) for x in items)}</div></div>'
         write(path, layout(path=path, title=h, desc=intro, body=body, active=path))
         urls.append((path, TODAY))
@@ -211,6 +228,7 @@ def build():
 <p>Contas do dia a dia de projeto, orçamento e obra resolvidas no navegador, e questões inéditas para treinar para os concursos de engenharia.</p>
 <a class="btn" href="/calculadoras/">Ver calculadoras</a><a class="btn sec" href="/simulados/engenharia-mecanica-petrobras/">Fazer o simulado</a></div></section>
 <div class="wrap"><h2 class="sec-t">Simulados</h2><div class="grid">{"".join(card(x) for x in sims)}</div>
+<p style="margin-top:14px"><b>Por matéria:</b> {" · ".join(f'<a href="/{x["slug"]}/">{x["short"].replace("Questões de ","")}</a>' for x in mats_all)}</p>
 <h2 class="sec-t">Calculadoras</h2><div class="grid">{"".join(card(x) for x in calcs)}</div>
 <h2 class="sec-t">Por que usar</h2>
 <p class="note"><b>Fórmula aberta e norma citada.</b> Toda ferramenta mostra o método, as unidades e um exemplo resolvido, para você conferir o resultado. Os valores digitados ficam só no seu navegador.</p></div>"""

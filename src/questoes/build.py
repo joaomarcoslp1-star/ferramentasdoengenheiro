@@ -102,7 +102,7 @@ function last(id){for(var i=DB.h.length-1;i>=0;i--)if(DB.h[i][0]===id)return DB.
 function record(id,ok,ch,secs,md){DB.h.push([id,ok?1:0,ch,Math.round(secs),Date.now(),md]); if(DB.h.length>5000)DB.h=DB.h.slice(-5000); save(DB);}
 /* ---------- painel ---------- */
 function painel(){
- var h=DB.h, tot=h.length, ac=0, dist={}, secs=0, dias={}, pm={};
+ var h=DB.h.filter(function(r){return MATALL[r[0]];}), tot=h.length, ac=0, dist={}, secs=0, dias={}, pm={};
  MATS.forEach(function(m){pm[m]={n:0,a:0,q:{}};});
  h.forEach(function(r){ac+=r[1];secs+=r[3];dist[r[0]]=1;dias[new Date(r[4]).toDateString()]=1;var m=MATALL[r[0]];if(m){pm[m].n++;pm[m].a+=r[1];pm[m].q[r[0]]=1;}});
  // sequência de dias
@@ -199,8 +199,9 @@ numerar(); painel();
 })();
 """
 
-def page():
-    qs = "".join(render_q(x) for x in Q)
+def page(sub=None):
+    sub = sub or Q
+    qs = "".join(render_q(x) for x in sub)
     return f"""<div id="fde-q"><style>{CSS}</style>
 <div class="card" id="painel"><h3>📊 Meu desempenho</h3>
 <div class="kp"><div><span>Questões respondidas</span><b id="k-res">–</b></div><div><span>Acerto geral</span><b id="k-ac">–</b></div><div><span>Tempo médio/questão</span><b id="k-tm">–</b></div><div><span>Sequência de estudo</span><b id="k-sq">–</b></div></div>
@@ -209,7 +210,7 @@ def page():
 <div class="btns"><button type="button" class="b" id="b-err">Refazer as que errei</button><button type="button" class="b" id="b-exp">Exportar progresso</button><button type="button" class="b" id="b-imp">Importar progresso</button><button type="button" class="b" id="b-zer">Zerar histórico</button><input type="file" id="f-imp" accept=".json,application/json" hidden></div>
 <p class="muted">Seu histórico fica salvo só neste navegador, sem cadastro. Para continuar em outro aparelho, use Exportar e Importar.</p></div>
 <div class="card"><h3>⚙️ Como você quer estudar?</h3>
-<div class="ctl"><label>Matéria<select id="f-mat"><option value="">Todas as matérias ({len(Q)})</option></select></label>
+<div class="ctl"><label>Matéria<select id="f-mat"><option value="">Todas as matérias ({len(sub)})</option></select></label>
 <label>Questões<select id="f-sit"><option value="">Todas</option><option value="nao">Não respondidas</option><option value="err">Que errei por último</option></select></label>
 <label>Modo<select id="f-modo"><option value="estudo">Estudo (corrige na hora)</option><option value="prova">Simulado cronometrado</option></select></label></div>
 <div id="prova-cfg" hidden><div class="ctl"><label>Nº de questões<select id="f-n"><option value="10">10 sorteadas (34 min)</option><option value="20">20 sorteadas (1h09)</option><option value="35">35 sorteadas (2h)</option><option value="todas">Todas as filtradas</option></select></label></div>
