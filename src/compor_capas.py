@@ -9,6 +9,7 @@ CAPAS = {
  "queda-de-tensao": ("CALCULADORA GRÁTIS", ["Queda de tensão", "e <em>bitola</em> de cabo"], "Limites da NBR 5410 · mono e trifásico"),
  "peso-de-perfis": ("CALCULADORA GRÁTIS", ["Peso de perfis", "e <em>chapas</em> de aço"], "2.300+ bitolas · aço, inox e alumínio"),
  "perda-de-carga": ("CALCULADORA GRÁTIS", ["Perda de carga", "em <em>tubulações</em>"], "Hazen-Williams · conexões · bombas"),
+ "torque-parafusos": ("CALCULADORA GRÁTIS", ["Torque de aperto", "de <em>parafusos</em>"], "Classes 4.6 a 12.9 · pré-carga · tabela"),
  "simulado-mecanica": ("SIMULADO GRÁTIS", ["70 questões de", "<em>Eng. Mecânica</em>"], "Estilo Cesgranrio · Petrobras e Transpetro"),
 }
 import json as _j
