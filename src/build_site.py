@@ -251,6 +251,7 @@ def build():
     open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(OUT + "/CNAME", "w").write("ferramentasdoengenheiro.com\n")
     open(OUT + "/.nojekyll", "w").write("")
+    open(OUT + "/google8c5e0565b8eec656.html", "w").write("google-site-verification: google8c5e0565b8eec656.html")
     print(len(urls), "páginas")
 
 if __name__ == "__main__":
