@@ -1,0 +1,242 @@
+<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto">
+
+<p>Toda bomba, rede de incêndio ou linha de processo precisa vencer duas coisas: o <b>desnível</b> e a <b>perda de carga</b>, que é a energia que o fluido perde por atrito no tubo e ao passar pelas conexões e válvulas. Se a perda for subestimada, a bomba não entrega a vazão. Se for superestimada, você compra uma bomba maior e mais cara do que precisa.</p>
+<p>A calculadora abaixo calcula a <b>perda de carga distribuída</b> pela fórmula de Hazen-Williams ou de Fair-Whipple-Hsiao, soma as <b>perdas localizadas</b> das conexões e já mostra a <b>altura manométrica</b> do trecho, em mca, kPa, bar e psi.</p>
+
+<h2>Calculadora de perda de carga</h2>
+<div id="eng-perda">
+<style>
+#eng-perda{--azul:#1f6feb;--lar:#f28c28;--borda:#dde3ec;--suave:#5a6575;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1c2430;line-height:1.5;max-width:860px;margin:0 auto}
+#eng-perda *{box-sizing:border-box}
+#eng-perda .card{background:#f6f8fb;border:1px solid var(--borda);border-radius:12px;padding:18px;margin:0 0 16px}
+#eng-perda h3{margin:0 0 2px;font-size:1.15rem}
+#eng-perda .sub{margin:0 0 14px;color:var(--suave);font-size:.9rem}
+#eng-perda label{display:block;font-size:.78rem;font-weight:600;color:#3a4452;margin:0}
+#eng-perda input,#eng-perda select{width:100%;padding:8px 9px;border:1px solid #c4ccd8;border-radius:8px;font-size:.95rem;background:#fff;color:#1c2430;margin-top:3px;font-family:inherit}
+#eng-perda input:focus,#eng-perda select:focus{outline:2px solid #b6d0ff;border-color:var(--azul)}
+#eng-perda .g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+#eng-perda .w2{grid-column:span 2}
+#eng-perda .uni{display:grid;grid-template-columns:1fr 92px;gap:6px}
+#eng-perda .hide{display:none!important}
+#eng-perda .fit{display:grid;grid-template-columns:1fr 80px 70px 30px;gap:8px;align-items:end;background:#fff;border:1px solid var(--borda);border-radius:8px;padding:8px 10px;margin-bottom:6px}
+#eng-perda .fit .k{font-size:.85rem;color:var(--suave);padding-bottom:9px;text-align:right}
+#eng-perda .del{width:28px;height:28px;border:0;border-radius:6px;background:#eef1f5;color:#5a6575;font-size:16px;cursor:pointer;padding:0;margin-bottom:4px}
+#eng-perda .del:hover{background:#ffe1e1;color:#cf222e}
+#eng-perda .add{border:1px dashed var(--azul);background:#fff;color:var(--azul);border-radius:8px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:.9rem;margin-top:4px}
+#eng-perda .add:hover{background:#eef4ff}
+#eng-perda .res{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--lar);border-radius:10px;padding:16px}
+#eng-perda .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+#eng-perda .kpi{background:#f6f8fb;border-radius:8px;padding:10px}
+#eng-perda .kpi span{display:block;font-size:.75rem;color:var(--suave);font-weight:600}
+#eng-perda .kpi b{font-size:1.25rem}
+#eng-perda .kpi.main{background:#fff4e8}
+#eng-perda .kpi.main b{color:#b35f00}
+#eng-perda .det{font-size:.88rem;color:#3a4452;margin:0}
+#eng-perda .det td{padding:3px 10px 3px 0;border-bottom:1px solid #eef1f5}
+#eng-perda .det td:last-child{text-align:right;font-weight:600}
+#eng-perda .aviso{margin-top:10px;font-size:.85rem;border-radius:8px;padding:8px 12px}
+#eng-perda .aviso.ok{background:#e9f7ee;color:#1a6b37}
+#eng-perda .aviso.warn{background:#fff4e0;color:#8a5300}
+#eng-perda .nota{font-size:.8rem;color:var(--suave);margin:8px 0 0}
+@media(max-width:640px){#eng-perda .g{grid-template-columns:1fr 1fr}#eng-perda .kpis{grid-template-columns:1fr 1fr}#eng-perda .fit{grid-template-columns:1fr 64px 30px}#eng-perda .fit .k{display:none}}
+</style>
+
+<div class="card">
+  <h3>1. Tubulação e vazão</h3>
+  <p class="sub">Escolha o método, o material e o tubo. Se o seu tubo não estiver na lista, escolha "Outro" e digite o diâmetro interno.</p>
+  <div class="g">
+    <div class="w2"><label>Método de cálculo
+      <select id="ep-met">
+        <option value="hw">Hazen-Williams (água, Ø ≥ 50 mm)</option>
+        <option value="fwh">Fair-Whipple-Hsiao (instalações prediais, Ø até 100 mm)</option>
+      </select></label></div>
+    <div class="w2"><label>Material
+      <select id="ep-mat"></select></label></div>
+    <div class="w2" id="ep-cbox"><label>Coeficiente C (Hazen-Williams)
+      <input id="ep-c" type="number" min="40" max="160" step="1" value="130"></label></div>
+    <div class="w2"><label>Tubo (diâmetro nominal)
+      <select id="ep-tubo"></select></label></div>
+    <div class="w2"><label>Diâmetro interno (mm)
+      <input id="ep-d" type="number" min="1" step="0.1" value="52.5"></label></div>
+    <div class="w2"><label>Vazão
+      <div class="uni"><input id="ep-q" type="number" min="0" step="any" value="10">
+      <select id="ep-qu"><option value="3600">m³/h</option><option value="1000">L/s</option><option value="60000">L/min</option><option value="15850.32">gpm (EUA)</option></select></div></label></div>
+    <div><label>Comprimento (m)
+      <input id="ep-l" type="number" min="0" step="any" value="100"></label></div>
+    <div><label>Desnível (m)
+      <input id="ep-z" type="number" step="any" value="15" title="Positivo se o fluido sobe, negativo se desce"></label></div>
+  </div>
+  <p class="nota">Desnível: positivo quando o ponto final está acima do inicial (recalque), negativo quando está abaixo.</p>
+</div>
+
+<div class="card">
+  <h3>2. Conexões e válvulas (perdas localizadas)</h3>
+  <p class="sub">Some as peças do trecho. A perda de cada uma é K × v² ÷ 2g.</p>
+  <div id="ep-fits"></div>
+  <button type="button" class="add" id="ep-add">+ Adicionar peça</button>
+</div>
+
+<div class="res" aria-live="polite">
+  <div class="kpis">
+    <div class="kpi"><span>Velocidade</span><b id="ep-v">–</b></div>
+    <div class="kpi"><span>Perda de carga total</span><b id="ep-ht">–</b></div>
+    <div class="kpi main"><span>Altura manométrica (perdas + desnível)</span><b id="ep-hm">–</b></div>
+  </div>
+  <table class="det"><tbody id="ep-det"></tbody></table>
+  <div id="ep-av" class="aviso"></div>
+</div>
+
+<script>
+(function(){
+var R=document.getElementById('eng-perda'); if(!R) return;
+function $(i){return document.getElementById(i);}
+var MAT=[
+ ['PVC / PEAD (plástico)',150,'pl'],['Cobre',140,'pl'],['Aço carbono novo',130,'ag'],['Aço galvanizado',125,'ag'],
+ ['Ferro fundido novo',130,'ag'],['Ferro fundido / aço em uso (10–20 anos)',100,'ag'],['Concreto',120,'ag'],['Outro (digite o C)',null,'ag']];
+var TUBOS={
+ 'PVC soldável (NBR 5648)':[['DN 20 (DE 20)',17.0],['DN 25 (DE 25)',21.6],['DN 32 (DE 32)',27.8],['DN 40 (DE 40)',35.2],['DN 50 (DE 50)',44.0],['DN 60 (DE 60)',53.4],['DN 75 (DE 75)',66.6],['DN 85 (DE 85)',75.6],['DN 110 (DE 110)',97.8]],
+ 'Aço carbono SCH 40':[['1/2"',15.8],['3/4"',20.9],['1"',26.6],['1.1/4"',35.1],['1.1/2"',40.9],['2"',52.5],['2.1/2"',62.7],['3"',77.9],['4"',102.3],['6"',154.1],['8"',202.7],['10"',254.5],['12"',303.2]]};
+var PECAS=[['Entrada de tubulação (normal)',0.5],['Saída de tubulação',1.0],['Cotovelo 90° (raio curto)',0.9],['Curva 90° (raio longo)',0.4],['Cotovelo 45°',0.4],['Tê, passagem direta',0.6],['Tê, saída lateral',1.3],['Registro de gaveta aberto',0.2],['Registro de globo aberto',10],['Válvula de esfera aberta',0.1],['Válvula de retenção',2.5],['Válvula de pé com crivo',1.75],['Redução gradual',0.15],['Ampliação gradual',0.3]];
+var sm=$('ep-mat'); MAT.forEach(function(m,i){var o=document.createElement('option');o.value=i;o.textContent=m[0]+(m[1]?' (C '+m[1]+')':'');sm.appendChild(o);});
+sm.value=2;
+var st=$('ep-tubo');
+Object.keys(TUBOS).forEach(function(g){var og=document.createElement('optgroup');og.label=g;TUBOS[g].forEach(function(t){var o=document.createElement('option');o.value=t[1];o.textContent=g.split(' ')[0]+' '+t[0]+' · DI '+String(t[1]).replace('.',',')+' mm';og.appendChild(o);});st.appendChild(og);});
+var oo=document.createElement('option');oo.value='';oo.textContent='Outro (digite o diâmetro interno)';st.appendChild(oo);
+st.value='52.5';
+function nf(x,d){return isFinite(x)?x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';}
+function num(i){var v=parseFloat(String($(i).value).replace(',','.'));return isFinite(v)?v:0;}
+function addFit(idx,q){
+ var d=document.createElement('div');d.className='fit';
+ var opts=PECAS.map(function(p,i){return '<option value="'+i+'">'+p[0]+' (K '+String(p[1]).replace('.',',')+')</option>';}).join('');
+ d.innerHTML='<label>Peça<select class="fp">'+opts+'</select></label><label>Quantidade<input class="fq" type="number" min="0" step="1" value="'+q+'"></label><div class="k"></div><button type="button" class="del" title="Remover">×</button>';
+ d.querySelector('.fp').value=idx; $('ep-fits').appendChild(d);
+ d.querySelector('.del').onclick=function(){d.remove();calc();};
+}
+[[0,1],[2,4],[7,2],[10,1],[1,1]].forEach(function(f){addFit(f[0],f[1]);});
+$('ep-add').onclick=function(){addFit(2,1);calc();};
+sm.onchange=function(){var m=MAT[sm.value];if(m[1])$('ep-c').value=m[1];calc();};
+st.onchange=function(){if(st.value)$('ep-d').value=st.value;calc();};
+$('ep-d').oninput=function(){st.value='';calc();};
+$('ep-met').onchange=calc;
+R.addEventListener('input',calc);R.addEventListener('change',calc);
+function calc(){
+ var met=$('ep-met').value, m=MAT[sm.value];
+ $('ep-cbox').classList.toggle('hide',met!=='hw');
+ var Q=num('ep-q')/parseFloat($('ep-qu').value), D=num('ep-d')/1000, L=num('ep-l'), z=num('ep-z'), C=num('ep-c'), g=9.81;
+ var det=$('ep-det'), av=$('ep-av');
+ if(!(Q>0&&D>0)){['ep-v','ep-ht','ep-hm'].forEach(function(i){$(i).textContent='–';});det.innerHTML='';av.className='aviso';av.textContent='Informe a vazão e o diâmetro interno.';return;}
+ var v=Q/(Math.PI*D*D/4), J;
+ if(met==='hw'){J=C>0?10.67*Math.pow(Q,1.852)/(Math.pow(C,1.852)*Math.pow(D,4.87)):NaN;}
+ else{J=m[2]==='pl'?0.0008695*Math.pow(Q,1.75)/Math.pow(D,4.75):0.002021*Math.pow(Q,1.88)/Math.pow(D,4.88);}
+ var hf=J*L, K=0;
+ [].forEach.call(R.querySelectorAll('.fit'),function(f){var p=PECAS[f.querySelector('.fp').value],q=parseFloat(f.querySelector('.fq').value)||0;K+=p[1]*q;f.querySelector('.k').textContent='K '+nf(p[1]*q,2);});
+ var hl=K*v*v/(2*g), ht=hf+hl, hm=ht+z;
+ $('ep-v').textContent=nf(v,2)+' m/s';
+ $('ep-ht').textContent=nf(ht,2)+' mca';
+ $('ep-hm').textContent=nf(hm,2)+' mca';
+ det.innerHTML=[
+  ['Perda unitária (J)',nf(J*100,2)+' m/100 m'],
+  ['Perda distribuída (J × L)',nf(hf,2)+' m'],
+  ['Soma dos K das peças',nf(K,2)],
+  ['Perdas localizadas (ΣK × v²/2g)',nf(hl,2)+' m'],
+  ['Desnível',nf(z,2)+' m'],
+  ['Altura manométrica em pressão',nf(hm*9.80665,1)+' kPa · '+nf(hm*0.0980665,2)+' bar · '+nf(hm*1.42233,1)+' psi']
+ ].map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('');
+ var msg=[], warn=false;
+ if(v>3){msg.push('Velocidade acima de 3 m/s: risco de ruído, golpe de aríete e desgaste. Considere um diâmetro maior.');warn=true;}
+ else if(v<0.5){msg.push('Velocidade abaixo de 0,5 m/s: pode haver depósito de sedimentos. Talvez dê para usar um diâmetro menor.');warn=true;}
+ else msg.push('Velocidade dentro da faixa usual para água (0,5 a 3 m/s).');
+ if(met==='hw'&&D<0.05){msg.push('Hazen-Williams perde precisão abaixo de 50 mm. Para instalações prediais, compare com Fair-Whipple-Hsiao.');warn=true;}
+ if(met==='fwh'&&D>0.1){msg.push('Fair-Whipple-Hsiao é indicada para diâmetros até 100 mm. Para tubos maiores, use Hazen-Williams.');warn=true;}
+ av.className='aviso '+(warn?'warn':'ok'); av.textContent=msg.join(' ');
+}
+calc();
+})();
+</script>
+</div>
+
+<h2>Como usar a calculadora</h2>
+<ol>
+  <li><b>Escolha o método.</b> Hazen-Williams é o padrão para redes de água, recalque e incêndio com tubos a partir de 50 mm. Fair-Whipple-Hsiao é a fórmula das instalações prediais de água fria e quente, para tubos de até 100 mm.</li>
+  <li><b>Escolha o material.</b> No Hazen-Williams, o material define o coeficiente C, que você pode ajustar. No Fair-Whipple-Hsiao, PVC, PEAD e cobre usam a fórmula de tubo liso; os demais usam a de aço galvanizado.</li>
+  <li><b>Escolha o tubo</b> na lista (PVC soldável ou aço carbono SCH 40) ou digite o diâmetro interno. Use sempre o diâmetro <b>interno</b>, e não o nominal.</li>
+  <li><b>Informe a vazão, o comprimento e o desnível.</b> O desnível é positivo quando o ponto final está acima do inicial.</li>
+  <li><b>Liste as conexões e válvulas</b> do trecho, com as quantidades.</li>
+</ol>
+<p>O resultado mostra a velocidade, a perda total e a altura manométrica, que é o que a bomba precisa vencer nesse trecho. Para a altura manométrica total da bomba, some a sucção e o recalque e a pressão exigida no ponto de uso, se houver.</p>
+
+<h2>Como calcular a perda de carga</h2>
+<p>A perda de carga total é a soma de duas parcelas:</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>Perda total = perda distribuída + perdas localizadas</b></p>
+
+<h3>Perda distribuída: Hazen-Williams</h3>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>h<sub>f</sub> = 10,67 × L × Q<sup>1,852</sup> ÷ (C<sup>1,852</sup> × D<sup>4,87</sup>)</b><br>h<sub>f</sub> em m · L em m · Q em m³/s · D (diâmetro interno) em m · C = coeficiente do material</p>
+<p>A fórmula foi feita para água em temperatura ambiente e dá bons resultados com velocidades até cerca de 3 m/s e diâmetros a partir de 50 mm.</p>
+
+<table style="border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0 16px">
+  <thead><tr style="background:#f6f8fb"><th style="text-align:left;padding:8px;border-bottom:2px solid #dde3ec">Material</th><th style="text-align:left;padding:8px;border-bottom:2px solid #dde3ec">Coeficiente C</th></tr></thead>
+  <tbody>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">PVC e PEAD</td><td style="padding:8px;border-bottom:1px solid #eef1f5">150</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Cobre</td><td style="padding:8px;border-bottom:1px solid #eef1f5">130 a 140</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Aço carbono e ferro fundido novos</td><td style="padding:8px;border-bottom:1px solid #eef1f5">130</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Aço galvanizado</td><td style="padding:8px;border-bottom:1px solid #eef1f5">120 a 125</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Concreto</td><td style="padding:8px;border-bottom:1px solid #eef1f5">120</td></tr>
+    <tr><td style="padding:8px">Aço ou ferro fundido com 10 a 20 anos de uso</td><td style="padding:8px">90 a 100</td></tr>
+  </tbody>
+</table>
+<p>Tubos metálicos perdem C com o tempo por causa da corrosão e das incrustações. Em projeto de rede nova de aço, muita gente já usa C = 100 a 120 para considerar o envelhecimento.</p>
+
+<h3>Perda distribuída: Fair-Whipple-Hsiao</h3>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>PVC e cobre: J = 0,0008695 × Q<sup>1,75</sup> ÷ D<sup>4,75</sup></b><br><b>Aço galvanizado: J = 0,002021 × Q<sup>1,88</sup> ÷ D<sup>4,88</sup></b><br>J em m/m · Q em m³/s · D em m · h<sub>f</sub> = J × L</p>
+
+<h3>Perdas localizadas</h3>
+<p>Cada conexão ou válvula provoca uma perda proporcional à energia cinética do escoamento:</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>h<sub>L</sub> = ΣK × v² ÷ 2g</b><br>v = velocidade (m/s) · g = 9,81 m/s² · K = coeficiente da peça</p>
+
+<table style="border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0 16px">
+  <thead><tr style="background:#f6f8fb"><th style="text-align:left;padding:8px;border-bottom:2px solid #dde3ec">Peça</th><th style="text-align:left;padding:8px;border-bottom:2px solid #dde3ec">K</th></tr></thead>
+  <tbody>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Registro de globo aberto</td><td style="padding:8px;border-bottom:1px solid #eef1f5">10</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Válvula de retenção</td><td style="padding:8px;border-bottom:1px solid #eef1f5">2,5</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Válvula de pé com crivo</td><td style="padding:8px;border-bottom:1px solid #eef1f5">1,75</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Tê, saída lateral</td><td style="padding:8px;border-bottom:1px solid #eef1f5">1,3</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Saída de tubulação</td><td style="padding:8px;border-bottom:1px solid #eef1f5">1,0</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Cotovelo 90° (raio curto)</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,9</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Tê, passagem direta</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,6</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Entrada de tubulação (normal)</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,5</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Cotovelo 45° e curva 90° de raio longo</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,4</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Ampliação gradual</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,3</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Registro de gaveta aberto</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,2</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Redução gradual</td><td style="padding:8px;border-bottom:1px solid #eef1f5">0,15</td></tr>
+    <tr><td style="padding:8px">Válvula de esfera aberta</td><td style="padding:8px">0,1</td></tr>
+  </tbody>
+</table>
+<p>Os valores de K variam um pouco entre fabricantes e referências. Para válvulas especiais, use o K ou o Cv do catálogo.</p>
+
+<h2>Exemplo resolvido</h2>
+<p>A calculadora já abre com este exemplo: recalque de <b>10 m³/h</b> de água em <b>100 m</b> de tubo de aço carbono SCH 40 de <b>2"</b> (diâmetro interno 52,5 mm, C = 130), subindo <b>15 m</b>, com 1 entrada, 4 cotovelos de 90°, 2 registros de gaveta, 1 válvula de retenção e 1 saída.</p>
+<ol>
+  <li><b>Vazão:</b> 10 m³/h ÷ 3.600 = 0,002778 m³/s</li>
+  <li><b>Velocidade:</b> v = Q ÷ (π × D² ÷ 4) = 0,002778 ÷ 0,002165 = <b>1,28 m/s</b>, dentro da faixa usual</li>
+  <li><b>Perda distribuída:</b> h<sub>f</sub> = 10,67 × 100 × 0,002778<sup>1,852</sup> ÷ (130<sup>1,852</sup> × 0,0525<sup>4,87</sup>) = <b>4,09 m</b></li>
+  <li><b>Soma dos K:</b> 0,5 + 4 × 0,9 + 2 × 0,2 + 2,5 + 1,0 = 8,0</li>
+  <li><b>Perdas localizadas:</b> 8,0 × 1,28² ÷ (2 × 9,81) = <b>0,67 m</b></li>
+  <li><b>Perda total:</b> 4,09 + 0,67 = <b>4,76 mca</b></li>
+  <li><b>Altura manométrica do trecho:</b> 4,76 + 15 = <b>19,76 mca</b>, ou cerca de 194 kPa (1,94 bar)</li>
+</ol>
+
+<h2>Qual velocidade usar?</h2>
+<p>Para água, a faixa usual fica entre <b>0,5 e 3 m/s</b>. Abaixo disso, a tubulação fica cara e pode acumular sedimentos. Acima, aumentam o ruído, o desgaste e o risco de golpe de aríete. Em instalações prediais, a NBR 5626 limita a velocidade a 3 m/s. Na sucção de bombas, use velocidades menores, em geral até 1,5 m/s, para evitar cavitação.</p>
+
+<h2>Perguntas frequentes</h2>
+<h3>Qual a diferença entre Hazen-Williams e Darcy-Weisbach?</h3>
+<p>Darcy-Weisbach é a fórmula universal: vale para qualquer fluido e regime, mas exige calcular o fator de atrito pelo número de Reynolds e pela rugosidade. Hazen-Williams é empírica, mais simples, e foi feita para água em temperatura ambiente. Para água em redes e recalques, as duas dão resultados próximos. Para óleo, ar, fluidos viscosos ou água quente, use Darcy-Weisbach.</p>
+<h3>Uso o diâmetro nominal ou o interno?</h3>
+<p>Sempre o interno. O diâmetro aparece na fórmula elevado a 4,87, então um erro pequeno no diâmetro vira um erro grande na perda. Um tubo de aço de 2" SCH 40 tem 52,5 mm por dentro, e o SCH 80 tem só 49,3 mm.</p>
+<h3>O que é mca?</h3>
+<p>Metro de coluna d'água: a pressão no fundo de uma coluna de água com aquela altura. 1 mca ≈ 9,81 kPa ≈ 0,098 bar ≈ 1,42 psi. Por isso 10 mca equivalem a cerca de 1 kgf/cm².</p>
+<h3>Posso usar o método dos comprimentos equivalentes?</h3>
+<p>Pode. Ele transforma cada conexão num comprimento de tubo reto que dá a mesma perda e soma isso ao comprimento real. O método do K, usado aqui, chega a resultados parecidos e não depende do diâmetro da tabela.</p>
+
+<p style="font-size:.85rem;color:#5a6575;border-top:1px solid #dde3ec;padding-top:12px;margin-top:28px">Veja também: <a href="/2026/11/blog-post.html">calculadora de peso de perfis, tubos e chapas</a> e <a href="/2026/11/calculadora-queda-de-tensao-nbr-5410.html">calculadora de queda de tensão</a>, para dimensionar o cabo do motor da bomba.</p>
+</div>

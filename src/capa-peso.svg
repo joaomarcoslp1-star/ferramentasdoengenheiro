@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f2742"/><stop offset="1" stop-color="#163d6b"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".05"/></pattern></defs>
+<rect width="1200" height="630" fill="url(#bg)"/><rect width="1200" height="630" fill="url(#grid)"/>
+<g transform="translate(730,120)" stroke="#f28c28" stroke-width="7" stroke-linejoin="round">
+  <path d="M10 10H190V45H120V215H190V250H10V215H80V45H10Z" fill="#c9d1db"/>
+  <path d="M250 60H290V210H400V250H250Z" fill="#9aa5b1"/>
+  <rect x="250" y="290" width="150" height="150" rx="6" fill="#9aa5b1"/><rect x="275" y="315" width="100" height="100" rx="3" fill="#0f2742" stroke-width="4"/>
+  <rect x="0" y="300" width="200" height="34" fill="#b3bcc7"/>
+  <rect x="0" y="352" width="200" height="34" fill="#b3bcc7"/>
+  <rect x="0" y="404" width="200" height="34" fill="#b3bcc7"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#ffffff">
+  <rect x="80" y="110" width="250" height="44" rx="22" fill="#f28c28"/>
+  <text x="205" y="140" text-anchor="middle" font-size="20" font-weight="700" fill="#1c2430">CALCULADORA GRÁTIS</text>
+  <text x="80" y="240" font-size="68" font-weight="800">Peso de perfis</text>
+  <text x="80" y="318" font-size="68" font-weight="800">e <tspan fill="#f9a24b">chapas</tspan> de aço</text>
+  <text x="80" y="385" font-size="28" fill="#c9d6e6">2.300+ bitolas · lista de peças · peso de compra</text>
+  <text x="80" y="425" font-size="28" fill="#c9d6e6">Aço carbono, inox e alumínio</text>
+  <text x="80" y="560" font-size="22" fill="#c9d6e6" fill-opacity=".85">ferramentasdoengenheiro.com</text>
+</g>
+</svg>

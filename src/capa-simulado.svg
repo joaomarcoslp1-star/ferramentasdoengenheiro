@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f2742"/><stop offset="1" stop-color="#163d6b"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".05"/></pattern></defs>
+<rect width="1200" height="630" fill="url(#bg)"/><rect width="1200" height="630" fill="url(#grid)"/>
+<g transform="translate(790,95) rotate(4)">
+  <rect width="300" height="400" rx="14" fill="#f6f8fb" stroke="#f28c28" stroke-width="6"/>
+  <rect x="24" y="22" width="252" height="34" rx="6" fill="#0f2742"/>
+  <text x="150" y="46" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">CARTÃO-RESPOSTA</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#1c2430">
+    <g transform="translate(30,90)"><text x="0" y="6">01</text><g fill="none" stroke="#5a6575" stroke-width="2"><circle cx="60" cy="0" r="13"/><circle cx="100" cy="0" r="13"/><circle cx="180" cy="0" r="13"/><circle cx="220" cy="0" r="13"/></g><circle cx="140" cy="0" r="13" fill="#1a7f37"/></g>
+    <g transform="translate(30,145)"><text x="0" y="6">02</text><g fill="none" stroke="#5a6575" stroke-width="2"><circle cx="100" cy="0" r="13"/><circle cx="140" cy="0" r="13"/><circle cx="180" cy="0" r="13"/><circle cx="220" cy="0" r="13"/></g><circle cx="60" cy="0" r="13" fill="#1a7f37"/></g>
+    <g transform="translate(30,200)"><text x="0" y="6">03</text><g fill="none" stroke="#5a6575" stroke-width="2"><circle cx="60" cy="0" r="13"/><circle cx="100" cy="0" r="13"/><circle cx="140" cy="0" r="13"/><circle cx="180" cy="0" r="13"/></g><circle cx="220" cy="0" r="13" fill="#1a7f37"/></g>
+    <g transform="translate(30,255)"><text x="0" y="6">04</text><g fill="none" stroke="#5a6575" stroke-width="2"><circle cx="60" cy="0" r="13"/><circle cx="140" cy="0" r="13"/><circle cx="180" cy="0" r="13"/><circle cx="220" cy="0" r="13"/></g><circle cx="100" cy="0" r="13" fill="#cf222e"/></g>
+    <g transform="translate(30,310)"><text x="0" y="6">05</text><g fill="none" stroke="#5a6575" stroke-width="2"><circle cx="60" cy="0" r="13"/><circle cx="100" cy="0" r="13"/><circle cx="140" cy="0" r="13"/><circle cx="220" cy="0" r="13"/></g><circle cx="180" cy="0" r="13" fill="#1a7f37"/></g>
+  </g>
+  <rect x="24" y="345" width="252" height="34" rx="6" fill="#f28c28"/>
+  <text x="150" y="369" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#1c2430">4 / 5 · 80%</text>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#ffffff">
+  <rect x="80" y="100" width="250" height="44" rx="22" fill="#f28c28"/>
+  <text x="205" y="130" text-anchor="middle" font-size="20" font-weight="700" fill="#1c2430">SIMULADO GRÁTIS</text>
+  <text x="80" y="228" font-size="66" font-weight="800">70 questões de</text>
+  <text x="80" y="304" font-size="66" font-weight="800"><tspan fill="#f9a24b">Eng. Mecânica</tspan></text>
+  <text x="80" y="372" font-size="28" fill="#c9d6e6">Estilo Cesgranrio · Petrobras e Transpetro</text>
+  <text x="80" y="412" font-size="28" fill="#c9d6e6">Resoluções comentadas e seu desempenho</text>
+  <text x="80" y="560" font-size="22" fill="#c9d6e6" fill-opacity=".85">ferramentasdoengenheiro.com</text>
+</g>
+</svg>

@@ -1,0 +1,257 @@
+# -*- coding: utf-8 -*-
+"""Gera o site estático Ferramentas do Engenheiro em /home/claude/site."""
+import os, re, json, shutil, html
+from datetime import date
+
+ROOT = "/home/claude"
+OUT = f"{ROOT}/site"
+SRC = f"{ROOT}/site_src"
+DOMAIN = "https://ferramentasdoengenheiro.com"
+SITE = "Ferramentas do Engenheiro"
+IG = "https://www.instagram.com/ferramentasdoengenheiro/"
+TODAY = date.today().isoformat()
+
+LINKS = {
+    "/2026/11/blog-post_26.html": "/calculadoras/perda-de-carga/",
+    "/2026/11/blog-post.html": "/calculadoras/peso-de-perfis/",
+    "/2026/11/calculadora-queda-de-tensao-nbr-5410.html": "/calculadoras/queda-de-tensao/",
+    "/2026/11/calculadora-area-pintura-tinta.html": "/calculadoras/area-de-pintura/",
+    "/p/contato.html": "/contato/",
+    "/p/sobre.html": "/sobre/",
+    "/p/politica-de-privacidade.html": "/privacidade/",
+}
+
+PAGES = [
+    dict(slug="calculadoras/area-de-pintura", kind="calc", src="post-calculadora-tinta-blogger.html", img="area-de-pintura.jpg",
+         title="Calculadora de Área de Pintura e Consumo de Tinta (Perfis, Tubos e Chapas)", short="Área de pintura e litros de tinta",
+         desc="Calcule grátis a área de pintura de perfis, tubos e chapas e os litros de tinta pelos sólidos por volume, espessura seca, demãos e perdas.",
+         card="Área em m² de perfis, tubos e chapas e litros de tinta por demão, com perdas.", tag="Pintura industrial", date="2026-11-18"),
+    dict(slug="calculadoras/queda-de-tensao", kind="calc", src="post-queda-tensao-blogger.html", img="queda-de-tensao.jpg",
+         title="Calculadora de Queda de Tensão e Bitola de Cabo (NBR 5410)", short="Queda de tensão e bitola de cabo",
+         desc="Calcule grátis a queda de tensão em circuitos mono e trifásicos e a bitola mínima do cabo pelos limites da NBR 5410.",
+         card="Queda de tensão em V e % e seção mínima do cabo pelos limites da NBR 5410.", tag="Elétrica", date="2026-11-18"),
+    dict(slug="calculadoras/peso-de-perfis", kind="calc", src="post-peso-perfis-blogger.html", img="peso-de-perfis.jpg",
+         title="Calculadora de Peso de Perfis, Tubos e Chapas de Aço", short="Peso de perfis, tubos e chapas",
+         desc="Calcule grátis o peso de perfis W, U, L, tubos e chapas de aço, inox e alumínio: 2.300+ bitolas, lista de peças, perda de compra e custo do material.",
+         card="Lista de peças com 2.300+ bitolas, aço, inox e alumínio, perda de compra e custo.", tag="Estruturas metálicas", date="2026-11-18"),
+    dict(slug="calculadoras/perda-de-carga", kind="calc", src="post-perda-carga-blogger.html", img="perda-de-carga.jpg",
+         title="Calculadora de Perda de Carga em Tubulações (Hazen-Williams)", short="Perda de carga em tubulações",
+         desc="Calcule grátis a perda de carga em tubulações por Hazen-Williams ou Fair-Whipple-Hsiao, com conexões, válvulas, velocidade e altura manométrica.",
+         card="Hazen-Williams e Fair-Whipple-Hsiao, conexões e válvulas, altura manométrica.", tag="Hidráulica", date="2026-11-26"),
+    dict(slug="simulados/engenharia-mecanica-petrobras", kind="sim", src="post-simulado-mecanica-70.html", img="simulado-mecanica.jpg",
+         title="Simulado de Engenharia Mecânica Petrobras e Transpetro: 70 Questões Inéditas Comentadas (Estilo Cesgranrio)", short="Engenharia Mecânica · Petrobras e Transpetro",
+         desc="Simulado grátis com 70 questões inéditas de Engenharia Mecânica no estilo Cesgranrio (Petrobras e Transpetro), com resoluções comentadas e desempenho por matéria.",
+         card="70 questões inéditas no estilo Cesgranrio, com resolução comentada, cronômetro e desempenho por matéria.", tag="Concursos", date="2026-11-26"),
+]
+
+CSS = r"""
+:root{--az:#0f2742;--az2:#163d6b;--azl:#1f6feb;--la:#f28c28;--la2:#f9a24b;--tx:#1c2430;--su:#5a6575;--bo:#dde3ec;--bg:#f6f8fb}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;color:var(--tx);background:#fff;line-height:1.65}
+a{color:var(--azl)}
+img{max-width:100%;height:auto}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+.top{background:var(--az);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.top .wrap{display:flex;align-items:center;gap:14px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.2px}
+.brand img{width:36px;height:36px;border-radius:50%}
+.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.nav a{color:#dbe6f4;text-decoration:none;font-size:.92rem;padding:7px 10px;border-radius:8px}
+.nav a:hover,.nav a.on{background:rgba(255,255,255,.1);color:#fff}
+.crumb{font-size:.82rem;color:var(--su);margin:18px 0 4px}
+.crumb a{color:var(--su);text-decoration:none}
+h1{font-size:clamp(1.55rem,3.4vw,2.15rem);line-height:1.2;margin:6px 0 8px;color:var(--az)}
+.meta{font-size:.85rem;color:var(--su);margin-bottom:14px}
+.cover{border-radius:14px;display:block;margin:8px 0 22px;aspect-ratio:1200/630;width:100%;object-fit:cover;background:var(--bg)}
+article h2{color:var(--az);margin-top:1.8em;line-height:1.25}
+article h3{color:var(--az2)}
+.hero{background:linear-gradient(135deg,var(--az),var(--az2));color:#fff;padding:46px 0 40px}
+.hero h1{color:#fff;font-size:clamp(1.8rem,4.2vw,2.6rem);margin:0 0 10px}
+.hero h1 span{color:var(--la2)}
+.hero p{color:#c9d6e6;font-size:1.08rem;max-width:640px;margin:0 0 18px}
+.pill{display:inline-block;background:var(--la);color:var(--tx);font-weight:800;font-size:.78rem;padding:5px 12px;border-radius:99px;margin-bottom:14px;letter-spacing:.3px}
+.btn{display:inline-block;background:var(--la);color:var(--tx);font-weight:700;text-decoration:none;padding:11px 18px;border-radius:10px;margin:4px 8px 4px 0}
+.btn.sec{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+.sec-t{margin:34px 0 12px;font-size:1.35rem;color:var(--az)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{border:1px solid var(--bo);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--tx);background:#fff;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,39,66,.12)}
+.card img{aspect-ratio:1200/630;object-fit:cover;width:100%;display:block}
+.card div{padding:12px 14px 16px}
+.card small{color:var(--la);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
+.card b{display:block;font-size:1.02rem;line-height:1.3;margin:3px 0 6px;color:var(--az)}
+.card p{margin:0;font-size:.88rem;color:var(--su);line-height:1.45}
+.note{background:var(--bg);border-left:4px solid var(--la);border-radius:8px;padding:12px 16px;font-size:.92rem}
+.rel{margin:40px 0 10px}
+footer{background:var(--az);color:#c9d6e6;margin-top:50px;padding:28px 0;font-size:.88rem}
+footer a{color:#fff;text-decoration:none;margin-right:14px}
+footer p{margin:8px 0}
+body #fde-q .bar-top{top:68px}
+@media(max-width:640px){.top{position:static}body #fde-q .bar-top{top:0}.top .wrap{flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.nav{margin-left:0;width:100%}.nav a{padding:6px 8px;font-size:.86rem}}
+"""
+
+def nav(active):
+    items = [("/", "Início"), ("/calculadoras/", "Calculadoras"), ("/simulados/", "Simulados"), ("/sobre/", "Sobre"), ("/contato/", "Contato")]
+    return "".join(f'<a href="{u}"{" class=on" if active == u else ""}>{t}</a>' for u, t in items)
+
+def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_title=None, noindex=False):
+    url = DOMAIN + path
+    og = DOMAIN + "/img/" + (img or "simulado-mecanica.jpg")
+    ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
+    t = page_title or f"{title} | {SITE}"
+    return f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(t)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<link rel="canonical" href="{url}">
+{'<meta name="robots" content="noindex">' if noindex else ''}
+<meta property="og:type" content="{'article' if img else 'website'}">
+<meta property="og:site_name" content="{SITE}">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{og}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f2742">
+<link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/logo-192.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+{ld}
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/"><img src="/img/logo-192.png" alt="" width="36" height="36">{SITE}</a><nav class="nav" aria-label="Menu principal">{nav(active)}</nav></div></header>
+<main>{body}</main>
+<footer><div class="wrap">
+<p><b style="color:#fff">{SITE}</b> · calculadoras e simulados gratuitos para engenheiros, técnicos e estudantes.</p>
+<p><a href="/calculadoras/">Calculadoras</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="{IG}" rel="noopener" target="_blank">Instagram</a></p>
+<p style="font-size:.8rem;opacity:.8">As ferramentas apoiam estudos, orçamentos e pré-dimensionamentos e não substituem o projeto e a responsabilidade técnica de um profissional habilitado.</p>
+</div></footer>
+</body>
+</html>
+"""
+
+def clean_post(raw):
+    raw = re.sub(r"<!--.*?-->", "", raw, flags=re.S).strip()
+    for a, b in LINKS.items():
+        raw = raw.replace(f'href="{a}"', f'href="{b}"')
+    raw = raw.replace("Use o formulário de contato do blog", "Use a página de <a href=\"/contato/\">Contato</a>")
+    raw = raw.replace("neste blog", "neste site").replace("do blog", "do site")
+    return raw
+
+def fmt_date(d):
+    y, m, dd = d.split("-")
+    meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+    return f"{int(dd)} de {meses[int(m)-1]} de {y}"
+
+def card(p):
+    return (f'<a class="card" href="/{p["slug"]}/"><img src="/img/{p["img"]}" alt="" width="1200" height="630" loading="lazy">'
+            f'<div><small>{p["tag"]}</small><b>{p["short"]}</b><p>{p["card"]}</p></div></a>')
+
+def write(path, content):
+    fp = OUT + path + ("index.html" if path.endswith("/") else "")
+    os.makedirs(os.path.dirname(fp), exist_ok=True)
+    open(fp, "w", encoding="utf-8").write(content)
+
+def build():
+    if os.path.exists(OUT): shutil.rmtree(OUT)
+    os.makedirs(OUT + "/assets")
+    shutil.copytree(SRC + "/img", OUT + "/img")
+    open(OUT + "/assets/site.css", "w").write(CSS)
+    urls = []
+    calcs = [p for p in PAGES if p["kind"] == "calc"]
+    sims = [p for p in PAGES if p["kind"] == "sim"]
+
+    # Páginas de conteúdo
+    for p in PAGES:
+        path = f'/{p["slug"]}/'
+        sec = ("/calculadoras/", "Calculadoras") if p["kind"] == "calc" else ("/simulados/", "Simulados")
+        body_post = clean_post(open(f'{ROOT}/{p["src"]}', encoding="utf-8").read())
+        rel = [x for x in PAGES if x is not p][:3]
+        body = (f'<div class="wrap"><nav class="crumb" aria-label="Você está em"><a href="/">Início</a> › <a href="{sec[0]}">{sec[1]}</a></nav>'
+                f'<article><h1>{p["title"]}</h1><div class="meta">Publicado em {fmt_date(p["date"])} · {p["tag"]}</div>'
+                f'<img class="cover" src="/img/{p["img"]}" alt="{html.escape(p["title"])}" width="1200" height="630" fetchpriority="high">'
+                f'{body_post}</article>'
+                f'<section class="rel"><h2 class="sec-t">Veja também</h2><div class="grid">{"".join(card(x) for x in rel)}</div></section></div>')
+        ld = [
+            {"@context": "https://schema.org", "@type": "Article", "headline": p["title"], "description": p["desc"],
+             "image": f'{DOMAIN}/img/{p["img"]}', "datePublished": p["date"], "dateModified": TODAY, "inLanguage": "pt-BR",
+             "author": {"@type": "Organization", "name": SITE, "url": DOMAIN},
+             "publisher": {"@type": "Organization", "name": SITE, "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/img/logo-512.png"}},
+             "mainEntityOfPage": DOMAIN + path},
+            {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Início", "item": DOMAIN + "/"},
+                {"@type": "ListItem", "position": 2, "name": sec[1], "item": DOMAIN + sec[0]},
+                {"@type": "ListItem", "position": 3, "name": p["short"], "item": DOMAIN + path}]},
+        ]
+        if p["kind"] == "calc":
+            ld.append({"@context": "https://schema.org", "@type": "WebApplication", "name": p["short"], "url": DOMAIN + path,
+                       "applicationCategory": "EngineeringApplication", "operatingSystem": "Any", "inLanguage": "pt-BR",
+                       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}})
+        write(path, layout(path=path, title=p["title"], desc=p["desc"], body=body, img=p["img"], active=sec[0], jsonld=ld))
+        urls.append((path, p["date"]))
+
+    # Listagens
+    for path, h, intro, items in [
+        ("/calculadoras/", "Calculadoras de engenharia", "Ferramentas gratuitas que funcionam direto no navegador, no computador ou no celular, sem cadastro. Cada uma traz a fórmula, a norma aplicável e um exemplo resolvido.", calcs),
+        ("/simulados/", "Simulados para concursos de engenharia", "Questões inéditas no estilo das bancas, com resolução comentada, cronômetro e painel de desempenho por matéria. Seu progresso fica salvo no navegador, sem cadastro.", sims)]:
+        body = f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1><p>{intro}</p><div class="grid">{"".join(card(x) for x in items)}</div></div>'
+        write(path, layout(path=path, title=h, desc=intro, body=body, active=path))
+        urls.append((path, TODAY))
+
+    # Home
+    body = f"""<section class="hero"><div class="wrap"><span class="pill">GRÁTIS · SEM CADASTRO</span>
+<h1>Calculadoras e simulados para <span>engenheiros</span></h1>
+<p>Contas do dia a dia de projeto, orçamento e obra resolvidas no navegador, e questões inéditas para treinar para os concursos de engenharia.</p>
+<a class="btn" href="/calculadoras/">Ver calculadoras</a><a class="btn sec" href="/simulados/engenharia-mecanica-petrobras/">Fazer o simulado</a></div></section>
+<div class="wrap"><h2 class="sec-t">Simulados</h2><div class="grid">{"".join(card(x) for x in sims)}</div>
+<h2 class="sec-t">Calculadoras</h2><div class="grid">{"".join(card(x) for x in calcs)}</div>
+<h2 class="sec-t">Por que usar</h2>
+<p class="note"><b>Fórmula aberta e norma citada.</b> Toda ferramenta mostra o método, as unidades e um exemplo resolvido, para você conferir o resultado. Os valores digitados ficam só no seu navegador.</p></div>"""
+    ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": SITE, "url": DOMAIN + "/", "inLanguage": "pt-BR"},
+          {"@context": "https://schema.org", "@type": "Organization", "name": SITE, "url": DOMAIN + "/", "logo": f"{DOMAIN}/img/logo-512.png", "sameAs": [IG]}]
+    write("/", layout(path="/", title=SITE, page_title=f"{SITE}: calculadoras e simulados de engenharia grátis",
+                      desc="Calculadoras gratuitas de engenharia (tinta, queda de tensão, peso de aço, perda de carga) e simulados com questões inéditas para concursos.",
+                      body=body, active="/", jsonld=ld))
+    urls.append(("/", TODAY))
+
+    # Páginas institucionais
+    sobre = clean_post(open(f"{ROOT}/pg-sobre.html", encoding="utf-8").read())
+    priv = clean_post(open(f"{ROOT}/pg-privacidade.html", encoding="utf-8").read())
+    priv = (priv.replace("o blog Ferramentas do Engenheiro (ferramentasdoengenheiro.blogspot.com)", "o site Ferramentas do Engenheiro (ferramentasdoengenheiro.com)")
+                .replace("coletados de forma automática pela plataforma Blogger e por ferramentas de estatística do Google", "coletados de forma automática pela hospedagem do site e por ferramentas de estatística do Google")
+                .replace("Este blog é hospedado no Blogger, do Google, e pode exibir", "Este site pode exibir")
+                .replace("Formulário de contato e comentários", "Mensagens de contato")
+                .replace("ou um comentário", "")
+                .replace("blog", "site"))
+    priv = priv.replace("são processados apenas no seu navegador", "são processados apenas no seu navegador") + \
+        '<div style="max-width:860px;margin:0 auto"><h2>Histórico dos simulados</h2><p>O desempenho nos simulados (questões respondidas, acertos e tempo) fica salvo apenas no armazenamento local do seu navegador (localStorage). Ele não é enviado para nós. Você pode apagá-lo a qualquer momento pelo botão "Zerar histórico" no simulado ou limpando os dados do navegador.</p></div>'
+    contato = f"""<div style="max-width:860px;margin:0 auto">
+<p>Quer sugerir uma nova calculadora, avisar sobre um erro ou falar sobre parcerias? Fale com a gente pelo <a href="{IG}" target="_blank" rel="noopener"><b>Instagram @ferramentasdoengenheiro</b></a>, por mensagem direta.</p>
+<h2>Ao relatar um erro, informe</h2>
+<ul><li>o link da ferramenta ou o código da questão (por exemplo, MEC-T01);</li><li>os valores que você digitou;</li><li>o resultado que apareceu e o que você esperava, com a fonte (norma, catálogo ou tabela), se tiver.</li></ul>
+<p>Respondemos assim que possível, normalmente em alguns dias úteis.</p></div>"""
+    for path, h, d, b in [("/sobre/", "Sobre o Ferramentas do Engenheiro", "Quem somos e como as calculadoras e os simulados do Ferramentas do Engenheiro são feitos.", sobre),
+                          ("/contato/", "Contato", "Fale com o Ferramentas do Engenheiro: sugestões de calculadoras, correções e parcerias.", contato),
+                          ("/privacidade/", "Política de Privacidade", "Como o Ferramentas do Engenheiro trata dados, cookies e publicidade, de acordo com a LGPD.", priv)]:
+        write(path, layout(path=path, title=h, desc=d, body=f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1>{b}</div>', active=path))
+        urls.append((path, TODAY))
+
+    # 404, sitemap, robots, CNAME
+    open(OUT + "/404.html", "w").write(layout(path="/404.html", title="Página não encontrada", desc="Página não encontrada.", noindex=True,
+        body='<div class="wrap"><h1>Página não encontrada</h1><p>O endereço pode ter mudado. Veja as <a href="/calculadoras/">calculadoras</a> e os <a href="/simulados/">simulados</a>.</p></div>'))
+    sm = "".join(f"<url><loc>{DOMAIN}{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
+    open(OUT + "/sitemap.xml", "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
+    open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
+    open(OUT + "/CNAME", "w").write("ferramentasdoengenheiro.com\n")
+    open(OUT + "/.nojekyll", "w").write("")
+    print(len(urls), "páginas")
+
+if __name__ == "__main__":
+    build()

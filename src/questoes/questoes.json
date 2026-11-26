@@ -1,0 +1,1052 @@
+[
+ {
+  "id": "MEC-T01",
+  "mat": "Termodinâmica",
+  "ass": "Refrigerador de Carnot",
+  "en": "Um refrigerador opera segundo o ciclo de Carnot entre um ambiente refrigerado a −13 °C e o ar externo a 39 °C. Para remover 10 kW de calor do ambiente refrigerado, a potência mínima de acionamento, em kW, é",
+  "alts": [
+   "0,40",
+   "1,67",
+   "2,00",
+   "5,00",
+   "50,0"
+  ],
+  "gab": 2,
+  "res": "Em kelvin: T<sub>L</sub> = 260 K e T<sub>H</sub> = 312 K. O COP de Carnot do refrigerador é T<sub>L</sub>/(T<sub>H</sub> − T<sub>L</sub>) = 260/52 = 5. Logo W = Q<sub>L</sub>/COP = 10/5 = <b>2,0 kW</b>. A alternativa 1,67 kW usa o COP de bomba de calor (T<sub>H</sub>/ΔT = 6), erro comum."
+ },
+ {
+  "id": "MEC-T02",
+  "mat": "Termodinâmica",
+  "ass": "Máquina térmica de Carnot",
+  "en": "Uma máquina térmica recebe 500 kJ de calor de uma fonte a 627 °C e rejeita calor para o ambiente a 27 °C. O máximo trabalho que essa máquina pode produzir, em kJ, é aproximadamente",
+  "alts": [
+   "333",
+   "375",
+   "417",
+   "479",
+   "500"
+  ],
+  "gab": 0,
+  "res": "Rendimento de Carnot com temperaturas absolutas: η = 1 − 300/900 = 2/3. W<sub>máx</sub> = 2/3 × 500 = <b>333 kJ</b>. Quem usa °C encontra η = 1 − 27/627 ≈ 0,957 e chega a 479 kJ, pegadinha clássica."
+ },
+ {
+  "id": "MEC-T03",
+  "mat": "Termodinâmica",
+  "ass": "Processo isotérmico de gás ideal",
+  "en": "Um quilograma de ar, tratado como gás ideal (R = 0,287 kJ/kg·K), expande-se isotermicamente e de forma reversível a 300 K, até dobrar de volume. Considerando ln 2 ≈ 0,69, o trabalho realizado pelo gás, em kJ, é aproximadamente",
+  "alts": [
+   "43,1",
+   "59,4",
+   "86,1",
+   "119",
+   "172"
+  ],
+  "gab": 1,
+  "res": "No processo isotérmico reversível de gás ideal, W = mRT·ln(V<sub>2</sub>/V<sub>1</sub>) = 1 × 0,287 × 300 × 0,69 ≈ <b>59,4 kJ</b>. Como a energia interna não varia, o calor recebido é igual ao trabalho."
+ },
+ {
+  "id": "MEC-T04",
+  "mat": "Termodinâmica",
+  "ass": "Primeira lei em ciclo",
+  "en": "Um sistema fechado executa um ciclo composto por dois processos. No processo 1→2, recebe 80 kJ de calor e realiza 30 kJ de trabalho. No processo 2→1, rejeita 60 kJ de calor. No processo 2→1, há",
+  "alts": [
+   "10 kJ de trabalho realizado sobre o sistema",
+   "10 kJ de trabalho realizado pelo sistema",
+   "20 kJ de trabalho realizado sobre o sistema",
+   "30 kJ de trabalho realizado pelo sistema",
+   "110 kJ de trabalho realizado sobre o sistema"
+  ],
+  "gab": 0,
+  "res": "Processo 1→2: ΔU = Q − W = 80 − 30 = 50 kJ. No ciclo, ΔU<sub>2→1</sub> = −50 kJ. Então −50 = −60 − W<sub>21</sub> → W<sub>21</sub> = −10 kJ: <b>10 kJ realizados sobre o sistema</b>. Conferência: no ciclo, Q<sub>líq</sub> = 20 kJ = W<sub>líq</sub> = 30 − 10."
+ },
+ {
+  "id": "MEC-T05",
+  "mat": "Termodinâmica",
+  "ass": "Ciclo Rankine",
+  "en": "Em relação ao ciclo Rankine simples usado em centrais termelétricas a vapor, é correto afirmar que",
+  "alts": [
+   "o superaquecimento do vapor reduz o rendimento térmico do ciclo, embora diminua a umidade na saída da turbina.",
+   "o reaquecimento tem como principal objetivo reduzir o trabalho consumido pela bomba.",
+   "o trabalho consumido pela bomba é da mesma ordem de grandeza do trabalho produzido pela turbina.",
+   "o aumento da pressão na caldeira, mantida a temperatura máxima, reduz o teor de umidade na saída da turbina.",
+   "a redução da pressão no condensador aumenta o rendimento térmico, mas aumenta o teor de umidade na saída da turbina."
+  ],
+  "gab": 4,
+  "res": "Baixar a pressão do condensador reduz a temperatura média de rejeição de calor e aumenta o rendimento, mas a expansão vai mais fundo na região bifásica e o título cai: <b>mais umidade</b>. O superaquecimento aumenta o rendimento; o reaquecimento serve para limitar a umidade; a bomba consome muito pouco (líquido quase incompressível); e subir a pressão da caldeira com a mesma T<sub>máx</sub> aumenta a umidade."
+ },
+ {
+  "id": "MEC-T06",
+  "mat": "Termodinâmica",
+  "ass": "Entropia de sólido",
+  "en": "Um bloco de cobre de 2 kg (calor específico 0,4 kJ/kg·K) é aquecido de 300 K a 600 K. Considerando ln 2 ≈ 0,69, a variação de entropia do bloco, em kJ/K, é aproximadamente",
+  "alts": [
+   "0,276",
+   "0,552",
+   "0,800",
+   "1,104",
+   "240"
+  ],
+  "gab": 1,
+  "res": "Para sólido ou líquido incompressível: ΔS = m·c·ln(T<sub>2</sub>/T<sub>1</sub>) = 2 × 0,4 × ln 2 = 0,8 × 0,69 ≈ <b>0,552 kJ/K</b>. O valor 240 é o calor (m·c·ΔT), não a entropia."
+ },
+ {
+  "id": "MEC-T07",
+  "mat": "Termodinâmica",
+  "ass": "Compressão isentrópica",
+  "en": "Ar, considerado gás ideal com k = 1,4, entra em um compressor adiabático e reversível a 300 K e é comprimido com razão de pressões igual a 8. Considerando 8<sup>(0,4/1,4)</sup> ≈ 1,81, a temperatura de saída, em K, é aproximadamente",
+  "alts": [
+   "371",
+   "450",
+   "543",
+   "600",
+   "2.400"
+  ],
+  "gab": 2,
+  "res": "Processo isentrópico de gás ideal: T<sub>2</sub> = T<sub>1</sub>·(P<sub>2</sub>/P<sub>1</sub>)<sup>(k−1)/k</sup> = 300 × 1,81 ≈ <b>543 K</b>. O valor 2.400 K vem de multiplicar pela razão de pressões, como se fosse T proporcional a P."
+ },
+ {
+  "id": "MEC-T08",
+  "mat": "Termodinâmica",
+  "ass": "Ciclo Otto",
+  "en": "Um motor de ignição por centelha é modelado pelo ciclo Otto padrão a ar, com razão de compressão 8 e k = 1,4. Considerando 8<sup>0,4</sup> ≈ 2,30, o rendimento térmico do ciclo é aproximadamente",
+  "alts": [
+   "35%",
+   "44%",
+   "50%",
+   "57%",
+   "88%"
+  ],
+  "gab": 3,
+  "res": "η<sub>Otto</sub> = 1 − 1/r<sup>k−1</sup> = 1 − 1/2,30 ≈ 0,565, ou seja, <b>≈ 57%</b>. 88% corresponde a 1 − 1/r, sem o expoente."
+ },
+ {
+  "id": "MEC-T09",
+  "mat": "Termodinâmica",
+  "ass": "Bocal adiabático",
+  "en": "Ar entra em um bocal adiabático a 500 K, com velocidade desprezível, e sai a 450 K. Considerando c<sub>p</sub> = 1,0 kJ/kg·K e √10 ≈ 3,16, a velocidade de saída, em m/s, é aproximadamente",
+  "alts": [
+   "100",
+   "158",
+   "224",
+   "250",
+   "316"
+  ],
+  "gab": 4,
+  "res": "Balanço de energia em regime permanente, sem calor e sem trabalho: h<sub>1</sub> = h<sub>2</sub> + V<sub>2</sub>²/2 → V<sub>2</sub> = √(2·c<sub>p</sub>·ΔT) = √(2 × 1.000 × 50) = √100.000 ≈ <b>316 m/s</b>. Atenção: c<sub>p</sub> deve estar em J/kg·K."
+ },
+ {
+  "id": "MEC-T10",
+  "mat": "Termodinâmica",
+  "ass": "Refrigeração por compressão de vapor",
+  "en": "No ciclo ideal de refrigeração por compressão de vapor, o processo que ocorre no dispositivo de expansão (válvula ou tubo capilar) é",
+  "alts": [
+   "isentálpico.",
+   "isentrópico.",
+   "isobárico.",
+   "isotérmico.",
+   "isocórico."
+  ],
+  "gab": 0,
+  "res": "A válvula de expansão é um estrangulamento: sem trabalho, sem calor e com variação desprezível de energia cinética, logo h<sub>entrada</sub> = h<sub>saída</sub>: processo <b>isentálpico</b> e irreversível, portanto não isentrópico."
+ },
+ {
+  "id": "MEC-F01",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Bernoulli e continuidade",
+  "en": "Água (ρ = 1.000 kg/m³) escoa em regime permanente por uma tubulação horizontal que se reduz de 100 mm para 50 mm de diâmetro. A velocidade no trecho de 100 mm é 1 m/s. Desprezando as perdas, a queda de pressão entre os dois trechos, em kPa, é",
+  "alts": [
+   "1,5",
+   "3,0",
+   "7,5",
+   "15,0",
+   "30,0"
+  ],
+  "gab": 2,
+  "res": "Continuidade: com o diâmetro pela metade, a área cai 4 vezes e v<sub>2</sub> = 4 m/s. Bernoulli: Δp = ρ(v<sub>2</sub>² − v<sub>1</sub>²)/2 = 1.000 × (16 − 1)/2 = 7.500 Pa = <b>7,5 kPa</b>."
+ },
+ {
+  "id": "MEC-F02",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Darcy-Weisbach",
+  "en": "Uma tubulação de 200 m de comprimento e 100 mm de diâmetro interno transporta água a 2 m/s. Adotando fator de atrito de Darcy f = 0,02 e g = 10 m/s², a perda de carga distribuída, em metros de coluna de água, é",
+  "alts": [
+   "4,0",
+   "8,0",
+   "16,0",
+   "40,0",
+   "80,0"
+  ],
+  "gab": 1,
+  "res": "h<sub>f</sub> = f·(L/D)·v²/(2g) = 0,02 × (200/0,1) × 4/20 = 0,02 × 2.000 × 0,2 = <b>8,0 m</b>. Esquecer o 2 de 2g leva a 16 m. <a href=\"/2026/11/blog-post_26.html\">Calcule outros casos na calculadora de perda de carga</a>."
+ },
+ {
+  "id": "MEC-F03",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Escoamento laminar",
+  "en": "Água com viscosidade cinemática 1,0 × 10<sup>−6</sup> m²/s escoa a 0,04 m/s em um tubo de 50 mm de diâmetro. O fator de atrito de Darcy desse escoamento é",
+  "alts": [
+   "0,016",
+   "0,020",
+   "0,025",
+   "0,032",
+   "0,064"
+  ],
+  "gab": 3,
+  "res": "Re = vD/ν = 0,04 × 0,05/10<sup>−6</sup> = 2.000: escoamento laminar. Nesse caso, f = 64/Re = <b>0,032</b>. O valor 0,016 é o fator de Fanning (16/Re), que é 4 vezes menor que o de Darcy."
+ },
+ {
+  "id": "MEC-F04",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Hidrostática com dois líquidos",
+  "en": "Um tanque aberto contém uma camada de 3 m de água (ρ = 1.000 kg/m³) sob uma camada de 2 m de óleo (ρ = 800 kg/m³). Com g = 10 m/s², a pressão manométrica no fundo do tanque, em kPa, é",
+  "alts": [
+   "40",
+   "46",
+   "50",
+   "60",
+   "80"
+  ],
+  "gab": 1,
+  "res": "Some as colunas: p = ρ<sub>óleo</sub>·g·h<sub>óleo</sub> + ρ<sub>água</sub>·g·h<sub>água</sub> = 800 × 10 × 2 + 1.000 × 10 × 3 = 16.000 + 30.000 = <b>46 kPa</b>. 50 kPa considera 5 m só de água e 40 kPa, 5 m só de óleo."
+ },
+ {
+  "id": "MEC-F05",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Empuxo",
+  "en": "Um bloco maciço de 0,5 m³, feito de material com massa específica 600 kg/m³, flutua em água (1.000 kg/m³). O volume do bloco que fica acima da superfície, em m³, é",
+  "alts": [
+   "0,10",
+   "0,20",
+   "0,25",
+   "0,30",
+   "0,40"
+  ],
+  "gab": 1,
+  "res": "Equilíbrio: peso = empuxo → 600 × 0,5 = 1.000 × V<sub>sub</sub> → V<sub>sub</sub> = 0,30 m³. O volume emerso é 0,5 − 0,3 = <b>0,20 m³</b>. Quem marca 0,30 respondeu o volume submerso."
+ },
+ {
+  "id": "MEC-F06",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Força em superfície plana submersa",
+  "en": "Uma comporta retangular vertical, com 2 m de largura e 3 m de altura, tem a aresta superior na superfície livre da água (ρ = 1.000 kg/m³, g = 10 m/s²). A força resultante da água sobre a comporta e a profundidade do centro de pressão são, respectivamente,",
+  "alts": [
+   "90 kN e 1,5 m",
+   "45 kN e 2,0 m",
+   "180 kN e 2,0 m",
+   "90 kN e 1,0 m",
+   "90 kN e 2,0 m"
+  ],
+  "gab": 4,
+  "res": "F = ρ·g·h<sub>CG</sub>·A = 1.000 × 10 × 1,5 × 6 = <b>90 kN</b>. Para retângulo com topo na superfície, o centro de pressão fica a 2/3 da altura: y<sub>CP</sub> = h<sub>CG</sub> + I/(h<sub>CG</sub>·A) = 1,5 + (2 × 3³/12)/(1,5 × 6) = 1,5 + 0,5 = <b>2,0 m</b>."
+ },
+ {
+  "id": "MEC-F07",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Quantidade de movimento",
+  "en": "Um jato de água (ρ = 1.000 kg/m³) com vazão de 0,02 m³/s e velocidade de 20 m/s incide perpendicularmente sobre uma placa plana fixa e é defletido em 90°, espalhando-se paralelamente à placa. A força exercida pelo jato sobre a placa, em N, é",
+  "alts": [
+   "200",
+   "400",
+   "800",
+   "4.000",
+   "8.000"
+  ],
+  "gab": 1,
+  "res": "Na direção do jato, toda a quantidade de movimento é anulada: F = ρ·Q·V = 1.000 × 0,02 × 20 = <b>400 N</b>. Se a placa fizesse o jato voltar (deflexão de 180°), a força dobraria para 800 N."
+ },
+ {
+  "id": "MEC-F08",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Semelhança de Froude",
+  "en": "Um modelo de vertedouro é construído na escala geométrica 1:25 e ensaiado segundo a semelhança de Froude. Se a vazão medida no modelo é 0,02 m³/s, a vazão correspondente no protótipo, em m³/s, é",
+  "alts": [
+   "0,5",
+   "12,5",
+   "62,5",
+   "312,5",
+   "1.250"
+  ],
+  "gab": 2,
+  "res": "Com Froude igual, a escala de velocidades é √25 = 5 e a de vazões é L<sup>2,5</sup> = 25² × 5 = 3.125. Q<sub>p</sub> = 0,02 × 3.125 = <b>62,5 m³/s</b>."
+ },
+ {
+  "id": "MEC-F09",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Hagen-Poiseuille",
+  "en": "Em escoamento laminar plenamente desenvolvido em um tubo circular, mantidas a vazão, o comprimento e o fluido, se o diâmetro interno dobrar, a perda de carga",
+  "alts": [
+   "cairá à metade.",
+   "cairá a 1/4.",
+   "cairá a 1/8.",
+   "cairá a 1/16.",
+   "cairá a 1/32."
+  ],
+  "gab": 3,
+  "res": "Pela equação de Hagen-Poiseuille, Δp = 128μLQ/(πD<sup>4</sup>). Com Q constante, Δp ∝ 1/D<sup>4</sup>: dobrar D divide a perda por 2<sup>4</sup> = <b>16</b>."
+ },
+ {
+  "id": "MEC-F10",
+  "mat": "Mecânica dos Fluidos",
+  "ass": "Viscosidade",
+  "en": "A respeito da viscosidade dos fluidos, é correto afirmar que",
+  "alts": [
+   "a viscosidade de líquidos e de gases aumenta com a temperatura.",
+   "a viscosidade cinemática é o produto da viscosidade dinâmica pela massa específica.",
+   "um fluido de Bingham escoa sob qualquer tensão de cisalhamento aplicada, por menor que seja.",
+   "no SI, a viscosidade dinâmica é expressa em m²/s.",
+   "em um fluido newtoniano, a tensão de cisalhamento é proporcional à taxa de deformação, e a viscosidade dos líquidos diminui quando a temperatura aumenta."
+  ],
+  "gab": 4,
+  "res": "Fluido newtoniano: τ = μ·du/dy. Nos líquidos, a viscosidade <b>cai</b> com a temperatura, porque as forças de coesão enfraquecem; nos gases, ela <b>aumenta</b>, porque a agitação molecular cresce. ν = μ/ρ (divisão, não produto); μ é dada em Pa·s; e o fluido de Bingham só escoa acima da tensão limite de escoamento."
+ },
+ {
+  "id": "MEC-C01",
+  "mat": "Transferência de Calor",
+  "ass": "Parede composta",
+  "en": "Uma parede de 10 m² é formada por 200 mm de tijolo (k = 0,8 W/m·K) e 50 mm de isolante (k = 0,04 W/m·K), em série. As temperaturas das faces externas são 40 °C e 10 °C. Desprezando a convecção, a taxa de calor através da parede, em W, é",
+  "alts": [
+   "40",
+   "200",
+   "1.000",
+   "1.200",
+   "1.500"
+  ],
+  "gab": 1,
+  "res": "Resistências por unidade de área: tijolo 0,2/0,8 = 0,25 m²·K/W; isolante 0,05/0,04 = 1,25 m²·K/W; total 1,5 m²·K/W. q = A·ΔT/R″ = 10 × 30/1,5 = <b>200 W</b>. Ignorar o isolante dá 1.200 W: é ele que domina a resistência."
+ },
+ {
+  "id": "MEC-C02",
+  "mat": "Transferência de Calor",
+  "ass": "Raio crítico de isolamento",
+  "en": "Um fio elétrico de raio 3 mm será isolado com material de k = 0,05 W/m·K, exposto a ar com coeficiente de convecção h = 10 W/m²·K. É correto afirmar que",
+  "alts": [
+   "o raio crítico é k/h = 5 mm, e uma camada fina de isolamento aumentará a perda de calor do fio.",
+   "o raio crítico é 2k/h = 10 mm, valor válido para cilindros.",
+   "o raio crítico é h/k = 200 m, e qualquer isolamento reduz a perda de calor.",
+   "o raio crítico é k/h = 5 mm, e qualquer espessura de isolamento reduzirá a perda de calor.",
+   "o raio crítico independe da condutividade do isolante."
+  ],
+  "gab": 0,
+  "res": "Para cilindros, r<sub>cr</sub> = k/h = 0,05/10 = 5 mm (2k/h vale para esferas). Como o fio tem 3 mm &lt; r<sub>cr</sub>, isolar até 5 mm <b>aumenta</b> a perda de calor: a área de convecção cresce mais rápido que a resistência de condução. Isso é útil para resfriar cabos elétricos."
+ },
+ {
+  "id": "MEC-C03",
+  "mat": "Transferência de Calor",
+  "ass": "Convecção e radiação combinadas",
+  "en": "Uma placa de 0,5 m² a 80 °C troca calor com o ar ambiente a 20 °C. O coeficiente de convecção é 25 W/m²·K, e a radiação pode ser representada por um coeficiente linearizado de 5 W/m²·K. A taxa total de calor perdida pela placa, em W, é",
+  "alts": [
+   "150",
+   "750",
+   "900",
+   "1.500",
+   "1.800"
+  ],
+  "gab": 2,
+  "res": "Os dois mecanismos atuam em paralelo: q = (h<sub>conv</sub> + h<sub>rad</sub>)·A·ΔT = (25 + 5) × 0,5 × 60 = <b>900 W</b>, sendo 750 W por convecção e 150 W por radiação."
+ },
+ {
+  "id": "MEC-C04",
+  "mat": "Transferência de Calor",
+  "ass": "Radiação de corpo negro",
+  "en": "Se a temperatura absoluta de um corpo negro dobrar, o poder emissivo total e o comprimento de onda de máxima emissão passarão, respectivamente, a ser",
+  "alts": [
+   "2 vezes maior e 2 vezes maior.",
+   "4 vezes maior e a metade.",
+   "8 vezes maior e 1/4.",
+   "16 vezes maior e a metade.",
+   "16 vezes maior e 2 vezes maior."
+  ],
+  "gab": 3,
+  "res": "Stefan-Boltzmann: E = σT<sup>4</sup>, então dobrar T multiplica E por <b>16</b>. Wien: λ<sub>máx</sub>·T = constante, então λ<sub>máx</sub> cai à <b>metade</b>, deslocando a emissão para comprimentos de onda menores."
+ },
+ {
+  "id": "MEC-C05",
+  "mat": "Transferência de Calor",
+  "ass": "Média logarítmica de temperaturas",
+  "en": "Em um trocador de calor em contracorrente, o fluido quente entra a 150 °C e sai a 90 °C, e o fluido frio entra a 30 °C e sai a 70 °C. Considerando ln(4/3) ≈ 0,288, a diferença média logarítmica de temperaturas, em °C, é aproximadamente",
+  "alts": [
+   "60,0",
+   "69,4",
+   "70,0",
+   "75,0",
+   "80,0"
+  ],
+  "gab": 1,
+  "res": "Contracorrente: ΔT<sub>1</sub> = 150 − 70 = 80 °C e ΔT<sub>2</sub> = 90 − 30 = 60 °C. LMTD = (80 − 60)/ln(80/60) = 20/0,288 ≈ <b>69,4 °C</b>. A média aritmética (70 °C) sempre superestima a LMTD."
+ },
+ {
+  "id": "MEC-C06",
+  "mat": "Transferência de Calor",
+  "ass": "Método ε-NTU",
+  "en": "Sobre o método da efetividade (ε-NTU) aplicado a trocadores de calor, é correto afirmar que",
+  "alts": [
+   "a efetividade pode ser maior que 1 em trocadores contracorrente muito longos.",
+   "o NTU é a razão entre a capacidade calorífica mínima e o produto UA.",
+   "para mesma área e mesmas vazões, o arranjo em paralelo (equicorrente) sempre tem maior efetividade que o contracorrente.",
+   "a razão de capacidades C<sub>mín</sub>/C<sub>máx</sub> é igual a 1 quando um dos fluidos muda de fase.",
+   "quando um dos fluidos muda de fase, C<sub>mín</sub>/C<sub>máx</sub> = 0 e ε = 1 − exp(−NTU), qualquer que seja a configuração do trocador."
+  ],
+  "gab": 4,
+  "res": "Na mudança de fase, a temperatura do fluido não varia, o que equivale a C → ∞, então C<sub>r</sub> = 0 e todas as configurações caem em <b>ε = 1 − e<sup>−NTU</sup></b>. A efetividade é no máximo 1; NTU = UA/C<sub>mín</sub>; e o contracorrente é o arranjo mais efetivo."
+ },
+ {
+  "id": "MEC-C07",
+  "mat": "Transferência de Calor",
+  "ass": "Capacitância global",
+  "en": "Uma pequena esfera metálica de raio 6 mm (ρc = 3,6 × 10<sup>6</sup> J/m³·K, k = 40 W/m·K) é resfriada em um fluido com h = 60 W/m²·K. Validando o modelo de capacitância global, a constante de tempo térmica da esfera, em segundos, é",
+  "alts": [
+   "30",
+   "60",
+   "120",
+   "360",
+   "1.200"
+  ],
+  "gab": 2,
+  "res": "Comprimento característico L<sub>c</sub> = V/A = r/3 = 2 mm. Bi = h·L<sub>c</sub>/k = 60 × 0,002/40 = 0,003 &lt; 0,1, então o modelo vale. τ = ρc·L<sub>c</sub>/h = 3,6 × 10<sup>6</sup> × 0,002/60 = <b>120 s</b>. Usar L<sub>c</sub> = r leva a 360 s."
+ },
+ {
+  "id": "MEC-C08",
+  "mat": "Transferência de Calor",
+  "ass": "Condução em cilindro",
+  "en": "Um tubo com raio interno de 50 mm e raio externo de 100 mm, feito de material com k = 1 W/m·K, tem as superfícies interna e externa a 160 °C e 50 °C. Considerando π ≈ 3,14 e ln 2 ≈ 0,69, a taxa de calor por metro de comprimento, em kW/m, é aproximadamente",
+  "alts": [
+   "0,50",
+   "1,00",
+   "1,57",
+   "2,00",
+   "6,91"
+  ],
+  "gab": 1,
+  "res": "Resistência de parede cilíndrica: R = ln(r<sub>2</sub>/r<sub>1</sub>)/(2πkL). q = 2π·k·L·ΔT/ln 2 = 6,28 × 1 × 1 × 110/0,69 ≈ 1.001 W ≈ <b>1,0 kW/m</b>."
+ },
+ {
+  "id": "MEC-R01",
+  "mat": "Resistência dos Materiais",
+  "ass": "Torção em eixo maciço",
+  "en": "Um eixo maciço de 40 mm de diâmetro transmite um torque de 500 N·m. Considerando π ≈ 3,14, a máxima tensão de cisalhamento no eixo, em MPa, é aproximadamente",
+  "alts": [
+   "5",
+   "10",
+   "20",
+   "40",
+   "80"
+  ],
+  "gab": 3,
+  "res": "τ<sub>máx</sub> = T·c/J = 16T/(πd³) = 16 × 500/(3,14 × 0,04³) = 8.000/(2,01 × 10<sup>−4</sup>) ≈ <b>40 MPa</b>. Usar 32 no lugar de 16 (confundir J com d<sup>4</sup>/32 sem dividir pelo raio) dá 80 MPa."
+ },
+ {
+  "id": "MEC-R02",
+  "mat": "Resistência dos Materiais",
+  "ass": "Flexão simples",
+  "en": "Uma viga biapoiada de 4 m de vão, com seção retangular de 100 mm de base e 200 mm de altura, recebe uma carga concentrada de 10 kN no meio do vão. Desprezando o peso próprio, a máxima tensão normal de flexão, em MPa, é",
+  "alts": [
+   "7,5",
+   "15",
+   "30",
+   "60",
+   "150"
+  ],
+  "gab": 1,
+  "res": "M<sub>máx</sub> = PL/4 = 10 × 4/4 = 10 kN·m. Módulo resistente W = bh²/6 = 0,1 × 0,2²/6 = 6,67 × 10<sup>−4</sup> m³. σ = M/W = <b>15 MPa</b>. Com a viga deitada (b e h trocados), W cai à metade e σ = 30 MPa."
+ },
+ {
+  "id": "MEC-R03",
+  "mat": "Resistência dos Materiais",
+  "ass": "Tração e alongamento",
+  "en": "Uma barra de aço (E = 200 GPa) de 2 m de comprimento e seção de 100 mm² é tracionada por uma força axial de 10 kN. O alongamento da barra, em mm, é",
+  "alts": [
+   "0,1",
+   "0,5",
+   "1,0",
+   "2,0",
+   "10"
+  ],
+  "gab": 2,
+  "res": "σ = F/A = 10.000/100 = 100 MPa, dentro do regime elástico. δ = FL/(EA) = 10.000 × 2.000 mm/(200.000 MPa × 100 mm²) = <b>1,0 mm</b>."
+ },
+ {
+  "id": "MEC-R04",
+  "mat": "Resistência dos Materiais",
+  "ass": "Flambagem de Euler",
+  "en": "Uma coluna esbelta biarticulada tem carga crítica de flambagem de 100 kN. Se a mesma coluna for engastada na base e livre no topo, a nova carga crítica, em kN, será",
+  "alts": [
+   "25",
+   "50",
+   "100",
+   "200",
+   "400"
+  ],
+  "gab": 0,
+  "res": "P<sub>cr</sub> = π²EI/(L<sub>e</sub>)². Na coluna engastada-livre, L<sub>e</sub> = 2L, então P<sub>cr</sub> cai 4 vezes: <b>25 kN</b>. Com engaste nas duas extremidades (L<sub>e</sub> = 0,5L), a carga seria 400 kN."
+ },
+ {
+  "id": "MEC-R05",
+  "mat": "Resistência dos Materiais",
+  "ass": "Círculo de Mohr",
+  "en": "Em um ponto de uma peça, o estado plano de tensões é σ<sub>x</sub> = 80 MPa, σ<sub>y</sub> = 20 MPa e τ<sub>xy</sub> = 40 MPa. As tensões principais σ<sub>1</sub> e σ<sub>2</sub> e a máxima tensão de cisalhamento no plano valem, respectivamente, em MPa,",
+  "alts": [
+   "80, 20 e 40",
+   "90, 10 e 40",
+   "100, 0 e 40",
+   "100, −20 e 60",
+   "100, 0 e 50"
+  ],
+  "gab": 4,
+  "res": "Centro do círculo: (80 + 20)/2 = 50 MPa. Raio: √(30² + 40²) = 50 MPa. Assim, σ<sub>1</sub> = 50 + 50 = <b>100</b>, σ<sub>2</sub> = 50 − 50 = <b>0</b> e τ<sub>máx,plano</sub> = R = <b>50 MPa</b>."
+ },
+ {
+  "id": "MEC-R06",
+  "mat": "Resistência dos Materiais",
+  "ass": "Vaso de pressão de parede fina",
+  "en": "Um vaso cilíndrico de parede fina, com diâmetro de 1 m e espessura de 10 mm, está submetido à pressão interna de 2 MPa. As tensões circunferencial e longitudinal na parede valem, respectivamente, em MPa,",
+  "alts": [
+   "50 e 100",
+   "25 e 50",
+   "100 e 100",
+   "200 e 100",
+   "100 e 50"
+  ],
+  "gab": 4,
+  "res": "σ<sub>θ</sub> = pD/(2t) = 2 × 1.000/20 = <b>100 MPa</b> e σ<sub>L</sub> = pD/(4t) = <b>50 MPa</b>. Por isso os vasos rompem longitudinalmente e a solda longitudinal é a mais crítica."
+ },
+ {
+  "id": "MEC-R07",
+  "mat": "Resistência dos Materiais",
+  "ass": "Flecha em viga em balanço",
+  "en": "Uma viga em balanço, de seção constante, suporta uma carga uniformemente distribuída. Mantidos o material, a seção e a carga por unidade de comprimento, se o comprimento da viga dobrar, a flecha máxima ficará multiplicada por",
+  "alts": [
+   "2",
+   "4",
+   "8",
+   "16",
+   "32"
+  ],
+  "gab": 3,
+  "res": "Para balanço com carga distribuída, δ<sub>máx</sub> = wL<sup>4</sup>/(8EI). Com w constante, δ ∝ L<sup>4</sup>: 2<sup>4</sup> = <b>16</b>. Se a carga fosse concentrada na ponta (δ = PL³/3EI), o fator seria 8."
+ },
+ {
+  "id": "MEC-R08",
+  "mat": "Resistência dos Materiais",
+  "ass": "Momento de inércia",
+  "en": "Uma viga de seção retangular de 100 mm × 200 mm pode ser montada com a maior dimensão na vertical (em pé) ou na horizontal (deitada). A razão entre os momentos de inércia em relação ao eixo de flexão horizontal, I<sub>em pé</sub>/I<sub>deitada</sub>, é",
+  "alts": [
+   "1",
+   "2",
+   "4",
+   "8",
+   "16"
+  ],
+  "gab": 2,
+  "res": "I = bh³/12. Em pé: 100 × 200³/12. Deitada: 200 × 100³/12. A razão é (200/100)² = <b>4</b>. Na rigidez, a viga em pé é 4 vezes melhor; na resistência (W = bh²/6), 2 vezes."
+ },
+ {
+  "id": "MEC-R09",
+  "mat": "Resistência dos Materiais",
+  "ass": "Critérios de falha",
+  "en": "Um ponto de um eixo está submetido a uma tensão normal de 60 MPa e a uma tensão de cisalhamento de 40 MPa. A tensão equivalente segundo o critério de Tresca (máxima tensão de cisalhamento), em MPa, é",
+  "alts": [
+   "50,0",
+   "72,1",
+   "91,7",
+   "100,0",
+   "140,0"
+  ],
+  "gab": 3,
+  "res": "Tresca: σ<sub>eq</sub> = √(σ² + 4τ²) = √(3.600 + 6.400) = <b>100 MPa</b>, ou seja, 2τ<sub>máx</sub> com τ<sub>máx</sub> = 50 MPa. Von Mises daria √(σ² + 3τ²) ≈ 91,7 MPa: Tresca é sempre igual ou mais conservador."
+ },
+ {
+  "id": "MEC-R10",
+  "mat": "Resistência dos Materiais",
+  "ass": "Fadiga",
+  "en": "Sobre o dimensionamento de componentes mecânicos à fadiga, é correto afirmar que",
+  "alts": [
+   "tensões médias de compressão reduzem a vida em fadiga tanto quanto as de tração.",
+   "aços não apresentam limite de resistência à fadiga, ao contrário das ligas de alumínio.",
+   "um acabamento superficial mais rugoso aumenta o limite de resistência à fadiga corrigido.",
+   "concentradores de tensão, como entalhes e furos, só são relevantes para carregamento estático.",
+   "pelo critério de Goodman modificado, a presença de tensão média de tração reduz a amplitude de tensão admissível."
+  ],
+  "gab": 4,
+  "res": "Goodman: σ<sub>a</sub>/S<sub>e</sub> + σ<sub>m</sub>/S<sub>ut</sub> = 1/n, então quanto maior σ<sub>m</sub> (de tração), <b>menor a amplitude admissível</b>. Tensão média de compressão costuma ser benéfica (é a base do jateamento com granalha, o shot peening). Aços têm limite de fadiga e o alumínio não; rugosidade reduz S<sub>e</sub>; e entalhes são críticos justamente em fadiga."
+ },
+ {
+  "id": "MEC-E01",
+  "mat": "Elementos de Máquinas",
+  "ass": "Redutor por engrenagens",
+  "en": "Um motor de 10 kW a 1.750 rpm aciona um pinhão de 20 dentes, que engrena com uma coroa de 60 dentes. Desprezando as perdas e considerando π ≈ 3,14, o torque no eixo da coroa, em N·m, é aproximadamente",
+  "alts": [
+   "18,2",
+   "54,6",
+   "109",
+   "136",
+   "164"
+  ],
+  "gab": 4,
+  "res": "Rotação da coroa: 1.750 × 20/60 ≈ 583 rpm. Torque de entrada: T = P/ω = 10.000/(1.750 × 2π/60) ≈ 54,6 N·m. Sem perdas, o torque se multiplica pela relação 3: <b>≈ 164 N·m</b>. 18,2 N·m é o erro de dividir em vez de multiplicar."
+ },
+ {
+  "id": "MEC-E02",
+  "mat": "Elementos de Máquinas",
+  "ass": "Transmissão por correia",
+  "en": "Uma polia motora de 100 mm de diâmetro gira a 1.750 rpm e aciona, por correia, uma polia movida de 350 mm. Desprezando o deslizamento e considerando π ≈ 3,14, a rotação da polia movida e a velocidade da correia são, respectivamente,",
+  "alts": [
+   "500 rpm e 9,2 m/s",
+   "500 rpm e 32,1 m/s",
+   "6.125 rpm e 9,2 m/s",
+   "583 rpm e 9,2 m/s",
+   "500 rpm e 2,6 m/s"
+  ],
+  "gab": 0,
+  "res": "n<sub>2</sub> = n<sub>1</sub>·d<sub>1</sub>/d<sub>2</sub> = 1.750 × 100/350 = <b>500 rpm</b>. A velocidade da correia é a mesma nas duas polias: v = π·d·n/60 = 3,14 × 0,1 × 1.750/60 ≈ <b>9,2 m/s</b>."
+ },
+ {
+  "id": "MEC-E03",
+  "mat": "Elementos de Máquinas",
+  "ass": "Vida de rolamentos",
+  "en": "Um rolamento rígido de esferas tem capacidade de carga dinâmica C = 20 kN e opera com carga equivalente P = 4 kN, a 1.000 rpm. A vida nominal L<sub>10</sub>, em horas, é aproximadamente",
+  "alts": [
+   "347",
+   "833",
+   "2.083",
+   "4.167",
+   "125.000"
+  ],
+  "gab": 2,
+  "res": "Para rolamentos de esferas, L<sub>10</sub> = (C/P)³ = 5³ = 125 milhões de rotações. Em horas: 125 × 10<sup>6</sup>/(60 × 1.000) ≈ <b>2.083 h</b>. Para rolamentos de rolos, o expoente seria 10/3."
+ },
+ {
+  "id": "MEC-E04",
+  "mat": "Elementos de Máquinas",
+  "ass": "Torque de aperto de parafusos",
+  "en": "Um parafuso M12 deve ser apertado para gerar uma força de pré-carga de 20 kN. Adotando coeficiente de torque K = 0,2, o torque de aperto, em N·m, é",
+  "alts": [
+   "24",
+   "48",
+   "96",
+   "240",
+   "480"
+  ],
+  "gab": 1,
+  "res": "T = K·F·d = 0,2 × 20.000 × 0,012 = <b>48 N·m</b>. Erros comuns: usar d em mm sem converter (×1.000) ou o raio no lugar do diâmetro (24 N·m)."
+ },
+ {
+  "id": "MEC-E05",
+  "mat": "Elementos de Máquinas",
+  "ass": "Chavetas",
+  "en": "Uma chaveta paralela de 14 mm de largura e 40 mm de comprimento transmite torque de 500 N·m em um eixo de 50 mm de diâmetro. A tensão de cisalhamento média na chaveta, em MPa, é aproximadamente",
+  "alts": [
+   "8,9",
+   "17,9",
+   "25,0",
+   "35,7",
+   "71,4"
+  ],
+  "gab": 3,
+  "res": "Força tangencial na interface: F = T/(d/2) = 500/0,025 = 20 kN. Área cisalhada: b·L = 14 × 40 = 560 mm². τ = 20.000/560 ≈ <b>35,7 MPa</b>. Usar d em vez de d/2 dá 17,9 MPa."
+ },
+ {
+  "id": "MEC-E06",
+  "mat": "Elementos de Máquinas",
+  "ass": "Molas helicoidais",
+  "en": "A rigidez de uma mola helicoidal de compressão é dada por k = G·d<sup>4</sup>/(8·D³·n). Mantidos o material e o número de espiras ativas, se o diâmetro do arame (d) e o diâmetro médio da espiral (D) forem ambos dobrados, a rigidez",
+  "alts": [
+   "cairá à metade.",
+   "não se alterará.",
+   "dobrará.",
+   "ficará 4 vezes maior.",
+   "ficará 16 vezes maior."
+  ],
+  "gab": 2,
+  "res": "k ∝ d<sup>4</sup>/D³ = 2<sup>4</sup>/2³ = 16/8 = <b>2</b>: a rigidez dobra. O índice de mola C = D/d não muda, então a forma relativa da mola é a mesma."
+ },
+ {
+  "id": "MEC-E07",
+  "mat": "Elementos de Máquinas",
+  "ass": "Embreagem de disco",
+  "en": "Uma embreagem de disco com duas superfícies de atrito tem raio externo de 100 mm e raio interno de 60 mm, coeficiente de atrito 0,3 e força axial de 5 kN. Pela hipótese de desgaste uniforme, o torque transmissível, em N·m, é",
+  "alts": [
+   "60",
+   "96",
+   "120",
+   "150",
+   "240"
+  ],
+  "gab": 4,
+  "res": "Desgaste uniforme: raio médio r<sub>m</sub> = (r<sub>e</sub> + r<sub>i</sub>)/2 = 80 mm. T = μ·F·r<sub>m</sub>·N = 0,3 × 5.000 × 0,08 × 2 = <b>240 N·m</b>. Esquecer as duas faces leva a 120 N·m."
+ },
+ {
+  "id": "MEC-E08",
+  "mat": "Elementos de Máquinas",
+  "ass": "Engrenagens helicoidais",
+  "en": "Comparadas às engrenagens cilíndricas de dentes retos de mesmas dimensões, as engrenagens helicoidais",
+  "alts": [
+   "operam com menos ruído e maior capacidade de carga, mas geram força axial nos mancais.",
+   "não geram força axial, por isso dispensam rolamentos de escora.",
+   "só podem ser usadas entre eixos que se cruzam a 90°.",
+   "têm menor razão de contato, por isso são mais ruidosas.",
+   "transmitem potência com relação de transmissão variável."
+  ],
+  "gab": 0,
+  "res": "Nos dentes inclinados, o engrenamento é gradual e há mais dentes em contato (maior razão de contato), então a operação é <b>mais silenciosa</b> e a capacidade de carga é maior. O preço é a <b>força axial</b>, que exige mancais que a suportem, ou o uso de engrenagens espinha-de-peixe (helicoidal dupla)."
+ },
+ {
+  "id": "MEC-M01",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Têmpera e revenimento",
+  "en": "Sobre os tratamentos térmicos de aços, é correto afirmar que",
+  "alts": [
+   "a têmpera forma martensita, fase dura e frágil, e o revenimento posterior reduz a fragilidade com alguma perda de dureza.",
+   "na normalização, o resfriamento é feito lentamente dentro do forno desligado.",
+   "o recozimento pleno tem como objetivo principal aumentar a dureza do aço.",
+   "a martensita se forma por difusão do carbono durante o resfriamento lento.",
+   "aços com teor de carbono muito baixo (menos de 0,1%) atingem dureza elevada na têmpera."
+  ],
+  "gab": 0,
+  "res": "A têmpera resfria rápido a partir da austenita e forma <b>martensita</b>, por transformação adifusional (por cisalhamento), dura e frágil. O <b>revenimento</b> alivia tensões e aumenta a tenacidade. O recozimento amacia; a normalização resfria <b>ao ar</b>; e sem carbono suficiente a martensita é pouco dura."
+ },
+ {
+  "id": "MEC-M02",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Diagrama ferro-carbono",
+  "en": "Um aço com 0,4% de carbono, resfriado lentamente a partir do campo austenítico até a temperatura ambiente, apresentará microestrutura composta por",
+  "alts": [
+   "apenas perlita.",
+   "cementita proeutetoide e perlita.",
+   "martensita e austenita retida.",
+   "ferrita proeutetoide e perlita.",
+   "austenita e ferrita."
+  ],
+  "gab": 3,
+  "res": "O aço é <b>hipoeutetoide</b> (C &lt; 0,76%). No resfriamento lento, forma-se primeiro a ferrita proeutetoide entre as linhas A<sub>3</sub> e A<sub>1</sub>, e a austenita restante vira perlita a 727 °C. Resultado: <b>ferrita + perlita</b>. A cementita proeutetoide aparece nos hipereutetoides."
+ },
+ {
+  "id": "MEC-M03",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Regra da alavanca",
+  "en": "Usando a regra da alavanca no diagrama Fe-Fe<sub>3</sub>C, com ponto eutetoide em 0,76% C e solubilidade de C na ferrita de 0,02%, a fração aproximada de perlita em um aço com 0,40% C, resfriado lentamente, é",
+  "alts": [
+   "40%",
+   "51%",
+   "53%",
+   "60%",
+   "76%"
+  ],
+  "gab": 1,
+  "res": "Logo acima de 727 °C: fração de austenita (futura perlita) = (0,40 − 0,02)/(0,76 − 0,02) = 0,38/0,74 ≈ <b>51%</b>. Estimar 0,40/0,76 ignora a solubilidade na ferrita e dá 53%."
+ },
+ {
+  "id": "MEC-M04",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Ensaio de tração",
+  "en": "A respeito do ensaio de tração de metais, é correto afirmar que",
+  "alts": [
+   "o limite de resistência é a tensão no instante da fratura.",
+   "o módulo de elasticidade de um aço aumenta significativamente com o tratamento térmico de têmpera.",
+   "o alongamento percentual mede a dureza do material.",
+   "o limite de escoamento convencional é definido pela deformação de 2% (n = 0,02).",
+   "a tenacidade pode ser estimada pela área total sob a curva tensão-deformação."
+  ],
+  "gab": 4,
+  "res": "A área sob a curva é a energia absorvida por volume até a fratura: a <b>tenacidade</b>. O limite de resistência é a tensão máxima, não a de fratura; o E dos aços quase não muda com tratamento térmico; o alongamento mede ductilidade; e o escoamento convencional usa 0,2% de deformação."
+ },
+ {
+  "id": "MEC-M05",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Dureza Brinell",
+  "en": "Para aços carbono e de baixa liga, uma correlação empírica usual estima o limite de resistência à tração (em MPa) como aproximadamente 3,45 vezes a dureza Brinell. Um aço com 200 HB terá limite de resistência de aproximadamente",
+  "alts": [
+   "200 MPa",
+   "345 MPa",
+   "500 MPa",
+   "690 MPa",
+   "1.000 MPa"
+  ],
+  "gab": 3,
+  "res": "S<sub>ut</sub> ≈ 3,45 × HB = 3,45 × 200 = <b>690 MPa</b>. Essa correlação é muito usada em inspeção de campo para estimar a resistência sem retirar corpo de prova."
+ },
+ {
+  "id": "MEC-M06",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Corrosão galvânica",
+  "en": "Uma tubulação de aço carbono é conectada diretamente a um equipamento de aço inoxidável, em meio aquoso eletrolítico. É correto afirmar que",
+  "alts": [
+   "o aço carbono atua como ânodo e sua corrosão se agrava quando a área dele é pequena em relação à do inox.",
+   "o aço inoxidável atua como ânodo e sofre corrosão acelerada.",
+   "não há corrosão galvânica, pois ambos são ligas de ferro.",
+   "a corrosão do aço carbono diminui quando sua área é muito menor que a do inox.",
+   "a corrosão galvânica independe da presença de eletrólito."
+  ],
+  "gab": 0,
+  "res": "Na série galvânica, o inox passivado é mais nobre, então o <b>aço carbono é o ânodo</b>. A relação ânodo pequeno e cátodo grande concentra a corrente no ânodo e acelera muito a corrosão. Soluções: juntas isolantes, revestir o cátodo ou proteção catódica."
+ },
+ {
+  "id": "MEC-M07",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Estruturas cristalinas",
+  "en": "Sobre as estruturas cristalinas dos metais, é correto afirmar que",
+  "alts": [
+   "o fator de empacotamento atômico da estrutura CFC (0,74) é maior que o da CCC (0,68).",
+   "o ferro γ (austenita) tem estrutura cúbica de corpo centrado (CCC).",
+   "o ferro α (ferrita) tem estrutura cúbica de faces centradas (CFC).",
+   "metais CCC são, em geral, mais dúcteis que os CFC a baixas temperaturas.",
+   "a estrutura hexagonal compacta tem mais sistemas de deslizamento que a CFC."
+  ],
+  "gab": 0,
+  "res": "Os fatores de empacotamento são <b>CFC = 0,74</b> (o máximo, junto com a HC) e <b>CCC = 0,68</b>. A ferrita é CCC e a austenita é CFC. Os CFC (Al, Cu, Ni, inox austenítico) são mais dúcteis e não têm transição dúctil-frágil; a HC tem poucos sistemas de deslizamento."
+ },
+ {
+  "id": "MEC-M08",
+  "mat": "Materiais e Tratamentos Térmicos",
+  "ass": "Transição dúctil-frágil",
+  "en": "Em ensaios de impacto Charpy realizados em diferentes temperaturas, observa-se que",
+  "alts": [
+   "aços carbono ferríticos apresentam queda acentuada da energia absorvida abaixo da temperatura de transição, o que não ocorre em metais CFC.",
+   "aços inoxidáveis austeníticos apresentam transição dúctil-frágil bem definida.",
+   "a energia absorvida aumenta à medida que a temperatura diminui, em qualquer metal.",
+   "o refino de grão eleva a temperatura de transição dúctil-frágil.",
+   "a temperatura de transição não tem relevância para vasos de pressão."
+  ],
+  "gab": 0,
+  "res": "Metais <b>CCC</b>, como os aços ferríticos, têm transição dúctil-frágil; os <b>CFC</b>, como o inox austenítico e o alumínio, não. O refino de grão <b>reduz</b> a temperatura de transição. Esse é o critério para escolher material em serviço de baixa temperatura (o naufrágio do Titanic e os navios Liberty são os exemplos clássicos)."
+ },
+ {
+  "id": "MEC-B01",
+  "mat": "Máquinas de Fluxo",
+  "ass": "NPSH e cavitação",
+  "en": "Uma bomba centrífuga, instalada 4 m acima do nível de um reservatório aberto, succiona água a 20 °C (pressão de vapor 2,3 kPa, ρg = 9.810 N/m³), com pressão atmosférica de 101,3 kPa e perda de carga de 1,5 m na sucção. O NPSH requerido pela bomba é 5 m. É correto afirmar que",
+  "alts": [
+   "o NPSH disponível é cerca de 4,6 m, e a bomba cavitará.",
+   "o NPSH disponível é cerca de 14,6 m, e a bomba não cavitará.",
+   "o NPSH disponível é cerca de 6,1 m, e a bomba não cavitará, pois a perda de carga não afeta o NPSH.",
+   "aumentar a rotação da bomba reduz o NPSH requerido e resolve a cavitação.",
+   "o NPSH disponível independe da temperatura da água."
+  ],
+  "gab": 0,
+  "res": "NPSH<sub>d</sub> = (p<sub>atm</sub> − p<sub>v</sub>)/(ρg) − z<sub>s</sub> − h<sub>f,s</sub> = 99.000/9.810 − 4 − 1,5 ≈ 10,1 − 5,5 = <b>4,6 m &lt; 5 m</b>: a bomba <b>cavita</b>. Para resolver: baixar a bomba, reduzir as perdas na sucção (diâmetro maior, menos acessórios) ou reduzir a temperatura. Aumentar a rotação piora, porque o NPSH<sub>r</sub> cresce com n²."
+ },
+ {
+  "id": "MEC-B02",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Leis de semelhança",
+  "en": "Uma bomba centrífuga a 1.750 rpm fornece 100 m³/h com altura manométrica de 40 m, consumindo 15 kW. Se a rotação passar a 3.500 rpm, mantido o rotor, os novos valores de vazão, altura e potência serão, aproximadamente,",
+  "alts": [
+   "200 m³/h, 80 m e 30 kW",
+   "200 m³/h, 160 m e 60 kW",
+   "200 m³/h, 160 m e 120 kW",
+   "400 m³/h, 160 m e 120 kW",
+   "200 m³/h, 80 m e 60 kW"
+  ],
+  "gab": 2,
+  "res": "Leis de afinidade: Q ∝ n, H ∝ n², P ∝ n³. Com n dobrada: Q = <b>200 m³/h</b>, H = 40 × 4 = <b>160 m</b> e P = 15 × 8 = <b>120 kW</b>."
+ },
+ {
+  "id": "MEC-B03",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Potência de bombeamento",
+  "en": "Uma bomba recalca 0,05 m³/s de água (ρ = 1.000 kg/m³) com altura manométrica de 30 m. Com rendimento global de 75% e g = 10 m/s², a potência no eixo, em kW, é",
+  "alts": [
+   "11,25",
+   "15,0",
+   "20,0",
+   "22,5",
+   "40,0"
+  ],
+  "gab": 2,
+  "res": "Potência hidráulica: ρgQH = 1.000 × 10 × 0,05 × 30 = 15 kW. Potência no eixo = 15/0,75 = <b>20 kW</b>. Multiplicar pelo rendimento em vez de dividir dá 11,25 kW."
+ },
+ {
+  "id": "MEC-B04",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Associação de bombas",
+  "en": "Duas bombas centrífugas idênticas são associadas em paralelo para alimentar um sistema com perdas de carga significativas. É correto afirmar que",
+  "alts": [
+   "a vazão no sistema será exatamente o dobro da vazão de uma bomba operando isolada.",
+   "a altura manométrica de operação será a mesma de uma bomba isolada.",
+   "a associação em paralelo é indicada quando se precisa dobrar a altura manométrica.",
+   "cada bomba passará a fornecer maior vazão do que quando operava isolada.",
+   "a vazão total será menor que o dobro da vazão de uma bomba isolada no mesmo sistema."
+  ],
+  "gab": 4,
+  "res": "Em paralelo, as vazões se somam <b>para a mesma altura</b>. Como a curva do sistema sobe com Q², o novo ponto de operação tem altura maior e cada bomba fornece menos que antes, então a vazão total fica <b>menor que o dobro</b>. A associação em série é que soma alturas."
+ },
+ {
+  "id": "MEC-B05",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Ponto de operação",
+  "en": "A curva de uma bomba é H = 70 − 0,003·Q² e a curva do sistema é H = 20 + 0,002·Q², com H em metros e Q em m³/h. O ponto de operação é",
+  "alts": [
+   "50 m³/h e 25 m",
+   "70,7 m³/h e 30 m",
+   "100 m³/h e 30 m",
+   "100 m³/h e 40 m",
+   "141 m³/h e 60 m"
+  ],
+  "gab": 3,
+  "res": "Igualando as curvas: 70 − 0,003Q² = 20 + 0,002Q² → 0,005Q² = 50 → Q² = 10.000 → Q = <b>100 m³/h</b>. H = 20 + 0,002 × 10.000 = <b>40 m</b>. Confira na curva da bomba: 70 − 30 = 40 m."
+ },
+ {
+  "id": "MEC-B06",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Compressão em estágios",
+  "en": "Um compressor alternativo de dois estágios, com resfriamento intermediário perfeito, comprime ar de 1 bar para 16 bar. Para minimizar o trabalho total, a pressão intermediária, em bar, deve ser",
+  "alts": [
+   "4,0",
+   "5,0",
+   "8,0",
+   "8,5",
+   "15,0"
+  ],
+  "gab": 0,
+  "res": "Trabalho mínimo com razões iguais em cada estágio: p<sub>int</sub> = √(p<sub>1</sub>·p<sub>2</sub>) = √16 = <b>4 bar</b>, com razão 4 em cada estágio. A média aritmética (8,5 bar) é a pegadinha."
+ },
+ {
+  "id": "MEC-B07",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Ciclo Brayton",
+  "en": "Uma turbina a gás opera segundo o ciclo Brayton ideal, com razão de pressões 10 e k = 1,4. Considerando 10<sup>(0,4/1,4)</sup> ≈ 1,93, o rendimento térmico do ciclo é aproximadamente",
+  "alts": [
+   "37%",
+   "48%",
+   "52%",
+   "60%",
+   "90%"
+  ],
+  "gab": 1,
+  "res": "η<sub>Brayton</sub> = 1 − 1/r<sub>p</sub><sup>(k−1)/k</sup> = 1 − 1/1,93 ≈ 1 − 0,518 = <b>48%</b>. 52% é o complemento (1/1,93) e 90% é 1 − 1/r<sub>p</sub>."
+ },
+ {
+  "id": "MEC-B08",
+  "mat": "Máquinas de Fluxo",
+  "ass": "Controle de vazão",
+  "en": "Ao se fechar parcialmente uma válvula globo instalada na descarga de uma bomba centrífuga, mantida a rotação,",
+  "alts": [
+   "a curva da bomba se desloca para baixo e a vazão aumenta.",
+   "a curva do sistema fica mais íngreme e a vazão aumenta.",
+   "a curva da bomba se desloca para cima e a altura manométrica diminui.",
+   "a curva do sistema fica mais íngreme, e o ponto de operação se desloca sobre a mesma curva da bomba para menor vazão e maior altura.",
+   "o rendimento da bomba aumenta necessariamente."
+  ],
+  "gab": 3,
+  "res": "Estrangular a descarga acrescenta perda de carga: a <b>curva do sistema fica mais íngreme</b>, enquanto a curva da bomba não muda (ela só depende da rotação e do rotor). O ponto de operação desliza para <b>menor Q e maior H</b>. É um controle simples, mas desperdiça energia; o inversor de frequência é mais eficiente."
+ },
+ {
+  "id": "MEC-V01",
+  "mat": "Vibrações",
+  "ass": "Frequência natural",
+  "en": "Um sistema massa-mola tem massa de 10 kg e rigidez de 40 kN/m. Considerando π ≈ 3,14 e √10 ≈ 3,16, a frequência natural não amortecida, em Hz, é aproximadamente",
+  "alts": [
+   "1,6",
+   "2,0",
+   "6,3",
+   "10,1",
+   "63,2"
+  ],
+  "gab": 3,
+  "res": "ω<sub>n</sub> = √(k/m) = √4.000 = 20√10 ≈ 63,2 rad/s. f<sub>n</sub> = ω<sub>n</sub>/(2π) = 63,2/6,28 ≈ <b>10,1 Hz</b>. Responder 63,2 é confundir rad/s com Hz."
+ },
+ {
+  "id": "MEC-V02",
+  "mat": "Vibrações",
+  "ass": "Molas em série",
+  "en": "Uma massa está apoiada sobre uma mola de rigidez k. Se essa mola for substituída por duas molas iguais, de rigidez k cada uma, associadas em série, a nova frequência natural, em relação à original, será multiplicada por aproximadamente",
+  "alts": [
+   "0,25",
+   "0,50",
+   "0,71",
+   "1,41",
+   "2,00"
+  ],
+  "gab": 2,
+  "res": "Molas em série: k<sub>eq</sub> = k/2. Como f<sub>n</sub> ∝ √k, a frequência fica multiplicada por 1/√2 ≈ <b>0,71</b>. Em paralelo, k<sub>eq</sub> = 2k e o fator seria 1,41."
+ },
+ {
+  "id": "MEC-V03",
+  "mat": "Vibrações",
+  "ass": "Amortecimento crítico",
+  "en": "Para o sistema com massa de 10 kg e rigidez de 40 kN/m, considerando √10 ≈ 3,16, o coeficiente de amortecimento crítico, em N·s/m, é aproximadamente",
+  "alts": [
+   "632",
+   "1.265",
+   "2.530",
+   "20.000",
+   "400.000"
+  ],
+  "gab": 1,
+  "res": "c<sub>c</sub> = 2√(k·m) = 2√(40.000 × 10) = 2√400.000 = 2 × 632,5 ≈ <b>1.265 N·s/m</b>. Ou, de outra forma, c<sub>c</sub> = 2mω<sub>n</sub> = 2 × 10 × 63,2."
+ },
+ {
+  "id": "MEC-V04",
+  "mat": "Vibrações",
+  "ass": "Isolamento de vibrações",
+  "en": "Uma máquina rotativa será montada sobre isoladores elásticos para reduzir a força transmitida à fundação. Para que a transmissibilidade seja menor que 1, a razão entre a frequência de excitação e a frequência natural do sistema deve ser",
+  "alts": [
+   "menor que 1.",
+   "igual a 1.",
+   "menor que √2.",
+   "entre 1 e √2.",
+   "maior que √2."
+  ],
+  "gab": 4,
+  "res": "A transmissibilidade só fica abaixo de 1 para r = ω/ω<sub>n</sub> <b>&gt; √2</b>. Por isso os isoladores são macios: baixam ω<sub>n</sub>. Para r = 1 há ressonância, e abaixo de √2 a força transmitida é amplificada. Nessa região, aumentar o amortecimento piora o isolamento."
+ },
+ {
+  "id": "MEC-P01",
+  "mat": "Fabricação e Soldagem",
+  "ass": "Processos de soldagem",
+  "en": "A respeito dos processos de soldagem a arco elétrico, é correto afirmar que",
+  "alts": [
+   "no processo TIG (GTAW), o eletrodo de tungstênio é consumível e incorporado à poça de fusão.",
+   "o eletrodo revestido (SMAW) não gera escória, dispensando limpeza entre passes.",
+   "o arco submerso (SAW) é especialmente indicado para soldagem na posição sobre-cabeça.",
+   "o preaquecimento aumenta a velocidade de resfriamento da junta.",
+   "a diferença entre MIG e MAG está no gás de proteção: inerte (Ar, He) no MIG e ativo (CO<sub>2</sub> ou misturas com O<sub>2</sub>/CO<sub>2</sub>) no MAG."
+  ],
+  "gab": 4,
+  "res": "<b>MIG</b> usa gás inerte (comum em alumínio e inox) e <b>MAG</b> usa gás ativo (comum no aço carbono). No TIG, o tungstênio <b>não</b> é consumível; o eletrodo revestido gera escória; o arco submerso exige posição plana ou horizontal; e o preaquecimento <b>reduz</b> a velocidade de resfriamento, o que evita martensita e trincas por hidrogênio."
+ },
+ {
+  "id": "MEC-P02",
+  "mat": "Fabricação e Soldagem",
+  "ass": "Usinagem: velocidade de corte",
+  "en": "Uma peça de 60 mm de diâmetro será torneada com velocidade de corte de 150 m/min. Considerando π ≈ 3,14, a rotação do eixo-árvore, em rpm, é aproximadamente",
+  "alts": [
+   "796",
+   "1.250",
+   "1.592",
+   "2.500",
+   "7.958"
+  ],
+  "gab": 0,
+  "res": "V<sub>c</sub> = π·D·n/1.000, com D em mm e V<sub>c</sub> em m/min. n = 1.000 × 150/(3,14 × 60) ≈ <b>796 rpm</b>. Usar o raio no lugar do diâmetro dá 1.592 rpm."
+ },
+ {
+  "id": "MEC-P03",
+  "mat": "Fabricação e Soldagem",
+  "ass": "Carbono equivalente",
+  "en": "Um aço estrutural tem 0,20% C e 1,20% Mn, com teores desprezíveis dos demais elementos. Pela fórmula do IIW, CE = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15, o carbono equivalente é",
+  "alts": [
+   "0,20",
+   "0,30",
+   "0,40",
+   "0,50",
+   "1,40"
+  ],
+  "gab": 2,
+  "res": "CE = 0,20 + 1,20/6 = 0,20 + 0,20 = <b>0,40</b>. Na faixa de 0,40 a 0,45, a soldabilidade começa a exigir cuidados, como preaquecimento e eletrodos de baixo hidrogênio, conforme a espessura e a restrição da junta."
+ },
+ {
+  "id": "MEC-P04",
+  "mat": "Fabricação e Soldagem",
+  "ass": "Trabalho a frio e recristalização",
+  "en": "Sobre a conformação mecânica de metais, é correto afirmar que",
+  "alts": [
+   "o trabalho a frio reduz o limite de escoamento e aumenta a ductilidade.",
+   "a temperatura de recristalização é a mesma para todos os metais.",
+   "o trabalho a quente provoca encruamento acentuado e dispensa o tratamento térmico posterior.",
+   "o trabalho a frio aumenta o limite de escoamento e reduz a ductilidade, e o recozimento de recristalização pode restaurar a ductilidade.",
+   "o encruamento é causado pela redução da densidade de discordâncias."
+  ],
+  "gab": 3,
+  "res": "O trabalho a frio <b>encrua</b> o metal: a densidade de discordâncias aumenta, o escoamento e a dureza sobem e a ductilidade cai. O <b>recozimento de recristalização</b> forma grãos novos e restaura a ductilidade. A temperatura de recristalização fica, em geral, entre 0,3 e 0,5 T<sub>fusão</sub> (em K) e depende do metal e do grau de deformação."
+ }
+]

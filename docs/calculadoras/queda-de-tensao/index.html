@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de Queda de Tensão e Bitola de Cabo (NBR 5410) | Ferramentas do Engenheiro</title>
+<meta name="description" content="Calcule grátis a queda de tensão em circuitos mono e trifásicos e a bitola mínima do cabo pelos limites da NBR 5410.">
+<link rel="canonical" href="https://ferramentasdoengenheiro.com/calculadoras/queda-de-tensao/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ferramentas do Engenheiro">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Calculadora de Queda de Tensão e Bitola de Cabo (NBR 5410)">
+<meta property="og:description" content="Calcule grátis a queda de tensão em circuitos mono e trifásicos e a bitola mínima do cabo pelos limites da NBR 5410.">
+<meta property="og:url" content="https://ferramentasdoengenheiro.com/calculadoras/queda-de-tensao/">
+<meta property="og:image" content="https://ferramentasdoengenheiro.com/img/queda-de-tensao.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f2742">
+<link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/logo-192.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Calculadora de Queda de Tensão e Bitola de Cabo (NBR 5410)", "description": "Calcule grátis a queda de tensão em circuitos mono e trifásicos e a bitola mínima do cabo pelos limites da NBR 5410.", "image": "https://ferramentasdoengenheiro.com/img/queda-de-tensao.jpg", "datePublished": "2026-11-18", "dateModified": "2026-11-26", "inLanguage": "pt-BR", "author": {"@type": "Organization", "name": "Ferramentas do Engenheiro", "url": "https://ferramentasdoengenheiro.com"}, "publisher": {"@type": "Organization", "name": "Ferramentas do Engenheiro", "logo": {"@type": "ImageObject", "url": "https://ferramentasdoengenheiro.com/img/logo-512.png"}}, "mainEntityOfPage": "https://ferramentasdoengenheiro.com/calculadoras/queda-de-tensao/"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://ferramentasdoengenheiro.com/"}, {"@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://ferramentasdoengenheiro.com/calculadoras/"}, {"@type": "ListItem", "position": 3, "name": "Queda de tensão e bitola de cabo", "item": "https://ferramentasdoengenheiro.com/calculadoras/queda-de-tensao/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Queda de tensão e bitola de cabo", "url": "https://ferramentasdoengenheiro.com/calculadoras/queda-de-tensao/", "applicationCategory": "EngineeringApplication", "operatingSystem": "Any", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/"><img src="/img/logo-192.png" alt="" width="36" height="36">Ferramentas do Engenheiro</a><nav class="nav" aria-label="Menu principal"><a href="/">Início</a><a href="/calculadoras/" class=on>Calculadoras</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a></nav></div></header>
+<main><div class="wrap"><nav class="crumb" aria-label="Você está em"><a href="/">Início</a> › <a href="/calculadoras/">Calculadoras</a></nav><article><h1>Calculadora de Queda de Tensão e Bitola de Cabo (NBR 5410)</h1><div class="meta">Publicado em 18 de novembro de 2026 · Elétrica</div><img class="cover" src="/img/queda-de-tensao.jpg" alt="Calculadora de Queda de Tensão e Bitola de Cabo (NBR 5410)" width="1200" height="630" fetchpriority="high"><div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto">
+
+<p>Um cabo bem dimensionado precisa atender a três critérios: aguentar a corrente sem aquecer demais, ser protegido pelo disjuntor e chegar à carga com tensão suficiente. Em circuitos longos, como os de motor no fundo do galpão, chuveiro no fim da casa ou iluminação externa, quem costuma definir a bitola é o terceiro critério: a <b>queda de tensão</b>.</p>
+<p>A calculadora abaixo mostra quanto de tensão se perde no cabo, em volts e em porcentagem. Ela também confere se o resultado fica dentro do limite da <b>NBR 5410</b> e indica a menor seção comercial que atende, para circuitos monofásicos, bifásicos e trifásicos, com condutor de cobre ou alumínio.</p>
+
+<h2>Calculadora de queda de tensão</h2>
+
+<div id="eng-qt">
+<style>
+#eng-qt{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:640px;margin:0 auto;color:#1c2430;line-height:1.5}
+#eng-qt .card{background:#f6f8fb;border:1px solid #dde3ec;border-radius:12px;padding:20px}
+#eng-qt h3{margin:0 0 4px;font-size:1.25rem}
+#eng-qt p.sub{margin:0 0 16px;color:#5a6575;font-size:.92rem}
+#eng-qt .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#eng-qt label{display:block;font-size:.85rem;font-weight:600;margin-bottom:4px}
+#eng-qt input,#eng-qt select{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid #c4ccd8;border-radius:8px;font-size:1rem;background:#fff}
+#eng-qt button{margin-top:16px;width:100%;padding:12px;border:0;border-radius:8px;background:#1f6feb;color:#fff;font-size:1rem;font-weight:600;cursor:pointer}
+#eng-qt button:hover{background:#1858c4}
+#eng-qt .res{margin-top:16px;padding:14px;border-radius:8px;background:#fff;border:1px solid #dde3ec;display:none}
+#eng-qt .ok{border-left:5px solid #1a7f37}
+#eng-qt .bad{border-left:5px solid #cf222e}
+#eng-qt .big{font-size:1.4rem;font-weight:700}
+#eng-qt table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.88rem}
+#eng-qt td,#eng-qt th{padding:5px 6px;border-bottom:1px solid #eef1f5;text-align:left}
+#eng-qt tr.hl{background:#e8f1ff;font-weight:600}
+#eng-qt .note{font-size:.8rem;color:#5a6575;margin-top:12px}
+@media(max-width:520px){#eng-qt .grid{grid-template-columns:1fr}}
+</style>
+<div class="card">
+  <h3>Calculadora de Queda de Tensão</h3>
+  <p class="sub">Calcule a queda de tensão de um circuito e descubra a menor seção de cabo que atende ao limite da NBR 5410.</p>
+  <div class="grid">
+    <div><label for="qt-sis">Sistema</label>
+      <select id="qt-sis"><option value="mono">Monofásico / Bifásico (F-N ou F-F)</option><option value="tri">Trifásico</option></select></div>
+    <div><label for="qt-v">Tensão do circuito (V)</label><input id="qt-v" type="number" value="220" min="1" step="any"></div>
+    <div><label for="qt-i">Corrente (A)</label><input id="qt-i" type="number" value="20" min="0" step="any"></div>
+    <div><label for="qt-l">Comprimento do circuito (m, só ida)</label><input id="qt-l" type="number" value="30" min="0" step="any"></div>
+    <div><label for="qt-mat">Condutor</label>
+      <select id="qt-mat"><option value="cu">Cobre</option><option value="al">Alumínio</option></select></div>
+    <div><label for="qt-s">Seção a verificar (mm²)</label><select id="qt-s"></select></div>
+    <div><label for="qt-lim">Limite de queda (%)</label>
+      <select id="qt-lim"><option value="4" selected>4% (circuito terminal)</option><option value="5">5% (total, entrega em BT)</option><option value="7">7% (total, subestação própria)</option><option value="2">2%</option><option value="3">3%</option></select></div>
+    <div><label for="qt-t">Temperatura do condutor</label>
+      <select id="qt-t"><option value="70" selected>70 °C (PVC, regime)</option><option value="90">90 °C (EPR/XLPE, regime)</option><option value="20">20 °C</option></select></div>
+  </div>
+  <button type="button" id="qt-btn">Calcular</button>
+  <div class="res" id="qt-res"></div>
+  <p class="note">Cálculo simplificado (resistivo, sem reatância), adequado para circuitos de baixa tensão com seções até ~50 mm². A seção final também deve atender à capacidade de corrente (método de instalação, agrupamento, temperatura), à proteção e às seções mínimas da NBR 5410 (1,5 mm² iluminação; 2,5 mm² tomadas). Ferramenta de apoio: não substitui o projeto de um profissional habilitado.</p>
+</div>
+<script>
+(function(){
+  var S=[1.5,2.5,4,6,10,16,25,35,50,70,95,120,150,185,240];
+  var sel=document.getElementById('qt-s');
+  S.forEach(function(s){var o=document.createElement('option');o.value=s;o.textContent=String(s).replace('.',',');if(s===4)o.selected=true;sel.appendChild(o);});
+  var RHO20={cu:0.0172,al:0.0282}, ALPHA={cu:0.00393,al:0.00403};
+  function f(n,d){return n.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+  function g(id){return document.getElementById(id);}
+  function calc(){
+    var sis=g('qt-sis').value, V=+g('qt-v').value, I=+g('qt-i').value, L=+g('qt-l').value,
+        mat=g('qt-mat').value, Ssel=+g('qt-s').value, lim=+g('qt-lim').value, T=+g('qt-t').value;
+    var out=g('qt-res');
+    if(!(V>0)||!(I>=0)||!(L>=0)){out.style.display='block';out.className='res bad';out.innerHTML='Preencha tensão, corrente e comprimento com valores válidos.';return;}
+    var rho=RHO20[mat]*(1+ALPHA[mat]*(T-20));
+    var k=(sis==='tri')?Math.sqrt(3):2;
+    function dv(s){return k*rho*L*I/s;}
+    var dvSel=dv(Ssel), pSel=dvSel/V*100, okSel=pSel<=lim;
+    var Smin=null; for(var i=0;i<S.length;i++){if(dv(S[i])/V*100<=lim){Smin=S[i];break;}}
+    var html='<div>Com '+String(Ssel).replace('.',',')+' mm²:</div>'+
+      '<div class="big">'+f(dvSel,2)+' V &nbsp;('+f(pSel,2)+'%)</div>'+
+      '<div>'+(okSel?'✅ Dentro do limite de '+lim+'%.':'❌ Acima do limite de '+lim+'%.')+'</div>'+
+      '<div style="margin-top:8px">Tensão na carga: <b>'+f(V-dvSel,1)+' V</b></div>'+
+      '<div style="margin-top:8px">Menor seção que atende: <b>'+(Smin?String(Smin).replace('.',',')+' mm²':'acima de 240 mm² (divida o circuito ou use condutores em paralelo)')+'</b></div>';
+    html+='<table><tr><th>Seção (mm²)</th><th>Queda (V)</th><th>Queda (%)</th></tr>';
+    S.forEach(function(s){var d=dv(s),p=d/V*100;if(p>lim*4&&s!==Ssel)return;
+      html+='<tr'+(s===Smin?' class="hl"':'')+'><td>'+String(s).replace('.',',')+'</td><td>'+f(d,2)+'</td><td>'+f(p,2)+'%'+(p<=lim?' ✓':'')+'</td></tr>';
+    });
+    html+='</table>';
+    out.className='res '+(okSel?'ok':'bad');out.innerHTML=html;out.style.display='block';
+  }
+  g('qt-btn').addEventListener('click',calc);
+  document.getElementById('eng-qt').addEventListener('change',calc);
+  calc();
+})();
+</script>
+</div>
+
+
+<h2>Como usar a calculadora</h2>
+<ol>
+  <li><b>Escolha o sistema.</b> Use <i>Monofásico / Bifásico</i> para circuitos fase-neutro ou fase-fase, como 127 V ou 220 V em casas e pequenos comércios. Use <i>Trifásico</i> para motores e quadros alimentados em 220 V ou 380 V trifásico.</li>
+  <li><b>Informe tensão, corrente e comprimento.</b> O comprimento é a distância do quadro até a carga, <b>só a ida</b>. A fórmula já considera o caminho de volta.</li>
+  <li><b>Escolha o condutor, a seção e o limite.</b> Para um circuito terminal, que vai do quadro até o ponto de uso, o limite usual é 4%.</li>
+  <li><b>Leia o resultado.</b> A calculadora mostra a queda em V e em %, a tensão que chega na carga, a menor seção que atende e uma tabela comparando as bitolas.</li>
+</ol>
+
+<h2>Fórmula da queda de tensão</h2>
+<p>O cabo tem resistência elétrica. Quando a corrente passa por ele, parte da tensão fica "pelo caminho" e não chega à carga, como mostra o desenho:</p>
+
+<figure style="margin:20px 0;text-align:center">
+<svg viewBox="0 0 640 220" role="img" aria-label="Queda de tensão ao longo de um cabo entre o quadro e a carga" style="width:100%;max-width:640px;height:auto;background:#f6f8fb;border-radius:12px">
+  <g font-family="system-ui,Segoe UI,Roboto,sans-serif" fill="#1c2430">
+    <rect x="30" y="50" width="90" height="110" rx="8" fill="#9aa5b1"/>
+    <text x="75" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">QUADRO</text>
+    <text x="75" y="120" text-anchor="middle" font-size="13" fill="#fff">220 V</text>
+    <path d="M120 80 H520" stroke="#f28c28" stroke-width="6"/>
+    <path d="M120 130 H520" stroke="#1f6feb" stroke-width="6"/>
+    <text x="320" y="68" text-anchor="middle" font-size="13">fase</text>
+    <text x="320" y="152" text-anchor="middle" font-size="13">neutro (retorno)</text>
+    <line x1="125" y1="185" x2="515" y2="185" stroke="#1c2430" stroke-width="1.5"/>
+    <path d="M125 180 V190 M515 180 V190" stroke="#1c2430" stroke-width="1.5"/>
+    <text x="320" y="205" text-anchor="middle" font-size="13" font-weight="700">comprimento L (só ida)</text>
+    <rect x="520" y="50" width="90" height="110" rx="8" fill="#1c2430"/>
+    <text x="565" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">CARGA</text>
+    <text x="565" y="120" text-anchor="middle" font-size="13" fill="#f9a24b">213,8 V</text>
+    <text x="320" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#1f6feb">ΔV = 6,2 V perdidos no cabo (2,8%)</text>
+  </g>
+</svg>
+<figcaption style="font-size:.85rem;color:#5a6575">Exemplo: 20 A em 30 m de cabo de 4 mm². A carga recebe 6,2 V a menos do que sai do quadro.</figcaption>
+</figure>
+
+<p>A calculadora usa as fórmulas resistivas, que são a forma prática mais usada em baixa tensão:</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>Monofásico / bifásico:</b> ΔV = 2 × ρ × L × I ÷ S<br><b>Trifásico:</b> ΔV = √3 × ρ × L × I ÷ S<br><b>Queda percentual:</b> ΔV% = ΔV ÷ V × 100</p>
+<ul>
+  <li><b>ρ</b> é a resistividade do condutor em Ω·mm²/m. A 20 °C ela vale 0,0172 para o cobre e 0,0282 para o alumínio. A calculadora corrige o valor para a temperatura de operação. A 70 °C, o cobre fica com cerca de 0,0206.</li>
+  <li><b>L</b> é o comprimento do circuito em metros, só a ida.</li>
+  <li><b>I</b> é a corrente de projeto, em ampères.</li>
+  <li><b>S</b> é a seção do condutor, em mm².</li>
+</ul>
+<p>O fator 2 do circuito monofásico existe porque a corrente vai pela fase e volta pelo neutro. No trifásico equilibrado, o fator é √3 ≈ 1,73.</p>
+
+<h2>Limites de queda de tensão da NBR 5410</h2>
+<p>A NBR 5410 limita a queda de tensão entre a origem da instalação e qualquer ponto de utilização:</p>
+<table style="border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0 16px">
+  <thead><tr style="background:#f6f8fb"><th style="text-align:left;padding:8px;border-bottom:2px solid #dde3ec">Situação</th><th style="text-align:left;padding:8px;border-bottom:2px solid #dde3ec">Limite</th></tr></thead>
+  <tbody>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Instalação alimentada direto pela rede de baixa tensão da concessionária (medida a partir do ponto de entrega)</td><td style="padding:8px;border-bottom:1px solid #eef1f5">5%</td></tr>
+    <tr><td style="padding:8px;border-bottom:1px solid #eef1f5">Instalação com subestação ou transformador próprio, ou com gerador próprio</td><td style="padding:8px;border-bottom:1px solid #eef1f5">7%</td></tr>
+    <tr><td style="padding:8px">Circuitos terminais, em qualquer caso</td><td style="padding:8px">4%</td></tr>
+  </tbody>
+</table>
+<p>O limite vale para a soma das quedas de todos os trechos. Se o circuito de distribuição até o quadro já consome 2%, sobra pouco para o circuito terminal.</p>
+
+<h2>Exemplos resolvidos</h2>
+<h3>1. Circuito monofásico 220 V</h3>
+<p>Um chuveiro puxa 20 A e fica a 30 m do quadro. O cabo é de cobre com isolação de PVC, a 70 °C.</p>
+<ul>
+  <li><b>Com 2,5 mm²:</b> ΔV = 2 × 0,0206 × 30 × 20 ÷ 2,5 = <b>9,88 V (4,49%)</b>, acima dos 4% ❌</li>
+  <li><b>Com 4 mm²:</b> ΔV = 2 × 0,0206 × 30 × 20 ÷ 4 = <b>6,17 V (2,81%)</b>, dentro do limite ✅</li>
+</ul>
+<p>Neste caso, o critério de queda de tensão obriga a usar 4 mm², mesmo que o 2,5 mm² aguente a corrente.</p>
+
+<h3>2. Motor trifásico 380 V</h3>
+<p>Um motor puxa 40 A e fica a 50 m do quadro. O cabo é de cobre com isolação de PVC.</p>
+<ul>
+  <li><b>4 mm²:</b> 17,82 V (4,69%) ❌</li>
+  <li><b>6 mm²:</b> 11,88 V (3,13%) ✅</li>
+  <li><b>10 mm²:</b> 7,13 V (1,88%) ✅, uma boa folga se o alimentador também tiver queda</li>
+</ul>
+
+<h2>Perguntas frequentes</h2>
+<h3>O comprimento é de ida e volta?</h3>
+<p>Não. Informe só a distância de ida, do quadro até a carga. A fórmula monofásica já multiplica por 2 para considerar o retorno.</p>
+<h3>Só a queda de tensão basta para escolher o cabo?</h3>
+<p>Não. A seção final é a maior entre as exigidas por cada critério: capacidade de condução de corrente (que depende do método de instalação, do agrupamento de circuitos e da temperatura ambiente), coordenação com a proteção, queda de tensão e seções mínimas. Pela NBR 5410, a seção mínima é de 1,5 mm² para iluminação e 2,5 mm² para tomadas.</p>
+<h3>Por que a calculadora usa a resistividade a 70 °C?</h3>
+<p>Porque o cabo em uso está quente e, quanto mais quente o metal, maior a resistência. 70 °C é a temperatura máxima de serviço contínuo da isolação de PVC. Para cabos com isolação de EPR ou XLPE, que trabalham até 90 °C, escolha 90 °C.</p>
+<h3>E a reatância do cabo?</h3>
+<p>Em cabos de até uns 50 mm², a resistência domina e o cálculo resistivo é suficiente. Em seções maiores, ou com fator de potência baixo, a reatância passa a pesar, e vale usar o método completo com R·cos φ + X·sen φ ou as tabelas de queda em V/(A·km) dos fabricantes.</p>
+<h3>Posso usar para alumínio?</h3>
+<p>Sim. Escolha <i>Alumínio</i> no campo do condutor. Lembre que a NBR 5410 restringe o uso de condutores de alumínio em instalações residenciais e exige seções mínimas maiores.</p>
+
+<p style="font-size:.85rem;color:#5a6575;border-top:1px solid #dde3ec;padding-top:12px;margin-top:28px">Os resultados são estimativas de apoio ao projeto e não substituem o dimensionamento completo feito por um profissional habilitado, com a respectiva ART.</p>
+</div></article><section class="rel"><h2 class="sec-t">Veja também</h2><div class="grid"><a class="card" href="/calculadoras/area-de-pintura/"><img src="/img/area-de-pintura.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Pintura industrial</small><b>Área de pintura e litros de tinta</b><p>Área em m² de perfis, tubos e chapas e litros de tinta por demão, com perdas.</p></div></a><a class="card" href="/calculadoras/peso-de-perfis/"><img src="/img/peso-de-perfis.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Estruturas metálicas</small><b>Peso de perfis, tubos e chapas</b><p>Lista de peças com 2.300+ bitolas, aço, inox e alumínio, perda de compra e custo.</p></div></a><a class="card" href="/calculadoras/perda-de-carga/"><img src="/img/perda-de-carga.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Hidráulica</small><b>Perda de carga em tubulações</b><p>Hazen-Williams e Fair-Whipple-Hsiao, conexões e válvulas, altura manométrica.</p></div></a></div></section></div></main>
+<footer><div class="wrap">
+<p><b style="color:#fff">Ferramentas do Engenheiro</b> · calculadoras e simulados gratuitos para engenheiros, técnicos e estudantes.</p>
+<p><a href="/calculadoras/">Calculadoras</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="https://www.instagram.com/ferramentasdoengenheiro/" rel="noopener" target="_blank">Instagram</a></p>
+<p style="font-size:.8rem;opacity:.8">As ferramentas apoiam estudos, orçamentos e pré-dimensionamentos e não substituem o projeto e a responsabilidade técnica de um profissional habilitado.</p>
+</div></footer>
+</body>
+</html>
