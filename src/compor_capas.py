@@ -11,9 +11,13 @@ CAPAS = {
  "perda-de-carga": ("CALCULADORA GRÁTIS", ["Perda de carga", "em <em>tubulações</em>"], "Hazen-Williams · conexões · bombas"),
  "simulado-mecanica": ("SIMULADO GRÁTIS", ["70 questões de", "<em>Eng. Mecânica</em>"], "Estilo Cesgranrio · Petrobras e Transpetro"),
 }
+import json as _j
+for _m in _j.load(open("/home/claude/site_src/posts/materias.json", encoding="utf-8")):
+    CAPAS[_m["slug"]] = ("QUESTÕES COMENTADAS", ["Questões de", "<em>" + _m["mat"].replace("Materiais e Tratamentos Térmicos", "Materiais e Tratamentos") + "</em>"], f'{_m["n"]} questões · estilo Cesgranrio · Petrobras')
 def html(src, badge, lines, sub):
     b64 = base64.b64encode(open(src, "rb").read()).decode()
-    t = "".join(f"<div class=t>{l}</div>" for l in lines)
+    fs = "54px" if "QUESTÕES" in badge else "64px"
+    t = "".join(f"<div class=t style='font-size:{fs}'>{l}</div>" for l in lines)
     return f"""<html><head><style>
 body{{margin:0;width:1200px;height:630px;overflow:hidden;font-family:Arial,Helvetica,sans-serif}}
 .bg{{position:absolute;inset:0;background:url(data:image/png;base64,{b64}) right center/cover no-repeat}}
@@ -25,7 +29,7 @@ body{{margin:0;width:1200px;height:630px;overflow:hidden;font-family:Arial,Helve
 .s{{font-size:27px;color:#c9d6e6;margin-top:26px}}
 .u{{position:absolute;left:80px;bottom:56px;font-size:22px;color:#c9d6e6;opacity:.85}}
 </style></head><body><div class=bg></div><div class=sh></div>
-<div class=tx><div class=bd>{badge}</div>{t}<div class=s>{sub}</div></div><div class=u>ferramentasdoengenheiro.com</div></body></html>"""
+<div class=tx{" style='width:540px'" if "QUESTÕES" in badge else ""}><div class=bd>{badge}</div>{t}<div class=s>{sub}</div></div><div class=u>ferramentasdoengenheiro.com</div></body></html>"""
 async def main(items):
     async with async_playwright() as p:
         b = await p.chromium.launch(executable_path="/usr/bin/google-chrome")
