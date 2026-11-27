@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de Momento de Inércia e Centroide (Perfis I, T, L, U e Tubos) | Ferramentas do Engenheiro</title>
+<meta name="description" content="Calcule grátis o centroide, o momento de inércia, o módulo resistente e o raio de giração de retângulos, tubos e perfis I, T, L e U, com passo a passo pelo teorema de Steiner.">
+<link rel="canonical" href="https://ferramentasdoengenheiro.com/calculadoras/momento-de-inercia/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ferramentas do Engenheiro">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Calculadora de Momento de Inércia e Centroide (Perfis I, T, L, U e Tubos)">
+<meta property="og:description" content="Calcule grátis o centroide, o momento de inércia, o módulo resistente e o raio de giração de retângulos, tubos e perfis I, T, L e U, com passo a passo pelo teorema de Steiner.">
+<meta property="og:url" content="https://ferramentasdoengenheiro.com/calculadoras/momento-de-inercia/">
+<meta property="og:image" content="https://ferramentasdoengenheiro.com/img/inercia.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f2742">
+<link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/logo-192.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Calculadora de Momento de Inércia e Centroide (Perfis I, T, L, U e Tubos)", "description": "Calcule grátis o centroide, o momento de inércia, o módulo resistente e o raio de giração de retângulos, tubos e perfis I, T, L e U, com passo a passo pelo teorema de Steiner.", "image": "https://ferramentasdoengenheiro.com/img/inercia.jpg", "datePublished": "2026-11-27", "dateModified": "2026-11-27", "inLanguage": "pt-BR", "author": {"@type": "Organization", "name": "Ferramentas do Engenheiro", "url": "https://ferramentasdoengenheiro.com"}, "publisher": {"@type": "Organization", "name": "Ferramentas do Engenheiro", "logo": {"@type": "ImageObject", "url": "https://ferramentasdoengenheiro.com/img/logo-512.png"}}, "mainEntityOfPage": "https://ferramentasdoengenheiro.com/calculadoras/momento-de-inercia/"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://ferramentasdoengenheiro.com/"}, {"@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://ferramentasdoengenheiro.com/calculadoras/"}, {"@type": "ListItem", "position": 3, "name": "Momento de inércia e centroide", "item": "https://ferramentasdoengenheiro.com/calculadoras/momento-de-inercia/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Momento de inércia e centroide", "url": "https://ferramentasdoengenheiro.com/calculadoras/momento-de-inercia/", "applicationCategory": "EngineeringApplication", "operatingSystem": "Any", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/"><img src="/img/logo-192.png" alt="" width="36" height="36">Ferramentas do Engenheiro</a><nav class="nav" aria-label="Menu principal"><a href="/">Início</a><a href="/calculadoras/" class=on>Calculadoras</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a></nav></div></header>
+<main><div class="wrap"><nav class="crumb" aria-label="Você está em"><a href="/">Início</a> › <a href="/calculadoras/">Calculadoras</a></nav><article><h1>Calculadora de Momento de Inércia e Centroide (Perfis I, T, L, U e Tubos)</h1><div class="meta">Publicado em 27 de novembro de 2026 · Resistência dos materiais</div><img class="cover" src="/img/inercia.jpg" alt="Calculadora de Momento de Inércia e Centroide (Perfis I, T, L, U e Tubos)" width="1200" height="630" fetchpriority="high"><div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto">
+<p>Pegue uma régua e tente dobrá-la deitada: é fácil. Agora tente dobrá-la em pé: quase impossível. É o mesmo material e a mesma área. O que muda é o <b>momento de inércia</b>, a propriedade da seção que mede como a área está distribuída em relação ao eixo de flexão. Quanto mais material longe do centro, maior a inércia e mais rígida a peça. É por isso que vigas têm formato de I.</p>
+<p>A calculadora abaixo encontra o <b>centroide</b>, os <b>momentos de inércia</b> I<sub>x</sub> e I<sub>y</sub>, os <b>módulos resistentes</b> e os <b>raios de giração</b> de seções retangulares, circulares, tubos, perfis I, T, L e U, ou de qualquer seção montada com retângulos, mostrando o cálculo parte por parte.</p>
+<figure style="margin:8px auto 24px;max-width:340px;text-align:center"><video controls playsinline preload="none" poster="/ig/inercia/poster.jpg" style="width:100%;border-radius:14px;background:#0f2742;aspect-ratio:9/16" aria-label="Vídeo: por que a régua em pé quase não dobra"><source src="/ig/inercia/reel.mp4" type="video/mp4"></video><figcaption style="font-size:.85rem;color:#5a6575;margin-top:6px">▶ Em 30 segundos: por que a mesma régua dobra deitada e quase não dobra em pé.</figcaption></figure>
+<h2>Calculadora de momento de inércia e centroide</h2>
+<div id="eng-in">
+<style>
+#eng-in{--lar:#f28c28;--borda:#dde3ec;--suave:#5a6575;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1c2430;line-height:1.5;max-width:860px;margin:0 auto}
+#eng-in *{box-sizing:border-box}
+#eng-in .card{background:#f6f8fb;border:1px solid var(--borda);border-radius:12px;padding:18px;margin:0 0 16px}
+#eng-in h3{margin:0 0 2px;font-size:1.15rem}
+#eng-in .sub{margin:0 0 14px;color:var(--suave);font-size:.9rem}
+#eng-in label{display:block;font-size:.78rem;font-weight:600;color:#3a4452}
+#eng-in input,#eng-in select{width:100%;padding:7px 8px;border:1px solid #c4ccd8;border-radius:8px;font-size:.95rem;background:#fff;color:#1c2430;margin-top:3px;font-family:inherit}
+#eng-in .g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+#eng-in .hide{display:none!important}
+#eng-in .rr{display:grid;grid-template-columns:repeat(4,1fr) 34px;gap:6px;align-items:end;margin-bottom:6px;background:#fff;border:1px solid var(--borda);border-radius:8px;padding:8px}
+#eng-in .rr .x{border:0;background:#fdf0ee;color:#c0392b;border-radius:6px;height:34px;cursor:pointer;font-size:1.1rem}
+#eng-in .btn{border:1px solid #c4ccd8;background:#fff;border-radius:8px;padding:7px 12px;margin-top:4px;cursor:pointer;font-family:inherit;font-size:.88rem}
+#eng-in .res{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--lar);border-radius:10px;padding:16px;margin-bottom:16px}
+#eng-in .lay{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:start}
+#eng-in .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+#eng-in .kpi{background:#f6f8fb;border-radius:8px;padding:8px 10px}
+#eng-in .kpi span{display:block;font-size:.72rem;color:var(--suave);font-weight:600}
+#eng-in .kpi b{font-size:1.08rem}
+#eng-in .kpi.main{background:#fff4e8}#eng-in .kpi.main b{color:#b35f00}
+#eng-in svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--borda);border-radius:8px}
+#eng-in table{border-collapse:collapse;width:100%;font-size:.84rem;margin-top:12px}
+#eng-in td,#eng-in th{padding:5px 6px;border-bottom:1px solid #eef1f5;text-align:right;white-space:nowrap}
+#eng-in td:first-child,#eng-in th:first-child{text-align:left}
+#eng-in th{background:#f6f8fb;font-size:.74rem;color:#3a4452}
+#eng-in .scroll{overflow-x:auto}
+#eng-in .nota{font-size:.8rem;color:var(--suave);margin:8px 0 0}
+#eng-in .err{color:#c0392b;font-weight:600}
+@media(max-width:700px){#eng-in .g{grid-template-columns:1fr 1fr}#eng-in .lay{grid-template-columns:1fr}}
+</style>
+
+<div class="card">
+  <h3>Seção transversal</h3>
+  <p class="sub">Medidas em milímetros. Resultados em cm (área em cm², inércia em cm⁴, módulo resistente em cm³), como nas tabelas de perfis.</p>
+  <div class="g">
+    <div><label>Tipo de seção<select id="in-t">
+      <option value="ret">Retângulo</option><option value="cir">Circular cheia</option><option value="tub">Tubo circular</option><option value="tre">Tubo retangular</option>
+      <option value="I">Perfil I (simétrico)</option><option value="T" selected>Perfil T</option><option value="L">Cantoneira L</option><option value="U">Perfil U</option><option value="comp">Composta por retângulos</option></select></label></div>
+  </div>
+  <div class="g" id="in-dims"></div>
+  <div id="in-compbox" class="hide">
+    <p class="sub" style="margin-top:4px">Cada retângulo: largura b, altura h e a posição do canto inferior esquerdo (x, y). Retângulos não devem se sobrepor.</p>
+    <div id="in-rects"></div>
+    <button type="button" class="btn" id="in-add">+ Retângulo</button>
+  </div>
+</div>
+
+<div class="res" aria-live="polite">
+  <div id="in-err" class="err"></div>
+  <div class="lay">
+    <svg id="in-svg" viewBox="0 0 300 300" role="img" aria-label="Desenho da seção com o centroide e os eixos"></svg>
+    <div class="kpis">
+      <div class="kpi"><span>Área A</span><b id="k-A">–</b></div>
+      <div class="kpi"><span>Centroide (x̄ ; ȳ) a partir do canto inferior esquerdo</span><b id="k-c">–</b></div>
+      <div class="kpi main"><span>Momento de inércia I<sub>x</sub> (eixo horizontal)</span><b id="k-Ix">–</b></div>
+      <div class="kpi main"><span>Momento de inércia I<sub>y</sub> (eixo vertical)</span><b id="k-Iy">–</b></div>
+      <div class="kpi"><span>Módulo resistente W<sub>x</sub> (topo ; base)</span><b id="k-Wx">–</b></div>
+      <div class="kpi"><span>Módulo resistente W<sub>y</sub> (direita ; esquerda)</span><b id="k-Wy">–</b></div>
+      <div class="kpi"><span>Raio de giração r<sub>x</sub> ; r<sub>y</sub></span><b id="k-r">–</b></div>
+      <div class="kpi"><span>Produto de inércia I<sub>xy</sub> e eixos principais</span><b id="k-p" style="font-size:.92rem">–</b></div>
+    </div>
+  </div>
+  <div class="scroll"><table><thead><tr><th>Parte</th><th>A (mm²)</th><th>x<sub>i</sub> (mm)</th><th>y<sub>i</sub> (mm)</th><th>I<sub>x,próprio</sub> (mm⁴)</th><th>d<sub>y</sub> = y<sub>i</sub> − ȳ</th><th>A·d<sub>y</sub>² (mm⁴)</th><th>I<sub>y,próprio</sub> (mm⁴)</th><th>A·d<sub>x</sub>² (mm⁴)</th></tr></thead><tbody id="in-tab"></tbody></table></div>
+  <p class="nota">Passo a passo pelo teorema dos eixos paralelos (Steiner): I<sub>x</sub> = Σ (I<sub>próprio</sub> + A·d²). Partes vazadas entram com sinal negativo. Valores de perfis comerciais variam com os raios de concordância; para projeto, use a tabela do fabricante.</p>
+</div>
+
+<script>
+(function(){
+var R=document.getElementById('eng-in'); if(!R) return;
+function $(i){return document.getElementById(i);}
+function num(el){return parseFloat(String(el.value).replace(',','.'));}
+function nf(x,d){if(!isFinite(x))return '–'; if(Math.abs(x)<5e-10)x=0; return x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function nfs(x){if(!isFinite(x))return '–';var a=Math.abs(x);return nf(x,a>=1000?0:a>=100?1:a>=10?2:3);}
+var DIMS={
+ ret:[['b','Largura b',100],['h','Altura h',200]],
+ cir:[['D','Diâmetro D',100]],
+ tub:[['D','Diâmetro externo D',114.3],['t','Espessura t',6]],
+ tre:[['B','Largura B',100],['H','Altura H',150],['t','Espessura t',5]],
+ I:[['h','Altura total h',200],['bf','Largura da mesa b<sub>f</sub>',100],['tf','Espessura da mesa t<sub>f</sub>',10],['tw','Espessura da alma t<sub>w</sub>',6]],
+ T:[['h','Altura total h',200],['bf','Largura da mesa b<sub>f</sub>',150],['tf','Espessura da mesa t<sub>f</sub>',20],['tw','Espessura da alma t<sub>w</sub>',15]],
+ L:[['b','Aba horizontal b',50],['h','Aba vertical h',50],['t','Espessura t',5]],
+ U:[['h','Altura h',150],['bf','Largura da aba b<sub>f</sub>',50],['tf','Espessura da aba t<sub>f</sub>',8],['tw','Espessura da alma t<sub>w</sub>',6]],
+ comp:[]};
+var cur=null;
+function buildDims(){var t=$('in-t').value; if(t===cur) return; cur=t;
+ $('in-dims').innerHTML=DIMS[t].map(function(d){return '<div><label>'+d[1]+' (mm)<input data-k="'+d[0]+'" type="number" step="any" min="0" value="'+d[2]+'"></label></div>';}).join('');
+ $('in-compbox').classList.toggle('hide',t!=='comp');}
+function addRect(b,h,x,y){var d=document.createElement('div');d.className='rr';
+ d.innerHTML='<div><label>b (mm)<input class="b" type="number" step="any" value="'+b+'"></label></div><div><label>h (mm)<input class="h" type="number" step="any" value="'+h+'"></label></div><div><label>x (mm)<input class="xx" type="number" step="any" value="'+x+'"></label></div><div><label>y (mm)<input class="yy" type="number" step="any" value="'+y+'"></label></div><button type="button" class="x" title="Remover">×</button>';
+ $('in-rects').appendChild(d); d.querySelector('.x').onclick=function(){d.remove();calc();};}
+addRect(150,20,0,180); addRect(15,180,67.5,0);
+$('in-add').onclick=function(){addRect(50,10,0,0);calc();};
+function rect(n,x,y,b,h,s){return {n:n,k:'r',x:x,y:y,b:b,h:h,s:s||1,A:b*h,xc:x+b/2,yc:y+h/2,Ix:b*h*h*h/12,Iy:h*b*b*b/12};}
+function circ(n,cx,cy,r,s){return {n:n,k:'c',cx:cx,cy:cy,r:r,s:s||1,A:Math.PI*r*r,xc:cx,yc:cy,Ix:Math.PI*Math.pow(r,4)/4,Iy:Math.PI*Math.pow(r,4)/4};}
+function parts(t,v){
+ switch(t){
+  case 'ret': return [rect('Retângulo',0,0,v.b,v.h)];
+  case 'cir': return [circ('Círculo',v.D/2,v.D/2,v.D/2)];
+  case 'tub': if(!(2*v.t<v.D)) throw 'A espessura precisa ser menor que o raio.'; return [circ('Círculo externo',v.D/2,v.D/2,v.D/2),circ('Furo (vazio)',v.D/2,v.D/2,v.D/2-v.t,-1)];
+  case 'tre': if(!(2*v.t<v.B&&2*v.t<v.H)) throw 'A espessura precisa ser menor que metade dos lados.'; return [rect('Retângulo externo',0,0,v.B,v.H),rect('Vazio interno',v.t,v.t,v.B-2*v.t,v.H-2*v.t,-1)];
+  case 'I': if(!(2*v.tf<v.h&&v.tw<=v.bf)) throw 'Confira: 2·t<sub>f</sub> < h e t<sub>w</sub> ≤ b<sub>f</sub>.'; return [rect('Mesa inferior',0,0,v.bf,v.tf),rect('Alma',(v.bf-v.tw)/2,v.tf,v.tw,v.h-2*v.tf),rect('Mesa superior',0,v.h-v.tf,v.bf,v.tf)];
+  case 'T': if(!(v.tf<v.h&&v.tw<=v.bf)) throw 'Confira: t<sub>f</sub> < h e t<sub>w</sub> ≤ b<sub>f</sub>.'; return [rect('Alma',(v.bf-v.tw)/2,0,v.tw,v.h-v.tf),rect('Mesa',0,v.h-v.tf,v.bf,v.tf)];
+  case 'L': if(!(v.t<v.b&&v.t<v.h)) throw 'A espessura precisa ser menor que as abas.'; return [rect('Aba vertical',0,0,v.t,v.h),rect('Aba horizontal (sem o canto)',v.t,0,v.b-v.t,v.t)];
+  case 'U': if(!(2*v.tf<v.h&&v.tw<v.bf)) throw 'Confira: 2·t<sub>f</sub> < h e t<sub>w</sub> < b<sub>f</sub>.'; return [rect('Alma',0,0,v.tw,v.h),rect('Aba inferior',v.tw,0,v.bf-v.tw,v.tf),rect('Aba superior',v.tw,v.h-v.tf,v.bf-v.tw,v.tf)];
+  case 'comp': var out=[],i=0; [].forEach.call($('in-rects').children,function(d){i++;var q=function(c){return num(d.querySelector('.'+c));};out.push(rect('Retângulo '+i,q('xx'),q('yy'),q('b'),q('h')));}); if(!out.length) throw 'Adicione ao menos um retângulo.'; return out;
+ }}
+function calc(){
+ buildDims(); var t=$('in-t').value,v={},err='';
+ [].forEach.call($('in-dims').querySelectorAll('input'),function(e){v[e.dataset.k]=num(e); if(!(v[e.dataset.k]>0)) err='Preencha todas as medidas com valores positivos.';});
+ var P=[]; if(!err){ try{P=parts(t,v);}catch(e){err=e;} }
+ if(!err&&P.some(function(p){return !(p.A>0)&&!(p.k==='c'&&p.r>0);})) err='Medidas inválidas.';
+ $('in-err').innerHTML=err; if(err){$('in-svg').innerHTML='';$('in-tab').innerHTML='';return;}
+ var A=0,Sx=0,Sy=0; P.forEach(function(p){A+=p.s*p.A;Sx+=p.s*p.A*p.xc;Sy+=p.s*p.A*p.yc;});
+ if(!(A>0)){$('in-err').textContent='A área resultante precisa ser positiva.';return;}
+ var xb=Sx/A,yb=Sy/A,Ix=0,Iy=0,Ixy=0;
+ P.forEach(function(p){p.dy=p.yc-yb;p.dx=p.xc-xb;Ix+=p.s*(p.Ix+p.A*p.dy*p.dy);Iy+=p.s*(p.Iy+p.A*p.dx*p.dx);Ixy+=p.s*(p.A*p.dx*p.dy);});
+ // extremos
+ var xmin=1e99,xmax=-1e99,ymin=1e99,ymax=-1e99;
+ P.forEach(function(p){if(p.s<0)return; if(p.k==='r'){xmin=Math.min(xmin,p.x);xmax=Math.max(xmax,p.x+p.b);ymin=Math.min(ymin,p.y);ymax=Math.max(ymax,p.y+p.h);} else {xmin=Math.min(xmin,p.cx-p.r);xmax=Math.max(xmax,p.cx+p.r);ymin=Math.min(ymin,p.cy-p.r);ymax=Math.max(ymax,p.cy+p.r);}});
+ var c4=1e4,c3=1e3,c2=100;
+ $('k-A').textContent=nf(A/c2,2)+' cm²';
+ $('k-c').textContent=nf((xb-xmin)/10,2)+' ; '+nf((yb-ymin)/10,2)+' cm';
+ $('k-Ix').textContent=nfs(Ix/c4)+' cm⁴'; $('k-Iy').textContent=nfs(Iy/c4)+' cm⁴';
+ $('k-Wx').textContent=nfs(Ix/(ymax-yb)/c3)+' ; '+nfs(Ix/(yb-ymin)/c3)+' cm³';
+ $('k-Wy').textContent=nfs(Iy/(xmax-xb)/c3)+' ; '+nfs(Iy/(xb-xmin)/c3)+' cm³';
+ $('k-r').textContent=nf(Math.sqrt(Ix/A)/10,2)+' ; '+nf(Math.sqrt(Iy/A)/10,2)+' cm';
+ var pr='I<sub>xy</sub> = 0 (seção simétrica): x e y já são os eixos principais';
+ if(Math.abs(Ixy)>1e-6*Math.max(Ix,Iy)){var m=(Ix+Iy)/2,rr=Math.sqrt(Math.pow((Ix-Iy)/2,2)+Ixy*Ixy),th=0.5*Math.atan2(-2*Ixy,Ix-Iy)*180/Math.PI;
+   pr='I<sub>xy</sub> = '+nfs(Ixy/c4)+' cm⁴ · I<sub>1</sub> = '+nfs((m+rr)/c4)+' · I<sub>2</sub> = '+nfs((m-rr)/c4)+' cm⁴ · θ = '+nf(th,1)+'°';}
+ $('k-p').innerHTML=pr;
+ $('in-tab').innerHTML=P.map(function(p){var s=p.s<0?'−':'';return '<tr><td>'+p.n+'</td><td>'+s+nfs(p.A)+'</td><td>'+nfs(p.xc)+'</td><td>'+nfs(p.yc)+'</td><td>'+s+nfs(p.Ix)+'</td><td>'+nfs(p.dy)+'</td><td>'+s+nfs(p.A*p.dy*p.dy)+'</td><td>'+s+nfs(p.Iy)+'</td><td>'+s+nfs(p.A*p.dx*p.dx)+'</td></tr>';}).join('')
+  +'<tr style="font-weight:700"><td>Total</td><td>'+nfs(A)+'</td><td>x̄ = '+nfs(xb)+'</td><td>ȳ = '+nfs(yb)+'</td><td colspan="3">I<sub>x</sub> = '+nfs(Ix)+' mm⁴</td><td colspan="2">I<sub>y</sub> = '+nfs(Iy)+' mm⁴</td></tr>';
+ // desenho
+ var W=xmax-xmin,H=ymax-ymin,S=230/Math.max(W,H),ox=150-(W*S)/2,oy=150+(H*S)/2;
+ var X=function(x){return ox+(x-xmin)*S;},Y=function(y){return oy-(y-ymin)*S;},o='';
+ P.forEach(function(p){var f=p.s>0?'#9fb3c8':'#fff',st=p.s>0?'#4d6f96':'#4d6f96';
+  if(p.k==='r') o+='<rect x="'+X(p.x)+'" y="'+Y(p.y+p.h)+'" width="'+(p.b*S)+'" height="'+(p.h*S)+'" fill="'+f+'" stroke="'+st+'" stroke-width="1.5"/>';
+  else o+='<circle cx="'+X(p.cx)+'" cy="'+Y(p.cy)+'" r="'+(p.r*S)+'" fill="'+f+'" stroke="'+st+'" stroke-width="1.5"/>';});
+ o+='<line x1="8" y1="'+Y(yb)+'" x2="292" y2="'+Y(yb)+'" stroke="#f28c28" stroke-width="1.5" stroke-dasharray="6 4"/><text x="290" y="'+(Y(yb)-5)+'" text-anchor="end" font-size="12" fill="#b35f00" font-weight="700">x</text>';
+ o+='<line x1="'+X(xb)+'" y1="8" x2="'+X(xb)+'" y2="292" stroke="#f28c28" stroke-width="1.5" stroke-dasharray="6 4"/><text x="'+(X(xb)+5)+'" y="18" font-size="12" fill="#b35f00" font-weight="700">y</text>';
+ o+='<circle cx="'+X(xb)+'" cy="'+Y(yb)+'" r="5" fill="#f28c28" stroke="#fff" stroke-width="1.5"/><text x="'+(X(xb)+8)+'" y="'+(Y(yb)+16)+'" font-size="11" fill="#1c2430">CG</text>';
+ $('in-svg').innerHTML=o;
+}
+R.addEventListener('input',calc); R.addEventListener('change',calc); calc();
+})();
+</script>
+</div>
+
+<h2>Passo a passo: centroide e teorema dos eixos paralelos</h2>
+<p>Para seções compostas (T, I, L, U ou qualquer combinação de retângulos), o cálculo segue três passos:</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>1. Divida a seção em partes simples</b> (retângulos, círculos) e anote a área A<sub>i</sub> e a posição do centroide (x<sub>i</sub>, y<sub>i</sub>) de cada uma. Furos e vazios entram com área negativa.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>2. Ache o centroide da seção:</b> ȳ = Σ(A<sub>i</sub> · y<sub>i</sub>) / ΣA<sub>i</sub> e x̄ = Σ(A<sub>i</sub> · x<sub>i</sub>) / ΣA<sub>i</sub></p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>3. Transporte a inércia de cada parte para o eixo do centroide (Steiner):</b> I<sub>x</sub> = Σ (I<sub>x,próprio</sub> + A<sub>i</sub> · d<sub>i</sub>²), onde d<sub>i</sub> = y<sub>i</sub> − ȳ</p>
+<p>O termo A·d² é sempre positivo e costuma ser a maior parcela: é ele que mostra por que afastar material do centro aumenta tanto a inércia.</p>
+
+<h2>Exemplo resolvido: perfil T</h2>
+<p>Seção T com mesa de 150 × 20 mm e alma de 15 mm, altura total de 200 mm (o exemplo que vem preenchido na calculadora).</p>
+<p><b>Partes:</b> alma 15 × 180 mm → A = 2.700 mm², y = 90 mm; mesa 150 × 20 mm → A = 3.000 mm², y = 190 mm.<br>
+<b>Centroide:</b> ȳ = (2.700 × 90 + 3.000 × 190) / 5.700 = <b>142,6 mm</b> a partir da base.<br>
+<b>Alma:</b> I = 15 × 180³/12 = 7.290.000 mm⁴; d = 90 − 142,6 = −52,6 mm; A·d² ≈ 7.479.000 mm⁴.<br>
+<b>Mesa:</b> I = 150 × 20³/12 = 100.000 mm⁴; d = 47,4 mm; A·d² ≈ 6.732.000 mm⁴.<br>
+<b>I<sub>x</sub></b> ≈ 7.290.000 + 7.479.000 + 100.000 + 6.732.000 ≈ <b>21.600.000 mm⁴ = 2.160 cm⁴</b>.</p>
+
+<h2>Fórmulas das seções básicas</h2>
+<p>Momento de inércia em relação ao eixo que passa pelo centroide:</p>
+<table style="border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0 16px"><thead><tr><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:left;background:#f6f8fb">Seção</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:center;background:#f6f8fb">I<sub>x</sub> (eixo horizontal)</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:center;background:#f6f8fb">I<sub>y</sub> (eixo vertical)</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:center;background:#f6f8fb">Centroide</th></tr></thead><tbody><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Retângulo b × h</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">b·h³/12</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">h·b³/12</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">no centro</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Círculo de diâmetro D</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">π·D⁴/64</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">π·D⁴/64</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">no centro</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Tubo D (externo) e d (interno)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">π·(D⁴ − d⁴)/64</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">π·(D⁴ − d⁴)/64</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">no centro</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Triângulo de base b e altura h</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">b·h³/36</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">h·b³/48 (isósceles)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">a h/3 da base</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Semicírculo de raio r</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">0,1098·r⁴</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">π·r⁴/8</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">a 4r/(3π) da base</td></tr></tbody></table>
+
+<h2>Módulo resistente e raio de giração: para que servem</h2>
+<ul>
+<li><b>Módulo resistente W = I / c</b>, onde c é a distância do centroide à fibra mais afastada. Ele dá a tensão de flexão: <b>σ = M / W</b>. Com o momento fletor da <a href="/calculadoras/vigas-cortante-e-momento-fletor/">calculadora de vigas</a> e o W desta página, você verifica se o perfil aguenta.</li>
+<li><b>Raio de giração r = √(I / A)</b> entra na flambagem de pilares: o índice de esbeltez é λ = L<sub>fl</sub> / r. A flambagem acontece em torno do eixo de menor r.</li>
+</ul>
+
+<h2>Perguntas frequentes</h2>
+<h3>Por que a régua em pé é tão mais rígida?</h3>
+<p>Numa régua de 30 × 3 mm, a inércia deitada é 30 × 3³/12 = 67,5 mm⁴. Em pé, é 3 × 30³/12 = 6.750 mm⁴: <b>100 vezes maior</b>, com a mesma área. A altura entra ao cubo na fórmula.</p>
+<h3>Qual a diferença entre momento de inércia e módulo resistente?</h3>
+<p>A inércia (cm⁴) governa a <b>rigidez</b> (quanto a viga deforma, a flecha). O módulo resistente (cm³) governa a <b>resistência</b> (a tensão máxima). Uma viga pode passar na tensão e falhar na flecha.</p>
+<h3>O que é o produto de inércia e os eixos principais?</h3>
+<p>Em seções sem eixo de simetria, como a cantoneira L, o produto de inércia I<sub>xy</sub> não é zero, e os eixos de inércia máxima e mínima ficam inclinados. A calculadora mostra os momentos principais I<sub>1</sub> e I<sub>2</sub> e o ângulo θ. Na cantoneira, a flambagem acontece em torno do eixo de I<sub>2</sub>.</p>
+<h3>Por que o valor é diferente da tabela do fabricante?</h3>
+<p>Perfis laminados têm raios de concordância entre alma e mesa que a calculadora não considera. A diferença costuma ser pequena; para projeto, use a tabela do fabricante.</p>
+
+<p style="font-size:.85rem;color:#5a6575;border-top:1px solid #dde3ec;padding-top:12px;margin-top:28px">Ferramenta para estudo e pré-dimensionamento. Treine o assunto nas <a href="/simulados/questoes-de-resistencia-dos-materiais/">questões de Resistência dos Materiais</a> e calcule o peso do perfil na <a href="/calculadoras/peso-de-perfis/">calculadora de peso de perfis</a>.</p>
+</div></article><section class="rel"><h2 class="sec-t">Veja também</h2><div class="grid"><a class="card" href="/calculadoras/area-de-pintura/"><img src="/img/area-de-pintura.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Pintura industrial</small><b>Área de pintura e litros de tinta</b><p>Área em m² de perfis, tubos e chapas e litros de tinta por demão, com perdas.</p></div></a><a class="card" href="/calculadoras/queda-de-tensao/"><img src="/img/queda-de-tensao.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Elétrica</small><b>Queda de tensão e bitola de cabo</b><p>Queda de tensão em V e % e seção mínima do cabo pelos limites da NBR 5410.</p></div></a><a class="card" href="/calculadoras/peso-de-perfis/"><img src="/img/peso-de-perfis.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Estruturas metálicas</small><b>Peso de perfis, tubos e chapas</b><p>Lista de peças com 2.300+ bitolas, aço, inox e alumínio, perda de compra e custo.</p></div></a></div></section></div></main>
+<footer><div class="wrap">
+<p><b style="color:#fff">Ferramentas do Engenheiro</b> · calculadoras e simulados gratuitos para engenheiros, técnicos e estudantes.</p>
+<p><a href="/calculadoras/">Calculadoras</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="https://www.instagram.com/ferramentasdoengenheiro/" rel="noopener" target="_blank">Instagram</a></p>
+<p style="font-size:.8rem;opacity:.8">As ferramentas apoiam estudos, orçamentos e pré-dimensionamentos e não substituem o projeto e a responsabilidade técnica de um profissional habilitado.</p>
+</div></footer>
+</body>
+</html>

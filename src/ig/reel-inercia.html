@@ -1,0 +1,109 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}
+body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0f2742;font-family:Arial,Helvetica,sans-serif;color:#fff;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:54px 54px}
+.lay{position:absolute;inset:0}
+.bd{display:inline-block;background:#f28c28;color:#1c2430;font-weight:700;font-size:34px;padding:14px 34px;border-radius:40px}
+em{font-style:normal;color:#f9a24b}
+.h{font-size:92px;font-weight:800;line-height:1.08}
+.m{font-size:58px;font-weight:800;line-height:1.15}
+.s{font-size:44px;color:#c9d6e6;line-height:1.35}
+.foot{position:absolute;left:80px;right:80px;bottom:90px;display:flex;align-items:center;font-size:34px;color:#c9d6e6}
+.foot img{width:70px;height:70px;border-radius:14px;margin-right:20px}
+</style></head><body>
+<div class="grid"></div>
+<div class="lay" id="c1" style="padding:300px 80px 0">
+  <div class="bd">NA PRÁTICA</div>
+  <div class="h" style="margin-top:44px">Deitada <em>dobra</em>.<br>Em pé, <em>não</em>.<br>Por quê?</div>
+  <svg id="s1" width="920" height="700" viewBox="0 0 920 700" style="margin-top:40px"></svg>
+</div>
+<div class="lay" id="c2">
+  <div style="position:absolute;left:80px;right:80px;top:150px">
+    <div class="bd" id="tag">MOMENTO DE INÉRCIA</div>
+    <div class="m" id="tit" style="margin-top:30px"></div>
+  </div>
+  <svg id="sv" width="1080" height="1380" viewBox="0 0 1080 1380" style="position:absolute;left:0;top:400px"></svg>
+</div>
+<div class="lay" id="c5" style="padding:380px 80px 0">
+  <div class="bd">GUARDE ESTA</div>
+  <div class="h" style="margin-top:50px">A altura entra<br><em>ao cubo.</em></div>
+  <div style="font-size:150px;font-weight:800;color:#f9a24b;margin-top:30px">I = b·h³/12</div>
+  <div class="s" style="margin-top:20px">Material longe do centro = peça mais rígida</div>
+  <div id="cta" style="margin-top:90px;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.12);border-radius:30px;padding:44px;text-align:center">
+    <div style="font-size:54px;font-weight:800">Calcule qualquer perfil, grátis</div>
+    <div style="font-size:42px;color:#f9a24b;font-weight:700;margin-top:12px">🔗 link na bio</div>
+  </div>
+</div>
+<div class="foot"><img src="LOGO">@ferramentasdoengenheiro</div>
+<script>
+var T=TIMES;
+function cl(v,a,b){return Math.max(a,Math.min(b,v));}
+function ease(u){u=cl(u,0,1);return u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;}
+function fade(t,a,b){return cl((t-a)/0.4,0,1)*cl((b-t)/0.4,0,1);}
+var $=function(i){return document.getElementById(i)};
+function ruler(x,y,len,th,bend){ // régua deitada vista de lado, flexionada
+  var d='M'+x+' '+y; for(var i=0;i<=40;i++){var u=i/40;d+=' L'+(x+len*u)+' '+(y+bend*Math.sin(Math.PI*u));}
+  for(var i=40;i>=0;i--){var u=i/40;d+=' L'+(x+len*u)+' '+(y+th+bend*Math.sin(Math.PI*u));} return d+'Z';}
+window.render=function(t){
+  $('c1').style.opacity=fade(t,-1,T.c1end); $('c1').style.transform='translateY('+(1-cl(t/0.5,0,1))*40+'px)';
+  $('c2').style.opacity=fade(t,T.c1end-0.2,T.c5);
+  $('c5').style.opacity=fade(t,T.c5-0.2,99); $('c5').style.transform='translateY('+(1-cl((t-T.c5)/0.6,0,1))*40+'px)';
+  $('cta').style.opacity=cl((t-T.cta)/0.4,0,1);
+  // cena 1: régua deitada dobrando; régua em pé quase reta
+  var b1=90*ease((t-0.5)/1.2), b2=4*ease((t-3.0)/1.0);
+  var o='<text x="0" y="60" font-size="40" fill="#c9d6e6">deitada</text>';
+  o+='<path d="M40 210 l-20 34 h40z M840 210 l-20 34 h40z" fill="#fff"/>';
+  o+='<path d="'+ruler(20,190,840,14,b1)+'" fill="#f28c28"/>';
+  o+='<path d="M'+430+' '+(40+b1)+' l0 90 M410 '+(110+b1)+' l20 25 l20 -25" stroke="#fff" stroke-width="6" fill="none" opacity="'+cl((t-0.3)/0.3,0,1)+'"/>';
+  o+='<g opacity="'+cl((t-2.7)/0.4,0,1)+'"><text x="0" y="420" font-size="40" fill="#c9d6e6">em pé</text>';
+  o+='<path d="M40 600 l-20 34 h40z M840 600 l-20 34 h40z" fill="#fff"/>';
+  o+='<path d="'+ruler(20,480,840,120,b2)+'" fill="#f28c28"/>';
+  o+='<path d="M430 '+(350+b2)+' l0 100 M410 '+(425+b2)+' l20 25 l20 -25" stroke="#fff" stroke-width="6" fill="none"/></g>';
+  $('s1').innerHTML=o;
+  // cena 2+
+  var tit='';
+  if(t<T.inercia) tit='Mesmo material, <em>mesma área</em>';
+  else if(t<T.formula) tit='O que muda: <em>momento de inércia</em>';
+  else if(t<T.deitada) tit='I = b·h³/12: <em>h ao cubo</em>';
+  else if(t<T.cem) tit='Deitada × <em>em pé</em>';
+  else if(t<T.perfil) tit='<em>100 vezes</em> mais rígida';
+  else tit='Por isso as vigas são em <em>I</em>';
+  $('tit').innerHTML=tit;
+  var s='';
+  if(t<T.perfil){
+    // duas seções: 30x3 deitada e 3x30 em pé (escala 9 px/mm)
+    var k=9, ya=260;
+    s+='<rect x="'+(300-15*k)+'" y="'+(ya-1.5*k)+'" width="'+(30*k)+'" height="'+(3*k)+'" fill="#f28c28"/>';
+    s+='<rect x="'+(800-1.5*k)+'" y="'+(ya-15*k)+'" width="'+(3*k)+'" height="'+(30*k)+'" fill="#f28c28"/>';
+    s+='<line x1="120" y1="'+ya+'" x2="480" y2="'+ya+'" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/><line x1="680" y1="'+ya+'" x2="920" y2="'+ya+'" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>';
+    s+='<text x="300" y="'+(ya+90)+'" text-anchor="middle" font-size="38" fill="#c9d6e6">30 × 3 mm</text><text x="800" y="'+(ya+200)+'" text-anchor="middle" font-size="38" fill="#c9d6e6">3 × 30 mm</text>';
+    var aa=cl((t-T.c1end)/0.4,0,1)*(t<T.inercia+0.3?1:0.0);
+    s+='<g opacity="'+aa+'"><text x="300" y="'+(ya+150)+'" text-anchor="middle" font-size="44" font-weight="700" fill="#7fd6a0">A = 90 mm²</text><text x="800" y="'+(ya+260)+'" text-anchor="middle" font-size="44" font-weight="700" fill="#7fd6a0">A = 90 mm²</text></g>';
+    // fórmula com h destacado
+    var fu=cl((t-T.formula)/0.4,0,1);
+    if(fu>0){ var pul=1+0.08*Math.sin((t-T.formula)*7)*cl((T.deitada-t)/0.5,0,1);
+      s+='<g opacity="'+fu+'"><text x="540" y="620" text-anchor="middle" font-size="110" font-weight="800" fill="#fff">I = b·<tspan fill="#ffd166" font-size="'+(110*pul)+'">h³</tspan>/12</text></g>'; }
+    // barras comparativas
+    var du=ease((t-T.deitada)/0.8), eu=ease((t-T.empe)/1.6);
+    if(t>T.deitada-0.2){ var bx=140, bw=800, y1=780, y2=960;
+      s+='<text x="'+bx+'" y="'+(y1-16)+'" font-size="38" fill="#c9d6e6">deitada</text><rect x="'+bx+'" y="'+y1+'" width="'+Math.max(2,bw*0.01*du)+'" height="70" rx="10" fill="#5b9bff"/><text x="'+(bx+bw*0.01*du+20)+'" y="'+(y1+52)+'" font-size="46" font-weight="800" fill="#fff" opacity="'+du+'">67,5 mm⁴</text>';
+      if(t>T.empe-0.2){ s+='<text x="'+bx+'" y="'+(y2-16)+'" font-size="38" fill="#c9d6e6">em pé</text><rect x="'+bx+'" y="'+y2+'" width="'+(bw*eu)+'" height="70" rx="10" fill="#f28c28"/><text x="'+(bx+bw*eu-20)+'" y="'+(y2+52)+'" text-anchor="end" font-size="46" font-weight="800" fill="#1c2430" opacity="'+cl(eu*3-2,0,1)+'">6.750 mm⁴</text>'; }
+      var cu=cl((t-T.cem)/0.3,0,1); if(cu>0){ var sc=1+0.25*(1-ease((t-T.cem)/0.5)); s+='<text x="540" y="1200" text-anchor="middle" font-size="'+(170*sc)+'" font-weight="800" fill="#ffd166" opacity="'+cu+'">×100</text>'; }
+    }
+  } else {
+    // perfil I: material longe do centro
+    var pu=ease((t-T.perfil)/0.8), cx=540, cy=520, k=2.2;
+    var bf=200*k,h=300*k,tf=22*k,tw=12*k;
+    s+='<g opacity="'+pu+'">';
+    s+='<rect x="'+(cx-bf/2)+'" y="'+(cy-h/2)+'" width="'+bf+'" height="'+tf+'" fill="#f28c28"/><rect x="'+(cx-bf/2)+'" y="'+(cy+h/2-tf)+'" width="'+bf+'" height="'+tf+'" fill="#f28c28"/>';
+    s+='<rect x="'+(cx-tw/2)+'" y="'+(cy-h/2+tf)+'" width="'+tw+'" height="'+(h-2*tf)+'" fill="#9fb3c8"/>';
+    s+='<line x1="120" y1="'+cy+'" x2="960" y2="'+cy+'" stroke="#fff" stroke-width="3" stroke-dasharray="12 10"/><text x="960" y="'+(cy-14)+'" text-anchor="end" font-size="34" fill="#c9d6e6">centro</text>';
+    var au=ease((t-T.perfil-0.8)/0.8);
+    [[-1],[1]].forEach(function(sg){var y0=cy+sg[0]*60,y1=cy+sg[0]*(60+200*au);s+='<path d="M'+(cx+250)+' '+y0+' L'+(cx+250)+' '+y1+'" stroke="#ffd166" stroke-width="7"/><path d="M'+(cx+232)+' '+(y1-sg[0]*22)+' L'+(cx+250)+' '+y1+' L'+(cx+268)+' '+(y1-sg[0]*22)+'" fill="none" stroke="#ffd166" stroke-width="7"/>';});
+    s+='<text x="540" y="'+(cy+h/2+110)+'" text-anchor="middle" font-size="50" font-weight="800" fill="#ffd166" opacity="'+au+'">material longe do centro</text>';
+    s+='</g>';
+  }
+  $('sv').innerHTML=s;
+};
+render(0);
+</script></body></html>

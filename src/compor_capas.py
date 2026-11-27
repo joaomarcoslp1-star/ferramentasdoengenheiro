@@ -12,6 +12,7 @@ CAPAS = {
  "torque-parafusos": ("CALCULADORA GRÁTIS", ["Torque de aperto", "de <em>parafusos</em>"], "Classes 4.6 a 12.9 · pré-carga · tabela"),
  "nr13-vasos": ("CALCULADORA NR-13", ["Categoria de", "<em>vaso de pressão</em>"], "Classe do fluido · P·V · prazos de inspeção"),
  "vigas": ("CALCULADORA GRÁTIS", ["Vigas: cortante e", "<em>momento fletor</em>"], "Reações · diagramas · passo a passo"),
+ "inercia": ("CALCULADORA GRÁTIS", ["Momento de inércia", "e <em>centroide</em>"], "Perfis I, T, L, U · tubos · passo a passo"),
  "simulado-mecanica": ("SIMULADO GRÁTIS", ["70 questões de", "<em>Eng. Mecânica</em>"], "Estilo Cesgranrio · Petrobras e Transpetro"),
 }
 import json as _j
