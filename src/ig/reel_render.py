@@ -1,6 +1,6 @@
 import asyncio, subprocess, os
 from playwright.async_api import async_playwright
-DUR, FPS = 22.0, 30
+DUR, FPS = 32.4, 30
 async def main():
     ff = subprocess.Popen(["ffmpeg","-y","-loglevel","error","-f","image2pipe","-framerate",str(FPS),"-c:v","mjpeg","-i","-",
         "-c:v","libx264","-preset","veryfast","-crf","20","-pix_fmt","yuv420p","-movflags","+faststart","/home/claude/reel/tmp_reel.mp4"],stdin=subprocess.PIPE)

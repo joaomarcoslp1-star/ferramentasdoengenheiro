@@ -82,7 +82,7 @@ em{font-style:normal;color:#f9a24b}
     <div>Zincado (K 0,20) → <b>88 N·m</b></div>
     <div>Com MoS₂ (K 0,12) → <b style="color:#7fd6a0">52,8 N·m</b></div>
   </div>
-  <div style="margin-top:70px;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.12);border-radius:30px;padding:44px;text-align:center">
+  <div id="cta" style="margin-top:70px;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.12);border-radius:30px;padding:44px;text-align:center">
     <div style="font-size:54px;font-weight:800">Calcule o seu, grátis</div>
     <div style="font-size:42px;color:#f9a24b;font-weight:700;margin-top:12px">🔗 link na bio</div>
   </div>
@@ -104,26 +104,26 @@ function fade(t,a,b){return cl((t-a)/0.4,0,1)*cl((b-t)/0.4,0,1);}
 function nf(v,d){return v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
 var $=function(i){return document.getElementById(i)};
 window.render=function(t){
-  $('c1').style.opacity=fade(t,-1,3.6); $('c1').style.transform='translateY('+(1-cl(t/0.5,0,1))*40+'px)';
-  $('c2').style.opacity=fade(t,3.4,19.2);
-  $('c5').style.opacity=fade(t,19,99); $('c5').style.transform='translateY('+(1-cl((t-19)/0.6,0,1))*40+'px)';
-  // fases: A seco 3.6-8.6 ; B MoS2 com 132 9-14.4 ; C MoS2 correto 14.6-19
-  var tag,tit,T,F,msg='',col='#7fd6a0',red=0,stretch=0,crack=0,shake=0;
-  if(t<8.8){ var u=ease((t-4.2)/3.4); T=132*u; F=T/(0.30*0.012)/1000; tag='SECO · K = 0,30'; tit='Tabela a seco: <em>132 N·m</em>';
-     if(t>7.7){msg='✓ 36,7 kN: pré-carga certa';} }
-  else if(t<14.6){ var u=ease((t-9.6)/3.6); T=132*u; F=T/(0.12*0.012)/1000; tag='COM PASTA MoS₂ · K = 0,12'; tit='Mesmos 132 N·m, agora <em>lubrificado</em>';
+  $('c1').style.opacity=fade(t,-1,5.0); $('c1').style.transform='translateY('+(1-cl(t/0.5,0,1))*40+'px)';
+  $('c2').style.opacity=fade(t,4.8,26.8);
+  $('c5').style.opacity=fade(t,26.6,99); $('c5').style.transform='translateY('+(1-cl((t-26.6)/0.6,0,1))*40+'px)';
+  $('cta').style.opacity=cl((t-28.6)/0.4,0,1); $('cta').style.transform='scale('+(0.9+0.1*cl((t-28.6)/0.4,0,1))+')';
+  var tag,tit,T,F,msg='',col='#7fd6a0',red=0,stretch=0,crack=0,shake=0,w0,w1;
+  if(t<13.2){ w0=8.7;w1=11.9; var u=ease((t-w0)/(w1-w0)); T=132*u; F=T/(0.30*0.012)/1000; tag='SECO · K = 0,30'; tit='M12 classe 8.8, <em>seco</em>';
+     if(t>8.7)tit='Tabela a seco: <em>132 N·m</em>'; if(t>11.8){msg='✓ 36,7 kN: pré-carga certa';} }
+  else if(t<23.0){ w0=17.2;w1=20.8; var u=ease((t-w0)/(w1-w0)); T=132*u; F=T/(0.12*0.012)/1000; tag='COM PASTA MoS₂ · K = 0,12'; tit='Mesmos 132 N·m, agora <em>lubrificado</em>';
      if(F>36.7)col='#ffd166'; if(F>54){col='#ff5a4a';red=cl((F-54)/14,0,1);}
-     stretch=cl((F-54)/30,0,1); if(F>67.4){crack=1;shake=Math.sin(t*90)*6*cl((14.2-t),0,1);}
-     if(t>11.8)msg='<span style="color:#ff8a7a">✕ '+nf(Math.min(F,91.7),1)+' kN: escoa e rompe</span>'; }
-  else { var u=ease((t-15.2)/2.8); T=52.8*u; F=T/(0.12*0.012)/1000; tag='COM PASTA MoS₂ · K = 0,12'; tit='Torque certo: <em>52,8 N·m</em>';
-     if(t>17.9)msg='✓ Mesma pré-carga de 36,7 kN'; }
+     stretch=cl((F-54)/30,0,1); if(F>67.4){crack=1;shake=Math.sin(t*90)*6*cl((22.6-t)/1.5,0,1);}
+     if(t>21.1)msg='<span style="color:#ff8a7a">✕ '+nf(Math.min(F,91.7),1)+' kN: escoa e rompe</span>'; }
+  else { w0=23.8;w1=26.0; var u=ease((t-w0)/(w1-w0)); T=52.8*u; F=T/(0.12*0.012)/1000; tag='COM PASTA MoS₂ · K = 0,12'; tit='Torque certo: <em>52,8 N·m</em>';
+     if(t>25.9)msg='✓ Mesma pré-carga de 36,7 kN'; }
   $('tag').textContent=tag; $('tit').innerHTML=tit; $('tq').textContent=nf(T,T<100?1:0)+' N·m';
   $('fk').textContent=nf(F,1)+' kN'; $('fill').style.width=x(F)+'px'; $('fill').style.background=col; $('msg').innerHTML=msg;
   $('shank').setAttribute('fill', red?'rgb('+Math.round(159+96*red)+','+Math.round(179-90*red)+','+Math.round(200-120*red)+')':'#9fb3c8');
   $('bg').setAttribute('transform','translate('+shake+',0)');
   $('shank').setAttribute('height',290+stretch*26); $('nut').setAttribute('y',370+stretch*26);
   $('crack').setAttribute('opacity',crack); $('arr').setAttribute('opacity',cl(F/36.7,0,1));
-  var ang=((t>4.2&&t<7.6)||(t>9.6&&t<13.2)||(t>15.2&&t<18))?Math.sin(t*6)*28:0;
+  var ang=(t>w0&&t<w1)?Math.sin((t-w0)*6)*28:0;
   $('wr').setAttribute('transform','translate(0,'+stretch*26+') rotate('+ang+' 540 405)');
 };
 render(0);
