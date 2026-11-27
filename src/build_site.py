@@ -290,6 +290,11 @@ def build():
         else:
             rel = [x for x in PAGES if x is not p and x["kind"] != "mat"][:3]
         extra = ""
+        if p["kind"] in ("sim", "mat", "ex") and os.path.exists(f"{SRC}/produto/config.json"):
+            extra += ('<section class="rel"><a href="/cai-na-prova/" style="display:flex;gap:18px;align-items:center;background:#0f2742;color:#fff;border-radius:14px;padding:18px 22px;text-decoration:none">'
+                      '<img src="/img/cai-na-prova-600.jpg" alt="" width="96" height="96" style="border-radius:10px;flex:none">'
+                      '<div><b style="font-size:1.1rem;color:#fff">Quer mais 100 questões inéditas, resolvidas?</b><br><span style="color:#c9d6e6">Caderno Cai na Prova: Engenharia Mecânica no estilo Cesgranrio, com resolução e pegadinha de cada questão. Teste 5 questões grátis.</span>'
+                      '<br><span style="color:#f9a24b;font-weight:700">Ver o caderno →</span></div></a></section>')
         if p["kind"] == "sim":
             extra = '<section class="rel"><h2 class="sec-t">Estude por matéria</h2><p>' + " · ".join(f'<a href="/{x["slug"]}/">{x["short"].replace("Questões de ","")}</a>' for x in mats) + '</p></section>'
         body = (f'<div class="wrap"><nav class="crumb" aria-label="Você está em"><a href="/">Início</a> › <a href="{sec[0]}">{sec[1]}</a></nav>'
