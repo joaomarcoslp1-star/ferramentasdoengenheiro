@@ -1,0 +1,223 @@
+[
+ {
+  "id": "e1",
+  "serie": "EXERCÍCIO RESOLVIDO",
+  "publico": "faculdade",
+  "materia": "Resistência dos Materiais",
+  "slug": "reacoes-e-momento-maximo-viga-biapoiada",
+  "tool": "/calculadoras/vigas-cortante-e-momento-fletor/",
+  "titulo": "Reações e momento máximo numa viga biapoiada",
+  "fig": "viga",
+  "enunciado": "Uma viga biapoiada de 6 m recebe uma carga pontual de 12 kN a 2 m do apoio A. Calcule as reações nos apoios e o momento fletor máximo.",
+  "passos": [
+   "Soma dos momentos em A = 0: R<sub>B</sub> × 6 = 12 × 2 → <b>R<sub>B</sub> = 4 kN</b>",
+   "Soma das forças verticais = 0: R<sub>A</sub> = 12 − 4 → <b>R<sub>A</sub> = 8 kN</b>",
+   "O momento é máximo sob a carga, onde o cortante troca de sinal: M = R<sub>A</sub> × 2 = <b>16 kN·m</b>"
+  ],
+  "resposta": "R<sub>A</sub> = 8 kN, R<sub>B</sub> = 4 kN e M<sub>máx</sub> = 16 kN·m",
+  "dica": "O apoio mais perto da carga sempre leva a maior parte dela."
+ },
+ {
+  "id": "e2",
+  "serie": "EXERCÍCIO RESOLVIDO",
+  "publico": "faculdade",
+  "materia": "Resistência dos Materiais",
+  "slug": "centroide-e-momento-de-inercia-secao-t",
+  "tool": "/calculadoras/momento-de-inercia/",
+  "titulo": "Centroide e momento de inércia de uma seção T",
+  "fig": "secaoT",
+  "enunciado": "Uma seção T tem mesa de 120 × 20 mm e alma de 20 × 100 mm (altura total de 120 mm). Encontre a posição do centroide a partir da base e o momento de inércia I<sub>x</sub>.",
+  "passos": [
+   "Mesa: A = 2.400 mm², y = 110 mm. Alma: A = 2.000 mm², y = 50 mm",
+   "ȳ = (2.400 × 110 + 2.000 × 50) / 4.400 = <b>82,7 mm</b> a partir da base",
+   "Mesa: 120 × 20³/12 + 2.400 × 27,3² ≈ 1.865.000 mm⁴. Alma: 20 × 100³/12 + 2.000 × 32,7² ≈ 3.809.000 mm⁴",
+   "I<sub>x</sub> = 1.865.000 + 3.809.000 ≈ <b>5.674.000 mm⁴ = 567 cm⁴</b>"
+  ],
+  "resposta": "ȳ = 82,7 mm e I<sub>x</sub> ≈ 567 cm⁴",
+  "dica": "A parcela A·d² (Steiner) costuma ser maior que a inércia própria de cada parte."
+ },
+ {
+  "id": "e3",
+  "serie": "EXERCÍCIO RESOLVIDO",
+  "publico": "faculdade",
+  "materia": "Resistência dos Materiais",
+  "slug": "tensao-de-flexao-escolha-do-perfil",
+  "tool": "/calculadoras/tabela-de-perfis-e-tubos/",
+  "titulo": "Tensão de flexão: o perfil aguenta?",
+  "fig": "perfil",
+  "enunciado": "Uma viga tem momento fletor máximo de 16 kN·m. Verifique se um perfil W 150 × 13 (W<sub>x</sub> = 85,8 cm³) e um W 200 × 15 (W<sub>x</sub> = 130,5 cm³) atendem a uma tensão admissível de 150 MPa.",
+  "passos": [
+   "σ = M / W, com M em N·mm e W em mm³",
+   "W 150 × 13: σ = 16.000.000 / 85.800 = <b>186 MPa</b> → passa de 150 MPa, <b>não atende</b>",
+   "W 200 × 15: σ = 16.000.000 / 130.500 = <b>123 MPa</b> → abaixo de 150 MPa, <b>atende</b>"
+  ],
+  "resposta": "Só o W 200 × 15 atende (123 MPa)",
+  "dica": "Com 2 kg/m a mais, o perfil mais alto ganha 52% de módulo resistente."
+ },
+ {
+  "id": "e4",
+  "serie": "EXERCÍCIO RESOLVIDO",
+  "publico": "faculdade",
+  "materia": "Resistência dos Materiais",
+  "slug": "flambagem-de-euler-pilar-tubular",
+  "tool": "/calculadoras/tabela-de-perfis-e-tubos/",
+  "titulo": "Flambagem de Euler num pilar de tubo",
+  "fig": "pilar",
+  "enunciado": "Um pilar biarticulado de 4 m é feito com tubo de aço 4\" Sch 40 (I = 301 cm⁴, r = 3,83 cm, E = 200 GPa). Calcule a carga crítica de flambagem de Euler.",
+  "passos": [
+   "Esbeltez: λ = L / r = 400 / 3,83 ≈ <b>104</b>, acima de ~89 (aço com f<sub>y</sub> = 250 MPa): Euler vale",
+   "P<sub>cr</sub> = π² · E · I / L²",
+   "P<sub>cr</sub> = π² × 200.000 × 3.010.000 / 4.000² ≈ <b>371 kN</b>"
+  ],
+  "resposta": "P<sub>cr</sub> ≈ 371 kN",
+  "dica": "Dobrar o comprimento divide a carga crítica por 4."
+ },
+ {
+  "id": "e5",
+  "serie": "EXERCÍCIO RESOLVIDO",
+  "publico": "faculdade",
+  "materia": "Elementos de Máquinas",
+  "slug": "pre-carga-e-torque-de-aperto-parafuso-m16",
+  "tool": "/calculadoras/torque-de-aperto-de-parafusos/",
+  "titulo": "Pré-carga e torque de aperto de um M16",
+  "fig": "parafuso",
+  "enunciado": "Um parafuso M16 classe 8.8, zincado (K = 0,20), deve ser apertado com pré-carga de 75% da carga de prova. Dados: área resistente A<sub>t</sub> = 157 mm², tensão de prova S<sub>p</sub> = 580 MPa. Calcule a pré-carga e o torque.",
+  "passos": [
+   "Carga de prova: F<sub>p</sub> = 157 × 580 = 91.060 N",
+   "Pré-carga: F<sub>i</sub> = 0,75 × 91.060 ≈ <b>68,3 kN</b>",
+   "Torque: T = K × F<sub>i</sub> × d = 0,20 × 68.295 × 0,016 ≈ <b>219 N·m</b>"
+  ],
+  "resposta": "F<sub>i</sub> ≈ 68,3 kN e T ≈ 219 N·m",
+  "dica": "Use a área resistente, não a área do diâmetro nominal (201 mm²)."
+ },
+ {
+  "id": "c1",
+  "serie": "CAI NA PROVA",
+  "publico": "concurso",
+  "materia": "Segurança · NR-13",
+  "slug": "questao-nr-13-categoria-vaso-ar-comprimido",
+  "tool": "/calculadoras/categoria-vaso-de-pressao-nr-13/",
+  "titulo": "Categoria de um reservatório de ar comprimido (NR-13)",
+  "fig": "vaso",
+  "enunciado": "Um reservatório de ar comprimido opera com pressão máxima de 1,2 MPa e tem volume interno de 0,5 m³. Segundo a NR-13, sua categoria é:",
+  "alts": [
+   "I",
+   "II",
+   "III",
+   "IV",
+   "V"
+  ],
+  "certa": 4,
+  "passos": [
+   "Ar comprimido é fluido <b>classe C</b>",
+   "P·V = 1,2 MPa × 0,5 m³ = <b>0,6</b> → menor que 1 → <b>grupo 5</b>",
+   "Classe C no grupo 5 → <b>Categoria V</b>"
+  ],
+  "resposta": "(E) V",
+  "dica": "Pegadinha: se o mesmo vaso guardasse GLP (classe A), a categoria seria III."
+ },
+ {
+  "id": "c2",
+  "serie": "CAI NA PROVA",
+  "publico": "concurso",
+  "materia": "Elementos de Máquinas",
+  "slug": "questao-torque-e-pre-carga-lubrificacao",
+  "tool": "/calculadoras/torque-de-aperto-de-parafusos/",
+  "titulo": "Mesmo torque, rosca lubrificada: o que acontece com a pré-carga?",
+  "fig": "parafuso",
+  "enunciado": "Uma junta é sempre apertada com o mesmo torque. Se a rosca deixar de ser apenas zincada (K = 0,20) e passar a receber pasta de MoS₂ (K = 0,12), a pré-carga no parafuso:",
+  "alts": [
+   "diminui cerca de 40%",
+   "não se altera",
+   "aumenta cerca de 40%",
+   "aumenta cerca de 67%",
+   "dobra"
+  ],
+  "certa": 3,
+  "passos": [
+   "T = K · F<sub>i</sub> · d → com T e d fixos, F<sub>i</sub> = T / (K · d)",
+   "F<sub>i</sub> é inversamente proporcional a K: 0,20 / 0,12 = <b>1,67</b>",
+   "A pré-carga <b>aumenta cerca de 67%</b> e pode escoar o parafuso"
+  ],
+  "resposta": "(D) aumenta cerca de 67%",
+  "dica": "Pegadinha: quem calcula (0,20 − 0,12)/0,20 marca 40%."
+ },
+ {
+  "id": "c3",
+  "serie": "CAI NA PROVA",
+  "publico": "concurso",
+  "materia": "Resistência dos Materiais",
+  "slug": "questao-momento-de-inercia-viga-deitada-em-pe",
+  "tool": "/calculadoras/momento-de-inercia/",
+  "titulo": "Viga deitada ou em pé: quantas vezes mais rígida?",
+  "fig": "retangulos",
+  "enunciado": "Uma viga de seção retangular b × 2b é usada com a maior dimensão na horizontal. Girando-a para ficar com a maior dimensão na vertical, mantidos material e vão, a rigidez à flexão fica multiplicada por:",
+  "alts": [
+   "2",
+   "4",
+   "6",
+   "8",
+   "16"
+  ],
+  "certa": 1,
+  "passos": [
+   "Deitada (altura b): I = 2b · b³ / 12 = 2b⁴/12",
+   "Em pé (altura 2b): I = b · (2b)³ / 12 = 8b⁴/12",
+   "Razão: 8 / 2 = <b>4</b>"
+  ],
+  "resposta": "(B) 4",
+  "dica": "Pegadinha: elevar só a altura ao cubo e marcar 8, esquecendo que a largura também muda."
+ },
+ {
+  "id": "c4",
+  "serie": "CAI NA PROVA",
+  "publico": "concurso",
+  "materia": "Mecânica dos Fluidos",
+  "slug": "questao-perda-de-carga-dobrar-vazao-hazen-williams",
+  "tool": "/calculadoras/perda-de-carga/",
+  "titulo": "Perda de carga: o que acontece se a vazão dobrar?",
+  "fig": "tubo",
+  "enunciado": "Numa tubulação de água descrita pela fórmula de Hazen-Williams, a vazão é dobrada, mantidos diâmetro, comprimento e material. A perda de carga distribuída fica aproximadamente:",
+  "alts": [
+   "igual",
+   "1,85 vez maior",
+   "2 vezes maior",
+   "3,6 vezes maior",
+   "4 vezes maior"
+  ],
+  "certa": 3,
+  "passos": [
+   "Hazen-Williams: h<sub>f</sub> ∝ Q<sup>1,852</sup>",
+   "Dobrando Q: 2<sup>1,852</sup> ≈ <b>3,6</b>",
+   "A perda de carga fica cerca de <b>3,6 vezes maior</b>"
+  ],
+  "resposta": "(D) 3,6 vezes maior",
+  "dica": "Pegadinha: 4 vezes seria Darcy-Weisbach com fator de atrito constante (h<sub>f</sub> ∝ Q²)."
+ },
+ {
+  "id": "c5",
+  "serie": "CAI NA PROVA",
+  "publico": "concurso",
+  "materia": "Eletricidade",
+  "slug": "questao-queda-de-tensao-troca-de-cabo",
+  "tool": "/calculadoras/queda-de-tensao/",
+  "titulo": "Queda de tensão: trocando o cabo de 2,5 por 4 mm²",
+  "fig": "cabo",
+  "enunciado": "Um circuito terminal com cabo de cobre de 2,5 mm² apresenta queda de tensão de 5%, acima do limite de 4% da NBR 5410. Trocando o cabo por um de 4 mm², mantidos comprimento e corrente, a queda passa a ser de aproximadamente:",
+  "alts": [
+   "2,5%",
+   "3,1%",
+   "4,0%",
+   "5,0%",
+   "8,0%"
+  ],
+  "certa": 1,
+  "passos": [
+   "ΔV = 2 · ρ · L · I / S → ΔV é inversamente proporcional à seção S",
+   "Nova queda: 5% × 2,5 / 4 = <b>3,1%</b>",
+   "3,1% &lt; 4%: o circuito <b>passa a atender</b> a norma"
+  ],
+  "resposta": "(B) 3,1%",
+  "dica": "Pegadinha: achar que a queda cai proporcionalmente ao diâmetro, e não à seção."
+ }
+]

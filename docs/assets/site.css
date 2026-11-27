@@ -41,7 +41,7 @@ a.card p{margin:0;font-size:.88rem;color:var(--su);line-height:1.45}
 .note{background:var(--bg);border-left:4px solid var(--la);border-radius:8px;padding:12px 16px;font-size:.92rem}
 .rel{margin:40px 0 10px}
 footer{background:var(--az);color:#c9d6e6;margin-top:50px;padding:28px 0;font-size:.88rem}
-footer a{color:#fff;text-decoration:none;margin-right:14px}
+footer a{color:#fff;text-decoration:none;margin-right:14px;display:inline-block}
 footer p{margin:8px 0}
 body #fde-q .bar-top{top:68px}
 @media(max-width:640px){.top{position:static}body #fde-q .bar-top{top:0}.top .wrap{flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.nav{margin-left:0;width:100%}.nav a{padding:6px 8px;font-size:.86rem}}

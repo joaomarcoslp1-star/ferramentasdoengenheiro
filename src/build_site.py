@@ -132,14 +132,24 @@ a.card p{margin:0;font-size:.88rem;color:var(--su);line-height:1.45}
 .note{background:var(--bg);border-left:4px solid var(--la);border-radius:8px;padding:12px 16px;font-size:.92rem}
 .rel{margin:40px 0 10px}
 footer{background:var(--az);color:#c9d6e6;margin-top:50px;padding:28px 0;font-size:.88rem}
-footer a{color:#fff;text-decoration:none;margin-right:14px}
+footer a{color:#fff;text-decoration:none;margin-right:14px;display:inline-block}
 footer p{margin:8px 0}
 body #fde-q .bar-top{top:68px}
 @media(max-width:640px){.top{position:static}body #fde-q .bar-top{top:0}.top .wrap{flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.nav{margin-left:0;width:100%}.nav a{padding:6px 8px;font-size:.86rem}}
 """
 
+import json as _json
+for _e in _json.load(open(ROOT + "/site_src/exer/exercicios.json", encoding="utf-8")):
+    _c = _e["publico"] == "concurso"
+    PAGES.append(dict(slug=f"exercicios/{_e['slug']}", kind="ex", pub=_e["publico"], src=f"site_src/posts/ex-{_e['id']}.html", img=f"ex-{_e['id']}.jpg",
+        title=(("Questão de concurso: " if _c else "Exercício resolvido: ") + _e["titulo"]), short=_e["titulo"],
+        desc=(f"{_e['titulo']}. Questão de {_e['materia']} no estilo das bancas, com alternativas, resolução comentada e vídeo." if _c else
+              f"{_e['titulo']}. Exercício de {_e['materia']} resolvido passo a passo, com figura, vídeo e calculadora para conferir."),
+        card=("Questão estilo banca com resolução comentada e a pegadinha." if _c else "Resolvido passo a passo, com vídeo de 40 segundos."),
+        tag=("Concursos · " if _c else "Faculdade · ") + _e["materia"], date="2026-11-27"))
+
 def nav(active):
-    items = [("/", "Início"), ("/calculadoras/", "Calculadoras"), ("/simulados/", "Simulados"), ("/sobre/", "Sobre"), ("/contato/", "Contato")]
+    items = [("/", "Início"), ("/calculadoras/", "Calculadoras"), ("/exercicios/", "Exercícios"), ("/simulados/", "Simulados"), ("/sobre/", "Sobre"), ("/contato/", "Contato")]
     return "".join(f'<a href="{u}"{" class=on" if active == u else ""}>{t}</a>' for u, t in items)
 
 def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_title=None, noindex=False):
@@ -177,7 +187,7 @@ def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_ti
 <main>{body}</main>
 <footer><div class="wrap">
 <p><b style="color:#fff">{SITE}</b> · calculadoras e simulados gratuitos para engenheiros, técnicos e estudantes.</p>
-<p><a href="/calculadoras/">Calculadoras</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="{IG}" rel="noopener" target="_blank">Instagram</a></p>
+<p><a href="/calculadoras/">Calculadoras</a><a href="/exercicios/">Exercícios</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="{IG}" rel="noopener" target="_blank">Instagram</a></p>
 <p style="font-size:.8rem;opacity:.8">As ferramentas apoiam estudos, orçamentos e pré-dimensionamentos e não substituem o projeto e a responsabilidade técnica de um profissional habilitado.</p>
 </div></footer>
 </body>
@@ -215,11 +225,12 @@ def build():
     calcs = [p for p in PAGES if p["kind"] == "calc"]
     sims = [p for p in PAGES if p["kind"] == "sim"]
     mats_all = [p for p in PAGES if p["kind"] == "mat"]
+    exs = [p for p in PAGES if p["kind"] == "ex"]
 
     # Páginas de conteúdo
     for p in PAGES:
         path = f'/{p["slug"]}/'
-        sec = ("/calculadoras/", "Calculadoras") if p["kind"] == "calc" else ("/simulados/", "Simulados")
+        sec = ("/calculadoras/", "Calculadoras") if p["kind"] == "calc" else ("/exercicios/", "Exercícios") if p["kind"] == "ex" else ("/simulados/", "Simulados")
         mats = [x for x in PAGES if x["kind"] == "mat"]
         body_post = clean_post(open(f'{ROOT}/{p["src"]}', encoding="utf-8").read())
         for anchor, fig, where in FIGS.get(p["slug"], []):
@@ -232,6 +243,9 @@ def build():
             i = mats.index(p); rel = [x for x in PAGES if x["kind"] == "sim"] + [mats[(i+1) % len(mats)], mats[(i+2) % len(mats)]]
         elif p["kind"] == "sim":
             rel = mats[:3]
+        elif p["kind"] == "ex":
+            tool = next((x for x in PAGES if x["kind"] == "calc" and f'/{x["slug"]}/' in body_post), None)
+            rel = ([tool] if tool else []) + [x for x in PAGES if x["kind"] == "ex" and x is not p and x["pub"] == p["pub"]][:2]
         else:
             rel = [x for x in PAGES if x is not p and x["kind"] != "mat"][:3]
         extra = ""
@@ -277,6 +291,14 @@ def build():
         write(path, layout(path=path, title=h, desc=intro, body=body, active=path))
         urls.append((path, TODAY))
 
+    intro = "Exercícios resolvidos passo a passo para quem está na faculdade e questões no estilo das bancas para quem estuda para concursos. Cada um tem figura, vídeo curto com a resolução narrada e a calculadora para conferir o resultado."
+    body = (f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>Exercícios resolvidos de engenharia</h1><p>{intro}</p>'
+            f'<h2 class="sec-t">Para a faculdade</h2><div class="grid">{"".join(card(x) for x in exs if x["pub"] != "concurso")}</div>'
+            f'<h2 class="sec-t">Cai na prova: concursos</h2><div class="grid">{"".join(card(x) for x in exs if x["pub"] == "concurso")}</div>'
+            f'<p class="note">Novos exercícios toda semana. Siga o <a href="{IG}" target="_blank" rel="noopener">@ferramentasdoengenheiro</a> para receber os vídeos.</p></div>')
+    write("/exercicios/", layout(path="/exercicios/", title="Exercícios resolvidos de engenharia", desc=intro, body=body, active="/exercicios/"))
+    urls.append(("/exercicios/", TODAY))
+
     # Home
     body = f"""<section class="hero"><div class="wrap"><span class="pill">GRÁTIS · SEM CADASTRO</span>
 <h1>Calculadoras e simulados para <span>engenheiros</span></h1>
@@ -284,6 +306,8 @@ def build():
 <a class="btn" href="/calculadoras/">Ver calculadoras</a><a class="btn sec" href="/simulados/engenharia-mecanica-petrobras/">Fazer o simulado</a></div></section>
 <div class="wrap"><h2 class="sec-t">Simulados</h2><div class="grid">{"".join(card(x) for x in sims)}</div>
 <p style="margin-top:14px"><b>Por matéria:</b> {" · ".join(f'<a href="/{x["slug"]}/">{x["short"].replace("Questões de ","")}</a>' for x in mats_all)}</p>
+<h2 class="sec-t">Exercícios resolvidos</h2><div class="grid">{"".join(card(x) for x in [exs[0], exs[5], exs[2]])}</div>
+<p style="margin-top:14px"><a href="/exercicios/"><b>Ver todos os exercícios →</b></a></p>
 <h2 class="sec-t">Calculadoras</h2><div class="grid">{"".join(card(x) for x in calcs)}</div>
 <h2 class="sec-t">Por que usar</h2>
 <p class="note"><b>Fórmula aberta e norma citada.</b> Toda ferramenta mostra o método, as unidades e um exemplo resolvido, para você conferir o resultado. Os valores digitados ficam só no seu navegador.</p></div>"""
