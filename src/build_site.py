@@ -296,7 +296,7 @@ def build():
                       '<div><b style="font-size:1.1rem;color:#fff">Quer mais 100 questões inéditas, resolvidas?</b><br><span style="color:#c9d6e6">Caderno Cai na Prova: Engenharia Mecânica no estilo Cesgranrio, com resolução e pegadinha de cada questão. Teste 5 questões grátis.</span>'
                       '<br><span style="color:#f9a24b;font-weight:700">Ver o caderno →</span></div></a></section>')
         if p["kind"] == "sim":
-            extra = '<section class="rel"><h2 class="sec-t">Estude por matéria</h2><p>' + " · ".join(f'<a href="/{x["slug"]}/">{x["short"].replace("Questões de ","")}</a>' for x in mats) + '</p></section>'
+            extra += '<section class="rel"><h2 class="sec-t">Estude por matéria</h2><p>' + " · ".join(f'<a href="/{x["slug"]}/">{x["short"].replace("Questões de ","")}</a>' for x in mats) + '</p></section>'
         body = (f'<div class="wrap"><nav class="crumb" aria-label="Você está em"><a href="/">Início</a> › <a href="{sec[0]}">{sec[1]}</a></nav>'
                 f'<article><h1>{p["title"]}</h1><div class="meta">Publicado em {fmt_date(p["date"])} · {p["tag"]}</div>'
                 f'<img class="cover" src="/img/{p["img"]}" alt="{html.escape(p["title"])}" width="1200" height="630" fetchpriority="high">'
