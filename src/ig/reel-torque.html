@@ -1,0 +1,130 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}
+body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0f2742;font-family:Arial,Helvetica,sans-serif;color:#fff;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:54px 54px}
+.lay{position:absolute;inset:0}
+.bd{display:inline-block;background:#f28c28;color:#1c2430;font-weight:700;font-size:34px;padding:14px 34px;border-radius:40px}
+em{font-style:normal;color:#f9a24b}
+.h{font-size:92px;font-weight:800;line-height:1.08}
+.m{font-size:56px;font-weight:800;line-height:1.15}
+.s{font-size:40px;color:#c9d6e6;line-height:1.35}
+.foot{position:absolute;left:80px;right:80px;bottom:110px;display:flex;align-items:center;font-size:34px;color:#c9d6e6}
+.foot img{width:70px;height:70px;border-radius:14px;margin-right:20px}
+#bar{position:absolute;left:100px;right:100px;top:1360px;height:70px;border-radius:35px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.15);overflow:visible}
+#fill{position:absolute;left:0;top:0;bottom:0;border-radius:35px;background:#7fd6a0}
+.mk{position:absolute;top:-22px;bottom:-22px;width:6px;border-radius:3px}
+.mkl{position:absolute;top:100px;font-size:30px;white-space:nowrap;transform:translateX(-50%);text-align:center;line-height:1.25}
+#kpi{position:absolute;left:0;right:0;top:1060px;text-align:center}
+#kpi .v{font-size:150px;font-weight:800;font-variant-numeric:tabular-nums}
+#kpi .l{font-size:38px;color:#c9d6e6}
+</style></head><body>
+<div class="grid"></div>
+
+<!-- cena 1: gancho -->
+<div class="lay" id="c1" style="padding:520px 80px 0">
+  <div class="bd">VOCÊ FAZ ISSO?</div>
+  <div class="h" style="margin-top:50px">Apertar parafuso<br><em>lubrificado</em><br>com a tabela<br>“a seco”?</div>
+  <div class="s" style="margin-top:60px;font-size:46px">Veja o que acontece com um M12 classe 8.8 👇</div>
+</div>
+
+<!-- cena 2-4: parafuso -->
+<div class="lay" id="c2">
+  <div style="position:absolute;left:80px;right:80px;top:150px">
+    <div class="bd" id="tag">SECO · K = 0,30</div>
+    <div class="m" id="tit" style="margin-top:34px">Torque da tabela a seco</div>
+  </div>
+  <svg id="bolt" width="1080" height="640" viewBox="190 20 700 500" style="position:absolute;left:0;top:410px">
+    <!-- chapas -->
+    <rect x="250" y="210" width="580" height="70" rx="6" fill="#2b4a6f" stroke="#4d6f96" stroke-width="3"/>
+    <rect x="250" y="290" width="580" height="70" rx="6" fill="#2b4a6f" stroke="#4d6f96" stroke-width="3"/>
+    <g id="bg">
+      <!-- corpo -->
+      <rect id="shank" x="505" y="150" width="70" height="290" fill="#9fb3c8"/>
+      <g id="thr"></g>
+      <!-- cabeça -->
+      <rect x="440" y="100" width="200" height="60" rx="8" fill="#c7d3e0"/>
+      <!-- porca -->
+      <rect id="nut" x="450" y="370" width="180" height="62" rx="8" fill="#c7d3e0"/>
+    </g>
+    <!-- chave -->
+    <g id="wr"><rect x="540" y="388" width="300" height="34" rx="17" fill="#f28c28" transform="translate(-0,-0)"/></g>
+    <!-- setas de força -->
+    <g id="arr" opacity="0">
+      <path d="M380 120 L380 40 M362 62 L380 40 L398 62" stroke="#f9a24b" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M700 120 L700 40 M682 62 L700 40 L718 62" stroke="#f9a24b" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M380 410 L380 490 M362 468 L380 490 L398 468" stroke="#f9a24b" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M700 410 L700 490 M682 468 L700 490 L718 468" stroke="#f9a24b" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+    <g id="crack" opacity="0">
+      <path d="M495 300 L530 290 L520 305 L560 296 L548 312 L590 300" stroke="#ff5a4a" stroke-width="10" fill="none" stroke-linejoin="round"/>
+    </g>
+  </svg>
+  <div id="kpi"><div class="v" id="tq">0 N·m</div><div class="l">torque no torquímetro</div></div>
+  <div id="bar">
+    <div id="fill"></div>
+    <div class="mk" id="mkT" style="background:#7fd6a0"></div>
+    <div class="mk" id="mkP" style="background:#ffd166"></div>
+    <div class="mk" id="mkR" style="background:#ff5a4a"></div>
+    <div class="mkl" id="lT" style="color:#7fd6a0">alvo<br>36,7 kN</div>
+    <div class="mkl" id="lP" style="color:#ffd166">escoa<br>~54 kN</div>
+    <div class="mkl" id="lR" style="color:#ff8a7a">rompe<br>67 kN</div>
+  </div>
+  <div style="position:absolute;left:100px;top:1290px;font-size:34px;color:#c9d6e6">Força no parafuso (pré-carga): <b id="fk" style="color:#fff">0,0 kN</b></div>
+  <div id="msg" class="m" style="position:absolute;left:80px;right:80px;top:1590px;text-align:center"></div>
+</div>
+
+<!-- cena 5: CTA -->
+<div class="lay" id="c5" style="padding:380px 80px 0">
+  <div class="bd">REGRA DE OURO</div>
+  <div class="h" style="margin-top:50px">Mudou a<br>lubrificação,<br><em>mudou o torque.</em></div>
+  <div style="margin-top:60px;font-size:46px;line-height:1.7">
+    <div>Seco (K 0,30) → <b>132 N·m</b></div>
+    <div>Zincado (K 0,20) → <b>88 N·m</b></div>
+    <div>Com MoS₂ (K 0,12) → <b style="color:#7fd6a0">52,8 N·m</b></div>
+  </div>
+  <div style="margin-top:70px;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.12);border-radius:30px;padding:44px;text-align:center">
+    <div style="font-size:54px;font-weight:800">Calcule o seu, grátis</div>
+    <div style="font-size:42px;color:#f9a24b;font-weight:700;margin-top:12px">🔗 link na bio</div>
+  </div>
+</div>
+
+<div class="foot"><img src="LOGO">@ferramentasdoengenheiro</div>
+
+<script>
+var W=880, MAX=80; // kN em escala total
+function x(kN){return Math.min(kN,MAX)/MAX*W;}
+var bar=document.getElementById('bar');
+[['mkT','lT',36.7],['mkP','lP',54],['mkR','lR',67.4]].forEach(function(a){document.getElementById(a[0]).style.left=(x(a[2])-3)+'px';document.getElementById(a[1]).style.left=x(a[2])+'px';});
+// roscas
+var th='';for(var i=0;i<11;i++){var y=300+i*14;th+='<line x1="505" y1="'+y+'" x2="575" y2="'+(y+8)+'" stroke="#6f859d" stroke-width="3"/>';}
+document.getElementById('thr').innerHTML=th;
+function cl(v,a,b){return Math.max(a,Math.min(b,v));}
+function ease(u){u=cl(u,0,1);return u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;}
+function fade(t,a,b){return cl((t-a)/0.4,0,1)*cl((b-t)/0.4,0,1);}
+function nf(v,d){return v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+var $=function(i){return document.getElementById(i)};
+window.render=function(t){
+  $('c1').style.opacity=fade(t,-1,3.6); $('c1').style.transform='translateY('+(1-cl(t/0.5,0,1))*40+'px)';
+  $('c2').style.opacity=fade(t,3.4,19.2);
+  $('c5').style.opacity=fade(t,19,99); $('c5').style.transform='translateY('+(1-cl((t-19)/0.6,0,1))*40+'px)';
+  // fases: A seco 3.6-8.6 ; B MoS2 com 132 9-14.4 ; C MoS2 correto 14.6-19
+  var tag,tit,T,F,msg='',col='#7fd6a0',red=0,stretch=0,crack=0,shake=0;
+  if(t<8.8){ var u=ease((t-4.2)/3.4); T=132*u; F=T/(0.30*0.012)/1000; tag='SECO · K = 0,30'; tit='Tabela a seco: <em>132 N·m</em>';
+     if(t>7.7){msg='✓ 36,7 kN: pré-carga certa';} }
+  else if(t<14.6){ var u=ease((t-9.6)/3.6); T=132*u; F=T/(0.12*0.012)/1000; tag='COM PASTA MoS₂ · K = 0,12'; tit='Mesmos 132 N·m, agora <em>lubrificado</em>';
+     if(F>36.7)col='#ffd166'; if(F>54){col='#ff5a4a';red=cl((F-54)/14,0,1);}
+     stretch=cl((F-54)/30,0,1); if(F>67.4){crack=1;shake=Math.sin(t*90)*6*cl((14.2-t),0,1);}
+     if(t>11.8)msg='<span style="color:#ff8a7a">✕ '+nf(Math.min(F,91.7),1)+' kN: escoa e rompe</span>'; }
+  else { var u=ease((t-15.2)/2.8); T=52.8*u; F=T/(0.12*0.012)/1000; tag='COM PASTA MoS₂ · K = 0,12'; tit='Torque certo: <em>52,8 N·m</em>';
+     if(t>17.9)msg='✓ Mesma pré-carga de 36,7 kN'; }
+  $('tag').textContent=tag; $('tit').innerHTML=tit; $('tq').textContent=nf(T,T<100?1:0)+' N·m';
+  $('fk').textContent=nf(F,1)+' kN'; $('fill').style.width=x(F)+'px'; $('fill').style.background=col; $('msg').innerHTML=msg;
+  $('shank').setAttribute('fill', red?'rgb('+Math.round(159+96*red)+','+Math.round(179-90*red)+','+Math.round(200-120*red)+')':'#9fb3c8');
+  $('bg').setAttribute('transform','translate('+shake+',0)');
+  $('shank').setAttribute('height',290+stretch*26); $('nut').setAttribute('y',370+stretch*26);
+  $('crack').setAttribute('opacity',crack); $('arr').setAttribute('opacity',cl(F/36.7,0,1));
+  var ang=((t>4.2&&t<7.6)||(t>9.6&&t<13.2)||(t>15.2&&t<18))?Math.sin(t*6)*28:0;
+  $('wr').setAttribute('transform','translate(0,'+stretch*26+') rotate('+ang+' 540 405)');
+};
+render(0);
+</script></body></html>
