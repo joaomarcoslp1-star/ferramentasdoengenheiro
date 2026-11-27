@@ -1,0 +1,232 @@
+<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto">
+<p>Toda viga que recebe carga trabalha com dois esforços internos: o <b>esforço cortante</b> (V), que tenta "cortar" a viga na vertical, e o <b>momento fletor</b> (M), que tenta dobrá-la. Saber onde cada um é máximo é o primeiro passo para dimensionar um perfil, uma prateleira, uma ponte rolante ou uma laje, e é a matéria que mais reprova em Resistência dos Materiais.</p>
+<p>Monte a sua viga abaixo: escolha os apoios, adicione cargas pontuais, distribuídas (uniformes, triangulares ou trapezoidais) e momentos. A calculadora mostra as reações, desenha os diagramas de cortante e de momento fletor e explica a resolução passo a passo.</p>
+<h2>Calculadora de vigas: reações, cortante e momento fletor</h2>
+<div id="eng-viga">
+<style>
+#eng-viga{--lar:#f28c28;--az:#1f6feb;--borda:#dde3ec;--suave:#5a6575;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1c2430;line-height:1.5;max-width:860px;margin:0 auto}
+#eng-viga *{box-sizing:border-box}
+#eng-viga .card{background:#f6f8fb;border:1px solid var(--borda);border-radius:12px;padding:18px;margin:0 0 16px}
+#eng-viga h3{margin:0 0 2px;font-size:1.15rem}
+#eng-viga .sub{margin:0 0 14px;color:var(--suave);font-size:.9rem}
+#eng-viga label{display:block;font-size:.78rem;font-weight:600;color:#3a4452}
+#eng-viga input,#eng-viga select{width:100%;padding:7px 8px;border:1px solid #c4ccd8;border-radius:8px;font-size:.95rem;background:#fff;color:#1c2430;margin-top:3px;font-family:inherit}
+#eng-viga .g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+#eng-viga .hide{display:none!important}
+#eng-viga .ld{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr 34px;gap:6px;align-items:end;margin-bottom:6px;background:#fff;border:1px solid var(--borda);border-radius:8px;padding:8px}
+#eng-viga .ld .x{border:0;background:#fdf0ee;color:#c0392b;border-radius:6px;height:34px;cursor:pointer;font-size:1.1rem}
+#eng-viga .btns button{border:1px solid #c4ccd8;background:#fff;border-radius:8px;padding:7px 12px;margin:4px 6px 0 0;cursor:pointer;font-family:inherit;font-size:.88rem}
+#eng-viga .btns button:hover{border-color:var(--lar)}
+#eng-viga .res{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--lar);border-radius:10px;padding:16px;margin-bottom:16px}
+#eng-viga .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+#eng-viga .kpi{background:#f6f8fb;border-radius:8px;padding:10px}
+#eng-viga .kpi span{display:block;font-size:.75rem;color:var(--suave);font-weight:600}
+#eng-viga .kpi b{font-size:1.15rem}
+#eng-viga .kpi.main{background:#fff4e8}#eng-viga .kpi.main b{color:#b35f00}
+#eng-viga svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--borda);border-radius:8px;margin-bottom:10px}
+#eng-viga .passo{font-size:.9rem;background:#f6f8fb;border-radius:8px;padding:10px 14px;margin:0 0 8px}
+#eng-viga .nota{font-size:.8rem;color:var(--suave);margin:8px 0 0}
+#eng-viga .err{color:#c0392b;font-weight:600}
+@media(max-width:640px){#eng-viga .g{grid-template-columns:1fr 1fr}#eng-viga .kpis{grid-template-columns:1fr 1fr}#eng-viga .ld{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+<div class="card">
+  <h3>Viga</h3>
+  <p class="sub">Forças em kN, distâncias em m (a partir da extremidade esquerda), momentos em kN·m. Cargas para baixo são positivas.</p>
+  <div class="g">
+    <div><label>Comprimento da viga L (m)<input id="vg-L" type="number" step="any" min="0.1" value="6"></label></div>
+    <div><label>Tipo de apoio<select id="vg-t"><option value="bi">Biapoiada (pino + rolete)</option><option value="engE">Engastada à esquerda (balanço)</option><option value="engD">Engastada à direita (balanço)</option></select></label></div>
+    <div id="vg-abox"><label>Posição do apoio A (m)<input id="vg-a" type="number" step="any" min="0" value="0"></label></div>
+    <div id="vg-bbox"><label>Posição do apoio B (m)<input id="vg-b" type="number" step="any" min="0" value="6"></label></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Cargas</h3>
+  <p class="sub">Distribuída: informe a intensidade no início e no fim (iguais = uniforme; diferentes = triangular ou trapezoidal). Momento: positivo no sentido anti-horário.</p>
+  <div id="vg-lds"></div>
+  <div class="btns"><button type="button" data-add="P">+ Carga pontual</button><button type="button" data-add="W">+ Carga distribuída</button><button type="button" data-add="M">+ Momento concentrado</button></div>
+</div>
+
+<div class="res" aria-live="polite">
+  <div id="vg-err" class="err"></div>
+  <div class="kpis">
+    <div class="kpi" id="vg-k1"><span>Reação</span><b>–</b></div>
+    <div class="kpi" id="vg-k2"><span>Reação</span><b>–</b></div>
+    <div class="kpi"><span>Cortante máximo |V|</span><b id="vg-vm">–</b></div>
+    <div class="kpi main"><span>Momento fletor máximo |M|</span><b id="vg-mm">–</b></div>
+  </div>
+  <svg id="vg-svg" viewBox="0 0 800 640" role="img" aria-label="Esquema da viga e diagramas de esforço cortante e momento fletor"></svg>
+  <div id="vg-passos"></div>
+  <p class="nota">Convenção: cortante positivo quando a resultante à esquerda da seção aponta para cima; momento positivo quando traciona a fibra de baixo (viga "sorrindo"). Ferramenta para estudo e pré-dimensionamento.</p>
+</div>
+
+<script>
+(function(){
+var R=document.getElementById('eng-viga'); if(!R) return;
+function $(i){return document.getElementById(i);}
+function num(el){return parseFloat(String(el.value).replace(',','.'));}
+function nf(x,d){if(!isFinite(x))return '–'; if(Math.abs(x)<5e-10)x=0; return x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+var LBL={P:'Carga pontual',W:'Carga distribuída',M:'Momento concentrado'};
+function addLoad(t,v){
+  v=v||{};var d=document.createElement('div');d.className='ld';d.dataset.t=t;
+  var h='<div><label>Tipo<input value="'+LBL[t]+'" disabled></label></div>';
+  if(t==='P') h+='<div><label>P (kN)<input class="v1" type="number" step="any" value="'+(v.v1!=null?v.v1:10)+'"></label></div><div><label>Posição x (m)<input class="x1" type="number" step="any" value="'+(v.x1!=null?v.x1:1)+'"></label></div><div></div><div></div>';
+  if(t==='W') h+='<div><label>w início (kN/m)<input class="v1" type="number" step="any" value="'+(v.v1!=null?v.v1:5)+'"></label></div><div><label>w fim (kN/m)<input class="v2" type="number" step="any" value="'+(v.v2!=null?v.v2:5)+'"></label></div><div><label>de x (m)<input class="x1" type="number" step="any" value="'+(v.x1!=null?v.x1:0)+'"></label></div><div><label>até x (m)<input class="x2" type="number" step="any" value="'+(v.x2!=null?v.x2:2)+'"></label></div>';
+  if(t==='M') h+='<div><label>M (kN·m)<input class="v1" type="number" step="any" value="'+(v.v1!=null?v.v1:10)+'"></label></div><div><label>Posição x (m)<input class="x1" type="number" step="any" value="'+(v.x1!=null?v.x1:1)+'"></label></div><div></div><div></div>';
+  h+='<button type="button" class="x" title="Remover">×</button>';
+  d.innerHTML=h; $('vg-lds').appendChild(d); d.querySelector('.x').onclick=function(){d.remove();calc();};
+}
+R.querySelectorAll('[data-add]').forEach(function(b){b.onclick=function(){addLoad(b.dataset.add);calc();};});
+addLoad('P',{v1:20,x1:2}); addLoad('W',{v1:5,v2:5,x1:0,x2:6});
+
+function loads(L){
+  var out=[];
+  [].forEach.call($('vg-lds').children,function(d){
+    var t=d.dataset.t,q=function(c){var e=d.querySelector('.'+c);return e?num(e):NaN;};
+    if(t==='P') out.push({t:t,P:q('v1'),x:q('x1')});
+    if(t==='M') out.push({t:t,M:q('v1'),x:q('x1')});
+    if(t==='W'){var a=q('x1'),b=q('x2'),w1=q('v1'),w2=q('v2'); if(b<a){var s=a;a=b;b=s;s=w1;w1=w2;w2=s;}
+      var len=b-a,F=(w1+w2)/2*len,xc=(F!==0)?a+len*(w1+2*w2)/(3*(w1+w2)):a+len/2; out.push({t:t,a:a,b:b,w1:w1,w2:w2,F:F,xc:xc});}
+  });
+  return out;
+}
+// resultante e momento (em relação a x) das cargas distribuídas à esquerda de x
+function wLeft(l,x){ if(x<=l.a) return [0,0]; var e=Math.min(x,l.b),s=e-l.a,len=l.b-l.a; var we=l.w1+(l.w2-l.w1)*s/len;
+  var F=(l.w1+we)/2*s; var xc=(l.w1+we)!==0? l.a+s*(l.w1+2*we)/(3*(l.w1+we)) : l.a+s/2; return [F,F*(x-xc)]; }
+
+function calc(){
+  var L=num($('vg-L')),tp=$('vg-t').value,A=num($('vg-a')),B=num($('vg-b'));
+  $('vg-abox').classList.toggle('hide',tp!=='bi'); $('vg-bbox').classList.toggle('hide',tp!=='bi');
+  var err='',ls=loads(L);
+  if(!(L>0)) err='Informe um comprimento positivo.';
+  if(tp==='bi'&&!err){ if(!(A>=0&&B<=L&&B>A)) err='Os apoios precisam estar dentro da viga, com B à direita de A.'; }
+  ls.forEach(function(l){ if(err) return; var xs=l.t==='W'?[l.a,l.b]:[l.x]; xs.forEach(function(x){ if(!(x>=0&&x<=L+1e-9)) err='Há carga fora da viga (posição entre 0 e L).'; }); if([l.P,l.M,l.w1,l.w2].some(function(v){return v!==undefined&&!isFinite(v);})) err='Preencha todos os valores das cargas.'; });
+  $('vg-err').textContent=err; if(err){$('vg-svg').innerHTML='';$('vg-passos').innerHTML='';return;}
+  var sP=0,sMa=0,sM0=0; // soma das forças p/ baixo, momento delas em relação a A, soma dos momentos aplicados (anti-horário)
+  var ref=tp==='bi'?A:(tp==='engE'?0:L);
+  ls.forEach(function(l){ if(l.t==='P'){sP+=l.P;sMa+=l.P*(l.x-ref);} if(l.t==='W'){sP+=l.F;sMa+=l.F*(l.xc-ref);} if(l.t==='M'){sM0+=l.M;} });
+  // forças de apoio (para cima) e momentos de engaste (anti-horário)
+  var sup=[];
+  if(tp==='bi'){ var Rb=(sMa-sM0)/(B-A), Ra=sP-Rb; sup=[{x:A,F:Ra,n:'R<sub>A</sub>'},{x:B,F:Rb,n:'R<sub>B</sub>'}]; }
+  else { var Rv=sP, Me=sMa-sM0; sup=[{x:ref,F:Rv,n:'R',M:Me}]; } // Me: momento de engaste anti-horário em relação ao engaste
+  // esforços internos (seção à esquerda)
+  function VM(x,side){ // side -1: logo antes de x, +1: logo depois
+    var V=0,M=0,eps=side*1e-9,xx=x+eps;
+    sup.forEach(function(s){ if(s.x<xx){V+=s.F;M+=s.F*(x-s.x); if(s.M) M-=s.M;} });
+    ls.forEach(function(l){ if(l.t==='P'&&l.x<xx){V-=l.P;M-=l.P*(x-l.x);} if(l.t==='M'&&l.x<xx){M-=l.M;} if(l.t==='W'){var r=wLeft(l,x);V-=r[0];M-=r[1];} });
+    return [V,M];
+  }
+  // pontos críticos
+  var xs=[0,L]; sup.forEach(function(s){xs.push(s.x);}); ls.forEach(function(l){ if(l.t==='W'){xs.push(l.a,l.b);} else xs.push(l.x); });
+  var N=400; for(var i=0;i<=N;i++) xs.push(L*i/N);
+  xs=xs.filter(function(x){return x>=0&&x<=L;}).sort(function(a,b){return a-b;});
+  var pts=[]; xs.forEach(function(x){ var a=VM(x,-1),b=VM(x,1); if(x>0) pts.push([x,a[0],a[1]]); if(x<L) pts.push([x,b[0],b[1]]); });
+  // anula esforços nas pontas livres
+  var vmax=0,mmax=0,xv=0,xm=0,mpos=0,mneg=0,xmp=0,xmn=0;
+  pts.forEach(function(p){ if(Math.abs(p[1])>vmax+1e-9){vmax=Math.abs(p[1]);xv=p[0];} if(Math.abs(p[2])>mmax+1e-9){mmax=Math.abs(p[2]);xm=p[0];} if(p[2]>mpos){mpos=p[2];xmp=p[0];} if(p[2]<mneg){mneg=p[2];xmn=p[0];} });
+  // KPIs
+  if(tp==='bi'){ $('vg-k1').innerHTML='<span>Reação no apoio A</span><b>'+nf(sup[0].F,2)+' kN</b>'; $('vg-k2').innerHTML='<span>Reação no apoio B</span><b>'+nf(sup[1].F,2)+' kN</b>'; }
+  else { $('vg-k1').innerHTML='<span>Reação vertical no engaste</span><b>'+nf(sup[0].F,2)+' kN</b>'; $('vg-k2').innerHTML='<span>Momento no engaste</span><b>'+nf(Math.abs(sup[0].M),2)+' kN·m</b>'; }
+  $('vg-vm').textContent=nf(vmax,2)+' kN'; $('vg-mm').textContent=nf(mmax,2)+' kN·m';
+  draw(L,tp,sup,ls,pts,{vmax:vmax,xv:xv,mpos:mpos,mneg:mneg,xmp:xmp,xmn:xmn});
+  // passo a passo
+  var P=[];
+  var desc=ls.map(function(l){ if(l.t==='P') return nf(l.P,2)+' kN em x = '+nf(l.x,2)+' m'; if(l.t==='M') return 'momento de '+nf(l.M,2)+' kN·m em x = '+nf(l.x,2)+' m'; return 'distribuída de '+nf(l.w1,2)+(l.w1!==l.w2?' a '+nf(l.w2,2):'')+' kN/m entre '+nf(l.a,2)+' e '+nf(l.b,2)+' m → resultante '+nf(l.F,2)+' kN em x = '+nf(l.xc,3)+' m'; });
+  P.push('<b>1. Cargas e resultantes:</b> '+(desc.join('; ')||'nenhuma carga')+'.');
+  if(tp==='bi'){
+    P.push('<b>2. Soma dos momentos em A = 0:</b> R<sub>B</sub> × ('+nf(B,2)+' − '+nf(A,2)+') = '+nf(sMa,3)+(sM0? ' − ('+nf(sM0,3)+')':'')+' → <b>R<sub>B</sub> = '+nf(sup[1].F,3)+' kN</b>');
+    P.push('<b>3. Soma das forças verticais = 0:</b> R<sub>A</sub> = '+nf(sP,3)+' − '+nf(sup[1].F,3)+' → <b>R<sub>A</sub> = '+nf(sup[0].F,3)+' kN</b>');
+  } else {
+    P.push('<b>2. Soma das forças verticais = 0:</b> <b>R = '+nf(sP,3)+' kN</b> (para cima)');
+    P.push('<b>3. Soma dos momentos no engaste = 0:</b> M<sub>engaste</sub> = '+nf(sMa,3)+(sM0?' − ('+nf(sM0,3)+')':'')+' = <b>'+nf(sup[0].M,3)+' kN·m</b> ('+(sup[0].M>=0?'anti-horário':'horário')+')');
+  }
+  P.push('<b>4. Momento fletor máximo:</b> '+(mpos>1e-9?'positivo de '+nf(mpos,2)+' kN·m em x = '+nf(xmp,2)+' m':'')+(mpos>1e-9&&mneg<-1e-9?'; ':'')+(mneg<-1e-9?'negativo de '+nf(mneg,2)+' kN·m em x = '+nf(xmn,2)+' m':'')+'. O momento é máximo onde o cortante passa por zero ou muda de sinal.');
+  $('vg-passos').innerHTML=P.map(function(s){return '<p class="passo">'+s+'</p>';}).join('');
+}
+
+function draw(L,tp,sup,ls,pts,m){
+  var W=800,x0=60,x1=740,sx=function(x){return x0+(x1-x0)*x/L;},o='';
+  // ----- esquema (0-200)
+  var by=120;
+  o+='<text x="20" y="24" font-size="15" font-weight="700" fill="#1c2430">Esquema</text>';
+  o+='<rect x="'+x0+'" y="'+(by-7)+'" width="'+(x1-x0)+'" height="14" rx="3" fill="#9fb3c8" stroke="#5a6f88"/>';
+  sup.forEach(function(s,i){ var X=sx(s.x);
+    if(tp==='bi'){ o+='<path d="M'+X+' '+(by+7)+' l-14 24 h28 z" fill="#fff" stroke="#1c2430" stroke-width="2"/>'; if(i===1) o+='<circle cx="'+(X-8)+'" cy="'+(by+36)+'" r="4" fill="none" stroke="#1c2430" stroke-width="2"/><circle cx="'+(X+8)+'" cy="'+(by+36)+'" r="4" fill="none" stroke="#1c2430" stroke-width="2"/>';
+      o+='<text x="'+X+'" y="'+(by+62)+'" text-anchor="middle" font-size="13" fill="#1f6feb" font-weight="700">'+(i?'B':'A')+' · '+nf(s.F,2)+' kN</text>'; }
+    else { var dx=tp==='engE'?-1:1; o+='<rect x="'+(X+(dx<0?-14:0))+'" y="'+(by-40)+'" width="14" height="80" fill="url(#hatch)" stroke="#1c2430"/>';
+      o+='<text x="'+(X+(dx<0?6:-6))+'" y="'+(by+62)+'" text-anchor="'+(dx<0?'start':'end')+'" font-size="13" fill="#1f6feb" font-weight="700">R = '+nf(s.F,2)+' kN · M = '+nf(Math.abs(s.M),2)+' kN·m</text>'; }
+  });
+  var wmax=0; ls.forEach(function(l){ if(l.t==='W') wmax=Math.max(wmax,Math.abs(l.w1),Math.abs(l.w2)); });
+  ls.forEach(function(l){
+    if(l.t==='P'){ var X=sx(l.x),d=l.P>=0; o+='<line x1="'+X+'" y1="'+(d?by-60:by-12)+'" x2="'+X+'" y2="'+(d?by-12:by-60)+'" stroke="#f28c28" stroke-width="3" marker-end="url(#ar)"/><text x="'+X+'" y="'+(by-66)+'" text-anchor="middle" font-size="13" font-weight="700" fill="#b35f00">'+nf(Math.abs(l.P),1)+' kN</text>'; }
+    if(l.t==='W'){ var X1=sx(l.a),X2=sx(l.b),h1=8+30*Math.abs(l.w1)/(wmax||1),h2=8+30*Math.abs(l.w2)/(wmax||1);
+      o+='<path d="M'+X1+' '+(by-8)+' L'+X1+' '+(by-8-h1)+' L'+X2+' '+(by-8-h2)+' L'+X2+' '+(by-8)+' z" fill="rgba(242,140,40,.15)" stroke="#f28c28"/>';
+      var n=Math.max(2,Math.round((X2-X1)/40)); for(var k=0;k<=n;k++){var X=X1+(X2-X1)*k/n,h=h1+(h2-h1)*k/n; o+='<line x1="'+X+'" y1="'+(by-8-h)+'" x2="'+X+'" y2="'+(by-10)+'" stroke="#f28c28" stroke-width="1.5" marker-end="url(#ars)"/>';}
+      o+='<text x="'+((X1+X2)/2)+'" y="'+(by-14-Math.max(h1,h2))+'" text-anchor="middle" font-size="12" fill="#b35f00">'+nf(l.w1,1)+(l.w1!==l.w2?'→'+nf(l.w2,1):'')+' kN/m</text>'; }
+    if(l.t==='M'){ var X=sx(l.x),ccw=l.M>=0; o+='<path d="M'+(X+16)+' '+(by-4)+' A18 18 0 1 '+(ccw?0:1)+' '+(X-16)+' '+(by-4)+'" fill="none" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#arm)" transform="'+(ccw?'':'scale(-1,1) translate('+(-2*X)+',0)')+'"/><text x="'+X+'" y="'+(by-30)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#8e44ad">'+nf(Math.abs(l.M),1)+' kN·m</text>'; }
+  });
+  o+='<line x1="'+x0+'" y1="'+(by+80)+'" x2="'+x1+'" y2="'+(by+80)+'" stroke="#c4ccd8"/><text x="'+x0+'" y="'+(by+76)+'" font-size="11" fill="#5a6575">0</text><text x="'+x1+'" y="'+(by+76)+'" text-anchor="end" font-size="11" fill="#5a6575">L = '+nf(L,2)+' m</text>';
+  // ----- diagramas
+  function diag(y0,h,idx,title,unit,col,maxs){
+    var sg=idx===2?-1:1; // momento positivo desenhado para baixo (lado tracionado)
+    var vals=pts.map(function(p){return sg*p[idx];}),hi=Math.max(0,Math.max.apply(null,vals)),lo=Math.min(0,Math.min.apply(null,vals));
+    if(hi-lo<1e-9){hi=1;lo=-1;}
+    var top=y0+26,bot=y0+h-22,sy=function(v){return top+(hi-sg*v)/(hi-lo)*(bot-top);},yz=sy(0);
+    var s='<text x="20" y="'+(y0-6)+'" font-size="15" font-weight="700" fill="#1c2430">'+title+'</text>';
+    s+='<line x1="'+x0+'" y1="'+yz+'" x2="'+x1+'" y2="'+yz+'" stroke="#1c2430" stroke-width="1.5"/>';
+    var d='M'+sx(0)+' '+yz; pts.forEach(function(p){d+=' L'+sx(p[0]).toFixed(1)+' '+sy(p[idx]).toFixed(1);}); d+=' L'+sx(L)+' '+yz+' z';
+    s+='<path d="'+d+'" fill="'+col+'" fill-opacity=".22" stroke="'+col+'" stroke-width="2"/>';
+    maxs.forEach(function(q){ if(Math.abs(q[1])<1e-9) return; var X=sx(q[0]),Y=sy(q[1]); s+='<circle cx="'+X+'" cy="'+Y+'" r="4" fill="'+col+'"/><text x="'+Math.min(Math.max(X,x0+40),x1-40)+'" y="'+(Y+(Y<yz?-8:18))+'" text-anchor="middle" font-size="13" font-weight="700" fill="#1c2430">'+nf(q[1],2)+' '+unit+'</text>'; });
+    return s;
+  }
+  var vext=pts.reduce(function(a,p){return Math.abs(p[1])>Math.abs(a[1])?[p[0],p[1]]:a;},[0,0]);
+  var vmaxp=pts.reduce(function(a,p){return p[1]>a[1]?[p[0],p[1]]:a;},[0,0]), vminn=pts.reduce(function(a,p){return p[1]<a[1]?[p[0],p[1]]:a;},[0,0]);
+  o+=diag(250,170,1,'Esforço cortante V (kN)','kN','#1f6feb',[vmaxp,vminn]);
+  o+=diag(455,170,2,'Momento fletor M (kN·m) — desenhado do lado tracionado','kN·m','#f28c28',[[m.xmp,m.mpos],[m.xmn,m.mneg]]);
+  var defs='<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f28c28"/></marker><marker id="ars" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f28c28"/></marker><marker id="arm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8e44ad"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#1c2430" stroke-width="1.5"/></pattern></defs>';
+  $('vg-svg').innerHTML=defs+o;
+}
+R.addEventListener('input',calc); R.addEventListener('change',calc); calc();
+})();
+</script>
+</div>
+
+<h2>Como resolver uma viga isostática</h2>
+<p>Vigas biapoiadas e em balanço são <b>isostáticas</b>: as três equações de equilíbrio da estática bastam para achar as reações. O roteiro é sempre o mesmo:</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>1. Substitua as cargas distribuídas pela resultante.</b> Uniforme: F = w × comprimento, no meio do trecho. Triangular: F = w × comprimento / 2, a 1/3 do lado maior. Trapezoidal: F = (w<sub>1</sub> + w<sub>2</sub>)/2 × comprimento.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>2. Some os momentos em um apoio e iguale a zero.</b> Isso dá a reação do outro apoio sem precisar da primeira.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>3. Some as forças verticais e iguale a zero.</b> Isso dá a reação que falta.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>4. Corte a viga em seções e calcule V e M.</b> Use sempre o pedaço à esquerda do corte: V é a soma das forças verticais, M é a soma dos momentos em relação ao ponto do corte.</p>
+<p>Duas relações ajudam a conferir o desenho dos diagramas:</p>
+<ul>
+<li><b>dV/dx = −w</b>: a inclinação do cortante é a carga distribuída. Sem carga distribuída, o cortante é constante; com carga uniforme, é uma reta inclinada.</li>
+<li><b>dM/dx = V</b>: a inclinação do momento é o cortante. Por isso o <b>momento é máximo onde o cortante passa por zero</b> ou troca de sinal.</li>
+</ul>
+<p>Carga pontual causa um degrau no cortante; momento concentrado causa um degrau no momento fletor.</p>
+
+<h2>Exemplo resolvido</h2>
+<p>Viga biapoiada de 6 m, com uma carga distribuída de 5 kN/m em todo o vão e uma carga pontual de 20 kN a 2 m do apoio A (é o exemplo que já vem preenchido na calculadora).</p>
+<p><b>Resultante da distribuída:</b> 5 × 6 = 30 kN, a 3 m de A.<br>
+<b>Momentos em A:</b> R<sub>B</sub> × 6 = 20 × 2 + 30 × 3 = 130 → <b>R<sub>B</sub> = 21,67 kN</b>.<br>
+<b>Forças verticais:</b> R<sub>A</sub> = 20 + 30 − 21,67 → <b>R<sub>A</sub> = 28,33 kN</b>.<br>
+<b>Cortante:</b> logo antes da carga pontual, V = 28,33 − 5 × 2 = 18,33 kN; logo depois, V = 18,33 − 20 = −1,67 kN. O cortante troca de sinal em x = 2 m.<br>
+<b>Momento máximo</b> (em x = 2 m): M = 28,33 × 2 − 5 × 2²/2 = <b>46,67 kN·m</b>.</p>
+
+<h2>Fórmulas prontas dos casos clássicos</h2>
+<p>Para conferir o resultado ou resolver rápido na prova (E = módulo de elasticidade, I = momento de inércia da seção):</p>
+<table style="border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0 16px"><thead><tr><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:left;background:#f6f8fb">Caso</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:center;background:#f6f8fb">Reações</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:center;background:#f6f8fb">Momento máximo</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:center;background:#f6f8fb">Flecha máxima</th></tr></thead><tbody><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Biapoiada, carga P no meio</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">P/2 e P/2</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">PL/4 (no meio)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">PL³/(48EI)</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Biapoiada, carga uniforme w</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">wL/2 e wL/2</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">wL²/8 (no meio)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">5wL⁴/(384EI)</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Balanço, carga P na ponta</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">R = P; M = PL</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">PL (no engaste)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">PL³/(3EI)</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Balanço, carga uniforme w</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">R = wL; M = wL²/2</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">wL²/2 (no engaste)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5;text-align:center">wL⁴/(8EI)</td></tr></tbody></table>
+<p>Com o momento máximo em mãos, a tensão de flexão é <b>σ = M / W</b>, onde W é o módulo resistente da seção. Para um perfil, compare σ com a tensão admissível do aço; o <a href="/calculadoras/peso-de-perfis/">peso do perfil</a> você calcula na outra ferramenta.</p>
+
+<h2>Perguntas frequentes</h2>
+<h3>Qual convenção de sinais a calculadora usa?</h3>
+<p>Cortante positivo quando a resultante das forças à esquerda do corte aponta para cima. Momento positivo quando traciona a fibra de baixo (a viga "sorri"). O diagrama de momento é desenhado do lado tracionado, como é comum no Brasil: momento positivo aparece abaixo do eixo.</p>
+<h3>Funciona para viga com balanço (apoio fora da ponta)?</h3>
+<p>Sim. Na viga biapoiada, posicione os apoios A e B onde quiser dentro do comprimento. Os trechos além dos apoios viram balanços, e o momento negativo sobre o apoio aparece no diagrama.</p>
+<h3>E viga contínua, com três ou mais apoios?</h3>
+<p>Essas são hiperestáticas e exigem método das forças, dos deslocamentos ou de Cross. Por enquanto a calculadora resolve as isostáticas, que são a base de tudo.</p>
+<h3>Por que meu professor desenha o momento para cima?</h3>
+<p>É só convenção de desenho. Alguns livros desenham o momento positivo acima do eixo. O valor e o sinal são os mesmos.</p>
+
+<p style="font-size:.85rem;color:#5a6575;border-top:1px solid #dde3ec;padding-top:12px;margin-top:28px">Ferramenta para estudo e pré-dimensionamento. Projetos de estruturas devem seguir as normas aplicáveis (como a NBR 8800 para aço) e ser verificados por profissional habilitado. Treine o assunto nas <a href="/simulados/questoes-de-resistencia-dos-materiais/">questões de Resistência dos Materiais</a>.</p>
+</div>

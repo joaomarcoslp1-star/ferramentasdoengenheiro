@@ -21,6 +21,15 @@ LINKS = {
     "/p/politica-de-privacidade.html": "/privacidade/",
 }
 
+AREAS = [
+    ("Resistência dos materiais", ["Resistência dos materiais"]),
+    ("Elementos de máquinas", ["Elementos de máquinas"]),
+    ("Estruturas, caldeiraria e pintura", ["Estruturas metálicas", "Pintura industrial"]),
+    ("Hidráulica", ["Hidráulica"]),
+    ("Elétrica", ["Elétrica"]),
+    ("Segurança e NRs", ["Segurança · NR-13"]),
+]
+
 PAGES = [
     dict(slug="calculadoras/area-de-pintura", kind="calc", src="post-calculadora-tinta-blogger.html", img="area-de-pintura.jpg",
          title="Calculadora de Área de Pintura e Consumo de Tinta (Perfis, Tubos e Chapas)", short="Área de pintura e litros de tinta",
@@ -38,6 +47,10 @@ PAGES = [
          title="Calculadora de Perda de Carga em Tubulações (Hazen-Williams)", short="Perda de carga em tubulações",
          desc="Calcule grátis a perda de carga em tubulações por Hazen-Williams ou Fair-Whipple-Hsiao, com conexões, válvulas, velocidade e altura manométrica.",
          card="Hazen-Williams e Fair-Whipple-Hsiao, conexões e válvulas, altura manométrica.", tag="Hidráulica", date="2026-11-26"),
+    dict(slug="calculadoras/vigas-cortante-e-momento-fletor", kind="calc", src="site_src/posts/post-vigas.html", img="vigas.jpg",
+         title="Calculadora de Vigas: Reações, Diagrama de Cortante e Momento Fletor", short="Vigas: cortante e momento fletor",
+         desc="Calcule grátis as reações de apoio e desenhe os diagramas de esforço cortante e momento fletor de vigas biapoiadas e em balanço, com cargas pontuais, distribuídas e momentos, passo a passo.",
+         card="Reações, diagramas de cortante e momento fletor e resolução passo a passo.", tag="Resistência dos materiais", date="2026-11-27"),
     dict(slug="calculadoras/categoria-vaso-de-pressao-nr-13", kind="calc", src="site_src/posts/post-nr13-vasos.html", img="nr13-vasos.jpg",
          title="Categoria de Vaso de Pressão NR-13: Calculadora, Tabela e Prazos de Inspeção", short="Categoria de vaso de pressão (NR-13)",
          desc="Descubra grátis se o vaso entra na NR-13, a classe do fluido, o grupo de risco P·V, a categoria (I a V) e os prazos de inspeção externa e interna, com e sem SPIE.",
@@ -228,7 +241,16 @@ def build():
     for path, h, intro, items in [
         ("/calculadoras/", "Calculadoras de engenharia", "Ferramentas gratuitas que funcionam direto no navegador, no computador ou no celular, sem cadastro. Cada uma traz a fórmula, a norma aplicável e um exemplo resolvido.", calcs),
         ("/simulados/", "Simulados para concursos de engenharia", "Questões inéditas no estilo das bancas, com resolução comentada, cronômetro e painel de desempenho por matéria. Seu progresso fica salvo no navegador, sem cadastro.", sims + mats_all)]:
-        body = f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1><p>{intro}</p><div class="grid">{"".join(card(x) for x in items)}</div></div>'
+        if path == "/calculadoras/":
+            grupos = ""
+            for area, tags in AREAS:
+                its = [x for x in items if x["tag"] in tags]
+                if its: grupos += f'<h2 class="sec-t">{area}</h2><div class="grid">{"".join(card(x) for x in its)}</div>'
+            resto = [x for x in items if not any(x["tag"] in t for _, t in AREAS)]
+            if resto: grupos += f'<h2 class="sec-t">Outras</h2><div class="grid">{"".join(card(x) for x in resto)}</div>'
+            body = f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1><p>{intro}</p>{grupos}</div>'
+        else:
+            body = f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1><p>{intro}</p><div class="grid">{"".join(card(x) for x in items)}</div></div>'
         write(path, layout(path=path, title=h, desc=intro, body=body, active=path))
         urls.append((path, TODAY))
 
