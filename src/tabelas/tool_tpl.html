@@ -1,0 +1,125 @@
+<div id="eng-tab">
+<style>
+#eng-tab{--lar:#f28c28;--borda:#dde3ec;--suave:#5a6575;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1c2430;line-height:1.5;max-width:960px;margin:0 auto}
+#eng-tab *{box-sizing:border-box}
+#eng-tab .tabs{display:flex;gap:6px;margin-bottom:12px}
+#eng-tab .tabs button{flex:1;border:1px solid var(--borda);background:#f6f8fb;border-radius:10px;padding:10px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.95rem;color:#1c2430}
+#eng-tab .tabs button.on{background:#0f2742;color:#fff;border-color:#0f2742}
+#eng-tab .card{background:#f6f8fb;border:1px solid var(--borda);border-radius:12px;padding:16px;margin:0 0 14px}
+#eng-tab label{display:block;font-size:.76rem;font-weight:600;color:#3a4452}
+#eng-tab input,#eng-tab select{width:100%;padding:7px 8px;border:1px solid #c4ccd8;border-radius:8px;font-size:.92rem;background:#fff;color:#1c2430;margin-top:3px;font-family:inherit}
+#eng-tab .g{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+#eng-tab .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+#eng-tab .chips label{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid #c4ccd8;border-radius:20px;padding:4px 10px;font-size:.85rem;cursor:pointer}
+#eng-tab .chips input{width:auto;margin:0}
+#eng-tab .hint{font-size:.8rem;color:var(--suave);margin:8px 0 0}
+#eng-tab .wrap{overflow:auto;max-height:560px;border:1px solid var(--borda);border-radius:10px;background:#fff}
+#eng-tab table{border-collapse:collapse;width:100%;font-size:.84rem}
+#eng-tab th{position:sticky;top:0;background:#0f2742;color:#fff;font-size:.74rem;padding:7px 6px;text-align:right;white-space:nowrap;cursor:pointer;z-index:1}
+#eng-tab th:first-child,#eng-tab td:first-child{text-align:left}
+#eng-tab td{padding:6px;border-bottom:1px solid #eef1f5;text-align:right;white-space:nowrap}
+#eng-tab td:first-child{background:#fff;font-weight:700}
+#eng-tab tr:hover td{background:#fff4e8}
+#eng-tab tr.best td{background:#e8f5ec}
+#eng-tab tr.sel td{background:#fde3c8}
+#eng-tab .det{display:grid;grid-template-columns:240px 1fr;gap:16px;align-items:start;background:#fff;border:1px solid var(--borda);border-left:5px solid var(--lar);border-radius:10px;padding:14px;margin-bottom:14px}
+#eng-tab .det h3{margin:0 0 6px;font-size:1.2rem}
+#eng-tab .dl{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 12px;font-size:.88rem}
+#eng-tab .dl div span{display:block;font-size:.72rem;color:var(--suave);font-weight:600}
+#eng-tab svg{width:100%;height:auto}
+#eng-tab .count{font-size:.85rem;color:var(--suave);margin:6px 0}
+#eng-tab .hide{display:none!important}
+@media(max-width:720px){#eng-tab .g{grid-template-columns:1fr 1fr}#eng-tab .det{grid-template-columns:1fr}#eng-tab .dl{grid-template-columns:1fr 1fr}}
+</style>
+<div class="tabs"><button type="button" data-t="I" class="on">Perfis I e H (W, HP, VS, IPE, HEA, HEB)</button><button type="button" data-t="P">Tubos ASME B36.10 (schedule)</button></div>
+
+<div id="tb-I">
+ <div class="card">
+  <label>Famílias</label>
+  <div class="chips" id="tb-fam"></div>
+  <div class="g" style="margin-top:10px">
+   <div><label>Buscar bitola<input id="tb-q" placeholder="ex.: W 310, HEB 200"></label></div>
+   <div><label>W<sub>x</sub> mínimo (cm³)<input id="tb-wx" type="number" step="any" min="0" placeholder="opcional"></label></div>
+   <div><label>I<sub>x</sub> mínimo (cm⁴)<input id="tb-ix" type="number" step="any" min="0" placeholder="opcional"></label></div>
+   <div><label>Altura máxima d (mm)<input id="tb-dmax" type="number" step="any" min="0" placeholder="opcional"></label></div>
+   <div><label>Ordenar por<select id="tb-ord"><option value="m">Massa (mais leve primeiro)</option><option value="d">Altura</option><option value="Ix">I<sub>x</sub></option><option value="Wx">W<sub>x</sub></option><option value="n">Nome</option></select></label></div>
+  </div>
+  <p class="hint">💡 <b>Ache o perfil mais leve:</b> informe o W<sub>x</sub> (ou I<sub>x</sub>) que o seu cálculo pede. A lista mostra só os perfis que atendem, do mais leve ao mais pesado, e o primeiro fica em verde. Clique numa linha para ver o desenho e todas as propriedades.</p>
+ </div>
+ <div id="tb-det" class="det hide"></div>
+ <div class="count" id="tb-cnt"></div>
+ <div class="wrap"><table><thead><tr><th data-k="n">Bitola</th><th data-k="m">kg/m</th><th data-k="d">d (mm)</th><th data-k="b">b<sub>f</sub> (mm)</th><th>t<sub>w</sub> (mm)</th><th>t<sub>f</sub> (mm)</th><th data-k="A">A (cm²)</th><th data-k="Ix">I<sub>x</sub> (cm⁴)</th><th data-k="Wx">W<sub>x</sub> (cm³)</th><th>r<sub>x</sub> (cm)</th><th data-k="Iy">I<sub>y</sub> (cm⁴)</th><th>W<sub>y</sub> (cm³)</th><th>r<sub>y</sub> (cm)</th><th>Pintura (m²/m)</th></tr></thead><tbody id="tb-body"></tbody></table></div>
+</div>
+
+<div id="tb-P" class="hide">
+ <div class="card">
+  <div class="g">
+   <div><label>Diâmetro nominal (NPS)<select id="tp-nps"><option value="">Todos</option></select></label></div>
+   <div><label>Schedule<select id="tp-s"><option value="">Todos</option></select></label></div>
+   <div><label>Espessura mínima da parede (mm)<input id="tp-tmin" type="number" step="any" min="0" placeholder="opcional"></label></div>
+   <div><label>Diâmetro interno mínimo (mm)<input id="tp-dimin" type="number" step="any" min="0" placeholder="opcional"></label></div>
+   <div><label>Ordenar por<select id="tp-ord"><option value="D">Diâmetro e espessura</option><option value="m">Massa (mais leve primeiro)</option></select></label></div>
+  </div>
+  <p class="hint">STD = Standard (parede padrão), XS = Extra Strong, XXS = Double Extra Strong. Até NPS 10, STD é igual ao Sch 40; até NPS 8, XS é igual ao Sch 80. Clique numa linha para ver o desenho e todas as propriedades.</p>
+ </div>
+ <div id="tp-det" class="det hide"></div>
+ <div class="count" id="tp-cnt"></div>
+ <div class="wrap"><table><thead><tr><th>NPS (pol)</th><th>Schedule</th><th>D ext. (mm)</th><th>Parede (mm)</th><th>D int. (mm)</th><th>kg/m</th><th>A (cm²)</th><th>I (cm⁴)</th><th>W (cm³)</th><th>r (cm)</th><th>Área interna (cm²)</th><th>Água (kg/m)</th><th>Sup. externa (m²/m)</th></tr></thead><tbody id="tp-body"></tbody></table></div>
+</div>
+
+<script>
+(function(){
+var R=document.getElementById('eng-tab'); if(!R) return;
+var DATA=__DATA__;
+function $(i){return document.getElementById(i);}
+function nf(x,d){if(x===''||x==null||!isFinite(x))return '–';return Number(x).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function nfd(x){return nf(x,Math.round(x*10)===x*10?1:2);}
+function nfa(x){var a=Math.abs(x);return nf(x,a>=1000?0:a>=100?1:a>=10?1:2);}
+function num(el){var v=parseFloat(String(el.value).replace(',','.'));return isFinite(v)?v:null;}
+R.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){R.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b);});$('tb-I').classList.toggle('hide',b.dataset.t!=='I');$('tb-P').classList.toggle('hide',b.dataset.t!=='P');};});
+// ---------- perfis
+var FAM=[['W','W (Gerdau)'],['HP','HP (Gerdau)'],['VS','VS soldado'],['IPE','IPE'],['HEA','HEA'],['HEB','HEB']];
+$('tb-fam').innerHTML=FAM.map(function(f){return '<label><input type="checkbox" value="'+f[0]+'" checked>'+f[1]+'</label>';}).join('');
+var sel=null;
+function drawI(p){var S=200/Math.max(p.d,p.b),w=p.b*S,h=p.d*S,tw=Math.max(p.tw*S,1.5),tf=Math.max(p.tf*S,1.5),x0=120-w/2,y0=110-h/2,r=Math.min(p.r*S,(w-tw)/2);
+ var xL=120-tw/2,xR=120+tw/2,yT=y0+tf,yB=y0+h-tf;
+ var d='M'+x0+' '+y0+' H'+(x0+w)+' V'+yT+' H'+(xR+r)+' Q'+xR+' '+yT+' '+xR+' '+(yT+r)+' V'+(yB-r)+' Q'+xR+' '+yB+' '+(xR+r)+' '+yB+' H'+(x0+w)+' V'+(y0+h)+' H'+x0+' V'+yB+' H'+(xL-r)+' Q'+xL+' '+yB+' '+xL+' '+(yB-r)+' V'+(yT+r)+' Q'+xL+' '+yT+' '+(xL-r)+' '+yT+' H'+x0+' Z';
+ return '<svg viewBox="0 0 240 240"><path d="'+d+'" fill="#9fb3c8" stroke="#4d6f96" stroke-width="1.5"/><line x1="10" y1="110" x2="230" y2="110" stroke="#f28c28" stroke-dasharray="5 4"/><line x1="120" y1="2" x2="120" y2="218" stroke="#f28c28" stroke-dasharray="5 4"/><text x="226" y="104" font-size="11" fill="#b35f00" text-anchor="end">x</text><text x="126" y="12" font-size="11" fill="#b35f00">y</text><text x="120" y="234" font-size="11" text-anchor="middle" fill="#5a6575">b<tspan baseline-shift="sub" font-size="8">f</tspan> = '+nf(p.b,0)+' mm · d = '+nf(p.d,0)+' mm</text></svg>';}
+function detI(p){$('tb-det').classList.remove('hide');
+ var it=[['Massa linear',nf(p.m,1)+' kg/m'],['Área A',nf(p.A,1)+' cm²'],['Pintura',nf(p.u,2)+' m²/m'],['Altura d',nf(p.d,0)+' mm'],['Mesa b<sub>f</sub> × t<sub>f</sub>',nf(p.b,0)+' × '+nfd(p.tf)+' mm'],['Alma t<sub>w</sub>',nfd(p.tw)+' mm'],[p.f==='VS'?'Tipo':'Raio de concordância R',p.f==='VS'?'soldado (3 chapas)':nf(p.r,1)+' mm'],['I<sub>x</sub>',nfa(p.Ix)+' cm⁴'],['W<sub>x</sub>',nfa(p.Wx)+' cm³'],['r<sub>x</sub>',nf(p.rx,2)+' cm'],['I<sub>y</sub>',nfa(p.Iy)+' cm⁴'],['W<sub>y</sub>',nfa(p.Wy)+' cm³'],['r<sub>y</sub>',nf(p.ry,2)+' cm'],['Peso em 6 m',nf(p.m*6,1)+' kg'],['Peso em 12 m',nf(p.m*12,1)+' kg'],['Equivalente americano',p.imp||'–']];
+ $('tb-det').innerHTML='<div>'+drawI(p)+'</div><div><h3>'+p.n+'</h3><p style="margin:0 0 10px;font-size:.82rem;color:#5a6575">Fonte das dimensões: '+(p.src==='Gerdau'?'catálogo Gerdau (propriedades publicadas pelo fabricante)':p.src==='NBR 5884'?'série VS da NBR 5884 (perfil soldado, propriedades calculadas a partir das chapas, sem considerar as soldas)':'EN 10365 (propriedades calculadas com os raios de concordância)')+'</p><div class="dl">'+it.map(function(x){return '<div><span>'+x[0]+'</span>'+x[1]+'</div>';}).join('')+'</div></div>';}
+function listI(){
+ var fams=[].map.call($('tb-fam').querySelectorAll('input:checked'),function(i){return i.value;});
+ var q=$('tb-q').value.trim().toUpperCase().replace(/\s+/g,' '),wx=num($('tb-wx')),ix=num($('tb-ix')),dm=num($('tb-dmax')),o=$('tb-ord').value;
+ var L=DATA.I.filter(function(p){return fams.indexOf(p.f)>=0&&(!q||p.n.toUpperCase().replace(/\s+/g,' ').indexOf(q)>=0||p.n.toUpperCase().replace(/\s/g,'').indexOf(q.replace(/\s/g,''))>=0)&&(wx==null||p.Wx>=wx)&&(ix==null||p.Ix>=ix)&&(dm==null||p.d<=dm);});
+ L.sort(function(a,b){return o==='n'?a.n.localeCompare(b.n,'pt',{numeric:true}):(a[o]-b[o])||(a.m-b.m);});
+ var req=wx!=null||ix!=null;
+ $('tb-cnt').innerHTML=L.length+' perfis'+(req&&L.length?' atendem · <b>mais leve: '+L.slice().sort(function(a,b){return a.m-b.m;})[0].n+'</b>':'');
+ var best=req&&L.length?L.slice().sort(function(a,b){return a.m-b.m;})[0]:null;
+ $('tb-body').innerHTML=L.map(function(p){var i=DATA.I.indexOf(p);return '<tr data-i="'+i+'" class="'+(p===best?'best':'')+(p===sel?' sel':'')+'"><td>'+p.n+'</td><td>'+nf(p.m,1)+'</td><td>'+nf(p.d,0)+'</td><td>'+nf(p.b,0)+'</td><td>'+nfd(p.tw)+'</td><td>'+nfd(p.tf)+'</td><td>'+nf(p.A,1)+'</td><td>'+nfa(p.Ix)+'</td><td>'+nfa(p.Wx)+'</td><td>'+nf(p.rx,2)+'</td><td>'+nfa(p.Iy)+'</td><td>'+nfa(p.Wy)+'</td><td>'+nf(p.ry,2)+'</td><td>'+nf(p.u,2)+'</td></tr>';}).join('');
+}
+$('tb-body').onclick=function(e){var tr=e.target.closest('tr');if(!tr)return;sel=DATA.I[+tr.dataset.i];detI(sel);listI();$('tb-det').scrollIntoView({behavior:'smooth',block:'start'});};
+R.querySelectorAll('#tb-I th[data-k]').forEach(function(th){th.onclick=function(){var k=th.dataset.k,s=$('tb-ord');if([].some.call(s.options,function(o){return o.value===k;}))s.value=k;listI();};});
+['tb-q','tb-wx','tb-ix','tb-dmax'].forEach(function(i){$(i).addEventListener('input',listI);}); $('tb-ord').addEventListener('change',listI);
+$('tb-fam').addEventListener('change',listI);
+// ---------- tubos
+var NPS=[];DATA.P.forEach(function(p){if(NPS.indexOf(p.nps)<0)NPS.push(p.nps);});
+var SCH=['10','20','30','STD','40','60','XS','80','100','120','140','160','XXS'];
+$('tp-nps').innerHTML+=NPS.map(function(n){return '<option>'+n+'</option>';}).join('');
+$('tp-s').innerHTML+=SCH.map(function(n){return '<option>'+n+'</option>';}).join('');
+var selP=null;
+function drawP(p){var S=95/(p.D/2),ro=p.D/2*S,ri=p.di/2*S;return '<svg viewBox="0 0 240 240"><circle cx="120" cy="115" r="'+ro+'" fill="#9fb3c8" stroke="#4d6f96" stroke-width="1.5"/><circle cx="120" cy="115" r="'+ri+'" fill="#fff" stroke="#4d6f96" stroke-width="1.5"/><line x1="10" y1="115" x2="230" y2="115" stroke="#f28c28" stroke-dasharray="5 4"/><text x="120" y="234" font-size="11" text-anchor="middle" fill="#5a6575">D = '+nf(p.D,1)+' mm · t = '+nf(p.t,2)+' mm</text></svg>';}
+function detP(p){$('tp-det').classList.remove('hide');
+ var it=[['Diâmetro externo',nf(p.D,2)+' mm'],['Espessura da parede',nf(p.t,2)+' mm'],['Diâmetro interno',nf(p.di,2)+' mm'],['Massa linear',nf(p.m,2)+' kg/m'],['Área de aço',nf(p.A,2)+' cm²'],['Área interna (escoamento)',nf(p.Ai,2)+' cm²'],['Momento de inércia I',nfa(p.I)+' cm⁴'],['Módulo resistente W',nfa(p.W)+' cm³'],['Raio de giração r',nf(p.r,2)+' cm'],['Água contida',nf(p.agua,2)+' kg/m'],['Tubo cheio de água',nf(p.m+p.agua,2)+' kg/m'],['Superfície externa',nf(p.u,3)+' m²/m'],['Peso em 6 m',nf(p.m*6,1)+' kg'],['Peso em 12 m',nf(p.m*12,1)+' kg']];
+ $('tp-det').innerHTML='<div>'+drawP(p)+'</div><div><h3>Tubo '+p.nps+'" Sch '+p.s+'</h3><p style="margin:0 0 10px;font-size:.82rem;color:#5a6575">Dimensões conforme ASME B36.10M (aço carbono e liga). Massa pela fórmula da norma: 0,0246615 × (D − t) × t.</p><div class="dl">'+it.map(function(x){return '<div><span>'+x[0]+'</span>'+x[1]+'</div>';}).join('')+'</div></div>';}
+function listP(){var n=$('tp-nps').value,s=$('tp-s').value,tm=num($('tp-tmin')),dm=num($('tp-dimin')),o=$('tp-ord').value;
+ var L=DATA.P.filter(function(p){return (!n||p.nps===n)&&(!s||p.s===s)&&(tm==null||p.t>=tm)&&(dm==null||p.di>=dm);});
+ if(o==='m') L.sort(function(a,b){return a.m-b.m;}); else L.sort(function(a,b){return (a.D-b.D)||(a.t-b.t);});
+ $('tp-cnt').textContent=L.length+' combinações de diâmetro e schedule';
+ $('tp-body').innerHTML=L.map(function(p){var i=DATA.P.indexOf(p);return '<tr data-i="'+i+'"'+(p===selP?' class="sel"':'')+'><td>'+p.nps+'"</td><td>'+p.s+'</td><td>'+nf(p.D,2)+'</td><td>'+nf(p.t,2)+'</td><td>'+nf(p.di,2)+'</td><td>'+nf(p.m,2)+'</td><td>'+nf(p.A,2)+'</td><td>'+nfa(p.I)+'</td><td>'+nfa(p.W)+'</td><td>'+nf(p.r,2)+'</td><td>'+nf(p.Ai,1)+'</td><td>'+nf(p.agua,2)+'</td><td>'+nf(p.u,3)+'</td></tr>';}).join('');}
+$('tp-body').onclick=function(e){var tr=e.target.closest('tr');if(!tr)return;selP=DATA.P[+tr.dataset.i];detP(selP);listP();$('tp-det').scrollIntoView({behavior:'smooth',block:'nearest'});};
+['tp-tmin','tp-dimin'].forEach(function(i){$(i).addEventListener('input',listP);}); ['tp-nps','tp-s','tp-ord'].forEach(function(i){$(i).addEventListener('change',listP);});
+listI(); listP();
+})();
+</script>
+</div>

@@ -13,6 +13,7 @@ CAPAS = {
  "nr13-vasos": ("CALCULADORA NR-13", ["Categoria de", "<em>vaso de pressão</em>"], "Classe do fluido · P·V · prazos de inspeção"),
  "vigas": ("CALCULADORA GRÁTIS", ["Vigas: cortante e", "<em>momento fletor</em>"], "Reações · diagramas · passo a passo"),
  "inercia": ("CALCULADORA GRÁTIS", ["Momento de inércia", "e <em>centroide</em>"], "Perfis I, T, L, U · tubos · passo a passo"),
+ "tabelas": ("CONSULTA GRÁTIS", ["Tabelas de perfis", "e <em>tubos</em>"], "W · HP · VS · IPE · HEA · HEB · Schedule"),
  "simulado-mecanica": ("SIMULADO GRÁTIS", ["70 questões de", "<em>Eng. Mecânica</em>"], "Estilo Cesgranrio · Petrobras e Transpetro"),
 }
 import json as _j
