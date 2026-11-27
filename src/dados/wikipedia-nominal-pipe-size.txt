@@ -1,0 +1,814 @@
+{{Short description|North American set of standard sizes for pipes}}
+{{About|the U.S. standard for pipe ''sizes'', abbreviated NPS|the U.S. standard for the ''straight thread form'' on pipe (also abbreviated NPS)|National Pipe Thread}}
+
+{{Multiple issues|
+{{Technical|date=November 2024}}
+{{More citations needed|date=November 2024}}
+}}
+'''Nominal Pipe Size''' ('''NPS''') is a North American set of standard sizes for pipes used for high or low pressures and temperatures.{{sfn|ASME B36.10|p=1}} "Nominal" refers to pipe in non-specific terms and identifies the [[diameter]] of the hole with a non-dimensional number (for example, "2-inch-nominal steel pipe" consists of many varieties of steel pipe with the only criterion being a {{Convert|2.375|in||adj=on}} outside diameter). Specific pipe is identified by pipe diameter and another non-dimensional number for wall thickness referred to as the Schedule (Sched. or Sch., for example, "2-inch-diameter pipe, Schedule 40"). NPS is often incorrectly called ''National Pipe Size'', due to confusion with the American standard for pipe threads, "[[National pipe thread|national pipe straight]]", which is also abbreviated as ''NPS''. The European and international designation equivalent to NPS is ''DN'' ({{lang|fr|diamètre nominal}}/nominal diameter/{{lang|de|Nennweite}}), in which sizes are measured in [[metric system|metric units]]; see [[Preferred metric sizes#ISO 6708|ISO 6708]].<ref name=DN>[http://www.engineeringtoolbox.com/nps-nominal-pipe-sizes-d_45.html NPS – "Nominal Pipe Size" and DN – "Diamètre Nominal"], EngineeringToolbox.com</ref> The term '''''NB''''', for '''''nominal bore''''', is also frequently used interchangeably with ''DN''.
+
+==History==
+In March 1927 the [[American Standards Association]] authorized a committee to standardize the dimensions of wrought steel and [[wrought iron]] pipe and tubing. At that time only a small selection of wall thicknesses were in use: standard weight (STD), extra-strong (XS), and double extra-strong (XXS), based on the [[iron pipe size]] (IPS) system of the day. However, these three sizes did not fit all applications. In 1939, it was hoped that the designations of STD, XS, and XXS would be phased out by schedule numbers; however, those original terms are still in common use today (although sometimes referred to as ''standard, extra-heavy (XH)'', and ''double extra-heavy (XXH)'', respectively). Since the original schedules were created, there have been many revisions and additions to the tables of pipe sizes based on industry use and on standards from [[American Petroleum Institute|API]], [[ASTM International|ASTM]], and others.{{sfn|ASME B36.10|p=iv}}
+
+Stainless steel pipes, which were coming into more common use in the mid 20th century, permitted the use of thinner pipe walls with much less risk of failure due to corrosion. By 1949 thinner schedules 5S and 10S, which were based on the pressure requirements modified to the nearest [[Stubs Iron Wire Gauge|BWG]] number, had been created, and other "S" sizes followed later. Due to their thin walls, the smaller "S" sizes can not be threaded together according to ASME code,{{sfn|ASME B36.19|p=iv}} but must be [[fusion weld]]ed, brazed, roll grooved, or joined with press fittings.
+
+== Application ==
+
+Based on the NPS and schedule of a pipe,<ref>{{cite web|title=Pipe Schedule Chart|url=http://www.hysteelpipe.com/pipe-standards/steel-pipe-schedule-chart-welded-seamless-wrought-steel-pipeasme_b36-10m-2004/|website=HYSP Steel Pipe}}</ref> the pipe outside diameter (OD) and wall thickness can be obtained from reference tables such as those below, which are based on ASME standards B36.10M and B36.19M. For example, NPS 14 Sch 40 has an OD of {{Convert|14|in|}} and a wall thickness of {{Convert|0.437|in|}}. However, the NPS and OD values are not always equal, which can create confusion.
+
+* For NPS {{frac|1|8}} to 12, the NPS and OD values are different. For example, the OD of an NPS 12 pipe is actually {{Convert|12.75|in|}}. To find the actual OD for each NPS value, refer to the tables below. (Note that for [[Tubing (material)|tubing]], the size indicates actual dimensions, not nominal.)
+* For NPS 14 and up, the NPS and OD values are equal. In other words, an NPS 14 pipe is actually {{Convert|14|in|}} OD.
+
+The reason for the discrepancy for NPS {{frac|1|8}} to 12&nbsp;inches is that these NPS values were originally set to give the same ''inside'' diameter (ID) based on wall thicknesses standard at the time. However, as the set of available wall thicknesses evolved, the ID changed and NPS became only indirectly related to ID and OD.
+
+For a given NPS, the OD stays fixed and the wall thickness increases with schedule. For a given schedule, the OD increases with NPS while the wall thickness stays constant or increases. Using equations and rules in ASME B31.3 Process Piping, it can be demonstrated that the pressure rating decreases as the NPS increases while the schedule remains constant.{{efn|This is contrary to the ''Piping Handbook'', which says that the schedule number can be converted to pressure by dividing the schedule by 1000 and multiplying by the allowable stress of the material.{{sfn|Nayyar|2000}} }}
+
+Some specifications use pipe schedules called standard wall (STD), extra strong (XS), and double extra strong (XXS), although these actually belong to an older system called iron pipe size (IPS). The IPS number is the same as the NPS number. STD is identical to SCH 40S, and 40S is identical to 40 for NPS {{frac|1|8}} to NPS 10, inclusive. XS is identical to SCH 80S, and 80S is identical to 80 for NPS {{frac|1|8}} to NPS 8, inclusive. XXS wall is thicker than schedule 160 from NPS {{frac|1|8}}&nbsp;in to NPS 6&nbsp;in inclusive, and schedule 160 is thicker than XXS wall for NPS 8&nbsp;in and larger.
+
+== Blockage or ball test ==
+When a pipe is welded or bent the most common method to inspect blockages, misalignment, ovality, and weld bead dimensional conformity is to pass a round ball through the pipe coil or circuit. If the inner pipe dimension is to be measured then the weld bead should be subtracted, if welding is applicable. Typically, the clearance tolerance for the ball must not exceed {{Convert|1|mm|}}. Allowable ovality of any pipe is measured on the inside dimension of the pipe; normally 5% to 10% ovality can be accepted. If no other test is conducted to verify ovality, or blockages, this test must be seen as a standard requirement. A flow test can not be used in lieu of a blockage or ball test. See pipe dimensional table, Specification ASME B36.10M or B36.19M for pipe dimensions per schedule.
+
+Stainless steel pipe is most often available in standard weight sizes (noted by the ''S'' designation; for example, ''NPS Sch 10S''). However stainless steel pipe can also be available in other schedules.
+
+Both [[polyvinyl chloride]] pipe (PVC) and [[chlorinated polyvinyl chloride]] pipe (CPVC) are made in NPS sizes.
+
+== NPS tables for selected sizes ==
+
+=== NPS {{frac|1|8}} to NPS {{frac|3|1|2}} ===
+
+DN does not exactly correspond to a size in millimeters, because ISO 6708 defines it as being a dimensionless specification only indirectly related to a diameter. The ISO 6708 sizes provide a metric name for existing inch sizes, resulting in a 1:1 correlation between NPS and DN sizes. ISO 6708 does not include values for "DN&nbsp;6" or "DN&nbsp;8"; however, ASME B36.10M lists "DN&nbsp;6" and "DN&nbsp;8". Also, the European Standard [https://www.techstreet.com/standards/din-en-12516-1?product_id=2027332 EN 12 516-1] (Industrial valves{{dash}}Shell design strength{{dash}}Part 1: Tabulation method for steel valve shells) specifies the dimensions "DN&nbsp;6" and "DN&nbsp;8", respectively their equivalents NPS&nbsp;{{frac|1|8}} and NPS&nbsp;{{frac|1|4}}. 
+
+{| class="wikitable"
+|-
+! rowspan="2" | NPS<ref>ASME B36.10M-2015: Welded and Seamless Wrought Steel Pipe. ASME.</ref>
+! rowspan="2" | DN 
+(dimensionless) 
+! rowspan="2" | OD<br />[in (mm)]
+! colspan="8" | Wall thickness [in (mm)]
+|-
+! Sch. 5s
+! Sch. 10s/10
+! Sch. 30
+! Sch. 40s/40<br />/STD
+! Sch. 80s/80<br />/XS
+! Sch. 120
+! Sch. 160
+! XXS
+|-
+! {{frac|1|8}}
+!6
+| {{convert|0.405|in|mm|2|abbr=values}}<ref>{{Cite news|url=http://hardhatengineer.com/pipe/pipe-schedule-chart-nominal-pipe-sizes/|title=A Complete Guide to Pipe Sizes and Pipe Schedule – Free Pocket Chart|work=HardHat Engineer|access-date=2017-11-07|language=en-GB}}</ref>
+| {{convert|0.035|in|mm|2|abbr=values}}
+| {{convert|0.049|in|mm|2|abbr=values}}
+| {{convert|0.057|in|mm|2|abbr=values}}
+| {{convert|0.068|in|mm|2|abbr=values}}
+| {{convert|0.095|in|mm|2|abbr=values}}
+| —
+| —
+| —
+|-
+! {{frac|1|4}}
+!8
+| {{convert|0.540|in|mm|2|abbr=values}}
+| {{convert|0.049|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.073|in|mm|2|abbr=values}}
+| {{convert|0.088|in|mm|2|abbr=values}}
+| {{convert|0.119|in|mm|2|abbr=values}}
+| —
+| —
+| —
+|-
+! {{frac|3|8}}
+! 10
+| {{convert|0.675|in|mm|2|abbr=values}}
+| {{convert|0.049|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.073|in|mm|2|abbr=values}}
+| {{convert|0.091|in|mm|2|abbr=values}}
+| {{convert|0.126|in|mm|2|abbr=values}}
+| —
+| —
+| —
+|-
+! {{frac|1|2}}
+! 15
+| {{convert|0.840|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.083|in|mm|2|abbr=values}}
+| {{convert|0.095|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.147|in|mm|2|abbr=values}}
+| —
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.294|in|mm|2|abbr=values}}
+|-
+! {{frac|3|4}}
+! 20
+| {{convert|1.050|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.083|in|mm|2|abbr=values}}
+| {{convert|0.095|in|mm|2|abbr=values}}
+| {{convert|0.113|in|mm|2|abbr=values}}
+| {{convert|0.154|in|mm|2|abbr=values}}
+| —
+| {{convert|0.219|in|mm|2|abbr=values}}
+| {{convert|0.308|in|mm|2|abbr=values}}
+|-
+! 1
+! 25
+| {{convert|1.315|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.114|in|mm|2|abbr=values}}
+| {{convert|0.133|in|mm|2|abbr=values}}
+| {{convert|0.179|in|mm|2|abbr=values}}
+| —
+| {{convert|0.250|in|mm|2|abbr=values}}
+| {{convert|0.358|in|mm|2|abbr=values}}
+|-
+! {{frac|1|1|4}}
+! 32
+| {{convert|1.660|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.117|in|mm|2|abbr=values}}
+| {{convert|0.140|in|mm|2|abbr=values}}
+| {{convert|0.191|in|mm|2|abbr=values}}
+| —
+| {{convert|0.250|in|mm|2|abbr=values}}
+| {{convert|0.382|in|mm|2|abbr=values}}
+|-
+! {{frac|1|1|2}}
+! 40
+| {{convert|1.900|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.125|in|mm|2|abbr=values}}
+| {{convert|0.145|in|mm|2|abbr=values}}
+| {{convert|0.200|in|mm|2|abbr=values}}
+| —
+| {{convert|0.281|in|mm|2|abbr=values}}
+| {{convert|0.400|in|mm|2|abbr=values}}
+|-
+! 2
+! 50
+| {{convert|2.375|in|mm|2|abbr=values}}
+| {{convert|0.065|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.125|in|mm|2|abbr=values}}
+| {{convert|0.154|in|mm|2|abbr=values}}
+| {{convert|0.218|in|mm|2|abbr=values}}
+| —
+| {{convert|0.344|in|mm|2|abbr=values}}
+| {{convert|0.436|in|mm|2|abbr=values}}
+|-
+! {{frac|2|1|2}}
+! 65
+| {{convert|2.875|in|mm|2|abbr=values}}
+| {{convert|0.083|in|mm|2|abbr=values}}
+| {{convert|0.120|in|mm|2|abbr=values}}
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.203|in|mm|2|abbr=values}}
+| {{convert|0.276|in|mm|2|abbr=values}}
+| {{convert|0.300|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.552|in|mm|2|abbr=values}}
+|-
+! 3
+! 80
+| {{convert|3.500|in|mm|2|abbr=values}}
+| {{convert|0.083|in|mm|2|abbr=values}}
+| {{convert|0.120|in|mm|2|abbr=values}}
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.216|in|mm|2|abbr=values}}
+| {{convert|0.300|in|mm|2|abbr=values}}
+| {{convert|0.350|in|mm|2|abbr=values}}
+| {{convert|0.438|in|mm|2|abbr=values}}
+| {{convert|0.600|in|mm|2|abbr=values}}
+|-
+! {{frac|3|1|2}}
+!90
+| {{convert|4.000|in|mm|2|abbr=values}}
+| {{convert|0.083|in|mm|2|abbr=values}}
+| {{convert|0.120|in|mm|2|abbr=values}}
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.226|in|mm|2|abbr=values}}
+| {{convert|0.318|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.636|in|mm|2|abbr=values}}
+|}
+
+Tolerance:  The tolerance on pipe OD is +{{convert|1/64|in|in mm|sigfig=2}}, −{{convert|1/32|in|in mm|sigfig=2}}.{{sfn|A999|2014}}
+
+As per [https://www.asme.org/products/codes-standards/b3610m-2018-welded-seamless-wrought-steel-pipe ASME B36.10M -2018] Pipe wall thickness are rounded to nearest {{Convert|0.01|mm||abbr=on}}, while converting wall thickness from inch to millimetre.
+
+=== NPS 4 to NPS 9 ===
+
+{| class="wikitable"
+|-
+! rowspan="2" | NPS<ref name=table>[http://www.engineersedge.com/pipe_schedules.htm Table of Pipe Schedules] from EngineersEdge.com.</ref>
+! rowspan="2" | DN<ref name=DN />
+! rowspan="2" | OD<br />[in (mm)]
+! colspan="12" | Wall thickness [in (mm)]
+|-
+! Sch. 5s
+! Sch. 10s/10
+! Sch. 20
+! Sch. 30
+! Sch. 40s/40<br>/STD
+! Sch. 60
+! Sch. 80s/80<br>/XS
+! Sch. 100
+! Sch. 120
+! Sch. 140
+! Sch. 160
+! XXS<ref name="table"/>
+|-
+! 4
+! 100
+| {{convert|4.500|in|mm|2|abbr=values}}
+| {{convert|0.083|in|mm|2|abbr=values}}
+| {{convert|0.120|in|mm|2|abbr=values}}
+| —
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.237|in|mm|2|abbr=values}}
+
+| —
+| {{convert|0.337|in|mm|2|abbr=values}}
+| —
+| {{convert|0.437|in|mm|2|abbr=values}}
+| —
+| {{convert|0.531|in|mm|2|abbr=values}}
+| {{convert|0.674|in|mm|2|abbr=values}}
+|-
+! {{frac|4|1|2}}
+! 115
+| {{convert|5.000|in|mm|2|abbr=values}}
+| —
+| —
+| —
+| —
+| {{convert|0.247|in|mm|2|abbr=values}}
+| —
+| {{convert|0.355|in|mm|2|abbr=values}}
+| —
+| —
+| —
+| —
+| {{convert|0.710|in|mm|2|abbr=values}}
+|-
+! 5
+! 125
+| {{convert|5.563|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.134|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.258|in|mm|2|abbr=values}}
+| —
+| {{convert|0.375|in|mm|2|abbr=values}}
+| —
+| {{convert|0.500|in|mm|2|abbr=values}}
+| —
+| {{convert|0.625|in|mm|2|abbr=values}}
+| {{convert|0.750|in|mm|2|abbr=values}}
+|-
+! 6
+! 150
+| {{convert|6.625|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.134|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.280|in|mm|2|abbr=values}}
+| —
+| {{convert|0.432|in|mm|2|abbr=values}}
+| —
+| {{convert|0.562|in|mm|2|abbr=values}}
+| —
+| {{convert|0.719|in|mm|2|abbr=values}}
+| {{convert|0.864|in|mm|2|abbr=values}}
+|-
+! 7
+! —
+| {{convert|7.625|in|mm|2|abbr=values}}
+| —
+| —
+| —
+| —
+| {{convert|0.301|in|mm|2|abbr=values}}
+| —
+| {{convert|0.500|in|mm|2|abbr=values}}
+| —
+| —
+| —
+| —
+| {{convert|0.875|in|mm|2|abbr=values}}
+|-
+! 8
+! 200
+| {{convert|8.625|in|mm|2|abbr=values}}
+| {{convert|0.109|in|mm|2|abbr=values}}
+| {{convert|0.148|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+| {{convert|0.277|in|mm|2|abbr=values}}
+| {{convert|0.322|in|mm|2|abbr=values}}
+| {{convert|0.406|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.593|in|mm|2|abbr=values}}
+| {{convert|0.719|in|mm|2|abbr=values}}
+| {{convert|0.812|in|mm|2|abbr=values}}
+| {{convert|0.906|in|mm|2|abbr=values}}
+| {{convert|0.875|in|mm|2|abbr=values}}
+|-
+! 9
+! —
+| {{convert|9.625|in|mm|2|abbr=values}}
+| —
+| —
+| —
+| —
+| {{convert|0.342|in|mm|2|abbr=values}}
+| —
+| {{convert|0.500|in|mm|2|abbr=values}}
+| —
+| —
+| —
+| —
+| —
+|-
+|}
+
+=== NPS 10 to NPS 24 ===
+
+{| class="wikitable"
+|-
+! rowspan="2" | NPS<ref name="table"/>
+! rowspan="2" | DN<ref name=DN />
+! rowspan="2" | OD<br />[in (mm)]
+! colspan="6" | Wall thickness [in (mm)]
+|-
+! Sch. 5s
+! Sch. 10
+!Sch. 10s
+! Sch. 20
+! Sch. 30
+! Sch. Std./40S
+|-
+! 10
+! 250
+| {{convert|10.75|in|mm|2|abbr=values}}
+| {{convert|0.134|in|mm|2|abbr=values}}
+| {{convert|0.165|in|mm|2|abbr=values}}
+|0.165 (4.191)
+| {{convert|0.250|in|mm|2|abbr=values}}
+| {{convert|0.307|in|mm|2|abbr=values}}
+| {{convert|0.365|in|mm|2|abbr=values}}
+|-
+! 12
+! 300
+| {{convert|12.75|in|mm|2|abbr=values}}
+| {{convert|0.156|in|mm|2|abbr=values}}
+| {{convert|0.180|in|mm|2|abbr=values}}
+|0.180 (4.572)
+| {{convert|0.250|in|mm|2|abbr=values}}
+| {{convert|0.330|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|-
+! 14
+! 350
+| {{convert|14.00|in|mm|2|abbr=values}}
+| {{convert|0.156|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+|0.188 (4.775)
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|-
+! 16
+! 400
+| {{convert|16.00|in|mm|2|abbr=values}}
+| {{convert|0.165|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+|0.188 (4.775)
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|-
+! 18
+! 450
+| {{convert|18.00|in|mm|2|abbr=values}}
+| {{convert|0.165|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+|0.188 (4.775)
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.437|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|-
+! 20
+! 500
+| {{convert|20.00|in|mm|2|abbr=values}}
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+|0.218 (5.537)
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|-
+! 22
+! 550
+| {{convert|22.00|in|mm|2|abbr=values}}
+| {{convert|0.188|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+|0.218 (5.537)
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|-
+! 24
+! 600
+| {{convert|24.00|in|mm|2|abbr=values}}
+| {{convert|0.218|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+|0.250 (6.350)
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.562|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+|}
+
+{| class="wikitable"
+! rowspan="2" | NPS<ref name="table"/>
+! rowspan="2" | DN<ref name=DN />
+! colspan="8" | Wall thickness [in (mm)]
+|-
+! Sch. 40
+! Sch. 60
+! Sch. 80s/XS
+! Sch. 80
+! Sch. 100
+! Sch. 120
+! Sch. 140
+! Sch. 160
+|-
+! 10
+! 250
+| {{convert|0.365|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.594|in|mm|2|abbr=values}}
+| {{convert|0.718|in|mm|2|abbr=values}}
+| {{convert|0.843|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+| {{convert|1.125|in|mm|2|abbr=values}}
+|-
+! 12
+! 300
+| {{convert|0.406|in|mm|2|abbr=values}}
+| {{convert|0.562|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.687|in|mm|2|abbr=values}}
+| {{convert|0.843|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+| {{convert|1.125|in|mm|2|abbr=values}}
+| {{convert|1.312|in|mm|2|abbr=values}}
+|-
+! 14
+! 350
+| {{convert|0.437|in|mm|2|abbr=values}}
+| {{convert|0.593|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.750|in|mm|2|abbr=values}}
+| {{convert|0.937|in|mm|2|abbr=values}}
+| {{convert|1.093|in|mm|2|abbr=values}}
+| {{convert|1.250|in|mm|2|abbr=values}}
+| {{convert|1.406|in|mm|2|abbr=values}}
+|-
+! 16
+! 400
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.656|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.843|in|mm|2|abbr=values}}
+| {{convert|1.031|in|mm|2|abbr=values}}
+| {{convert|1.218|in|mm|2|abbr=values}}
+| {{convert|1.437|in|mm|2|abbr=values}}
+| {{convert|1.594|in|mm|2|abbr=values}}
+|-
+! 18
+! 450
+| {{convert|0.562|in|mm|2|abbr=values}}
+| {{convert|0.750|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.937|in|mm|2|abbr=values}}
+| {{convert|1.156|in|mm|2|abbr=values}}
+| {{convert|1.375|in|mm|2|abbr=values}}
+| {{convert|1.562|in|mm|2|abbr=values}}
+| {{convert|1.781|in|mm|2|abbr=values}}
+|-
+! 20
+! 500
+| {{convert|0.593|in|mm|2|abbr=values}}
+| {{convert|0.812|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.031|in|mm|2|abbr=values}}
+| {{convert|1.280|in|mm|2|abbr=values}}
+| {{convert|1.500|in|mm|2|abbr=values}}
+| {{convert|1.750|in|mm|2|abbr=values}}
+| {{convert|1.968|in|mm|2|abbr=values}}
+|-
+! 22
+! 550
+| —
+| {{convert|0.875|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.125|in|mm|2|abbr=values}}
+| {{convert|1.375|in|mm|2|abbr=values}}
+| {{convert|1.625|in|mm|2|abbr=values}}
+| {{convert|1.875|in|mm|2|abbr=values}}
+| {{convert|2.125|in|mm|2|abbr=values}}
+|-
+! 24
+! 600
+| {{convert|0.687|in|mm|2|abbr=values}}
+| {{convert|0.968|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.218|in|mm|2|abbr=values}}
+| {{convert|1.531|in|mm|2|abbr=values}}
+| {{convert|1.812|in|mm|2|abbr=values}}
+| {{convert|2.062|in|mm|2|abbr=values}}
+| {{convert|2.343|in|mm|2|abbr=values}}
+|}
+
+=== NPS 26 to NPS 36 ===
+
+{| class="wikitable"
+|-
+! rowspan="2" | NPS<ref name="table"/>
+! rowspan="2" | DN<ref name=DN />
+! rowspan="2" | OD<br />[in (mm)]
+! colspan="8" | Wall thickness [in (mm)]
+|-
+! Sch. 5S
+! Sch. 10S
+! Sch. 10
+! Sch. 20/XS
+! Sch. 30
+! Sch. 40s/Std.
+! Sch. 40
+|-
+! 26
+! 650
+| {{convert|26.000|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| —
+| {{convert|0.375|in|mm|2|abbr=values}}
+| —
+
+|-
+! 28
+! 700
+| {{convert|28.000|in|mm|2|abbr=values}}
+| —
+| ?
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.625|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| —
+|-
+! 30
+! 750
+| {{convert|30.000|in|mm|2|abbr=values}}
+| {{convert|0.250|in|mm|2|abbr=values}}
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.625|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| —
+|-
+! 32
+! 800
+| {{convert|32.000|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.625|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.688|in|mm|2|abbr=values}}
+|-
+! 34
+! 850
+| {{convert|34.000|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.625|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.688|in|mm|2|abbr=values}}
+|-
+! 36
+! 900
+| {{convert|36.000|in|mm|2|abbr=values}}
+| —
+| —
+| {{convert|0.312|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|0.625|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.750|in|mm|2|abbr=values}}
+|-
+|}
+
+=== Additional sizes (NPS) ===
+
+{| class="wikitable"
+|-
+! rowspan="3" | NPS 
+|-
+! rowspan="2" | DN<ref name=DN />
+! rowspan="2" | OD<br />[in (mm)]
+! colspan="3" | Wall thickness<br />[in (mm)]
+|-
+! Std. Wt.
+! Sch. XS
+! Sch. XXS
+|-
+|-
+!40
+!1000
+| {{convert|40.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!42
+!1050
+| {{convert|42.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!44
+!1100
+| {{convert|44.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!46
+!1150
+| {{convert|46.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!48
+!1200
+| {{convert|48.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!52
+!1300
+| {{convert|52.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!56
+!1400
+| {{convert|56.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!60
+!1500
+| {{convert|60.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!64
+!1600
+| {{convert|64.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!68
+!1700
+| {{convert|68.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!72
+!1800
+| {{convert|72.000|in|mm|2|abbr=values}}
+| {{convert|0.375|in|mm|2|abbr=values}}
+| {{convert|0.500|in|mm|2|abbr=values}}
+| {{convert|1.000|in|mm|2|abbr=values}}
+|-
+!76
+!1900
+| {{convert|76.000|in|mm|2|abbr=values}}
+| 
+| 
+|
+|-
+!80
+!2000
+| {{convert|80.000|in|mm|2|abbr=values}}
+| 
+| 
+|
+|-
+!88
+!2200
+| {{convert|88.000|in|mm|2|abbr=values}}
+| 
+| 
+|
+|-
+!92
+!2300
+| {{convert|92.000|in|mm|2|abbr=values}}
+|
+|
+|
+|-
+!96
+!2400
+| {{convert|96.000|in|mm|2|abbr=values}}
+|
+|
+|
+|-
+!100
+!2500
+| {{convert|100.000|in|mm|2|abbr=values}}
+|
+|
+|
+|-
+!104
+!2600
+| {{convert|104.000|in|mm|2|abbr=values}}
+|
+|
+|
+|-
+!108
+!2700
+| {{convert|108.000|in|mm|2|abbr=values}}
+|
+|
+|
+|-
+|}
+
+== See also ==
+{{div col|colwidth=18em}}
+
+* [[British standard pipe thread#Pipe thread sizes|British standard pipe thread sizes]]
+* [[Copper tubing#Sizes|Copper tubing sizes]]
+* [[National pipe thread#Pipe thread sizes|Pipe thread sizes]]
+* [[National pipe thread#Pipe thread sizes|National pipe thread sizes]]
+* [[Pipe (fluid conveyance)]]
+* [[Pipe (fluid conveyance)#Sizes|Pipe sizes]]
+* [[Standard dimension ratio]]
+
+{{div col end}}
+
+== Notes ==
+{{notelist}}
+
+== References ==
+{{reflist}}
+
+==Bibliography==
+{{refbegin}}
+*{{Citation | title = ASTM A999 / A999M{{dash}}14 Standard Specification for General Requirements for Alloy and Stainless Steel Pipe | publisher= ASTM International | date = 2014 | doi= 10.1520/A0999_A0999M | ref={{sfnref|A999|2014}}  }}
+* {{cite book | first = Mohinder L. | last = Nayyar | year = 2000 | title = Piping Handbook | chapter = A1 | editor-first = Mohinder L. | editor-last =Nayyar | edition = 7th | publisher = McGraw-Hill | location = New York | isbn = 0-07-047106-1 }}
+* {{Cite book| publisher= The American Society of Mechanical Engineers | title= B36.10M Welded and Seamless Wrought Steel Pipe  | date = 2015 | access-date = 2015-10-02 | url = https://www.asme.org/products/codes-standards/b3610m-2015-welded-seamless-wrought-steel-pipe | isbn= 9780791870273 | ref={{sfnref|ASME B36.10}}  }}
+* {{Cite book| publisher= The American Society of Mechanical Engineers | title= B36.19M Stainless Steel Pipe | date = 2004 | access-date = 2015-10-02 | url = https://www.asme.org/products/codes-standards/b3619m-2004-stainless-steel-pipe | isbn= 0791829170| ref={{sfnref|ASME B36.19}}  }}
+{{refend}}
+
+== External links ==
+
+* [http://www.gizmology.net/pipe.htm Notes on Pipe] {{Webarchive|url=https://web.archive.org/web/20180116201447/http://www.gizmology.net/pipe.htm |date=2018-01-16 }}{{dash}}PVC pipe weights and maximum pressure
+* [http://www.enggcyclopedia.com/welcome-to-enggcyclopedia/pipe-dim/standard-piping-dimensions-carbon-steel-stainless-steel-ansi Quick calculator to determine standard pipe dimensions]{{Dead link|date=February 2026 |bot=InternetArchiveBot }} for carbon steel and stainless steel pipes as per ANSI (requires membership)
+
+[[Category:Piping]]
+[[Category:Mechanical standards]]
+[[Category:Customary units of measurement in the United States]]
