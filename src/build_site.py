@@ -181,7 +181,7 @@ def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_ti
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/site.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W8RN8GHWNC"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W8RN8GHWNC');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-W8RN8GHWNC');</script>
 <meta name="google-adsense-account" content="ca-pub-9800534934394753">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800534934394753" crossorigin="anonymous"></script>
 {ld}
