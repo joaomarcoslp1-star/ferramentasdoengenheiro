@@ -14,6 +14,7 @@ fi12,t12=T(12,84.3,'8.8')
 top=f'''<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto">
 <p>Apertar um parafuso "no braço" é a receita para dois problemas: o parafuso que afrouxa com a vibração e o parafuso que escoa ou rompe no aperto. O que segura uma junta aparafusada é a <b>pré-carga</b>, a força de tração que o parafuso exerce depois de apertado. O <b>torque</b> é só o jeito prático de chegar nela com um torquímetro.</p>
 <p>A calculadora abaixo calcula o <b>torque de aperto</b> e a <b>pré-carga</b> de parafusos métricos pela classe de resistência (4.6 a 12.9) e pela condição da rosca (seca, zincada, lubrificada ou com pasta), e ainda monta a tabela completa para todas as bitolas.</p>
+<figure style="margin:8px auto 24px;max-width:340px;text-align:center"><video controls playsinline preload="none" poster="/ig/torque/poster.jpg" style="width:100%;border-radius:14px;background:#0f2742;aspect-ratio:9/16" aria-label="Vídeo: torque seco x lubrificado"><source src="/ig/torque/reel.mp4" type="video/mp4"></video><figcaption style="font-size:.85rem;color:#5a6575;margin-top:6px">▶ Em 30 segundos: o mesmo torque, seco e lubrificado, dá resultados opostos.</figcaption></figure>
 <h2>Calculadora de torque de aperto</h2>
 '''
 bottom=f'''

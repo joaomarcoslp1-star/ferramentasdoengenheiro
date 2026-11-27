@@ -8,6 +8,7 @@ F=lambda s:f'<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:
 top='''<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto">
 <p>Toda viga que recebe carga trabalha com dois esforços internos: o <b>esforço cortante</b> (V), que tenta "cortar" a viga na vertical, e o <b>momento fletor</b> (M), que tenta dobrá-la. Saber onde cada um é máximo é o primeiro passo para dimensionar um perfil, uma prateleira, uma ponte rolante ou uma laje, e é a matéria que mais reprova em Resistência dos Materiais.</p>
 <p>Monte a sua viga abaixo: escolha os apoios, adicione cargas pontuais, distribuídas (uniformes, triangulares ou trapezoidais) e momentos. A calculadora mostra as reações, desenha os diagramas de cortante e de momento fletor e explica a resolução passo a passo.</p>
+<figure style="margin:8px auto 24px;max-width:340px;text-align:center"><video controls playsinline preload="none" poster="/ig/vigas/poster.jpg" style="width:100%;border-radius:14px;background:#0f2742;aspect-ratio:9/16" aria-label="Vídeo: por que a viga dobra no meio"><source src="/ig/vigas/reel.mp4" type="video/mp4"></video><figcaption style="font-size:.85rem;color:#5a6575;margin-top:6px">▶ Entenda em 36 segundos por que o momento fletor é máximo no meio da viga.</figcaption></figure>
 <h2>Calculadora de vigas: reações, cortante e momento fletor</h2>
 '''
 bottom=f'''

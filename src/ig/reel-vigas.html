@@ -1,0 +1,120 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}
+body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0f2742;font-family:Arial,Helvetica,sans-serif;color:#fff;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:54px 54px}
+.lay{position:absolute;inset:0}
+.bd{display:inline-block;background:#f28c28;color:#1c2430;font-weight:700;font-size:34px;padding:14px 34px;border-radius:40px}
+em{font-style:normal;color:#f9a24b}
+.h{font-size:96px;font-weight:800;line-height:1.08}
+.m{font-size:58px;font-weight:800;line-height:1.15}
+.s{font-size:44px;color:#c9d6e6;line-height:1.35}
+.foot{position:absolute;left:80px;right:80px;bottom:90px;display:flex;align-items:center;font-size:34px;color:#c9d6e6}
+.foot img{width:70px;height:70px;border-radius:14px;margin-right:20px}
+.lab{font-size:34px;font-weight:700}
+</style></head><body>
+<div class="grid"></div>
+
+<!-- cena 1: gancho -->
+<div class="lay" id="c1" style="padding:380px 80px 0">
+  <div class="bd">NA PRÁTICA</div>
+  <div class="h" style="margin-top:50px">Por que a<br>prateleira empena<br><em>no meio?</em></div>
+  <svg width="920" height="420" viewBox="0 0 920 420" style="margin-top:70px">
+    <rect x="40" y="40" width="30" height="340" fill="#2b4a6f"/><rect x="850" y="40" width="30" height="340" fill="#2b4a6f"/>
+    <path id="shelf" d="" fill="#c7d3e0"/>
+    <g id="books"></g>
+  </svg>
+</div>
+
+<!-- cena 2-4: viga e diagramas -->
+<div class="lay" id="c2">
+  <div style="position:absolute;left:80px;right:80px;top:150px">
+    <div class="bd" id="tag">MOMENTO FLETOR</div>
+    <div class="m" id="tit" style="margin-top:30px"></div>
+  </div>
+  <svg id="sv" width="1080" height="1380" viewBox="0 0 1080 1380" style="position:absolute;left:0;top:400px"></svg>
+</div>
+
+<!-- cena 5: CTA -->
+<div class="lay" id="c5" style="padding:400px 80px 0">
+  <div class="bd">GUARDE ESTA</div>
+  <div class="h" style="margin-top:50px">Momento máximo<br>no meio:</div>
+  <div style="font-size:150px;font-weight:800;color:#f9a24b;margin-top:30px">M = wL²/8</div>
+  <div class="s" style="margin-top:20px">Viga biapoiada com carga uniforme</div>
+  <div id="cta" style="margin-top:90px;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.12);border-radius:30px;padding:44px;text-align:center">
+    <div style="font-size:54px;font-weight:800">Monte a sua viga, grátis</div>
+    <div style="font-size:42px;color:#f9a24b;font-weight:700;margin-top:12px">🔗 link na bio</div>
+  </div>
+</div>
+
+<div class="foot"><img src="LOGO">@ferramentasdoengenheiro</div>
+
+<script>
+var T=TIMES; // tempos da narração
+function cl(v,a,b){return Math.max(a,Math.min(b,v));}
+function ease(u){u=cl(u,0,1);return u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;}
+function fade(t,a,b){return cl((t-a)/0.4,0,1)*cl((b-t)/0.4,0,1);}
+function nf(v,d){return v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+var $=function(i){return document.getElementById(i)};
+var X0=120,X1=960,L=6,w=5,R=15,MM=22.5;
+function sx(x){return X0+(X1-X0)*x/L;}
+window.render=function(t){
+  $('c1').style.opacity=fade(t,-1,T.c1end); $('c1').style.transform='translateY('+(1-cl(t/0.5,0,1))*40+'px)';
+  $('c2').style.opacity=fade(t,T.c1end-0.2,T.c5);
+  $('c5').style.opacity=fade(t,T.c5-0.2,99); $('c5').style.transform='translateY('+(1-cl((t-T.c5)/0.6,0,1))*40+'px)';
+  $('cta').style.opacity=cl((t-T.cta)/0.4,0,1);
+  // prateleira cena 1: enverga conforme livros
+  var sag=40*ease((t-0.6)/1.6);
+  $('shelf').setAttribute('d','M70 200 Q460 '+(200+2*sag)+' 850 200 L850 222 Q460 '+(222+2*sag)+' 70 222 Z');
+  var bk='';for(var i=0;i<9;i++){var x=110+i*80,yb=200+sag*(1-Math.pow((x-460)/390,2));var drop=cl((t-0.2-i*0.07)/0.4,0,1);bk+='<rect x="'+x+'" y="'+(yb-110-(1-drop)*200)+'" width="60" height="110" rx="6" fill="'+['#f28c28','#4d6f96','#c9d6e6'][i%3]+'" opacity="'+drop+'"/>';}
+  $('books').innerHTML=bk;
+  // ----- cena 2
+  var tit='';
+  if(t<T.carga) tit='Viga de <em>6 m</em>, biapoiada';
+  else if(t<T.reac) tit='Carga de <em>5 kN/m</em>';
+  else if(t<T.cort) tit='Cada apoio: <em>15 kN</em>';
+  else if(t<T.zero) tit='Cortante: cai em <em>linha reta</em>';
+  else if(t<T.mom) tit='Zera <em>bem no meio</em>';
+  else if(t<T.form) tit='Onde V = 0, <em>M é máximo</em>';
+  else if(t<T.mmax) tit='M<sub>máx</sub> = <em>wL²/8</em>';
+  else if(t<T.dobra) tit='M<sub>máx</sub> = <em>22,5 kN·m</em>';
+  else tit='É ali que a viga <em>dobra</em>';
+  $('tit').innerHTML=tit;
+  var o='', by=170;
+  var defl=t>T.dobra?34*ease((t-T.dobra)/1.5):0;
+  // viga (flete no meio)
+  var pth='M'+X0+' '+(by-12); for(var i=0;i<=40;i++){var x=L*i/40;var yy=by-12+defl*Math.sin(Math.PI*x/L);pth+=' L'+sx(x)+' '+yy;}
+  for(var i=40;i>=0;i--){var x=L*i/40;var yy=by+12+defl*Math.sin(Math.PI*x/L);pth+=' L'+sx(x)+' '+yy;} pth+='Z';
+  o+='<path d="'+pth+'" fill="#9fb3c8" stroke="#c7d3e0" stroke-width="2"/>';
+  o+='<path d="M'+X0+' '+(by+12)+' l-26 44 h52 z" fill="none" stroke="#fff" stroke-width="4"/>';
+  o+='<path d="M'+X1+' '+(by+12)+' l-26 40 h52 z" fill="none" stroke="#fff" stroke-width="4"/><circle cx="'+(X1-14)+'" cy="'+(by+62)+'" r="8" fill="none" stroke="#fff" stroke-width="3"/><circle cx="'+(X1+14)+'" cy="'+(by+62)+'" r="8" fill="none" stroke="#fff" stroke-width="3"/>';
+  o+='<text x="'+((X0+X1)/2)+'" y="'+(by+120)+'" text-anchor="middle" font-size="34" fill="#c9d6e6">L = 6 m</text>';
+  // carga distribuída
+  var cu=ease((t-T.carga)/0.9);
+  if(cu>0){ for(var i=0;i<=12;i++){var X=sx(L*i/12),a=cl(cu*13-i,0,1);o+='<g opacity="'+a+'"><line x1="'+X+'" y1="'+(by-110)+'" x2="'+X+'" y2="'+(by-26)+'" stroke="#f28c28" stroke-width="5"/><path d="M'+(X-11)+' '+(by-38)+' L'+X+' '+(by-18)+' L'+(X+11)+' '+(by-38)+'" fill="#f28c28"/></g>';}
+    o+='<line x1="'+X0+'" y1="'+(by-110)+'" x2="'+(X0+(X1-X0)*cu)+'" y2="'+(by-110)+'" stroke="#f28c28" stroke-width="5"/><text x="'+((X0+X1)/2)+'" y="'+(by-130)+'" text-anchor="middle" font-size="40" font-weight="700" fill="#f9a24b" opacity="'+cu+'">w = 5 kN/m</text>'; }
+  // reações
+  var ru=ease((t-T.reac)/0.6);
+  if(ru>0){ [X0,X1].forEach(function(X){o+='<g opacity="'+ru+'"><line x1="'+X+'" y1="'+(by+190)+'" x2="'+X+'" y2="'+(by+90)+'" stroke="#7fd6a0" stroke-width="6"/><path d="M'+(X-14)+' '+(by+104)+' L'+X+' '+(by+80)+' L'+(X+14)+' '+(by+104)+'" fill="#7fd6a0"/><text x="'+X+'" y="'+(by+232)+'" text-anchor="middle" font-size="38" font-weight="700" fill="#7fd6a0">15 kN</text></g>';}); }
+  // diagrama de cortante
+  var vy=by+540, vh=130;
+  var vu=ease((t-T.cort)/(T.zero-T.cort+0.3));
+  if(t>T.cort-0.3){ o+='<text x="'+X0+'" y="'+(vy-vh-64)+'" font-size="36" font-weight="700" fill="#fff" opacity="'+cl((t-T.cort+0.3)/0.3,0,1)+'">Esforço cortante V</text>';
+    o+='<line x1="'+X0+'" y1="'+vy+'" x2="'+X1+'" y2="'+vy+'" stroke="#c9d6e6" stroke-width="2"/>';
+    var xe=L*Math.min(1,vu*1.0+ (t>T.zero?ease((t-T.zero)/0.8)*0.5:0)); xe=Math.min(L,t<T.zero?L*0.5*vu:L*(0.5+0.5*ease((t-T.zero)/0.8)));
+    if(xe>0){ var d='M'+sx(0)+' '+vy+' L'+sx(0)+' '+(vy-vh)+' L'+sx(xe)+' '+(vy-vh+2*vh*xe/L)+' L'+sx(xe)+' '+vy+' Z'; o+='<path d="'+d+'" fill="rgba(31,111,235,.35)" stroke="#5b9bff" stroke-width="4"/>'; }
+    o+='<text x="'+(X0+10)+'" y="'+(vy-vh-4)+'" font-size="32" font-weight="700" fill="#9cc2ff">+15</text>';
+    if(xe>=L-1e-6) o+='<text x="'+(X1-10)+'" y="'+(vy+vh+40)+'" text-anchor="end" font-size="32" font-weight="700" fill="#9cc2ff">−15</text>';
+    var zu=cl((t-T.zero)/0.4,0,1); if(zu>0){ var Xm=sx(L/2); o+='<circle cx="'+Xm+'" cy="'+vy+'" r="'+(16+8*Math.sin(t*8))+'" fill="none" stroke="#ffd166" stroke-width="5" opacity="'+zu+'"/><text x="'+Xm+'" y="'+(vy-24)+'" text-anchor="middle" font-size="34" font-weight="700" fill="#ffd166" opacity="'+zu+'">V = 0</text>'; }
+  }
+  // diagrama de momento (desenhado para baixo, lado tracionado)
+  var my=vy+290, mh=240;
+  if(t>T.mom-0.3){ var mu=ease((t-T.mom)/1.4);
+    o+='<text x="'+X0+'" y="'+(my-30)+'" font-size="36" font-weight="700" fill="#fff" opacity="'+cl((t-T.mom+0.3)/0.3,0,1)+'">Momento fletor M</text>';
+    o+='<line x1="'+X0+'" y1="'+my+'" x2="'+X1+'" y2="'+my+'" stroke="#c9d6e6" stroke-width="2"/>';
+    var xe=L*mu; if(xe>0){ var d='M'+sx(0)+' '+my; for(var i=0;i<=60;i++){var x=xe*i/60;var M=R*x-w*x*x/2;d+=' L'+sx(x)+' '+(my+mh*M/MM);} d+=' L'+sx(xe)+' '+my+' Z'; o+='<path d="'+d+'" fill="rgba(242,140,40,.35)" stroke="#f28c28" stroke-width="4"/>'; }
+    var pu=cl((t-T.mmax)/0.4,0,1); if(pu>0){ var Xm=sx(L/2); o+='<line x1="'+Xm+'" y1="'+(vy+10)+'" x2="'+Xm+'" y2="'+(my+mh)+'" stroke="#ffd166" stroke-width="3" stroke-dasharray="10 8" opacity="'+pu+'"/><circle cx="'+Xm+'" cy="'+(my+mh)+'" r="12" fill="#ffd166" opacity="'+pu+'"/><text x="'+Xm+'" y="'+(my+mh+60)+'" text-anchor="middle" font-size="48" font-weight="800" fill="#ffd166" opacity="'+pu+'">22,5 kN·m</text>'; }
+  }
+  $('sv').innerHTML=o;
+};
+render(0);
+</script></body></html>
