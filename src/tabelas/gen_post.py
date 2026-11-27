@@ -13,7 +13,8 @@ top='''<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-seri
 <li><b>Perfis europeus IPE, HEA e HEB</b> (EN 10365), 56 bitolas;</li>
 <li><b>Tubos de aço ASME B36.10M</b> de ⅛" a 36", em todos os schedules (10, 20, 30, STD, 40, 60, XS, 80, 100, 120, 140, 160 e XXS).</li>
 </ul>
-<h2>Tabelas de perfis e tubos de aço</h2>
+<h2>Notação</h2>
+'''+open('/home/claude/site_src/tabelas/notacao.svg.html').read()+'''<h2>Tabelas de perfis e tubos de aço</h2>
 '''
 bottom=f'''
 <h2>Como achar o perfil mais leve para a sua viga</h2>
@@ -22,12 +23,6 @@ bottom=f'''
 <p>Perfis altos e de mesa estreita (W de mesa estreita, IPE) rendem mais em vigas, porque colocam o material longe do centro. Perfis de mesa larga (H, HP, HEA, HEB) têm inércia mais equilibrada nos dois eixos e são os preferidos para pilares. O <a href="/calculadoras/momento-de-inercia/">calculador de momento de inércia</a> mostra por quê.</p>
 <p>Nas vigas soldadas VS, a relação altura/mesa é escolhida para flexão, e elas cobrem alturas que os laminados não têm. Compare sempre o peso: às vezes uma VS mais alta sai mais leve que um laminado.</p>
 <p>Esta escolha é um pré-dimensionamento. A verificação completa de vigas e pilares de aço (flambagem local, flambagem lateral com torção, cortante, flecha) segue a NBR 8800.</p>
-
-<h2>Notação das tabelas</h2>
-{T(["Símbolo","Significado"],[
- ["d","altura total do perfil (no tubo, D = diâmetro externo)"],["b<sub>f</sub>","largura da mesa"],["t<sub>w</sub> / t<sub>f</sub>","espessura da alma / da mesa"],["A","área da seção transversal"],
- ["I<sub>x</sub>, I<sub>y</sub>","momentos de inércia nos eixos de maior e de menor inércia"],["W<sub>x</sub>, W<sub>y</sub>","módulos resistentes elásticos (I dividido pela distância à fibra extrema)"],
- ["r<sub>x</sub>, r<sub>y</sub>","raios de giração (√(I/A)), usados na esbeltez de pilares"],["Pintura","área lateral externa por metro, para orçar pintura e jateamento"]]).replace('text-align:center"','text-align:left"')}
 
 <h2>Designação dos perfis: W, HP, IPE, HEA e HEB</h2>
 <ul>
