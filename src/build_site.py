@@ -21,6 +21,15 @@ LINKS = {
     "/p/politica-de-privacidade.html": "/privacidade/",
 }
 
+FIGS = {  # figuras cotadas inseridas nas páginas: (âncora, figura em site_src/figs, antes|depois)
+    "calculadoras/torque-de-aperto-de-parafusos": [("<h2>Como calcular o torque de aperto</h2>", "torque", "depois")],
+    "calculadoras/categoria-vaso-de-pressao-nr-13": [("<h2>Passo 1: o vaso entra na NR-13?</h2>", "nr13", "antes")],
+    "calculadoras/vigas-cortante-e-momento-fletor": [("<h2>Como resolver uma viga isostática</h2>", "vigas", "depois")],
+    "calculadoras/perda-de-carga": [("<h2>Como calcular a perda de carga</h2>", "perda", "depois")],
+    "calculadoras/queda-de-tensao": [("<h2>Fórmula da queda de tensão</h2>", "queda", "depois")],
+    "calculadoras/area-de-pintura": [("<h2>Como calcular a área de pintura de perfis metálicos</h2>", "pintura", "depois")],
+}
+
 AREAS = [
     ("Resistência dos materiais", ["Resistência dos materiais"]),
     ("Elementos de máquinas", ["Elementos de máquinas"]),
@@ -213,6 +222,12 @@ def build():
         sec = ("/calculadoras/", "Calculadoras") if p["kind"] == "calc" else ("/simulados/", "Simulados")
         mats = [x for x in PAGES if x["kind"] == "mat"]
         body_post = clean_post(open(f'{ROOT}/{p["src"]}', encoding="utf-8").read())
+        for anchor, fig, where in FIGS.get(p["slug"], []):
+            figh = open(f"{ROOT}/site_src/figs/{fig}.html", encoding="utf-8").read()
+            if anchor in body_post:
+                body_post = body_post.replace(anchor, (anchor + figh) if where == "depois" else (figh + anchor), 1)
+            else:
+                print("AVISO: âncora não encontrada", p["slug"], fig)
         if p["kind"] == "mat":
             i = mats.index(p); rel = [x for x in PAGES if x["kind"] == "sim"] + [mats[(i+1) % len(mats)], mats[(i+2) % len(mats)]]
         elif p["kind"] == "sim":

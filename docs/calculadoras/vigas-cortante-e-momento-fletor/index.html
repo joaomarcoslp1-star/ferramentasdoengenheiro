@@ -220,7 +220,26 @@ R.addEventListener('input',calc); R.addEventListener('change',calc); calc();
 </script>
 </div>
 
-<h2>Como resolver uma viga isostática</h2>
+<h2>Como resolver uma viga isostática</h2><figure style="margin:12px 0 20px"><svg viewBox="0 0 900 352" role="img" aria-label="Cargas em vigas e convenção de sinais de cortante e momento" style="width:100%;height:auto;background:#fff;border:1px solid #dde3ec;border-radius:12px;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif"><defs><marker id="mvigas" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#1f6feb"/></marker><marker id="mvigaso" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#f28c28"/></marker><marker id="mvigasb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#4d6f96"/></marker><marker id="mvigasg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#2e9e5b"/></marker></defs>
+<text x="225" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#0f2742">Cargas</text>
+<rect x="60" y="150" width="330" height="16" rx="3" fill="#9fb3c8" stroke="#4d6f96" stroke-width="2"/>
+<path d="M70 166 l-14 24 h28 z" fill="#fff" stroke="#1c2430" stroke-width="2"/><path d="M380 166 l-14 22 h28 z" fill="#fff" stroke="#1c2430" stroke-width="2"/><circle cx="372" cy="194" r="4" fill="none" stroke="#1c2430" stroke-width="2"/><circle cx="388" cy="194" r="4" fill="none" stroke="#1c2430" stroke-width="2"/>
+<line x1="130" y1="70" x2="130" y2="146" stroke="#f28c28" stroke-width="3" marker-end="url(#mvigaso)"/><text x="138" y="80" font-size="18" font-weight="700" fill="#b35f00">P</text><text x="138" y="96" font-size="12" fill="#b35f00">pontual (kN)</text>
+<rect x="200" y="100" width="110" height="10" fill="#f28c28" opacity=".25"/>
+<g stroke="#f28c28" stroke-width="2"><line x1="205" y1="110" x2="205" y2="144" marker-end="url(#mvigaso)"/><line x1="226" y1="110" x2="226" y2="144" marker-end="url(#mvigaso)"/><line x1="247" y1="110" x2="247" y2="144" marker-end="url(#mvigaso)"/><line x1="268" y1="110" x2="268" y2="144" marker-end="url(#mvigaso)"/><line x1="289" y1="110" x2="289" y2="144" marker-end="url(#mvigaso)"/><line x1="310" y1="110" x2="310" y2="144" marker-end="url(#mvigaso)"/></g><text x="255" y="92" text-anchor="middle" font-size="18" font-weight="700" fill="#b35f00">w</text><text x="255" y="76" text-anchor="middle" font-size="12" fill="#b35f00">distribuída (kN/m)</text>
+<path d="M352 138 A20 20 0 1 0 330 120" fill="none" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#mvigasg)"/><text x="345" y="100" font-size="18" font-weight="700" fill="#8e44ad">M</text><text x="300" y="232" font-size="12" fill="#8e44ad">momento (+ anti-horário)</text>
+<text x="70" y="222" text-anchor="middle" font-size="13" fill="#1c2430">pino</text><text x="380" y="222" text-anchor="middle" font-size="13" fill="#1c2430">rolete</text>
+<!-- convencao -->
+<text x="675" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#0f2742">Sinais positivos</text>
+<rect x="580" y="90" width="190" height="40" fill="#c9d6e6" stroke="#4d6f96" stroke-width="2"/>
+<line x1="568" y1="140" x2="568" y2="92" stroke="#1f6feb" stroke-width="3" marker-end="url(#mvigas)"/><line x1="782" y1="80" x2="782" y2="128" stroke="#1f6feb" stroke-width="3" marker-end="url(#mvigas)"/>
+<text x="675" y="160" text-anchor="middle" font-size="16" font-weight="700" fill="#1f6feb">V &gt; 0</text><text x="675" y="178" text-anchor="middle" font-size="12" fill="#1f6feb">resultante à esquerda do corte para cima</text>
+<path d="M590 230 Q675 280 760 230" fill="none" stroke="#9fb3c8" stroke-width="22"/><path d="M590 230 Q675 280 760 230" fill="none" stroke="#4d6f96" stroke-width="2" stroke-dasharray="2 0"/>
+<path d="M600 214 A22 22 0 0 0 586 246" fill="none" stroke="#f28c28" stroke-width="3" marker-end="url(#mvigaso)"/><path d="M750 214 A22 22 0 0 1 764 246" fill="none" stroke="#f28c28" stroke-width="3" marker-end="url(#mvigaso)"/>
+<text x="675" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#b35f00">M &gt; 0</text><text x="675" y="318" text-anchor="middle" font-size="12" fill="#b35f00">traciona embaixo: a viga "sorri"</text>
+<text x="675" y="336" text-anchor="middle" font-size="12" fill="#b35f00">(o diagrama é desenhado desse lado)</text>
+</svg></figure>
+
 <p>Vigas biapoiadas e em balanço são <b>isostáticas</b>: as três equações de equilíbrio da estática bastam para achar as reações. O roteiro é sempre o mesmo:</p>
 <p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>1. Substitua as cargas distribuídas pela resultante.</b> Uniforme: F = w × comprimento, no meio do trecho. Triangular: F = w × comprimento / 2, a 1/3 do lado maior. Trapezoidal: F = (w<sub>1</sub> + w<sub>2</sub>)/2 × comprimento.</p>
 <p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>2. Some os momentos em um apoio e iguale a zero.</b> Isso dá a reação do outro apoio sem precisar da primeira.</p>

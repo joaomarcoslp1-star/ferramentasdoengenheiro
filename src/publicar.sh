@@ -8,7 +8,7 @@ rm -rf docs && cp -r /home/claude/site docs && cp -r /tmp/ig_keep docs/ig
 cp /home/claude/site_src/build_site.py /home/claude/site_src/compor_capas.py src/
 for d in torque nr13 vigas inercia tabelas; do mkdir -p src/$d && cp /home/claude/site_src/$d/* src/$d/; done
 cp /home/claude/site_src/posts/*.html src/posts/
-cp /home/claude/publicar.sh src/
+cp /home/claude/publicar.sh src/; mkdir -p src/figs && cp /home/claude/site_src/figs/* src/figs/
 git add -A
 git -c user.name="joaomarcoslp1-star" -c user.email="joaomarcoslp1-star@users.noreply.github.com" commit -q -m "$1
 

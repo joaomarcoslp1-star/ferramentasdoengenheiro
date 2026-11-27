@@ -120,7 +120,19 @@
   <li><b>Leia o resultado.</b> A calculadora mostra a queda em V e em %, a tensão que chega na carga, a menor seção que atende e uma tabela comparando as bitolas.</li>
 </ol>
 
-<h2>Fórmula da queda de tensão</h2>
+<h2>Fórmula da queda de tensão</h2><figure style="margin:12px 0 20px"><svg viewBox="0 0 900 368" role="img" aria-label="Circuito elétrico: corrente I, comprimento L, seção S e queda de tensão" style="width:100%;height:auto;background:#fff;border:1px solid #dde3ec;border-radius:12px;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif"><defs><marker id="mqueda" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#1f6feb"/></marker><marker id="mquedao" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#f28c28"/></marker><marker id="mquedab" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#4d6f96"/></marker><marker id="mquedag" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#2e9e5b"/></marker></defs>
+<text x="450" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#0f2742">Queda de tensão num circuito</text>
+<rect x="50" y="110" width="120" height="120" rx="10" fill="#c9d6e6" stroke="#4d6f96" stroke-width="2"/><text x="110" y="166" text-anchor="middle" font-size="15" font-weight="700" fill="#1c2430">Quadro</text><text x="110" y="190" text-anchor="middle" font-size="13" fill="#1c2430">220 V</text>
+<path d="M170 140 H700" stroke="#c0392b" stroke-width="7"/><path d="M170 200 H700" stroke="#1f4f8a" stroke-width="7"/>
+<circle cx="775" cy="170" r="62" fill="#fff4e8" stroke="#f28c28" stroke-width="3"/><text x="775" y="166" text-anchor="middle" font-size="15" font-weight="700" fill="#b35f00">Carga</text><text x="775" y="186" text-anchor="middle" font-size="13" fill="#b35f00">motor, lâmpada</text>
+<path d="M700 140 Q712 140 720 146 M700 200 Q712 200 720 194" stroke="#4d6f96" stroke-width="4" fill="none"/>
+<line x1="260" y1="125" x2="360" y2="125" stroke="#c0392b" stroke-width="3" marker-end="url(#mquedao)"/><text x="310" y="116" text-anchor="middle" font-size="18" font-weight="700" fill="#c0392b">I</text>
+<line x1="170" y1="250" x2="700" y2="250" stroke="#1f6feb" stroke-width="2" marker-start="url(#mqueda)" marker-end="url(#mqueda)"/><text x="435" y="274" text-anchor="middle" font-size="18" font-weight="700" fill="#1f6feb">L</text><text x="435" y="292" text-anchor="middle" font-size="12" fill="#1f6feb">comprimento do cabo (só ida)</text>
+<circle cx="520" cy="90" r="28" fill="#b87333" stroke="#7a4a1e" stroke-width="2"/><circle cx="520" cy="90" r="18" fill="#d9925a"/><line x1="520" y1="118" x2="520" y2="136" stroke="#7a4a1e" stroke-width="1.5" stroke-dasharray="3 3"/><text x="560" y="86" font-size="18" font-weight="700" fill="#7a4a1e">S</text><text x="560" y="102" font-size="12" fill="#7a4a1e">seção do condutor (mm²)</text>
+<!-- delta V -->
+<rect x="200" y="310" width="500" height="44" rx="8" fill="#f6f8fb" stroke="#dde3ec"/><text x="450" y="337" text-anchor="middle" font-size="15" fill="#1c2430">ΔV = tensão no quadro − tensão na carga   ·   limite NBR 5410: 4% (terminal)</text>
+</svg></figure>
+
 <p>O cabo tem resistência elétrica. Quando a corrente passa por ele, parte da tensão fica "pelo caminho" e não chega à carga, como mostra o desenho:</p>
 
 <figure style="margin:20px 0;text-align:center">

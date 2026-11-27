@@ -1,0 +1,31 @@
+<figure style="margin:12px 0 20px"><svg viewBox="0 0 900 360" role="img" aria-label="Junta aparafusada: diâmetro d, pré-carga Fi, torque T, atrito K e área resistente At" style="width:100%;height:auto;background:#fff;border:1px solid #dde3ec;border-radius:12px;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif"><defs><marker id="mtorque" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#1f6feb"/></marker><marker id="mtorqueo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#f28c28"/></marker><marker id="mtorqueb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#4d6f96"/></marker><marker id="mtorqueg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="#2e9e5b"/></marker></defs>
+<text x="250" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#0f2742">Junta aparafusada</text>
+<rect x="110" y="120" width="280" height="50" fill="#c9d6e6" stroke="#4d6f96" stroke-width="2"/><rect x="110" y="172" width="280" height="50" fill="#c9d6e6" stroke="#4d6f96" stroke-width="2"/>
+<rect x="225" y="88" width="50" height="168" fill="#9fb3c8" stroke="#4d6f96" stroke-width="2"/>
+<rect x="195" y="70" width="110" height="34" rx="4" fill="#b7c6d6" stroke="#4d6f96" stroke-width="2"/>
+<rect x="195" y="238" width="110" height="34" rx="4" fill="#b7c6d6" stroke="#4d6f96" stroke-width="2"/>
+<g stroke="#6f859d" stroke-width="2"><line x1="227" y1="176" x2="273" y2="182"/><line x1="227" y1="185" x2="273" y2="191"/><line x1="227" y1="194" x2="273" y2="200"/><line x1="227" y1="203" x2="273" y2="209"/><line x1="227" y1="212" x2="273" y2="218"/><line x1="227" y1="221" x2="273" y2="227"/><line x1="227" y1="230" x2="273" y2="236"/></g>
+<!-- Fi tração no parafuso -->
+<line x1="250" y1="66" x2="250" y2="42" stroke="#f28c28" stroke-width="4" marker-end="url(#mtorqueo)"/><line x1="250" y1="276" x2="250" y2="300" stroke="#f28c28" stroke-width="4" marker-end="url(#mtorqueo)"/>
+<text x="262" y="50" font-size="18" font-weight="700" fill="#b35f00">F<tspan baseline-shift="sub" font-size="13">i</tspan></text><text x="290" y="50" font-size="12" fill="#b35f00">pré-carga: o parafuso fica tracionado</text>
+<!-- chapas comprimidas -->
+<line x1="150" y1="98" x2="150" y2="116" stroke="#4d6f96" stroke-width="3" marker-end="url(#mtorqueb)"/><line x1="150" y1="246" x2="150" y2="228" stroke="#4d6f96" stroke-width="3" marker-end="url(#mtorqueb)"/>
+<text x="20" y="192" font-size="12" fill="#4d6f96">chapas</text><text x="20" y="207" font-size="12" fill="#4d6f96">apertadas</text>
+<!-- T em volta da porca -->
+<path d="M318 262 A72 20 0 1 1 330 250" fill="none" stroke="#2e9e5b" stroke-width="3" marker-end="url(#mtorqueg)"/>
+<text x="345" y="290" font-size="18" font-weight="700" fill="#2e9e5b">T</text><text x="365" y="290" font-size="12" fill="#2e9e5b">torque aplicado na porca</text>
+<!-- K atrito -->
+<g fill="#c0392b"><circle cx="232" cy="238" r="5"/><circle cx="268" cy="238" r="5"/><circle cx="270" cy="200" r="4"/><circle cx="230" cy="215" r="4"/></g>
+<line x1="400" y1="200" x2="276" y2="200" stroke="#c0392b" stroke-width="1.5"/><text x="405" y="196" font-size="16" font-weight="700" fill="#c0392b">K</text><text x="405" y="212" font-size="12" fill="#c0392b">atrito na rosca</text><text x="405" y="226" font-size="12" fill="#c0392b">e sob a porca</text>
+<!-- d -->
+<line x1="227" y1="330" x2="273" y2="330" stroke="#1f6feb" stroke-width="2" marker-start="url(#mtorque)" marker-end="url(#mtorque)"/><text x="215" y="336" text-anchor="end" font-size="18" font-weight="700" fill="#1f6feb">d</text>
+<text x="285" y="336" font-size="12" fill="#5a6575">diâmetro nominal (M12 → 12 mm)</text>
+<!-- At -->
+<text x="700" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#0f2742">Corte na rosca</text>
+<circle cx="700" cy="170" r="100" fill="none" stroke="#9aa8b8" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="700" cy="170" r="80" fill="#f28c28" fill-opacity=".35" stroke="#f28c28" stroke-width="2"/>
+<text x="700" y="166" text-anchor="middle" font-size="22" font-weight="700" fill="#b35f00">A<tspan baseline-shift="sub" font-size="15">t</tspan></text><text x="700" y="188" text-anchor="middle" font-size="13" fill="#b35f00">área resistente</text>
+<line x1="600" y1="290" x2="800" y2="290" stroke="#1f6feb" stroke-width="2" marker-start="url(#mtorque)" marker-end="url(#mtorque)"/><text x="700" y="314" text-anchor="middle" font-size="14" fill="#1f6feb">d (externo da rosca)</text>
+<text x="700" y="340" text-anchor="middle" font-size="12" fill="#5a6575">A<tspan baseline-shift="sub" font-size="9">t</tspan> é menor que π·d²/4: o fundo da rosca é mais fino</text>
+<rect x="470" y="350" width="420" height="0"/>
+</svg></figure>
