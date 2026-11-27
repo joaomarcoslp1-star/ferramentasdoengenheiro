@@ -1,0 +1,153 @@
+<div id="eng-in">
+<style>
+#eng-in{--lar:#f28c28;--borda:#dde3ec;--suave:#5a6575;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1c2430;line-height:1.5;max-width:860px;margin:0 auto}
+#eng-in *{box-sizing:border-box}
+#eng-in .card{background:#f6f8fb;border:1px solid var(--borda);border-radius:12px;padding:18px;margin:0 0 16px}
+#eng-in h3{margin:0 0 2px;font-size:1.15rem}
+#eng-in .sub{margin:0 0 14px;color:var(--suave);font-size:.9rem}
+#eng-in label{display:block;font-size:.78rem;font-weight:600;color:#3a4452}
+#eng-in input,#eng-in select{width:100%;padding:7px 8px;border:1px solid #c4ccd8;border-radius:8px;font-size:.95rem;background:#fff;color:#1c2430;margin-top:3px;font-family:inherit}
+#eng-in .g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+#eng-in .hide{display:none!important}
+#eng-in .rr{display:grid;grid-template-columns:repeat(4,1fr) 34px;gap:6px;align-items:end;margin-bottom:6px;background:#fff;border:1px solid var(--borda);border-radius:8px;padding:8px}
+#eng-in .rr .x{border:0;background:#fdf0ee;color:#c0392b;border-radius:6px;height:34px;cursor:pointer;font-size:1.1rem}
+#eng-in .btn{border:1px solid #c4ccd8;background:#fff;border-radius:8px;padding:7px 12px;margin-top:4px;cursor:pointer;font-family:inherit;font-size:.88rem}
+#eng-in .res{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--lar);border-radius:10px;padding:16px;margin-bottom:16px}
+#eng-in .lay{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:start}
+#eng-in .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+#eng-in .kpi{background:#f6f8fb;border-radius:8px;padding:8px 10px}
+#eng-in .kpi span{display:block;font-size:.72rem;color:var(--suave);font-weight:600}
+#eng-in .kpi b{font-size:1.08rem}
+#eng-in .kpi.main{background:#fff4e8}#eng-in .kpi.main b{color:#b35f00}
+#eng-in svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--borda);border-radius:8px}
+#eng-in table{border-collapse:collapse;width:100%;font-size:.84rem;margin-top:12px}
+#eng-in td,#eng-in th{padding:5px 6px;border-bottom:1px solid #eef1f5;text-align:right;white-space:nowrap}
+#eng-in td:first-child,#eng-in th:first-child{text-align:left}
+#eng-in th{background:#f6f8fb;font-size:.74rem;color:#3a4452}
+#eng-in .scroll{overflow-x:auto}
+#eng-in .nota{font-size:.8rem;color:var(--suave);margin:8px 0 0}
+#eng-in .err{color:#c0392b;font-weight:600}
+@media(max-width:700px){#eng-in .g{grid-template-columns:1fr 1fr}#eng-in .lay{grid-template-columns:1fr}}
+</style>
+
+<div class="card">
+  <h3>Cross section</h3>
+  <p class="sub">US customary: dimensions and results in inches (in², in⁴, in³), as in the AISC tables. SI: dimensions in mm, results in cm (cm², cm⁴, cm³), as in European tables.</p>
+  <div class="g">
+    <div><label>Units<select id="in-u"><option value="us">US customary (in)</option><option value="si">SI (mm, cm)</option></select></label></div>
+    <div><label>Section type<select id="in-t">
+      <option value="ret">Rectangle</option><option value="cir">Solid circle</option><option value="tub">Round tube (pipe)</option><option value="tre">Rectangular tube (HSS)</option>
+      <option value="I">I-beam / W shape (symmetric)</option><option value="T" selected>T section</option><option value="L">Angle (L)</option><option value="U">Channel (C)</option><option value="comp">Built-up from rectangles</option></select></label></div>
+  </div>
+  <div class="g" id="in-dims"></div>
+  <div id="in-compbox" class="hide">
+    <p class="sub" style="margin-top:4px">Each rectangle: width b, height h and the position of its lower-left corner (x, y). Rectangles must not overlap.</p>
+    <div id="in-rects"></div>
+    <button type="button" class="btn" id="in-add">+ Rectangle</button>
+  </div>
+</div>
+
+<div class="res" aria-live="polite">
+  <div id="in-err" class="err"></div>
+  <div class="lay">
+    <svg id="in-svg" viewBox="0 0 300 300" role="img" aria-label="Section drawing with the centroid and axes"></svg>
+    <div class="kpis">
+      <div class="kpi"><span>Area A</span><b id="k-A">–</b></div>
+      <div class="kpi"><span>Centroid (x̄ ; ȳ) from the lower-left corner</span><b id="k-c">–</b></div>
+      <div class="kpi main"><span>Moment of inertia I<sub>x</sub> (horizontal axis)</span><b id="k-Ix">–</b></div>
+      <div class="kpi main"><span>Moment of inertia I<sub>y</sub> (vertical axis)</span><b id="k-Iy">–</b></div>
+      <div class="kpi"><span>Section modulus S<sub>x</sub> (top ; bottom)</span><b id="k-Wx">–</b></div>
+      <div class="kpi"><span>Section modulus S<sub>y</sub> (right ; left)</span><b id="k-Wy">–</b></div>
+      <div class="kpi"><span>Radius of gyration r<sub>x</sub> ; r<sub>y</sub></span><b id="k-r">–</b></div>
+      <div class="kpi"><span>Product of inertia I<sub>xy</sub> and principal axes</span><b id="k-p" style="font-size:.92rem">–</b></div>
+    </div>
+  </div>
+  <div class="scroll"><table><thead><tr><th>Part</th><th>A (<span class="uL">in</span>²)</th><th>x<sub>i</sub> (<span class="uL">in</span>)</th><th>y<sub>i</sub> (<span class="uL">in</span>)</th><th>I<sub>x,own</sub> (<span class="uL">in</span>⁴)</th><th>d<sub>y</sub> = y<sub>i</sub> − ȳ</th><th>A·d<sub>y</sub>² (<span class="uL">in</span>⁴)</th><th>I<sub>y,own</sub> (<span class="uL">in</span>⁴)</th><th>A·d<sub>x</sub>² (<span class="uL">in</span>⁴)</th></tr></thead><tbody id="in-tab"></tbody></table></div>
+  <p class="nota">Step by step with the parallel axis theorem: I<sub>x</sub> = Σ (I<sub>own</sub> + A·d²). Holes enter with a negative sign. Rolled shapes have fillets between web and flange, so their tabulated values differ slightly; for design, use the AISC or manufacturer tables.</p>
+</div>
+
+<script>
+(function(){
+var R=document.getElementById('eng-in'); if(!R) return;
+function $(i){return document.getElementById(i);}
+function num(el){return parseFloat(String(el.value).replace(',','.'));}
+function nf(x,d){if(!isFinite(x))return '–'; if(Math.abs(x)<5e-10)x=0; return x.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function nfs(x){if(!isFinite(x))return '–';var a=Math.abs(x);return nf(x,a>=1000?0:a>=100?1:a>=10?2:3);}
+var USYS='us',UL={us:'in',si:'mm'};
+var DIMS_US={ret:[4,8],cir:[4],tub:[4.5,0.237],tre:[4,6,0.25],I:[8,4,0.4,0.25],T:[8,6,0.75,0.5],L:[3,3,0.25],U:[6,2,0.35,0.25]};
+var DIMS={
+ ret:[['b','Width b',100],['h','Height h',200]],
+ cir:[['D','Diameter D',100]],
+ tub:[['D','Outside diameter D',114.3],['t','Wall thickness t',6]],
+ tre:[['B','Width B',100],['H','Height H',150],['t','Wall thickness t',5]],
+ I:[['h','Overall depth d',200],['bf','Flange width b<sub>f</sub>',100],['tf','Flange thickness t<sub>f</sub>',10],['tw','Web thickness t<sub>w</sub>',6]],
+ T:[['h','Overall depth d',200],['bf','Flange width b<sub>f</sub>',150],['tf','Flange thickness t<sub>f</sub>',20],['tw','Stem thickness t<sub>w</sub>',15]],
+ L:[['b','Horizontal leg b',50],['h','Vertical leg h',50],['t','Thickness t',5]],
+ U:[['h','Depth d',150],['bf','Flange width b<sub>f</sub>',50],['tf','Flange thickness t<sub>f</sub>',8],['tw','Web thickness t<sub>w</sub>',6]],
+ comp:[]};
+var cur=null;
+function buildDims(){var t=$('in-t').value,u=$('in-u').value;
+ if(u!==USYS){var f=u==='si'?25.4:1/25.4; R.querySelectorAll('#in-dims input,#in-rects input').forEach(function(e){var x=num(e); if(isFinite(x)) e.value=+(x*f).toPrecision(4);}); USYS=u; R.querySelectorAll('.uL').forEach(function(e){e.textContent=UL[u];}); R.querySelectorAll('#in-rects label,#in-dims label').forEach(function(l){l.firstChild.textContent=l.firstChild.textContent.replace(/\((mm|in)\)/,'('+UL[u]+')');});}
+ if(t===cur) return; cur=t;
+ $('in-dims').innerHTML=DIMS[t].map(function(d,i){var val=USYS==='us'?DIMS_US[t][i]:d[2];return '<div><label>'+d[1]+' ('+UL[USYS]+')<input data-k="'+d[0]+'" type="number" step="any" min="0" value="'+val+'"></label></div>';}).join('');
+ $('in-compbox').classList.toggle('hide',t!=='comp');}
+function addRect(b,h,x,y){var d=document.createElement('div');d.className='rr';
+ var u=UL[USYS]; d.innerHTML='<div><label>b ('+u+')<input class="b" type="number" step="any" value="'+b+'"></label></div><div><label>h ('+u+')<input class="h" type="number" step="any" value="'+h+'"></label></div><div><label>x ('+u+')<input class="xx" type="number" step="any" value="'+x+'"></label></div><div><label>y ('+u+')<input class="yy" type="number" step="any" value="'+y+'"></label></div><button type="button" class="x" title="Remove">×</button>';
+ $('in-rects').appendChild(d); d.querySelector('.x').onclick=function(){d.remove();calc();};}
+addRect(6,0.75,0,7.25); addRect(0.5,7.25,2.75,0);
+$('in-add').onclick=function(){if(USYS==='us')addRect(2,0.5,0,0);else addRect(50,10,0,0);calc();};
+function rect(n,x,y,b,h,s){return {n:n,k:'r',x:x,y:y,b:b,h:h,s:s||1,A:b*h,xc:x+b/2,yc:y+h/2,Ix:b*h*h*h/12,Iy:h*b*b*b/12};}
+function circ(n,cx,cy,r,s){return {n:n,k:'c',cx:cx,cy:cy,r:r,s:s||1,A:Math.PI*r*r,xc:cx,yc:cy,Ix:Math.PI*Math.pow(r,4)/4,Iy:Math.PI*Math.pow(r,4)/4};}
+function parts(t,v){
+ switch(t){
+  case 'ret': return [rect('Rectangle',0,0,v.b,v.h)];
+  case 'cir': return [circ('Circle',v.D/2,v.D/2,v.D/2)];
+  case 'tub': if(!(2*v.t<v.D)) throw 'The wall thickness must be less than the radius.'; return [circ('Outer circle',v.D/2,v.D/2,v.D/2),circ('Hole (void)',v.D/2,v.D/2,v.D/2-v.t,-1)];
+  case 'tre': if(!(2*v.t<v.B&&2*v.t<v.H)) throw 'The wall thickness must be less than half of each side.'; return [rect('Outer rectangle',0,0,v.B,v.H),rect('Inner void',v.t,v.t,v.B-2*v.t,v.H-2*v.t,-1)];
+  case 'I': if(!(2*v.tf<v.h&&v.tw<=v.bf)) throw 'Check: 2·t<sub>f</sub> < d and t<sub>w</sub> ≤ b<sub>f</sub>.'; return [rect('Bottom flange',0,0,v.bf,v.tf),rect('Web',(v.bf-v.tw)/2,v.tf,v.tw,v.h-2*v.tf),rect('Top flange',0,v.h-v.tf,v.bf,v.tf)];
+  case 'T': if(!(v.tf<v.h&&v.tw<=v.bf)) throw 'Check: t<sub>f</sub> < d and t<sub>w</sub> ≤ b<sub>f</sub>.'; return [rect('Stem',(v.bf-v.tw)/2,0,v.tw,v.h-v.tf),rect('Flange',0,v.h-v.tf,v.bf,v.tf)];
+  case 'L': if(!(v.t<v.b&&v.t<v.h)) throw 'The thickness must be less than the legs.'; return [rect('Vertical leg',0,0,v.t,v.h),rect('Horizontal leg (without the corner)',v.t,0,v.b-v.t,v.t)];
+  case 'U': if(!(2*v.tf<v.h&&v.tw<v.bf)) throw 'Check: 2·t<sub>f</sub> < d and t<sub>w</sub> < b<sub>f</sub>.'; return [rect('Web',0,0,v.tw,v.h),rect('Bottom flange',v.tw,0,v.bf-v.tw,v.tf),rect('Top flange',v.tw,v.h-v.tf,v.bf-v.tw,v.tf)];
+  case 'comp': var out=[],i=0; [].forEach.call($('in-rects').children,function(d){i++;var q=function(c){return num(d.querySelector('.'+c));};out.push(rect('Rectangle '+i,q('xx'),q('yy'),q('b'),q('h')));}); if(!out.length) throw 'Add at least one rectangle.'; return out;
+ }}
+function calc(){
+ buildDims(); var t=$('in-t').value,v={},err='';
+ [].forEach.call($('in-dims').querySelectorAll('input'),function(e){v[e.dataset.k]=num(e); if(!(v[e.dataset.k]>0)) err='Fill in all dimensions with positive values.';});
+ var P=[]; if(!err){ try{P=parts(t,v);}catch(e){err=e;} }
+ if(!err&&P.some(function(p){return !(p.A>0)&&!(p.k==='c'&&p.r>0);})) err='Invalid dimensions.';
+ $('in-err').innerHTML=err; if(err){$('in-svg').innerHTML='';$('in-tab').innerHTML='';return;}
+ var A=0,Sx=0,Sy=0; P.forEach(function(p){A+=p.s*p.A;Sx+=p.s*p.A*p.xc;Sy+=p.s*p.A*p.yc;});
+ if(!(A>0)){$('in-err').textContent='The net area must be positive.';return;}
+ var xb=Sx/A,yb=Sy/A,Ix=0,Iy=0,Ixy=0;
+ P.forEach(function(p){p.dy=p.yc-yb;p.dx=p.xc-xb;Ix+=p.s*(p.Ix+p.A*p.dy*p.dy);Iy+=p.s*(p.Iy+p.A*p.dx*p.dx);Ixy+=p.s*(p.A*p.dx*p.dy);});
+ // extremos
+ var xmin=1e99,xmax=-1e99,ymin=1e99,ymax=-1e99;
+ P.forEach(function(p){if(p.s<0)return; if(p.k==='r'){xmin=Math.min(xmin,p.x);xmax=Math.max(xmax,p.x+p.b);ymin=Math.min(ymin,p.y);ymax=Math.max(ymax,p.y+p.h);} else {xmin=Math.min(xmin,p.cx-p.r);xmax=Math.max(xmax,p.cx+p.r);ymin=Math.min(ymin,p.cy-p.r);ymax=Math.max(ymax,p.cy+p.r);}});
+ var k1=USYS==='us'?1:10,c4=Math.pow(k1,4),c3=Math.pow(k1,3),c2=k1*k1,uo=USYS==='us'?'in':'cm';
+ $('k-A').textContent=nf(A/c2,2)+' '+uo+'²';
+ $('k-c').textContent=nf((xb-xmin)/k1,2)+' ; '+nf((yb-ymin)/k1,2)+' '+uo;
+ $('k-Ix').textContent=nfs(Ix/c4)+' '+uo+'⁴'; $('k-Iy').textContent=nfs(Iy/c4)+' '+uo+'⁴';
+ $('k-Wx').textContent=nfs(Ix/(ymax-yb)/c3)+' ; '+nfs(Ix/(yb-ymin)/c3)+' '+uo+'³';
+ $('k-Wy').textContent=nfs(Iy/(xmax-xb)/c3)+' ; '+nfs(Iy/(xb-xmin)/c3)+' '+uo+'³';
+ $('k-r').textContent=nf(Math.sqrt(Ix/A)/k1,2)+' ; '+nf(Math.sqrt(Iy/A)/k1,2)+' '+uo;
+ var pr='I<sub>xy</sub> = 0 (symmetric section): x and y are already the principal axes';
+ if(Math.abs(Ixy)>1e-6*Math.max(Ix,Iy)){var m=(Ix+Iy)/2,rr=Math.sqrt(Math.pow((Ix-Iy)/2,2)+Ixy*Ixy),th=0.5*Math.atan2(-2*Ixy,Ix-Iy)*180/Math.PI;
+   pr='I<sub>xy</sub> = '+nfs(Ixy/c4)+' '+uo+'⁴ · I<sub>1</sub> = '+nfs((m+rr)/c4)+' · I<sub>2</sub> = '+nfs((m-rr)/c4)+' '+uo+'⁴ · θ = '+nf(th,1)+'°';}
+ $('k-p').innerHTML=pr;
+ $('in-tab').innerHTML=P.map(function(p){var s=p.s<0?'−':'';return '<tr><td>'+p.n+'</td><td>'+s+nfs(p.A)+'</td><td>'+nfs(p.xc)+'</td><td>'+nfs(p.yc)+'</td><td>'+s+nfs(p.Ix)+'</td><td>'+nfs(p.dy)+'</td><td>'+s+nfs(p.A*p.dy*p.dy)+'</td><td>'+s+nfs(p.Iy)+'</td><td>'+s+nfs(p.A*p.dx*p.dx)+'</td></tr>';}).join('')
+  +'<tr style="font-weight:700"><td>Total</td><td>'+nfs(A)+'</td><td>x̄ = '+nfs(xb)+'</td><td>ȳ = '+nfs(yb)+'</td><td colspan="3">I<sub>x</sub> = '+nfs(Ix)+' '+UL[USYS]+'⁴</td><td colspan="2">I<sub>y</sub> = '+nfs(Iy)+' '+UL[USYS]+'⁴</td></tr>';
+ // desenho
+ var W=xmax-xmin,H=ymax-ymin,S=230/Math.max(W,H),ox=150-(W*S)/2,oy=150+(H*S)/2;
+ var X=function(x){return ox+(x-xmin)*S;},Y=function(y){return oy-(y-ymin)*S;},o='';
+ P.forEach(function(p){var f=p.s>0?'#9fb3c8':'#fff',st=p.s>0?'#4d6f96':'#4d6f96';
+  if(p.k==='r') o+='<rect x="'+X(p.x)+'" y="'+Y(p.y+p.h)+'" width="'+(p.b*S)+'" height="'+(p.h*S)+'" fill="'+f+'" stroke="'+st+'" stroke-width="1.5"/>';
+  else o+='<circle cx="'+X(p.cx)+'" cy="'+Y(p.cy)+'" r="'+(p.r*S)+'" fill="'+f+'" stroke="'+st+'" stroke-width="1.5"/>';});
+ o+='<line x1="8" y1="'+Y(yb)+'" x2="292" y2="'+Y(yb)+'" stroke="#f28c28" stroke-width="1.5" stroke-dasharray="6 4"/><text x="290" y="'+(Y(yb)-5)+'" text-anchor="end" font-size="12" fill="#b35f00" font-weight="700">x</text>';
+ o+='<line x1="'+X(xb)+'" y1="8" x2="'+X(xb)+'" y2="292" stroke="#f28c28" stroke-width="1.5" stroke-dasharray="6 4"/><text x="'+(X(xb)+5)+'" y="18" font-size="12" fill="#b35f00" font-weight="700">y</text>';
+ o+='<circle cx="'+X(xb)+'" cy="'+Y(yb)+'" r="5" fill="#f28c28" stroke="#fff" stroke-width="1.5"/><text x="'+(X(xb)+8)+'" y="'+(Y(yb)+16)+'" font-size="11" fill="#1c2430">CG</text>';
+ $('in-svg').innerHTML=o;
+}
+R.addEventListener('input',calc); R.addEventListener('change',calc); calc();
+})();
+</script>
+</div>

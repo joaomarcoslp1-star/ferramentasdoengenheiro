@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beam Calculator (Free, Step by Step) | Engineer&#x27;s Tools</title>
+<meta name="description" content="Free beam calculator: support reactions, shear force and bending moment diagrams for simply supported and cantilever beams with point, distributed and moment loads. US (kip, ft) and SI units.">
+<link rel="canonical" href="https://ferramentasdoengenheiro.com/en/calculators/beam-calculator/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Engineer's Tools">
+<meta property="og:locale" content="en_US">
+<link rel="alternate" hreflang="pt-BR" href="https://ferramentasdoengenheiro.com/calculadoras/vigas-cortante-e-momento-fletor/">
+<link rel="alternate" hreflang="x-default" href="https://ferramentasdoengenheiro.com/calculadoras/vigas-cortante-e-momento-fletor/">
+<link rel="alternate" hreflang="en" href="https://ferramentasdoengenheiro.com/en/calculators/beam-calculator/">
+
+<meta property="og:title" content="Beam Calculator: Reactions, Shear and Bending Moment Diagrams">
+<meta property="og:description" content="Free beam calculator: support reactions, shear force and bending moment diagrams for simply supported and cantilever beams with point, distributed and moment loads. US (kip, ft) and SI units.">
+<meta property="og:url" content="https://ferramentasdoengenheiro.com/en/calculators/beam-calculator/">
+<meta property="og:image" content="https://ferramentasdoengenheiro.com/img/en-beam.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f2742">
+<link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/logo-192.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W8RN8GHWNC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W8RN8GHWNC');</script>
+<meta name="google-adsense-account" content="ca-pub-9800534934394753">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800534934394753" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Beam calculator", "url": "https://ferramentasdoengenheiro.com/en/calculators/beam-calculator/", "description": "Free beam calculator: support reactions, shear force and bending moment diagrams for simply supported and cantilever beams with point, distributed and moment loads. US (kip, ft) and SI units.", "applicationCategory": "EngineeringApplication", "operatingSystem": "Any", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ferramentasdoengenheiro.com/en/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://ferramentasdoengenheiro.com/en/calculators/"}, {"@type": "ListItem", "position": 3, "name": "Beam calculator", "item": "https://ferramentasdoengenheiro.com/en/calculators/beam-calculator/"}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/en/"><img src="/img/logo-192.png" alt="" width="36" height="36">Engineer's Tools</a><nav class="nav" aria-label="Main menu"><a href="/en/">Home</a><a href="/en/calculators/" class=on>Calculators</a><a href="/en/about/">About</a><a class="lang" href="/calculadoras/vigas-cortante-e-momento-fletor/" hreflang="pt-BR" lang="pt-BR" title="Versão em português">PT</a></nav></div></header>
+<main><div class="wrap"><nav class="crumb" aria-label="Breadcrumb"><a href="/en/">Home</a> › <a href="/en/calculators/">Calculators</a></nav><article><h1>Beam Calculator: Reactions, Shear and Bending Moment Diagrams</h1><div class="meta">Updated 2026-11-27 · Structural analysis</div><img class="cover" src="/img/en-beam.jpg" alt="Beam Calculator: Reactions, Shear and Bending Moment Diagrams" width="1200" height="630" fetchpriority="high"><div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;color:#1c2430;max-width:860px;margin:0 auto"><p>Draw the shear force and bending moment diagrams of any statically determinate beam in seconds. Pick the supports, add point loads, uniform or triangular distributed loads and applied moments, and the calculator returns the <b>support reactions</b>, the <b>maximum shear</b>, the <b>maximum bending moment</b> and where it happens, with every equilibrium step written out so you can check it.</p>
+<p>It works in <b>US customary units</b> (kip, ft, kip·ft) or <b>SI units</b> (kN, m, kN·m). Switching units converts the numbers you already typed.</p>
+<h2>Beam calculator</h2>
+<div id="eng-viga">
+<style>
+#eng-viga{--lar:#f28c28;--az:#1f6feb;--borda:#dde3ec;--suave:#5a6575;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1c2430;line-height:1.5;max-width:860px;margin:0 auto}
+#eng-viga *{box-sizing:border-box}
+#eng-viga .card{background:#f6f8fb;border:1px solid var(--borda);border-radius:12px;padding:18px;margin:0 0 16px}
+#eng-viga h3{margin:0 0 2px;font-size:1.15rem}
+#eng-viga .sub{margin:0 0 14px;color:var(--suave);font-size:.9rem}
+#eng-viga label{display:block;font-size:.78rem;font-weight:600;color:#3a4452}
+#eng-viga input,#eng-viga select{width:100%;padding:7px 8px;border:1px solid #c4ccd8;border-radius:8px;font-size:.95rem;background:#fff;color:#1c2430;margin-top:3px;font-family:inherit}
+#eng-viga .g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+#eng-viga .hide{display:none!important}
+#eng-viga .ld{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr 34px;gap:6px;align-items:end;margin-bottom:6px;background:#fff;border:1px solid var(--borda);border-radius:8px;padding:8px}
+#eng-viga .ld .x{border:0;background:#fdf0ee;color:#c0392b;border-radius:6px;height:34px;cursor:pointer;font-size:1.1rem}
+#eng-viga .btns button{border:1px solid #c4ccd8;background:#fff;border-radius:8px;padding:7px 12px;margin:4px 6px 0 0;cursor:pointer;font-family:inherit;font-size:.88rem}
+#eng-viga .btns button:hover{border-color:var(--lar)}
+#eng-viga .res{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--lar);border-radius:10px;padding:16px;margin-bottom:16px}
+#eng-viga .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+#eng-viga .kpi{background:#f6f8fb;border-radius:8px;padding:10px}
+#eng-viga .kpi span{display:block;font-size:.75rem;color:var(--suave);font-weight:600}
+#eng-viga .kpi b{font-size:1.15rem}
+#eng-viga .kpi.main{background:#fff4e8}#eng-viga .kpi.main b{color:#b35f00}
+#eng-viga svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--borda);border-radius:8px;margin-bottom:10px}
+#eng-viga .passo{font-size:.9rem;background:#f6f8fb;border-radius:8px;padding:10px 14px;margin:0 0 8px}
+#eng-viga .nota{font-size:.8rem;color:var(--suave);margin:8px 0 0}
+#eng-viga .err{color:#c0392b;font-weight:600}
+@media(max-width:640px){#eng-viga .g{grid-template-columns:1fr 1fr}#eng-viga .kpis{grid-template-columns:1fr 1fr}#eng-viga .ld{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+
+<div class="card">
+  <h3>Beam</h3>
+  <p class="sub">Positions are measured from the left end. Downward loads are positive. Switching units converts the values you typed.</p>
+  <div class="g">
+    <div><label>Units<select id="vg-u"><option value="us">US customary (kip, ft)</option><option value="si">SI (kN, m)</option></select></label></div>
+    <div><label>Beam length L (<span class="uL">ft</span>)<input id="vg-L" type="number" step="any" min="0.1" value="20"></label></div>
+    <div><label>Supports<select id="vg-t"><option value="bi">Simply supported (pin + roller)</option><option value="engE">Fixed at left end (cantilever)</option><option value="engD">Fixed at right end (cantilever)</option></select></label></div>
+    <div id="vg-abox"><label>Support A position (<span class="uL">ft</span>)<input id="vg-a" type="number" step="any" min="0" value="0"></label></div>
+    <div id="vg-bbox"><label>Support B position (<span class="uL">ft</span>)<input id="vg-b" type="number" step="any" min="0" value="20"></label></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Loads</h3>
+  <p class="sub">Distributed load: enter the intensity at the start and at the end (equal = uniform; different = triangular or trapezoidal). Applied moment: counterclockwise is positive.</p>
+  <div id="vg-lds"></div>
+  <div class="btns"><button type="button" data-add="P">+ Point load</button><button type="button" data-add="W">+ Distributed load</button><button type="button" data-add="M">+ Applied moment</button></div>
+</div>
+
+<div class="res" aria-live="polite">
+  <div id="vg-err" class="err"></div>
+  <div class="kpis">
+    <div class="kpi" id="vg-k1"><span>Reaction</span><b>–</b></div>
+    <div class="kpi" id="vg-k2"><span>Reaction</span><b>–</b></div>
+    <div class="kpi"><span>Maximum shear |V|</span><b id="vg-vm">–</b></div>
+    <div class="kpi main"><span>Maximum bending moment |M|</span><b id="vg-mm">–</b></div>
+  </div>
+  <svg id="vg-svg" viewBox="0 0 800 640" role="img" aria-label="Beam sketch with shear force and bending moment diagrams"></svg>
+  <div id="vg-passos"></div>
+  <p class="nota">Sign convention: shear is positive when the resultant to the left of the section points up; moment is positive when it puts the bottom fiber in tension (sagging). For study and preliminary design only.</p>
+</div>
+
+<script>
+(function(){
+var R=document.getElementById('eng-viga'); if(!R) return;
+function $(i){return document.getElementById(i);}
+function num(el){return parseFloat(String(el.value).replace(',','.'));}
+function nf(x,d){if(!isFinite(x))return '–'; if(Math.abs(x)<5e-10)x=0; return x.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+var LBL={P:'Point load',W:'Distributed load',M:'Applied moment'};
+var UN={us:{F:'kip',L:'ft',M:'kip·ft',w:'kip/ft'},si:{F:'kN',L:'m',M:'kN·m',w:'kN/m'}},FX={F:4.44822,L:0.3048,M:1.35582,w:14.5939},U=UN.us,usys='us';
+function addLoad(t,v){
+  v=v||{};var d=document.createElement('div');d.className='ld';d.dataset.t=t;
+  var h='<div><label>Type<input value="'+LBL[t]+'" disabled></label></div>';
+  if(t==='P') h+='<div><label>P ('+U.F+')<input class="v1" data-q="F" type="number" step="any" value="'+(v.v1!=null?v.v1:10)+'"></label></div><div><label>Position x ('+U.L+')<input class="x1" data-q="L" type="number" step="any" value="'+(v.x1!=null?v.x1:1)+'"></label></div><div></div><div></div>';
+  if(t==='W') h+='<div><label>w start ('+U.w+')<input class="v1" data-q="w" type="number" step="any" value="'+(v.v1!=null?v.v1:5)+'"></label></div><div><label>w end ('+U.w+')<input class="v2" data-q="w" type="number" step="any" value="'+(v.v2!=null?v.v2:5)+'"></label></div><div><label>from x ('+U.L+')<input class="x1" data-q="L" type="number" step="any" value="'+(v.x1!=null?v.x1:0)+'"></label></div><div><label>to x ('+U.L+')<input class="x2" data-q="L" type="number" step="any" value="'+(v.x2!=null?v.x2:2)+'"></label></div>';
+  if(t==='M') h+='<div><label>M ('+U.M+')<input class="v1" data-q="M" type="number" step="any" value="'+(v.v1!=null?v.v1:10)+'"></label></div><div><label>Position x ('+U.L+')<input class="x1" data-q="L" type="number" step="any" value="'+(v.x1!=null?v.x1:1)+'"></label></div><div></div><div></div>';
+  h+='<button type="button" class="x" title="Remove">×</button>';
+  d.innerHTML=h; $('vg-lds').appendChild(d); d.querySelector('.x').onclick=function(){d.remove();calc();};
+}
+R.querySelectorAll('[data-add]').forEach(function(b){b.onclick=function(){addLoad(b.dataset.add);calc();};});
+addLoad('P',{v1:5,x1:6}); addLoad('W',{v1:0.4,v2:0.4,x1:0,x2:20});
+
+function loads(L){
+  var out=[];
+  [].forEach.call($('vg-lds').children,function(d){
+    var t=d.dataset.t,q=function(c){var e=d.querySelector('.'+c);return e?num(e):NaN;};
+    if(t==='P') out.push({t:t,P:q('v1'),x:q('x1')});
+    if(t==='M') out.push({t:t,M:q('v1'),x:q('x1')});
+    if(t==='W'){var a=q('x1'),b=q('x2'),w1=q('v1'),w2=q('v2'); if(b<a){var s=a;a=b;b=s;s=w1;w1=w2;w2=s;}
+      var len=b-a,F=(w1+w2)/2*len,xc=(F!==0)?a+len*(w1+2*w2)/(3*(w1+w2)):a+len/2; out.push({t:t,a:a,b:b,w1:w1,w2:w2,F:F,xc:xc});}
+  });
+  return out;
+}
+// resultante e momento (em relação a x) das cargas distribuídas à esquerda de x
+function wLeft(l,x){ if(x<=l.a) return [0,0]; var e=Math.min(x,l.b),s=e-l.a,len=l.b-l.a; var we=l.w1+(l.w2-l.w1)*s/len;
+  var F=(l.w1+we)/2*s; var xc=(l.w1+we)!==0? l.a+s*(l.w1+2*we)/(3*(l.w1+we)) : l.a+s/2; return [F,F*(x-xc)]; }
+
+function calc(){
+  setUnits(); var L=num($('vg-L')),tp=$('vg-t').value,A=num($('vg-a')),B=num($('vg-b'));
+  $('vg-abox').classList.toggle('hide',tp!=='bi'); $('vg-bbox').classList.toggle('hide',tp!=='bi');
+  var err='',ls=loads(L);
+  if(!(L>0)) err='Enter a positive length.';
+  if(tp==='bi'&&!err){ if(!(A>=0&&B<=L&&B>A)) err='Supports must be on the beam, with B to the right of A.'; }
+  ls.forEach(function(l){ if(err) return; var xs=l.t==='W'?[l.a,l.b]:[l.x]; xs.forEach(function(x){ if(!(x>=0&&x<=L+1e-9)) err='A load is outside the beam (position must be between 0 and L).'; }); if([l.P,l.M,l.w1,l.w2].some(function(v){return v!==undefined&&!isFinite(v);})) err='Fill in all load values.'; });
+  $('vg-err').textContent=err; if(err){$('vg-svg').innerHTML='';$('vg-passos').innerHTML='';return;}
+  var sP=0,sMa=0,sM0=0; // soma das forças p/ baixo, momento delas em relação a A, soma dos momentos aplicados (anti-horário)
+  var ref=tp==='bi'?A:(tp==='engE'?0:L);
+  ls.forEach(function(l){ if(l.t==='P'){sP+=l.P;sMa+=l.P*(l.x-ref);} if(l.t==='W'){sP+=l.F;sMa+=l.F*(l.xc-ref);} if(l.t==='M'){sM0+=l.M;} });
+  // forças de apoio (para cima) e momentos de engaste (anti-horário)
+  var sup=[];
+  if(tp==='bi'){ var Rb=(sMa-sM0)/(B-A), Ra=sP-Rb; sup=[{x:A,F:Ra,n:'R<sub>A</sub>'},{x:B,F:Rb,n:'R<sub>B</sub>'}]; }
+  else { var Rv=sP, Me=sMa-sM0; sup=[{x:ref,F:Rv,n:'R',M:Me}]; } // Me: momento de engaste anti-horário em relação ao engaste
+  // esforços internos (seção à esquerda)
+  function VM(x,side){ // side -1: logo antes de x, +1: logo depois
+    var V=0,M=0,eps=side*1e-9,xx=x+eps;
+    sup.forEach(function(s){ if(s.x<xx){V+=s.F;M+=s.F*(x-s.x); if(s.M) M-=s.M;} });
+    ls.forEach(function(l){ if(l.t==='P'&&l.x<xx){V-=l.P;M-=l.P*(x-l.x);} if(l.t==='M'&&l.x<xx){M-=l.M;} if(l.t==='W'){var r=wLeft(l,x);V-=r[0];M-=r[1];} });
+    return [V,M];
+  }
+  // pontos críticos
+  var xs=[0,L]; sup.forEach(function(s){xs.push(s.x);}); ls.forEach(function(l){ if(l.t==='W'){xs.push(l.a,l.b);} else xs.push(l.x); });
+  var N=400; for(var i=0;i<=N;i++) xs.push(L*i/N);
+  xs=xs.filter(function(x){return x>=0&&x<=L;}).sort(function(a,b){return a-b;});
+  var pts=[]; xs.forEach(function(x){ var a=VM(x,-1),b=VM(x,1); if(x>0) pts.push([x,a[0],a[1]]); if(x<L) pts.push([x,b[0],b[1]]); });
+  // anula esforços nas pontas livres
+  var vmax=0,mmax=0,xv=0,xm=0,mpos=0,mneg=0,xmp=0,xmn=0;
+  pts.forEach(function(p){ if(Math.abs(p[1])>vmax+1e-9){vmax=Math.abs(p[1]);xv=p[0];} if(Math.abs(p[2])>mmax+1e-9){mmax=Math.abs(p[2]);xm=p[0];} if(p[2]>mpos){mpos=p[2];xmp=p[0];} if(p[2]<mneg){mneg=p[2];xmn=p[0];} });
+  // KPIs
+  if(tp==='bi'){ $('vg-k1').innerHTML='<span>Reaction at A</span><b>'+nf(sup[0].F,2)+' '+U.F+'</b>'; $('vg-k2').innerHTML='<span>Reaction at B</span><b>'+nf(sup[1].F,2)+' '+U.F+'</b>'; }
+  else { $('vg-k1').innerHTML='<span>Vertical reaction at the fixed end</span><b>'+nf(sup[0].F,2)+' '+U.F+'</b>'; $('vg-k2').innerHTML='<span>Fixed-end moment</span><b>'+nf(Math.abs(sup[0].M),2)+' '+U.M+'</b>'; }
+  $('vg-vm').textContent=nf(vmax,2)+' '+U.F; $('vg-mm').textContent=nf(mmax,2)+' '+U.M;
+  draw(L,tp,sup,ls,pts,{vmax:vmax,xv:xv,mpos:mpos,mneg:mneg,xmp:xmp,xmn:xmn});
+  // passo a passo
+  var P=[];
+  var desc=ls.map(function(l){ if(l.t==='P') return nf(l.P,2)+' '+U.F+' at x = '+nf(l.x,2)+' '+U.L; if(l.t==='M') return 'moment of '+nf(l.M,2)+' '+U.M+' at x = '+nf(l.x,2)+' '+U.L; return 'distributed load of '+nf(l.w1,2)+(l.w1!==l.w2?' to '+nf(l.w2,2):'')+' '+U.w+' from '+nf(l.a,2)+' to '+nf(l.b,2)+' '+U.L+' → resultant '+nf(l.F,2)+' '+U.F+' at x = '+nf(l.xc,3)+' '+U.L; });
+  P.push('<b>1. Loads and resultants:</b> '+(desc.join('; ')||'no loads')+'.');
+  if(tp==='bi'){
+    P.push('<b>2. Sum of moments about A = 0:</b> R<sub>B</sub> × ('+nf(B,2)+' − '+nf(A,2)+') = '+nf(sMa,3)+(sM0? ' − ('+nf(sM0,3)+')':'')+' → <b>R<sub>B</sub> = '+nf(sup[1].F,3)+' '+U.F+'</b>');
+    P.push('<b>3. Sum of vertical forces = 0:</b> R<sub>A</sub> = '+nf(sP,3)+' − '+nf(sup[1].F,3)+' → <b>R<sub>A</sub> = '+nf(sup[0].F,3)+' '+U.F+'</b>');
+  } else {
+    P.push('<b>2. Sum of vertical forces = 0:</b> <b>R = '+nf(sP,3)+' '+U.F+'</b> (upward)');
+    P.push('<b>3. Sum of moments about the fixed end = 0:</b> M<sub>fixed</sub> = '+nf(sMa,3)+(sM0?' − ('+nf(sM0,3)+')':'')+' = <b>'+nf(sup[0].M,3)+' '+U.M+'</b> ('+(sup[0].M>=0?'counterclockwise':'clockwise')+')');
+  }
+  P.push('<b>4. Maximum bending moment:</b> '+(mpos>1e-9?'positive '+nf(mpos,2)+' '+U.M+' at x = '+nf(xmp,2)+' '+U.L:'')+(mpos>1e-9&&mneg<-1e-9?'; ':'')+(mneg<-1e-9?'negative '+nf(mneg,2)+' '+U.M+' at x = '+nf(xmn,2)+' '+U.L:'')+'. The moment peaks where the shear crosses zero or changes sign.');
+  $('vg-passos').innerHTML=P.map(function(s){return '<p class="passo">'+s+'</p>';}).join('');
+}
+
+function setUnits(){ var s=$('vg-u').value; if(s===usys) return; var to=s==='si';
+  R.querySelectorAll('input[data-q]').forEach(function(e){var x=num(e); if(isFinite(x)) e.value=+(to? x*FX[e.dataset.q] : x/FX[e.dataset.q]).toPrecision(4);});
+  ['vg-L','vg-a','vg-b'].forEach(function(i){var e=$(i),x=num(e); if(isFinite(x)) e.value=+(to? x*FX.L : x/FX.L).toPrecision(4);});
+  usys=s; U=UN[s];
+  R.querySelectorAll('.uL').forEach(function(e){e.textContent=U.L;});
+  R.querySelectorAll('.ld').forEach(function(d){ d.querySelectorAll('label').forEach(function(l){ var q=l.querySelector('input[data-q]'); if(q) l.firstChild.textContent=l.firstChild.textContent.replace(/\(.*\)/,'('+U[q.dataset.q]+')'); }); });
+}
+function draw(L,tp,sup,ls,pts,m){
+  var W=800,x0=60,x1=740,sx=function(x){return x0+(x1-x0)*x/L;},o='';
+  // ----- esquema (0-200)
+  var by=120;
+  o+='<text x="20" y="24" font-size="15" font-weight="700" fill="#1c2430">Sketch</text>';
+  o+='<rect x="'+x0+'" y="'+(by-7)+'" width="'+(x1-x0)+'" height="14" rx="3" fill="#9fb3c8" stroke="#5a6f88"/>';
+  sup.forEach(function(s,i){ var X=sx(s.x);
+    if(tp==='bi'){ o+='<path d="M'+X+' '+(by+7)+' l-14 24 h28 z" fill="#fff" stroke="#1c2430" stroke-width="2"/>'; if(i===1) o+='<circle cx="'+(X-8)+'" cy="'+(by+36)+'" r="4" fill="none" stroke="#1c2430" stroke-width="2"/><circle cx="'+(X+8)+'" cy="'+(by+36)+'" r="4" fill="none" stroke="#1c2430" stroke-width="2"/>';
+      o+='<text x="'+X+'" y="'+(by+62)+'" text-anchor="middle" font-size="13" fill="#1f6feb" font-weight="700">'+(i?'B':'A')+' · '+nf(s.F,2)+' '+U.F+'</text>'; }
+    else { var dx=tp==='engE'?-1:1; o+='<rect x="'+(X+(dx<0?-14:0))+'" y="'+(by-40)+'" width="14" height="80" fill="url(#hatch)" stroke="#1c2430"/>';
+      o+='<text x="'+(X+(dx<0?6:-6))+'" y="'+(by+62)+'" text-anchor="'+(dx<0?'start':'end')+'" font-size="13" fill="#1f6feb" font-weight="700">R = '+nf(s.F,2)+' '+U.F+' · M = '+nf(Math.abs(s.M),2)+' '+U.M+'</text>'; }
+  });
+  var wmax=0; ls.forEach(function(l){ if(l.t==='W') wmax=Math.max(wmax,Math.abs(l.w1),Math.abs(l.w2)); });
+  ls.forEach(function(l){
+    if(l.t==='P'){ var X=sx(l.x),d=l.P>=0; o+='<line x1="'+X+'" y1="'+(d?by-60:by-12)+'" x2="'+X+'" y2="'+(d?by-12:by-60)+'" stroke="#f28c28" stroke-width="3" marker-end="url(#ar)"/><text x="'+X+'" y="'+(by-66)+'" text-anchor="middle" font-size="13" font-weight="700" fill="#b35f00">'+nf(Math.abs(l.P),1)+' '+U.F+'</text>'; }
+    if(l.t==='W'){ var X1=sx(l.a),X2=sx(l.b),h1=8+30*Math.abs(l.w1)/(wmax||1),h2=8+30*Math.abs(l.w2)/(wmax||1);
+      o+='<path d="M'+X1+' '+(by-8)+' L'+X1+' '+(by-8-h1)+' L'+X2+' '+(by-8-h2)+' L'+X2+' '+(by-8)+' z" fill="rgba(242,140,40,.15)" stroke="#f28c28"/>';
+      var n=Math.max(2,Math.round((X2-X1)/40)); for(var k=0;k<=n;k++){var X=X1+(X2-X1)*k/n,h=h1+(h2-h1)*k/n; o+='<line x1="'+X+'" y1="'+(by-8-h)+'" x2="'+X+'" y2="'+(by-10)+'" stroke="#f28c28" stroke-width="1.5" marker-end="url(#ars)"/>';}
+      o+='<text x="'+((X1+X2)/2)+'" y="'+(by-14-Math.max(h1,h2))+'" text-anchor="middle" font-size="12" fill="#b35f00">'+nf(l.w1,1)+(l.w1!==l.w2?'→'+nf(l.w2,1):'')+' '+U.w+'</text>'; }
+    if(l.t==='M'){ var X=sx(l.x),ccw=l.M>=0; o+='<path d="M'+(X+16)+' '+(by-4)+' A18 18 0 1 '+(ccw?0:1)+' '+(X-16)+' '+(by-4)+'" fill="none" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#arm)" transform="'+(ccw?'':'scale(-1,1) translate('+(-2*X)+',0)')+'"/><text x="'+X+'" y="'+(by-30)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#8e44ad">'+nf(Math.abs(l.M),1)+' '+U.M+'</text>'; }
+  });
+  o+='<line x1="'+x0+'" y1="'+(by+80)+'" x2="'+x1+'" y2="'+(by+80)+'" stroke="#c4ccd8"/><text x="'+x0+'" y="'+(by+76)+'" font-size="11" fill="#5a6575">0</text><text x="'+x1+'" y="'+(by+76)+'" text-anchor="end" font-size="11" fill="#5a6575">L = '+nf(L,2)+' '+U.L+'</text>';
+  // ----- diagramas
+  function diag(y0,h,idx,title,unit,col,maxs){
+    var sg=idx===2?-1:1; // momento positivo desenhado para baixo (lado tracionado)
+    var vals=pts.map(function(p){return sg*p[idx];}),hi=Math.max(0,Math.max.apply(null,vals)),lo=Math.min(0,Math.min.apply(null,vals));
+    if(hi-lo<1e-9){hi=1;lo=-1;}
+    var top=y0+26,bot=y0+h-22,sy=function(v){return top+(hi-sg*v)/(hi-lo)*(bot-top);},yz=sy(0);
+    var s='<text x="20" y="'+(y0-6)+'" font-size="15" font-weight="700" fill="#1c2430">'+title+'</text>';
+    s+='<line x1="'+x0+'" y1="'+yz+'" x2="'+x1+'" y2="'+yz+'" stroke="#1c2430" stroke-width="1.5"/>';
+    var d='M'+sx(0)+' '+yz; pts.forEach(function(p){d+=' L'+sx(p[0]).toFixed(1)+' '+sy(p[idx]).toFixed(1);}); d+=' L'+sx(L)+' '+yz+' z';
+    s+='<path d="'+d+'" fill="'+col+'" fill-opacity=".22" stroke="'+col+'" stroke-width="2"/>';
+    maxs.forEach(function(q){ if(Math.abs(q[1])<1e-9) return; var X=sx(q[0]),Y=sy(q[1]); s+='<circle cx="'+X+'" cy="'+Y+'" r="4" fill="'+col+'"/><text x="'+Math.min(Math.max(X,x0+40),x1-40)+'" y="'+(Y+(Y<yz?-8:18))+'" text-anchor="middle" font-size="13" font-weight="700" fill="#1c2430">'+nf(q[1],2)+' '+unit+'</text>'; });
+    return s;
+  }
+  var vext=pts.reduce(function(a,p){return Math.abs(p[1])>Math.abs(a[1])?[p[0],p[1]]:a;},[0,0]);
+  var vmaxp=pts.reduce(function(a,p){return p[1]>a[1]?[p[0],p[1]]:a;},[0,0]), vminn=pts.reduce(function(a,p){return p[1]<a[1]?[p[0],p[1]]:a;},[0,0]);
+  o+=diag(250,170,1,'Shear force V ('+U.F+')',U.F,'#1f6feb',[vmaxp,vminn]);
+  o+=diag(455,170,2,'Bending moment M ('+U.M+'), drawn on the tension side',U.M,'#f28c28',[[m.xmp,m.mpos],[m.xmn,m.mneg]]);
+  var defs='<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f28c28"/></marker><marker id="ars" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f28c28"/></marker><marker id="arm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8e44ad"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#1c2430" stroke-width="1.5"/></pattern></defs>';
+  $('vg-svg').innerHTML=defs+o;
+}
+R.addEventListener('input',calc); R.addEventListener('change',calc); calc();
+})();
+</script>
+</div>
+
+<h2>How to solve a statically determinate beam</h2>
+<p>A simply supported beam (pin + roller) or a cantilever (one fixed end) has exactly three unknown support reactions, so the three equilibrium equations are enough to find them:</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>1. Replace distributed loads by their resultants.</b> A uniform load w over a length a becomes a force w·a at the middle of that length. A triangular load becomes w·a/2 at one third of the length from the larger end.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>2. Sum of moments about one support = 0.</b> This gives the reaction at the other support directly, with no simultaneous equations.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>3. Sum of vertical forces = 0.</b> This gives the remaining reaction. For a cantilever, use ΣF = 0 for the vertical reaction and ΣM = 0 at the wall for the fixed-end moment.</p>
+<p style="background:#f6f8fb;border-left:4px solid #1f6feb;padding:12px 16px;border-radius:6px"><b>4. Walk along the beam.</b> Shear V(x) is the sum of forces to the left of the section; bending moment M(x) is the sum of their moments about the section. The moment peaks where the shear crosses zero.</p>
+
+<h2>Worked example</h2>
+<p>The default example: a 20 ft simply supported beam with a 5 kip point load at 6 ft and a uniform load of 0.4 kip/ft over the full span.</p>
+<p><b>Resultant of the distributed load:</b> 0.4 × 20 = 8 kip at x = 10 ft.<br>
+<b>Moments about A:</b> R<sub>B</sub> × 20 = 5 × 6 + 8 × 10 = 110 → <b>R<sub>B</sub> = 5.5 kip</b>.<br>
+<b>Vertical forces:</b> R<sub>A</sub> = 5 + 8 − 5.5 → <b>R<sub>A</sub> = 7.5 kip</b>.<br>
+<b>Maximum moment:</b> the shear drops from 7.5 kip to 7.5 − 0.4 × 6 = 5.1 kip just left of the point load and to 0.1 kip just right of it, then reaches zero 0.25 ft further, at x = 6.25 ft. M<sub>max</sub> = 7.5 × 6.25 − 0.4 × 6.25²/2 − 5 × 0.25 ≈ <b>37.8 kip·ft</b>.</p>
+
+<h2>Common beam formulas</h2>
+<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0 16px"><thead><tr><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:left;background:#f6f8fb">Case (span L)</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:left;background:#f6f8fb">Reactions</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:left;background:#f6f8fb">Maximum moment</th><th style="padding:8px;border-bottom:2px solid #dde3ec;text-align:left;background:#f6f8fb">Maximum deflection</th></tr></thead><tbody><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Simply supported, uniform load w</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">wL/2 each</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">wL²/8 at midspan</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">5wL⁴/(384EI)</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Simply supported, point load P at midspan</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">P/2 each</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">PL/4 at midspan</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">PL³/(48EI)</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Simply supported, point load P at a from A (b = L − a)</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">R<sub>A</sub> = Pb/L, R<sub>B</sub> = Pa/L</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Pab/L under the load</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">depends on a</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Cantilever, uniform load w</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">R = wL, M = wL²/2</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">wL²/2 at the wall</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">wL⁴/(8EI)</td></tr><tr><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">Cantilever, point load P at the free end</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">R = P, M = PL</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">PL at the wall</td><td style="padding:7px 8px;border-bottom:1px solid #eef1f5">PL³/(3EI)</td></tr></tbody></table></div>
+<p>These are the same cases tabulated in the AISC Steel Construction Manual (Part 3, beam diagrams and formulas). The calculator handles any combination of them by superposition.</p>
+
+<h2>From bending moment to beam size</h2>
+<p>Once you know M<sub>max</sub>, the required section modulus is S = M / F<sub>b</sub>. Find S for any shape with the <a href="/en/calculators/moment-of-inertia-calculator/">moment of inertia calculator</a>, then check the bending stress: f<sub>b</sub> = M / S. Remember that serviceability (deflection, often limited to L/360 under live load) frequently controls before strength does.</p>
+
+<h2>FAQ</h2>
+<h3>Why does the moment diagram look upside down?</h3>
+<p>The diagram is drawn on the tension side, the usual convention in structural engineering: positive (sagging) moment is plotted below the axis, where the bottom fiber is in tension.</p>
+<h3>Can it solve continuous beams or fixed–fixed beams?</h3>
+<p>Not yet. Those are statically indeterminate and need compatibility equations (or a matrix method). This tool covers simply supported beams, beams with overhangs and cantilevers.</p>
+<h3>Does it include the beam self-weight?</h3>
+<p>Only if you add it. Enter the weight per foot of the member as a uniform load over the full span.</p>
+<p style="font-size:.85rem;color:#5a6575;border-top:1px solid #dde3ec;padding-top:12px;margin-top:28px">For study and preliminary design. Results should be checked by a licensed engineer before use in construction or manufacturing.</p></div></article><section class="rel"><h2 class="sec-t">More calculators</h2><div class="grid"><a class="card" href="/en/calculators/moment-of-inertia-calculator/"><img src="/img/en-inertia.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Section properties</small><b>Moment of inertia calculator</b><p>Centroid, Ix, Iy, S and r for I, T, L, C, tubes and built-up sections.</p></div></a><a class="card" href="/en/calculators/bolt-torque-calculator/"><img src="/img/en-torque.jpg" alt="" width="1200" height="630" loading="lazy"><div><small>Machine design</small><b>Bolt torque calculator</b><p>Tightening torque and clamp force for SAE Grade 2, 5, 8 and metric bolts.</p></div></a></div></section></div></main>
+<footer><div class="wrap">
+<p><b style="color:#fff">Engineer's Tools</b> · free engineering calculators with open formulas and worked examples.</p>
+<p><a href="/en/calculators/">Calculators</a><a href="/en/about/">About</a><a href="/en/privacy/">Privacy</a><a href="/">Português</a></p>
+<p style="font-size:.8rem;opacity:.8">These tools support study, estimating and preliminary design. They do not replace the design and responsibility of a licensed professional engineer.</p>
+</div></footer>
+</body>
+</html>

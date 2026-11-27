@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Gera o site estático Ferramentas do Engenheiro em /home/claude/site."""
-import os, re, json, shutil, html
+import os, re, json, shutil, html, sys
 from datetime import date
 
 ROOT = "/home/claude"
@@ -8,6 +8,7 @@ OUT = f"{ROOT}/site"
 SRC = f"{ROOT}/site_src"
 DOMAIN = "https://ferramentasdoengenheiro.com"
 SITE = "Ferramentas do Engenheiro"
+SITE_EN = "Engineer's Tools"
 IG = "https://www.instagram.com/ferramentasdoengenheiro/"
 TODAY = date.today().isoformat()
 
@@ -19,6 +20,16 @@ LINKS = {
     "/p/contato.html": "/contato/",
     "/p/sobre.html": "/sobre/",
     "/p/politica-de-privacidade.html": "/privacidade/",
+}
+
+EN_PAIRS = {  # página PT -> página EN equivalente
+    "calculadoras/vigas-cortante-e-momento-fletor": "en/calculators/beam-calculator",
+    "calculadoras/momento-de-inercia": "en/calculators/moment-of-inertia-calculator",
+    "calculadoras/torque-de-aperto-de-parafusos": "en/calculators/bolt-torque-calculator",
+    "": "en",
+    "calculadoras": "en/calculators",
+    "sobre": "en/about",
+    "privacidade": "en/privacy",
 }
 
 FIGS = {  # figuras cotadas inseridas nas páginas: (âncora, figura em site_src/figs, antes|depois)
@@ -104,6 +115,7 @@ img{max-width:100%;height:auto}
 .nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
 .nav a{color:#dbe6f4;text-decoration:none;font-size:.92rem;padding:7px 10px;border-radius:8px}
 .nav a:hover,.nav a.on{background:rgba(255,255,255,.1);color:#fff}
+.nav a.lang{border:1px solid rgba(255,255,255,.35);font-weight:700;font-size:.8rem;padding:6px 9px}
 .crumb{font-size:.82rem;color:var(--su);margin:18px 0 4px}
 .crumb a{color:var(--su);text-decoration:none}
 h1{font-size:clamp(1.55rem,3.4vw,2.15rem);line-height:1.2;margin:6px 0 8px;color:var(--az)}
@@ -148,17 +160,43 @@ for _e in _json.load(open(ROOT + "/site_src/exer/exercicios.json", encoding="utf
         card=("Questão estilo banca com resolução comentada e a pegadinha." if _c else "Resolvido passo a passo, com vídeo de 40 segundos."),
         tag=("Concursos · " if _c else "Faculdade · ") + _e["materia"], date="2026-11-27"))
 
-def nav(active):
+def nav(active, lang="pt"):
+    if lang == "en":
+        items = [("/en/", "Home"), ("/en/calculators/", "Calculators"), ("/en/about/", "About")]
+        return "".join(f'<a href="{u}"{" class=on" if active == u else ""}>{t}</a>' for u, t in items)
     items = [("/", "Início"), ("/calculadoras/", "Calculadoras"), ("/exercicios/", "Exercícios"), ("/simulados/", "Simulados"), ("/sobre/", "Sobre"), ("/contato/", "Contato")]
     return "".join(f'<a href="{u}"{" class=on" if active == u else ""}>{t}</a>' for u, t in items)
 
-def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_title=None, noindex=False):
+def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_title=None, noindex=False, lang="pt", alt=None):
     url = DOMAIN + path
     og = DOMAIN + "/img/" + (img or "simulado-mecanica.jpg")
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
-    t = page_title or f"{title} | {SITE}"
+    t = page_title or f"{title} | {SITE_EN if lang == 'en' else SITE}"
+    if alt is None:
+        k = path.strip("/")
+        if lang == "pt" and k in EN_PAIRS: alt = "/" + EN_PAIRS[k] + "/"
+        if lang == "en":
+            inv = {v: k2 for k2, v in EN_PAIRS.items()}
+            if k in inv: alt = "/" + inv[k] + ("/" if inv[k] else "")
+    pt_url, en_url = (url, (DOMAIN + alt) if alt else None) if lang == "pt" else ((DOMAIN + alt) if alt else None, url)
+    hl = ""
+    if alt or lang == "en":
+        if pt_url: hl += f'<link rel="alternate" hreflang="pt-BR" href="{pt_url}">\n<link rel="alternate" hreflang="x-default" href="{pt_url}">\n'
+        hl += f'<link rel="alternate" hreflang="en" href="{en_url}">\n'
+    sw = (f'<a class="lang" href="{alt}" hreflang="en" lang="en" title="English version">EN</a>' if lang == "pt" and alt else
+          f'<a class="lang" href="{alt}" hreflang="pt-BR" lang="pt-BR" title="Versão em português">PT</a>' if lang == "en" and alt else "")
+    brand = SITE_EN if lang == "en" else SITE
+    home = "/en/" if lang == "en" else "/"
+    if lang == "en":
+        foot = f"""<p><b style="color:#fff">{SITE_EN}</b> · free engineering calculators with open formulas and worked examples.</p>
+<p><a href="/en/calculators/">Calculators</a><a href="/en/about/">About</a><a href="/en/privacy/">Privacy</a><a href="/">Português</a></p>
+<p style="font-size:.8rem;opacity:.8">These tools support study, estimating and preliminary design. They do not replace the design and responsibility of a licensed professional engineer.</p>"""
+    else:
+        foot = f"""<p><b style="color:#fff">{SITE}</b> · calculadoras e simulados gratuitos para engenheiros, técnicos e estudantes.</p>
+<p><a href="/calculadoras/">Calculadoras</a><a href="/exercicios/">Exercícios</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="{IG}" rel="noopener" target="_blank">Instagram</a><a href="/en/">English</a></p>
+<p style="font-size:.8rem;opacity:.8">As ferramentas apoiam estudos, orçamentos e pré-dimensionamentos e não substituem o projeto e a responsabilidade técnica de um profissional habilitado.</p>"""
     return f"""<!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="{'en' if lang == 'en' else 'pt-BR'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -167,8 +205,9 @@ def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_ti
 <link rel="canonical" href="{url}">
 {'<meta name="robots" content="noindex">' if noindex else ''}
 <meta property="og:type" content="{'article' if img else 'website'}">
-<meta property="og:site_name" content="{SITE}">
-<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="{brand}">
+<meta property="og:locale" content="{'en_US' if lang == 'en' else 'pt_BR'}">
+{hl}
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{url}">
@@ -187,12 +226,10 @@ def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_ti
 {ld}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="/"><img src="/img/logo-192.png" alt="" width="36" height="36">{SITE}</a><nav class="nav" aria-label="Menu principal">{nav(active)}</nav></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="{home}"><img src="/img/logo-192.png" alt="" width="36" height="36">{brand}</a><nav class="nav" aria-label="{'Main menu' if lang == 'en' else 'Menu principal'}">{nav(active, lang)}{sw}</nav></div></header>
 <main>{body}</main>
 <footer><div class="wrap">
-<p><b style="color:#fff">{SITE}</b> · calculadoras e simulados gratuitos para engenheiros, técnicos e estudantes.</p>
-<p><a href="/calculadoras/">Calculadoras</a><a href="/exercicios/">Exercícios</a><a href="/simulados/">Simulados</a><a href="/sobre/">Sobre</a><a href="/contato/">Contato</a><a href="/privacidade/">Privacidade</a><a href="{IG}" rel="noopener" target="_blank">Instagram</a></p>
-<p style="font-size:.8rem;opacity:.8">As ferramentas apoiam estudos, orçamentos e pré-dimensionamentos e não substituem o projeto e a responsabilidade técnica de um profissional habilitado.</p>
+{foot}
 </div></footer>
 </body>
 </html>
@@ -343,6 +380,10 @@ def build():
                           ("/privacidade/", "Política de Privacidade", "Como o Ferramentas do Engenheiro trata dados, cookies e publicidade, de acordo com a LGPD.", priv)]:
         write(path, layout(path=path, title=h, desc=d, body=f'<div class="wrap"><nav class="crumb"><a href="/">Início</a></nav><h1>{h}</h1>{b}</div>', active=path))
         urls.append((path, TODAY))
+
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("build_en", f"{SRC}/en/build_en.py"); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    urls += m.build_en(sys.modules[__name__])
 
     # 404, sitemap, robots, CNAME
     open(OUT + "/404.html", "w").write(layout(path="/404.html", title="Página não encontrada", desc="Página não encontrada.", noindex=True,
