@@ -384,6 +384,8 @@ def build():
     import importlib.util
     spec = importlib.util.spec_from_file_location("build_en", f"{SRC}/en/build_en.py"); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
     urls += m.build_en(sys.modules[__name__])
+    spec = importlib.util.spec_from_file_location("build_produto", f"{SRC}/produto/build_produto.py"); mp = importlib.util.module_from_spec(spec); spec.loader.exec_module(mp)
+    urls += mp.build(sys.modules[__name__])
 
     # 404, sitemap, robots, CNAME
     open(OUT + "/404.html", "w").write(layout(path="/404.html", title="Página não encontrada", desc="Página não encontrada.", noindex=True,
