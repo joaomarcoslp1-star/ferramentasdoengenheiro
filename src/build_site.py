@@ -180,6 +180,8 @@ def layout(*, path, title, desc, body, img=None, active="", jsonld=None, page_ti
 <link rel="icon" type="image/png" sizes="192x192" href="/img/logo-192.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/site.css">
+<meta name="google-adsense-account" content="ca-pub-9800534934394753">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800534934394753" crossorigin="anonymous"></script>
 {ld}
 </head>
 <body>
@@ -346,6 +348,7 @@ def build():
     sm = "".join(f"<url><loc>{DOMAIN}{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     open(OUT + "/sitemap.xml", "w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
+    open(OUT + "/ads.txt", "w").write("google.com, pub-9800534934394753, DIRECT, f08c47fec0942fa0\n")
     open(OUT + "/CNAME", "w").write("ferramentasdoengenheiro.com\n")
     open(OUT + "/.nojekyll", "w").write("")
     open(OUT + "/google8c5e0565b8eec656.html", "w").write("google-site-verification: google8c5e0565b8eec656.html")
