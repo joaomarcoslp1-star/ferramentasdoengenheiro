@@ -25,6 +25,6 @@ for mat, m in MATERIAS.items():
 <p><b>Outras matérias:</b> {outros}.</p>
 </div>"""
     open(f"{OUT}/materia-{m['slug']}.html", "w").write(top + page(sub) + bottom)
-    meta.append(dict(mat=mat, slug=m["slug"], n=n, cover=m["cover"]))
+    meta.append(dict(mat=mat, slug=m["slug"], n=n, cover=(m["cover"][0], f"{n} questões comentadas")))
 import json; json.dump(meta, open(f"{OUT}/materias.json", "w"), ensure_ascii=False, indent=1)
 print(len(meta), sum(x["n"] for x in meta))

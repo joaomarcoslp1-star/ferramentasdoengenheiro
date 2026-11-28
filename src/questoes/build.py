@@ -10,6 +10,8 @@ for x in Q:
     if x["id"] in MOVES:
         t = "ABCDE".index(MOVES[x["id"]]); g = x["gab"]
         x["alts"][g], x["alts"][t] = x["alts"][t], x["alts"][g]; x["gab"] = t
+from novas import NOVAS
+Q.extend(NOVAS)
 print(Counter("ABCDE"[x["gab"]] for x in Q), file=sys.stderr)
 
 MATS = list(dict.fromkeys(x["mat"] for x in Q))
