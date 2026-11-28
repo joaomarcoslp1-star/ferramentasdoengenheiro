@@ -165,7 +165,7 @@ num("MEC-M29", M, "Alongamento após ruptura",
 ra = (1 - (7 / 10) ** 2) * 100
 num("MEC-M30", M, "Redução de área (estricção)",
     "Um corpo de prova cilíndrico de 10 mm de diâmetro rompe com diâmetro de 7 mm na seção de fratura. A redução de área percentual é",
-    ra, [30, 49, 70, 42.9, 65.7, 75], fmt=lambda v: br(v, 0) + "%",
+    ra, [30, 49, 70, 42.9, 65.7, 75, 80], fmt=lambda v: br(v, 0) + "%",
     res=f"Z = 1 − (d<sub>f</sub>/d<sub>0</sub>)² = 1 − 0,49 = <b>{br(ra,0)}%</b>. Usar a redução de diâmetro (30%) esquece que a área varia com o quadrado. Reduções de área altas indicam fratura dúctil.")
 
 con("MEC-M31", M, "Ponto eutético do diagrama Fe-C",
