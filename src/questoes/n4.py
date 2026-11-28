@@ -242,7 +242,7 @@ num("MEC-B20", B, "Rotação específica",
 eta = 850 / (1000 * 9.81 * 1 * 100 / 1000)
 num("MEC-B21", B, "Rendimento de turbina hidráulica",
     "Uma turbina hidráulica entrega 850 kW no eixo com vazão de 1 m³/s e queda líquida de 100 m (g = 9,81 m/s²). Seu rendimento é, aproximadamente,",
-    eta, [0.85, 1 / eta, 0.765, 0.981], fmt=lambda v: br(100 * v, 1) + "%",
+    eta, [0.85, 0.95, 0.765, 0.981], fmt=lambda v: br(100 * v, 1) + "%",
     res=f"Potência hidráulica disponível: ρgQH = 1.000 × 9,81 × 1 × 100 = 981 kW. η = 850/981 = <b>{br(100*eta,1)}%</b>. Na turbina, a potência do eixo é menor que a hidráulica; na bomba, maior.")
 
 num("MEC-B22", B, "Compressão em estágios com resfriamento intermediário",
